@@ -127,16 +127,19 @@ namespace Pcb
             var g = Group(root, node.name, new Vector3(p.x, p.y, node.IsVia ? 0f : Surface(side, t)), node);
             g.localRotation = Quaternion.Euler(0f, 0f, node.rotationDegrees); // spin around the board normal
 
+            // GameObject model = node.type switch
+            // {
+            //     NodeType.Capacitor => theme.capacitorPrefab,
+            //     NodeType.Via => theme.viaPrefab,
+            //     NodeType.Start => theme.startPrefab,
+            //     NodeType.Goal => theme.goalPrefab,
+            //     _ => null
+            // };
             var model = board.NodeModel(node);
             if (model)
             {
                 var m = Object.Instantiate(model, g, false);
-                if (side == PcbLayer.Back)
-                {
-                    var lp = m.transform.localPosition;
-                    m.transform.localPosition = new Vector3(-lp.x, lp.y, -lp.z);
-                    m.transform.localRotation = Quaternion.Euler(0f, 180f, 0f) * m.transform.localRotation;
-                }
+                m.transform.localRotation = side == PcbLayer.Back ? Quaternion.Euler(0f, 180f, 0f) : Quaternion.identity;
                 list.AddRange(m.GetComponentsInChildren<Renderer>(true));
 
                 if (node.IsVia)
