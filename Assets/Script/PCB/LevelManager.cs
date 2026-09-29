@@ -92,7 +92,11 @@ namespace Pcb
         void Spawn(bool showDialog)
         {
             if (!template) { Debug.LogError($"[PCB] Level {index + 1} is missing from the Level List.", this); return; }
-            if (spark) spark.Arrived -= OnArrived;
+            if (spark)
+            {
+                spark.Arrived -= OnArrived;
+                spark.WinFinished -= OnWinFinished;
+            }
             if (rig) Destroy(rig.gameObject); // takes the board and the spark with it
             won = false;
 
@@ -114,20 +118,25 @@ namespace Pcb
             spark = sparkPrefab ? Instantiate(sparkPrefab) : new GameObject("Spark").AddComponent<Spark>();
             spark.Init(current, start, rig);
             spark.Arrived += OnArrived;
+            spark.WinFinished += OnWinFinished;
 
             if (showDialog && current.dialogSequence && dialogController)
             {
-                spark.enabled = false;
-                dialogController.Show(current.dialogSequence, () => { if (spark) spark.enabled = true; });
+                spark.InputLocked = true;
+                dialogController.Show(current.dialogSequence, () => { if (spark) spark.InputLocked = false; });
             }
         }
 
         void OnArrived(PcbNode node)
         {
             if (node.type != NodeType.Goal) return;
+            spark.InputLocked = true; // no more input; the win screen waits for the spark's win animation (OnWinFinished)
+        }
+
+        void OnWinFinished()
+        {
             won = true;
             wonAt = Time.time;
-            spark.enabled = false;
         }
 
         void Update()
@@ -157,7 +166,7 @@ namespace Pcb
             string side = current.View == PcbLayer.Front ? "FRONT" : "<color=#7fd4ff>BACK</color>";
             string hud = $"<b>{current.levelName}</b>  ({number})\nSide: <b>{side}</b>\n" +
                          $"<size={font * 3 / 4}>Move: WASD / Arrows   Flip (on via): Space   Inspect: drag mouse   Restart: R</size>";
-            if (spark && !won && !spark.IsMoving && !spark.IsTurning && spark.CurrentNode && spark.CurrentNode.IsVia)
+            if (spark && !won && !spark.IsMoving && !spark.IsTurning && !spark.IsBusy && spark.CurrentNode && spark.CurrentNode.IsVia)
                 hud += "\n<color=#ffe08a>On a via: press Space to flip side</color>";
             GUI.Label(new Rect(16, 12, Screen.width - 32, Screen.height * 0.3f), hud, hudStyle);
 

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,21 +11,60 @@ namespace Pcb
     /// along the trace at a fixed speed until the next node. On a via, Flip turns the board over and the
     /// spark passes through to the other side. Directions are read on screen, so they stay intuitive
     /// when the board is showing its (mirrored) back. Inputs pressed while moving are used on arrival.
+    ///
+    /// With a character 'model' assigned (the Spark prefab on the LevelManager), the sphere is replaced:
+    /// the character shrinks away (MoveStart), travels as electricity (travel VFX), reappears at the next
+    /// node (MoveFinish) and idles there. Flips play MoveStart, turn the board, then MoveFinish.
     /// </summary>
     public class Spark : MonoBehaviour
     {
         [Tooltip("World units per second. Fixed for the whole game.")]
         public float speed = 8f;
 
+        [Header("Character (optional, empty = the glowing sphere)")]
+        [Tooltip("Child object holding the character. Its position/rotation in the prefab is how it sits on the FRONT side; the back side is mirrored automatically.")]
+        public Transform model;
+        [Tooltip("Optional. Found on the model if empty.")]
+        public Animator animator;
+        [Tooltip("Animator state names, played directly by name (no transitions needed).")]
+        public string idleState = "Idle";
+        public string moveStartState = "MoveStart";
+        public string moveFinishState = "MoveFinish";
+        public string winState = "Win";
+
+        [Header("Character VFX (optional)")]
+        [Tooltip("Plays while the character stands on a node. A child (put it under the model to follow it), or a VFX prefab file: then a copy is placed on the model at spawn.")]
+        public GameObject idleVfx;
+        [Tooltip("Plays while running along a trace (the character is hidden then). A child, or a VFX prefab file: then a copy is placed on the spark at spawn.")]
+        public GameObject travelVfx;
+        [Tooltip("Prefab spawned for a moment: on a blocked move, when using a switch, and now and then while running.")]
+        public GameObject burstVfx;
+        [Tooltip("Random seconds between bursts while running (min, max). Max 0 = no bursts while running.")]
+        public Vector2 travelBurstInterval = new Vector2(0.2f, 0.5f);
+        [Tooltip("Keep the point light that lights up the board around the spark.")]
+        public bool glowLight = true;
+        [Tooltip("Show the direction arrows around the node (always shown for the sphere).")]
+        public bool directionArrows = false;
+
         public Board Board { get; private set; }
         public PcbNode CurrentNode { get; private set; }
         public PcbLayer Layer { get; private set; }
         public bool IsMoving { get; private set; }
         public bool IsTurning => rig && rig.IsTurning;
+        /// <summary>Playing a character animation between moves (input waits, like while moving).</summary>
+        public bool IsBusy { get; private set; }
+        public bool HasCharacter => model;
+        /// <summary>
+        /// Ignore player input (intro dialog, level won). Used instead of disabling the component,
+        /// so the character's animation sequences keep running.
+        /// </summary>
+        public bool InputLocked { get; set; }
 
         public event Action<PcbNode> Arrived;
         public event Action<PcbLayer> Flipped;
         public event Action Blocked;
+        /// <summary>The goal was reached and the win animation has finished (right away without a character).</summary>
+        public event Action WinFinished;
 
         static readonly int BaseColorId = Shader.PropertyToID("_BaseColor");
         static readonly int EmissionColorId = Shader.PropertyToID("_EmissionColor");
@@ -42,6 +82,7 @@ namespace Pcb
         bool wasTurning;
         float turnFromZ, turnToZ;
 
+        bool built;
         Transform core;
         MeshRenderer coreRenderer;
         MaterialPropertyBlock block;
@@ -49,6 +90,12 @@ namespace Pcb
         TrailRenderer trail;
         readonly List<SpriteRenderer> arrows = new List<SpriteRenderer>();
         float blockedFlash;
+
+        // Character
+        Vector3 modelPosition, modelBase;
+        Quaternion modelRotation;
+        readonly List<Renderer> modelRenderers = new List<Renderer>();
+        float nextBurst = float.MaxValue;
 
         void Awake()
         {
@@ -65,6 +112,34 @@ namespace Pcb
             flipAction = new InputAction("Flip", InputActionType.Button);
             flipAction.AddBinding("<Keyboard>/space");
             flipAction.AddBinding("<Gamepad>/buttonSouth");
+
+            if (model)
+            {
+                if (!animator) animator = model.GetComponentInChildren<Animator>();
+                modelPosition = model.localPosition;
+                modelRotation = model.localRotation;
+                // Only the character's meshes: particle/trail renderers of VFX under the model keep their own control.
+                foreach (var r in model.GetComponentsInChildren<Renderer>(true))
+                    if (!(r is ParticleSystemRenderer) && !(r is TrailRenderer)) modelRenderers.Add(r);
+            }
+
+            // These two may point at the VFX prefab file instead of a child: then place a copy on the spark.
+            idleVfx = OwnCopy(idleVfx, model ? model : transform);
+            travelVfx = OwnCopy(travelVfx, transform);
+        }
+
+        GameObject OwnCopy(GameObject vfx, Transform parent)
+        {
+            if (!vfx || vfx.transform.IsChildOf(transform)) return vfx; // already part of the spark
+            var copy = Instantiate(vfx, parent, false);
+            copy.name = vfx.name;
+            // Cancel the parent's scale (e.g. a scaled-down model) so the effect keeps its authored size.
+            Vector3 s = parent.lossyScale;
+            copy.transform.localScale = new Vector3(
+                Mathf.Abs(s.x) > 1e-4f ? 1f / s.x : 1f,
+                Mathf.Abs(s.y) > 1e-4f ? 1f / s.y : 1f,
+                Mathf.Abs(s.z) > 1e-4f ? 1f / s.z : 1f);
+            return copy;
         }
 
         void OnEnable() { moveAction.Enable(); flipAction.Enable(); }
@@ -84,8 +159,16 @@ namespace Pcb
             BuildVisuals();
             if (rig) rig.SnapTo(Layer);
             else board.SetView(Layer);
-            trail.Clear();
+            if (trail) trail.Clear();
             RefreshArrows();
+
+            if (HasCharacter)
+            {
+                FaceSide();
+                StopVfx(travelVfx);
+                StopVfx(idleVfx);
+                StartCoroutine(Appear());
+            }
         }
 
         void Update()
@@ -107,14 +190,21 @@ namespace Pcb
             {
                 wasTurning = false;
                 transform.localPosition = LocalPosition(Board.NodePosition(CurrentNode), Layer);
-                trail.Clear();
-                trail.emitting = true;
+                if (trail)
+                {
+                    trail.Clear();
+                    trail.emitting = true;
+                }
                 RefreshArrows();
             }
 
-            if (IsMoving) Move(speed * Time.deltaTime);
+            if (IsMoving)
+            {
+                Move(speed * Time.deltaTime);
+                if (IsMoving && HasCharacter && Time.time >= nextBurst) { SpawnBurst(); ScheduleBurst(); }
+            }
 
-            if (!IsMoving && enabled) // enabled: arriving at the goal may have disabled us
+            if (!IsMoving && !IsBusy && !InputLocked && enabled) // locked: intro dialog showing, or the goal was reached
             {
                 if (hasQueuedFlip) { hasQueuedFlip = false; TryFlip(); }
                 else if (hasQueuedMove) { hasQueuedMove = false; TryMove(ScreenToBoard(queuedMove)); }
@@ -126,8 +216,8 @@ namespace Pcb
 
         void ReadInput()
         {
-            // Paused: drop anything queued so nothing fires the moment play resumes.
-            bool paused = PauseMenu.GamePaused;
+            // Paused / locked: drop anything queued so nothing fires the moment play resumes.
+            bool paused = PauseMenu.GamePaused || InputLocked;
             if (paused) { hasQueuedMove = hasQueuedFlip = false; inputGraceTimer = 0f; }
             else if (flipAction.WasPressedThisFrame()) hasQueuedFlip = true;
 
@@ -157,7 +247,7 @@ namespace Pcb
             if (sector == lastSector) return;
             lastSector = sector; // still tracked while paused, so a key held through Resume doesn't count as a new press
             if (paused) return;
-            
+
             queuedMove = v.normalized;
             inputGraceTimer = 0.08f; // 80ms grace window to combine rolling inputs
         }
@@ -183,8 +273,9 @@ namespace Pcb
             exit.trace.GetPath(Board, exit.reversed, path);
             segment = 0;
             segmentProgress = 0f;
-            IsMoving = true;
             HideArrows();
+            if (HasCharacter) StartCoroutine(DepartThenMove());
+            else IsMoving = true;
             return true;
         }
 
@@ -194,17 +285,24 @@ namespace Pcb
             {
                 var switchMech = CurrentNode.GetComponent<SwitchMechanic>();
                 if (switchMech) switchMech.Toggle();
+                SpawnBurst();
                 return;
             }
 
             if (!CurrentNode.IsVia) { Block(); return; }
+            if (HasCharacter) StartCoroutine(FlipSequence());
+            else BeginFlip();
+        }
+
+        void BeginFlip()
+        {
             turnFromZ = transform.localPosition.z;
             Layer = Layer.Other();
             turnToZ = LocalPosition(Vector2.zero, Layer).z;
             HideArrows();
             if (rig)
             {
-                trail.emitting = false;
+                if (trail) trail.emitting = false;
                 rig.TurnTo(Layer);
             }
             else
@@ -240,57 +338,199 @@ namespace Pcb
         {
             IsMoving = false;
             CurrentNode = travelling.target;
+            bool goal = CurrentNode.type == NodeType.Goal;
+            if (HasCharacter)
+            {
+                IsBusy = true; // until MoveFinish has played
+                StopVfx(travelVfx);
+                nextBurst = float.MaxValue;
+            }
             foreach (var m in travelling.trace.GetComponents<TraceMechanic>()) m.OnTraversed(this, travelling.reversed);
             foreach (var m in CurrentNode.GetComponents<NodeMechanic>()) m.OnSparkArrive(this);
             RefreshArrows();
             Arrived?.Invoke(CurrentNode);
+
+            if (HasCharacter) StartCoroutine(ArriveSequence(goal));
+            else if (goal) WinFinished?.Invoke();
         }
 
         void Block()
         {
             blockedFlash = 1f;
+            if (HasCharacter) SpawnBurst();
             Blocked?.Invoke();
         }
+
+        // ---------------------------------------------------------------- character sequences
+        // Never disable this component while one is running (use InputLocked): that would cut the sequence short.
+
+        IEnumerator Appear()
+        {
+            IsBusy = true;
+            ShowModel(false);
+            while (InputLocked) yield return null; // appear once the intro dialog is closed, so it's seen
+            ShowModel(true);
+            yield return PlayAndWait(moveFinishState);
+            EnterIdle();
+        }
+
+        IEnumerator DepartThenMove()
+        {
+            IsBusy = true;
+            StopVfx(idleVfx);
+            yield return PlayAndWait(moveStartState);
+            ShowModel(false);
+            PlayVfx(travelVfx);
+            ScheduleBurst();
+            IsMoving = true;
+            IsBusy = false;
+        }
+
+        IEnumerator ArriveSequence(bool goal)
+        {
+            ShowModel(true);
+            yield return PlayAndWait(moveFinishState);
+            if (goal)
+            {
+                yield return PlayAndWait(winState); // plays once and holds its last frame; the level is over
+                WinFinished?.Invoke();
+                yield break;
+            }
+            EnterIdle();
+        }
+
+        IEnumerator FlipSequence()
+        {
+            IsBusy = true;
+            HideArrows();
+            StopVfx(idleVfx);
+            yield return PlayAndWait(moveStartState);
+            ShowModel(false);
+            BeginFlip();
+            while (IsTurning || wasTurning) yield return null;
+            FaceSide();
+            ShowModel(true);
+            yield return PlayAndWait(moveFinishState);
+            EnterIdle();
+        }
+
+        void EnterIdle()
+        {
+            if (animator && HasState(idleState)) animator.Play(idleState, 0, 0f);
+            PlayVfx(idleVfx);
+            IsBusy = false;
+        }
+
+        /// <summary>Plays an Animator state from the start and waits until it has played once.</summary>
+        IEnumerator PlayAndWait(string state)
+        {
+            if (!animator || !HasState(state)) yield break;
+            animator.Play(state, 0, 0f);
+            yield return null; // the Animator switches state on its next update
+            yield return new WaitForSeconds(Mathf.Max(0f, animator.GetCurrentAnimatorStateInfo(0).length - Time.deltaTime));
+        }
+
+        bool HasState(string state)
+        {
+            if (string.IsNullOrEmpty(state)) return false;
+            if (animator.HasState(0, Animator.StringToHash(state))) return true;
+            Debug.LogWarning($"[PCB] Spark animator has no state named '{state}' (layer 0).", this);
+            return false;
+        }
+
+        /// <summary>The prefab's pose is the front side; on the back, mirror it so the character still faces the camera.</summary>
+        void FaceSide()
+        {
+            bool back = Layer == PcbLayer.Back;
+            modelBase = back ? new Vector3(-modelPosition.x, modelPosition.y, -modelPosition.z) : modelPosition;
+            model.localPosition = modelBase;
+            model.localRotation = back ? Quaternion.Euler(0f, 180f, 0f) * modelRotation : modelRotation;
+        }
+
+        void ShowModel(bool show)
+        {
+            foreach (var r in modelRenderers) if (r) r.enabled = show;
+        }
+
+        static void PlayVfx(GameObject vfx)
+        {
+            if (!vfx) return;
+            vfx.SetActive(true);
+            foreach (var ps in vfx.GetComponentsInChildren<ParticleSystem>(true)) ps.Play(false);
+            foreach (var tr in vfx.GetComponentsInChildren<TrailRenderer>(true)) tr.emitting = true;
+        }
+
+        /// <summary>Stops emitting but lets live particles fade out.</summary>
+        static void StopVfx(GameObject vfx)
+        {
+            if (!vfx) return;
+            foreach (var ps in vfx.GetComponentsInChildren<ParticleSystem>(true)) ps.Stop(false, ParticleSystemStopBehavior.StopEmitting);
+            foreach (var tr in vfx.GetComponentsInChildren<TrailRenderer>(true)) tr.emitting = false;
+        }
+
+        void SpawnBurst()
+        {
+            if (!burstVfx || !Board) return;
+            // Parented to the board so it follows the tilt/turn, and goes away with it on restart.
+            var fx = Instantiate(burstVfx, transform.position, transform.rotation, Board.transform);
+            float lifetime = 0.5f;
+            foreach (var ps in fx.GetComponentsInChildren<ParticleSystem>())
+                lifetime = Mathf.Max(lifetime, ps.main.duration + ps.main.startLifetime.constantMax);
+            Destroy(fx, lifetime);
+        }
+
+        void ScheduleBurst() =>
+            nextBurst = travelBurstInterval.y > 0f
+                ? Time.time + UnityEngine.Random.Range(Mathf.Max(0.05f, travelBurstInterval.x), travelBurstInterval.y)
+                : float.MaxValue;
 
         // ---------------------------------------------------------------- visuals
 
         void BuildVisuals()
         {
-            if (core) return;
+            if (built) return;
+            built = true;
             var theme = Board.theme;
             block = new MaterialPropertyBlock();
 
-            coreRenderer = BoardVisuals.Part(transform, BoardVisuals.Sphere, Vector3.zero, Quaternion.identity,
-                Vector3.one * theme.sparkSize, theme.sparkMaterial, null);
-            coreRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-            core = coreRenderer.transform;
-            core.name = "Core";
+            if (!HasCharacter)
+            {
+                coreRenderer = BoardVisuals.Part(transform, BoardVisuals.Sphere, Vector3.zero, Quaternion.identity,
+                    Vector3.one * theme.sparkSize, theme.sparkMaterial, null);
+                coreRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+                core = coreRenderer.transform;
+                core.name = "Core";
 
-            glow = new GameObject("Glow").AddComponent<Light>();
-            glow.transform.SetParent(transform, false);
-            glow.type = LightType.Point;
-            glow.range = theme.sparkLightRange;
-            glow.intensity = theme.sparkLightIntensity;
-            glow.color = theme.spark;
-            glow.shadows = LightShadows.None;
+                trail = gameObject.AddComponent<TrailRenderer>();
+                trail.sharedMaterial = theme.spriteMaterial;
+                trail.time = 0.2f;
+                trail.minVertexDistance = 0.03f;
+                trail.numCapVertices = 2;
+                trail.widthMultiplier = theme.sparkSize * 0.6f;
+                trail.widthCurve = AnimationCurve.Linear(0f, 1f, 1f, 0f);
+                trail.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+                var gradient = new Gradient();
+                gradient.SetKeys(
+                    new[] { new GradientColorKey(Color.white, 0f), new GradientColorKey(theme.spark, 1f) },
+                    new[] { new GradientAlphaKey(0.9f, 0f), new GradientAlphaKey(0f, 1f) });
+                trail.colorGradient = gradient;
+            }
 
-            trail = gameObject.AddComponent<TrailRenderer>();
-            trail.sharedMaterial = theme.spriteMaterial;
-            trail.time = 0.2f;
-            trail.minVertexDistance = 0.03f;
-            trail.numCapVertices = 2;
-            trail.widthMultiplier = theme.sparkSize * 0.6f;
-            trail.widthCurve = AnimationCurve.Linear(0f, 1f, 1f, 0f);
-            trail.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-            var gradient = new Gradient();
-            gradient.SetKeys(
-                new[] { new GradientColorKey(Color.white, 0f), new GradientColorKey(theme.spark, 1f) },
-                new[] { new GradientAlphaKey(0.9f, 0f), new GradientAlphaKey(0f, 1f) });
-            trail.colorGradient = gradient;
+            if (!HasCharacter || glowLight)
+            {
+                glow = new GameObject("Glow").AddComponent<Light>();
+                glow.transform.SetParent(transform, false);
+                glow.type = LightType.Point;
+                glow.range = theme.sparkLightRange;
+                glow.intensity = theme.sparkLightIntensity;
+                glow.color = theme.spark;
+                glow.shadows = LightShadows.None;
+            }
         }
 
         void RefreshArrows()
         {
+            if (HasCharacter && !directionArrows) return;
             var theme = Board.theme;
             int count = 0;
             float radius = theme.capacitorSize * 0.5f + 0.18f;
@@ -326,17 +566,26 @@ namespace Pcb
             var theme = Board.theme;
             blockedFlash = Mathf.MoveTowards(blockedFlash, 0f, Time.deltaTime * 4f);
             float pulse = 0.5f + 0.5f * Mathf.Sin(Time.time * 8f);
+            Vector3 shake = UnityEngine.Random.insideUnitSphere * (0.05f * blockedFlash);
 
-            Color c = Color.Lerp(theme.spark, theme.sparkBlocked, blockedFlash);
-            coreRenderer.GetPropertyBlock(block);
-            block.SetColor(BaseColorId, c);
-            block.SetColor(EmissionColorId, c * (theme.sparkGlow * (0.8f + 0.4f * pulse)));
-            coreRenderer.SetPropertyBlock(block);
-            core.localPosition = UnityEngine.Random.insideUnitSphere * (0.05f * blockedFlash);
-            core.localScale = Vector3.one * theme.sparkSize * (1f + 0.08f * pulse);
+            // The character shakes when blocked but doesn't turn red (a burst VFX plays instead).
+            Color c = HasCharacter ? theme.spark : Color.Lerp(theme.spark, theme.sparkBlocked, blockedFlash);
+            if (HasCharacter) model.localPosition = modelBase + shake;
+            else
+            {
+                coreRenderer.GetPropertyBlock(block);
+                block.SetColor(BaseColorId, c);
+                block.SetColor(EmissionColorId, c * (theme.sparkGlow * (0.8f + 0.4f * pulse)));
+                coreRenderer.SetPropertyBlock(block);
+                core.localPosition = shake;
+                core.localScale = Vector3.one * theme.sparkSize * (1f + 0.08f * pulse);
+            }
 
-            glow.color = c;
-            glow.intensity = theme.sparkLightIntensity * (0.85f + 0.3f * pulse);
+            if (glow)
+            {
+                glow.color = c;
+                glow.intensity = theme.sparkLightIntensity * (0.85f + 0.3f * pulse);
+            }
 
             var arrowColor = theme.spark;
             arrowColor.a = 0.5f + 0.5f * pulse;

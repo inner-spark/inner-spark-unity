@@ -5,6 +5,62 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 
 ---
 
+## 2026-09-29 → 30 — Sparky character replaces the spark sphere
+
+**Session summary:** Reviewed the teammates' pushed work, then replaced the glowing-sphere player
+with the animated Sparky character + VFX. Designer set it up in Unity and confirmed it working.
+
+### Teammates' work pulled in (2026-09-29, not written up by them)
+- **Nghia:** `NodeType.Switch` + `SwitchMechanic` (Space on a switch toggles it, fires
+  `onToggle`) and `GateMechanic` (a `TraceMechanic` that blocks the spark while closed) — the first
+  concrete mechanics. Theme slots `switchPrefab` / `gatePrefab` (+ variants). **8-way movement**
+  with an 80 ms grace window to combine diagonal key presses; validator accepts diagonal exits.
+  Via models now render on both sides; back-side node/decoration models mirrored correctly.
+  `LevelManager` hides every scene board at start. **Level 05** added.
+- **Andrii:** re-exported `Mesh_Sparky_Animated.fbx` (now has the skinned mesh + materials),
+  Sparky textures/materials, VFX prefabs (`VFX_Sparky_Idle`, `VFX_Sparky_Trail`,
+  `VFX_BurstOfSparks`), UI button art + `upheavtt.ttf` font, console props, bigger level scene.
+- Small follow-ups for Nghia: gate visual sits at the straight from→to midpoint (ignores bends);
+  `gateVariants` unused by the Look/Paint tools; Debug.Log on every gate block / switch toggle.
+
+### Sparky character (`Spark.cs`, `LevelManager.cs`)
+- Clips in the FBX (24 fps): `Sparky_Idle` 1.21 s, `Sparky_Move_Start` 0.29 s,
+  `Sparky_Move_Finish` 0.29 s, `Sparky_Win` 1.21 s. Move clips also move `Bone_Pivot`
+  (kept inside the model: Apply Root Motion off).
+- `Spark` gets an optional character: `model`, `animator`, state names (played directly by name —
+  the Animator Controller needs no transitions/parameters), `idleVfx`, `travelVfx`, `burstVfx`,
+  `travelBurstInterval`, `glowLight`, `directionArrows`. **Empty `model` = the old sphere, unchanged.**
+- Behaviour (as specified by the designer):
+  - Move: MoveStart (shrink) → character hidden, trail VFX runs along the trace with random bursts →
+    MoveFinish at the next node → Idle loop + idle VFX.
+  - Flip on a via: MoveStart → board turns → MoveFinish on the other side.
+  - Goal: MoveFinish → Win (once, holds last frame) → **then** the win screen (`WinFinished` event).
+  - Level start: appears with MoveFinish on the start node (after the intro dialog closes).
+  - Blocked: shake + burst VFX (no red tint, no direction arrows). Switch use: burst VFX.
+  - Back side: the prefab pose is the front; mirrored automatically.
+  - Input during these animations is queued, as while moving (`IsBusy`).
+- **Bug fixed — freeze after the intro dialog:** `LevelManager` used to disable the Spark component
+  during the dialog / at the goal, which cut the character's animation sequence short. Replaced with
+  `Spark.InputLocked`; never disable the Spark component while a sequence runs.
+- **Setup pitfall handled in code:** if `idleVfx` / `travelVfx` point at the VFX *prefab file*
+  instead of a child, the spark places its own copy at spawn (idle under the model, parent scale
+  cancelled). `burstVfx` is meant to be the prefab file (spawned under the Board, auto-destroyed).
+
+### Unity-side setup (done by the designer)
+FBX: Generic rig, `Sparky_Idle` Loop Time on. `Sparky.controller` (states `Idle` default,
+`MoveStart`, `MoveFinish`, `Win`, no transitions). Prefab `Assets/PCB/Prefabs/Spark_Sparky`: root
+with `Spark`, child `Model` (scale 0.1, Animator Always Animate, no root motion, offset toward the
+camera to sit on top of the node). Assigned to Level Manager → Spark Prefab in `SampleScene`.
+
+### Not done yet / pending
+- **Uncommitted:** Spark/LevelManager code, `Spark_Sparky` prefab, `Sparky.controller`, scene and
+  FBX import changes — commit + push soon and tell Nghia (he also edits `Spark.cs`).
+- `VFX_BurstOfSparks` has Looping on → sprays ~1 s instead of one pop; switch to an Emission Burst.
+- One model offset for all node types → may float/clip on nodes of different heights; a per-type
+  height is possible if it bothers.
+- Stage Select vertical scroll reported not working — the scroll setup wasn't saved to
+  `MainMenu.unity` yet (file last saved 2026-09-28), so it couldn't be checked.
+
 ## 2026-09-28 (evening) — art investigation + model slots & per-level look system
 
 **Session summary:** Checked the imported art, then built a way to use it: model slots for the

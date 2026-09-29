@@ -150,7 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Pcb.LevelManager
   levels: {fileID: 11400000, guid: e759e23f114ed424080f55c50e276272, type: 2}
   startLevel: 0
-  sparkPrefab: {fileID: 0}
+  sparkPrefab: {fileID: 7728991196333303354, guid: 4f00221f7a793d046a162c936db4f5cb, type: 3}
   pauseMenu: {fileID: 667429863}
   dialogController: {fileID: 1253605729}
 --- !u!4 &287840110
