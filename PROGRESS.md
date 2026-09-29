@@ -5,6 +5,33 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 
 ---
 
+## 2026-09-30 — final node / board / decoration prefabs (designer)
+
+**Done (designer, in `Assets/PCB/Prefabs/Final/`):**
+- Board tiles ×6: Black, Blue, Bronze, Green, Purple, Red.
+- Capacitors ×6: Black, Blue, Gold, Green, Orange, Silver.
+- Start ×4 (`Start_1`–`Start_4`), Goal ×4 (`Goal_1`–`Goal_4`).
+- Decorations: LEDs ×15 (`LED_1/2/3` × Blue, Green, Purple, Red, Yellow) in `Final/Decoration/`.
+- Old `Board_Tile.prefab` renamed to `Board Tile Green.prefab` (still in `Prefabs/`, next to the
+  `Final/` one of the same name).
+
+**To do tomorrow:**
+- **Switch prefabs** (not made yet). Use the OFF model for the node for now — nothing swaps to the
+  ON model when toggled; showing ON needs a small addition to `SwitchMechanic` (ask if wanted).
+- **Via:** no final via prefab yet (theme still uses `Via Demo`). Remember a via prefab is one cap
+  on the front face; the code adds the mirrored cap on the back.
+- **Register the finals in `PcbTheme`.** The saved theme still points at the Demo prefabs
+  (`Capacitor Demo`, `Start Demo`, `Goal Demo`, `Board Tile Green`; `switchPrefab` =
+  `Capacitor Demo 1` as a placeholder) and the Catalog lists are empty except 2 demo capacitors.
+  Set one default per type, put the rest in the matching `…Variants` list, and add the LEDs as
+  `decorationPrefabs` entries (there's no LED decoration type — pick an existing type or ask for one).
+  Then **File → Save Project** so the theme asset is written to disk.
+- Test in a scratch level: every type on both sides, via caps on both faces, Paint/Look thumbnails,
+  Shift+Click rotation, Sparky's height on each node type.
+- Decide whether to delete the old Demo prefabs once the finals are in the theme.
+- Still unpushed: local `main` is 2 commits ahead of `origin/main` (+ this note and the new
+  prefabs, uncommitted/staged) — push or PR.
+
 ## 2026-09-29 → 30 — Sparky character replaces the spark sphere
 
 **Session summary:** Reviewed the teammates' pushed work, then replaced the glowing-sphere player
@@ -65,9 +92,11 @@ camera to sit on top of the node). Assigned to Level Manager → Spark Prefab in
 - `VFX_BurstOfSparks` has Looping on → sprays ~1 s instead of one pop; switch to an Emission Burst.
 - One model offset for all node types → may float/clip on nodes of different heights; a per-type
   height is possible if it bothers.
-- Stage Select scroll: arrived with this merge (see "2026-09-29 (later)" below) — re-test in the
-  merged project.
-- Re-test after the merge: win pop-up appears only after Sparky's Win animation; Next/Replay work.
+- **Tested by the designer after the merge (2026-09-30): working** — win pop-up after Sparky's Win
+  animation, Stage Select scroll, merged build overall.
+- Raise with the team: `origin/main`'s `BoardVisuals.BuildNode` reverted Nghia's back-side
+  mirroring (a node prefab's root rotation/offset is now ignored — fine with the wrapper setup,
+  breaks an FBX with a rotated root dropped straight into a slot) and left a commented-out block.
 
 ## 2026-09-29 (night) — checking a merge: two real bugs found and fixed
 
