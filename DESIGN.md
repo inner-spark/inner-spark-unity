@@ -100,6 +100,11 @@ Audio (`Assets/Script/Audio/`):
 - **AudioManager.cs** — one per scene; the first survives scene loads (music continues), duplicates remove themselves. Static, null-safe API (`Play(Sfx)`, `PlayMusic`, `SetPaused`, `SetTravelling`, `SetTalking`); auto-adds the click sound to every UI Button. Player Music/SFX volumes in PlayerPrefs.
 - **VolumeSlider.cs** — on a UI Slider: Music or SFX volume.
 
+Staging:
+- **ScreenFader.cs** (UI) — self-creating black overlay; `FadeOut` / `FadeIn` / `LoadScene` (fade out → load → fade in, unless the new scene `Claim()`s the fade-in).
+- **StageIntro.cs** / **FadeGroup.cs** — per-stage intro cinematic prefab on `Board.intro`: placed at the board's centre while black, Timeline plays after the fade-in, the camera follows its Camera Pose, then blends into the gameplay view. `FadeGroup` fades a whole model via one animatable Alpha.
+- Stage start order (`LevelManager.EnterStage`): black → fade in → music → [intro] → `Spark.Appear()` → [dialog] → play. Restart: quick fade → appear → play. `LevelManager.boardAnchor` = where every board is centred (fixed spot in the room).
+
 UI & game flow (`Assets/Script/UI/`, uGUI + TextMeshPro, kept separate from `PCB/`):
 - **GameFlow.cs** — static bridge carrying the chosen level index from the `MainMenu` scene into the gameplay scene (`RequestLevel` / `HasPendingRequest` / `TakeRequestedLevel`).
 - **MainMenuController.cs** — Play / Stage Select / Quit on the `MainMenu` scene's main panel.

@@ -68,7 +68,7 @@ namespace Pcb
             Time.timeScale = 1f;
             GamePaused = false;
             AudioManager.SetPaused(false);
-            SceneManager.LoadScene(mainMenuScene);
+            ScreenFader.LoadScene(mainMenuScene);
         }
 
         public void QuitApp()

@@ -56,7 +56,7 @@ namespace Pcb
         {
             AudioManager.Play(Sfx.StartGame);
             GameFlow.RequestLevel(index);
-            SceneManager.LoadScene(gameplayScene);
+            ScreenFader.LoadScene(gameplayScene);
         }
 
         public void Back()

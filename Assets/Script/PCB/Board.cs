@@ -60,6 +60,8 @@ namespace Pcb
         public PcbTheme theme;
         [Tooltip("Optional. Shown once, before the player gets control, when this level starts.")]
         public DialogSequence dialogSequence;
+        [Tooltip("Optional. Intro cinematic prefab (StageIntro) played when this stage is entered, before the spark appears.")]
+        public StageIntro intro;
         [Tooltip("This level's look (Level Editor > Look). Empty entries use the theme.")]
         public BoardLook look;
         [Min(0.1f)] public float cellSize = 0.5f;

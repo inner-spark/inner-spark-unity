@@ -18,7 +18,7 @@ namespace Pcb
         {
             AudioManager.Play(Sfx.StartGame);
             GameFlow.RequestLevel(0);
-            SceneManager.LoadScene(gameplayScene);
+            ScreenFader.LoadScene(gameplayScene);
         }
 
         public void OpenStageSelect()

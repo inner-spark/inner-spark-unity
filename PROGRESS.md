@@ -5,6 +5,39 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 
 ---
 
+## 2026-10-02 — fades between scenes/stages + stage intro cinematics (code ready, no art yet)
+
+**Designer's rules:** fade to black and back (~0.5 s) on Menu → gameplay, Stage Select → gameplay,
+Next stage, Quit to Menu and Restart. Entering a stage: fade in → music starts → [intro cinematic,
+some stages only] → Sparky appears → [dialog] → play (Sparky now appears *before* the dialog).
+Restart: quick fade, no cinematic / dialog, music keeps going. Cinematic not skippable, played on
+entering the stage (not on restart). Cinematic idea: when the screen fades in, a device is already
+on the table, lined up around the board; the camera zooms in, the casing fades away revealing the
+PCB, then Sparky appears. The room is a reusable background; the board sits at a fixed spot in it.
+
+**Changes:**
+- **`ScreenFader`** (new, UI): black overlay that creates itself (nothing to set up), real-time,
+  blocks clicks. `LoadScene(name)` = fade out → load → fade in (a scene can `Claim()` the fade-in;
+  the gameplay scene does). Main Menu Play, Stage Select and Quit to Menu use it.
+- **`LevelManager`** runs the sequences as coroutines (`EnterStage`, `RestartStage`); no restart /
+  next / board tilting while one runs. New fields: **Board Anchor** (every stage's board centred
+  there — the fixed spot in the room), **Camera Far Clip** (so a big room isn't cut off), **Fade
+  Time** (0.5), **Restart Fade Time** (0.25).
+- **`Board.intro`** (new): optional **`StageIntro`** prefab. **`StageIntro`** (new): placed at the
+  board's centre, lined up with it, while the screen is black; plays its Timeline after the fade-in;
+  the game camera follows its **Camera Pose** (animated) + **Field Of View**; at the end it blends
+  (0.6 s) into the gameplay view and removes itself.
+- **`FadeGroup`** (new): one Alpha value (animate in Timeline) fades a whole model — transparent
+  copies of its URP materials while fading, originals untouched.
+- **`Spark.Appear()`**: the spark (character or sphere) stays hidden until the sequence calls it.
+- `BoardRig`: `Refit()`, `InspectLocked`, `minFarClip`; anchor support in `Create`.
+- Compiles (runtime + editor, 0 warnings); **not tested in Unity yet**.
+
+**Designer to do (when the room / device exist):** room as scene objects in `SampleScene` + a Board
+Anchor at the board's spot; per stage with a cinematic: an intro prefab (device + FadeGroup on its
+casing + Camera Pose + Timeline + StageIntro) on the Board's **Intro** field. Test fades without
+any cinematic first (Menu → stage, Next, Restart, Quit to Menu).
+
 ## 2026-10-01 (evening) — gate open/closed models, hovering goal lock, data art hookup
 
 **New art** (Andrii, `e62d679`): `Gate1_CLOSED/OPEN`, `Gate2_CLOSED/OPEN`, `Data_Lock`,

@@ -63,6 +63,18 @@ namespace Pcb
         /// </summary>
         public bool InputLocked { get; set; }
 
+        bool appearRequested;
+
+        /// <summary>
+        /// Shows the spark (character: plays MoveFinish on the start node; watch IsBusy for the end). Hidden until
+        /// then - the LevelManager calls this in the stage start sequence, after the fade-in / intro cinematic.
+        /// </summary>
+        public void Appear()
+        {
+            appearRequested = true;
+            if (!HasCharacter) SetSphereVisible(true);
+        }
+
         public event Action<PcbNode> Arrived;
         public event Action<PcbLayer> Flipped;
         public event Action Blocked;
@@ -176,8 +188,16 @@ namespace Pcb
                 FaceSide();
                 StopVfx(travelVfx);
                 StopVfx(idleVfx);
-                StartCoroutine(Appear());
+                StartCoroutine(AppearSequence());
             }
+            else SetSphereVisible(appearRequested);
+        }
+
+        void SetSphereVisible(bool visible)
+        {
+            if (coreRenderer) coreRenderer.enabled = visible;
+            if (glow) glow.enabled = visible;
+            if (trail) { trail.Clear(); trail.emitting = visible; }
         }
 
         void Update()
@@ -386,11 +406,11 @@ namespace Pcb
         // ---------------------------------------------------------------- character sequences
         // Never disable this component while one is running (use InputLocked): that would cut the sequence short.
 
-        IEnumerator Appear()
+        IEnumerator AppearSequence()
         {
             IsBusy = true;
             ShowModel(false);
-            while (InputLocked) yield return null; // appear once the intro dialog is closed, so it's seen
+            while (!appearRequested) yield return null; // the LevelManager says when (after the fade-in / intro)
             ShowModel(true);
             yield return PlayAndWait(moveFinishState);
             EnterIdle();
