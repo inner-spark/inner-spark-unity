@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Pcb
 {
-    public enum Music { None, Menu, Gameplay }
+    public enum Music { None, Menu, Gameplay, Ending }
 
     /// <summary>
     /// Plays all music and sound effects from a SoundBank. Put one in every scene (Main Menu and gameplay):
@@ -91,7 +91,7 @@ namespace Pcb
             var m = instance;
             if (track == m.currentMusic && !restart && m.music.isPlaying) return;
             m.currentMusic = track;
-            var s = track == Music.Menu ? m.bank.menuMusic : track == Music.Gameplay ? m.bank.gameplayMusic : default;
+            var s = m.bank.GetMusic(track);
             m.music.Stop();
             m.music.clip = s.clip;
             m.ApplyVolumes();
@@ -141,7 +141,7 @@ namespace Pcb
         void ApplyVolumes()
         {
             if (!bank) return;
-            var s = currentMusic == Music.Menu ? bank.menuMusic : bank.gameplayMusic;
+            var s = bank.GetMusic(currentMusic);
             music.volume = s.volume * MusicVolume * (paused ? bank.pausedMusicVolume : 1f);
             travel.volume = bank.travel.volume * SfxVolume;
             talk.volume = bank.dialogTalking.volume * SfxVolume;

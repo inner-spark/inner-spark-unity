@@ -11,10 +11,13 @@ namespace Pcb
         [Tooltip("Scene loaded by 'Quit to Menu'.")]
         public string mainMenuScene = "MainMenu";
         public GameObject panel;
-        [Tooltip("Optional. Grayed out while paused, so it can't be clicked from underneath the pause panel.")]
+        [Tooltip("Optional. Grayed out while paused (so it can't be clicked from underneath the pause panel) and during the stage start / dialog.")]
         public Button restartButton;
+        [Tooltip("Optional. The on-screen Pause button: grayed out during the stage start / dialog, when pausing isn't allowed.")]
+        public Button pauseButton;
 
         InputAction pauseAction;
+        bool available = true;
 
         public bool IsPaused => panel && panel.activeSelf;
         /// <summary>For gameplay scripts without a PauseMenu reference (Spark, BoardRig): ignore input while true.</summary>
@@ -45,8 +48,20 @@ namespace Pcb
             if (IsPaused) Resume(); else Pause();
         }
 
+        /// <summary>
+        /// False while pausing / restarting isn't allowed (LevelManager: stage start sequence, dialog):
+        /// Esc does nothing and the Pause / Restart buttons are grayed out.
+        /// </summary>
+        public void SetAvailable(bool value)
+        {
+            available = value;
+            if (pauseButton) pauseButton.interactable = value;
+            if (restartButton && !IsPaused) restartButton.interactable = value;
+        }
+
         public void Pause()
         {
+            if (!available) return;
             if (panel) panel.SetActive(true);
             if (restartButton) restartButton.interactable = false;
             Time.timeScale = 0f;
@@ -57,7 +72,7 @@ namespace Pcb
         public void Resume()
         {
             if (panel) panel.SetActive(false);
-            if (restartButton) restartButton.interactable = true;
+            if (restartButton) restartButton.interactable = available;
             Time.timeScale = 1f;
             GamePaused = false;
             AudioManager.SetPaused(false);

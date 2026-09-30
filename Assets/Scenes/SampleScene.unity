@@ -868,6 +868,7 @@ MonoBehaviour:
   levelName: Level 06 Tung
   theme: {fileID: 11400000, guid: ffa1e0a639d45c241bbe1bad221dd486, type: 2}
   dialogSequence: {fileID: 0}
+  intro: {fileID: 0}
   look:
     boardTile: {fileID: 0}
     trace: {fileID: 0}
@@ -878,10 +879,11 @@ MonoBehaviour:
     goal: {fileID: 0}
     switchNode: {fileID: 0}
     andSwitch: {fileID: 0}
+    gate: {fileID: 0}
   cellSize: 0.5
   sizeInCells: {x: 10, y: 10}
   inputTolerance: 0.5
-  editorView: 1
+  editorView: 0
   savedPath: Assets/PCB/Levels/Level 06 Tung.prefab
 --- !u!4 &240208778
 Transform:
@@ -984,6 +986,11 @@ MonoBehaviour:
   pauseMenu: {fileID: 667429863}
   dialogController: {fileID: 1253605729}
   winPanel: {fileID: 1085272962}
+  endingScene: Ending
+  boardAnchor: {fileID: 0}
+  cameraFarClip: 0
+  fadeTime: 0.5
+  restartFadeTime: 0.25
 --- !u!4 &287840110
 Transform:
   m_ObjectHideFlags: 0
@@ -2287,6 +2294,7 @@ MonoBehaviour:
   mainMenuScene: MainMenu
   panel: {fileID: 1648472550}
   restartButton: {fileID: 0}
+  pauseButton: {fileID: 0}
 --- !u!114 &667429864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3073,6 +3081,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 893186709}
   m_CullTransparentMesh: 1
+--- !u!1 &899576881
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 899576882}
+  - component: {fileID: 899576883}
+  m_Layer: 0
+  m_Name: Trace Via 03 - Capacitor F 02
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &899576882
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899576881}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 974001500}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &899576883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899576881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebfae649ea6128b4990f6df9a586449d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Pcb.Trace
+  from: {fileID: 2000249081}
+  to: {fileID: 18874385}
+  layer: 0
+  bends:
+  - {x: 2, y: 0.5}
+  - {x: 1, y: 0.5}
+  - {x: 0.5, y: 1}
+  - {x: 0.5, y: 2.5}
 --- !u!1 &909314184
 GameObject:
   m_ObjectHideFlags: 0
@@ -3226,6 +3286,7 @@ Transform:
   - {fileID: 480808241}
   - {fileID: 212625335}
   - {fileID: 1040388149}
+  - {fileID: 899576882}
   m_Father: {fileID: 240208778}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1027919419

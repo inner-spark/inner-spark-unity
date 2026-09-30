@@ -5,6 +5,34 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 
 ---
 
+## 2026-10-02 (later) — ending screen + saved stage progress
+
+**Designer's rules:** after the **last** stage's Win animation there's no win pop-up: it fades to
+black and loads an **Ending** scene (artwork + text set up in the scene, no credits). A click only
+counts after **2 s** (then an optional "click to continue" hint shows) → fade back to the Main Menu.
+Own **Ending Music** slot. **Progress:** finishing a stage unlocks the next (saved); **Play**
+continues from the furthest unlocked stage; Stage Select **hides** locked stages; reset is for
+testing only (no player reset).
+
+**Changes:**
+- **`Progress`** (new, static): furthest unlocked stage in PlayerPrefs (`Progress.Unlocked`,
+  `Completed(i)`, `IsUnlocked(i)`). Editor menu **Tools > PCB > Reset Progress** and **Unlock All
+  Stages** (`ProgressMenu`).
+- `LevelManager.OnWinFinished` saves progress; on the last stage it loads **`endingScene`**
+  ("Ending") with a fade instead of the win pop-up. `GoTo` clamps instead of wrapping around.
+- `MainMenuController.Play` → the furthest unlocked stage. `StageSelectController` lists only
+  unlocked stages.
+- **`EndingScreen`** (new): Ending scene script — ending music, `minimumTime` (2 s), optional
+  `continueHint`, any click / key / gamepad button → Main Menu.
+- Sound Bank **Ending Music** slot (`Music.Ending`).
+- Compiles (runtime + editor, 0 warnings). **Tested by the designer in Unity: working**
+  (incl. Tools > PCB > Unlock All Stages).
+
+**Setup reference:** create the `Ending` scene (Canvas + artwork Image + text + an `EndingScreen`
+object, optional hint text, an Audio Manager like the other scenes), **add it to the Build Profile's
+scene list**, fill Ending Music; test: win the last stage → ending → click after 2 s → menu; Play
+continues; Stage Select shows only unlocked stages; Tools > PCB > Reset Progress.
+
 ## 2026-10-02 — fades between scenes/stages + stage intro cinematics (code ready, no art yet)
 
 **Designer's rules:** fade to black and back (~0.5 s) on Menu → gameplay, Stage Select → gameplay,
@@ -33,10 +61,31 @@ PCB, then Sparky appears. The room is a reusable background; the board sits at a
 - `BoardRig`: `Refit()`, `InspectLocked`, `minFarClip`; anchor support in `Create`.
 - Compiles (runtime + editor, 0 warnings); **not tested in Unity yet**.
 
-**Designer to do (when the room / device exist):** room as scene objects in `SampleScene` + a Board
-Anchor at the board's spot; per stage with a cinematic: an intro prefab (device + FadeGroup on its
-casing + Camera Pose + Timeline + StageIntro) on the Board's **Intro** field. Test fades without
-any cinematic first (Menu → stage, Next, Restart, Quit to Menu).
+**Tested by the designer: fades work.** Room / cinematic setup to do later:
+
+**Room setup (once, in `SampleScene`):**
+1. Build the room as normal scene objects (it stays as the background behind every stage).
+2. Create an empty **`Board Anchor`** where the board should sit (e.g. inside the device on the
+   table); the board faces −Z (towards the camera side).
+3. Level Manager → **Board Anchor** = that object (every stage's board is centred on it, whatever
+   its size); raise **Camera Far Clip** if the far parts of the room get cut off.
+
+**Intro cinematic setup (per stage that has one):**
+1. Empty root + **Stage Intro** + **Playable Director** (into Stage Intro's Director). The root's
+   origin = the board's centre.
+2. Device model under the root, built around that origin so it encloses the PCB.
+3. **Fade Group** on the casing (or whole device) — its Alpha is what fades it.
+4. Empty child **Camera Pose** → Stage Intro's Camera Pose.
+5. Timeline window: create a Timeline on the root; Animation Track (accept the Animator); record
+   Camera Pose wide → close-up, Fade Group Alpha 1 → 0, optionally Stage Intro Field Of View.
+6. Save as a prefab → the stage's **Board → Intro** field → Save Level. The last camera key doesn't
+   have to match the gameplay view: it blends there over Blend To Gameplay (0.6 s).
+
+**Follow-up — no pause / restart during the dialog:** R was already ignored, but the on-screen
+Restart / Pause buttons were clickable and Esc paused. `PauseMenu.SetAvailable(bool)` (new) grays
+them out and ignores Esc; the LevelManager turns it off for the **whole stage start sequence**
+(fade-in, cinematic, Sparky appearing, dialog) and back on when play starts. New optional field
+**`PauseMenu.pauseButton`** — drag the on-screen Pause button in (Restart Button already there).
 
 ## 2026-10-01 (evening) — gate open/closed models, hovering goal lock, data art hookup
 

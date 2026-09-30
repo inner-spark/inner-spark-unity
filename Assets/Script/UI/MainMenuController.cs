@@ -14,10 +14,11 @@ namespace Pcb
 
         void Start() => AudioManager.PlayMusic(Music.Menu);
 
+        /// <summary>Continues from the furthest unlocked stage (the LevelManager keeps it within the Level List).</summary>
         public void Play()
         {
             AudioManager.Play(Sfx.StartGame);
-            GameFlow.RequestLevel(0);
+            GameFlow.RequestLevel(Progress.Unlocked);
             ScreenFader.LoadScene(gameplayScene);
         }
 

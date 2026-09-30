@@ -105,6 +105,9 @@ Staging:
 - **StageIntro.cs** / **FadeGroup.cs** — per-stage intro cinematic prefab on `Board.intro`: placed at the board's centre while black, Timeline plays after the fade-in, the camera follows its Camera Pose, then blends into the gameplay view. `FadeGroup` fades a whole model via one animatable Alpha.
 - Stage start order (`LevelManager.EnterStage`): black → fade in → music → [intro] → `Spark.Appear()` → [dialog] → play. Restart: quick fade → appear → play. `LevelManager.boardAnchor` = where every board is centred (fixed spot in the room).
 
+- Ending: winning the last stage in the Level List → `LevelManager.endingScene` ("Ending") with a fade; **EndingScreen.cs** there (ending music, click after 2 s → Main Menu).
+- **Progress.cs** — saved furthest unlocked stage (PlayerPrefs); finishing a stage unlocks the next; Play continues from it; Stage Select only lists unlocked stages. Reset: Tools > PCB > Reset Progress (testing only).
+
 UI & game flow (`Assets/Script/UI/`, uGUI + TextMeshPro, kept separate from `PCB/`):
 - **GameFlow.cs** — static bridge carrying the chosen level index from the `MainMenu` scene into the gameplay scene (`RequestLevel` / `HasPendingRequest` / `TakeRequestedLevel`).
 - **MainMenuController.cs** — Play / Stage Select / Quit on the `MainMenu` scene's main panel.

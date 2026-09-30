@@ -22,8 +22,10 @@ namespace Pcb
         public PauseMenu pauseMenu;
         [Tooltip("Optional. Shown before play if the current level has a DialogSequence assigned.")]
         public DialogController dialogController;
-        [Tooltip("Optional. Shown when the current level is won.")]
+        [Tooltip("Optional. Shown when the current level is won (not after the last one: that goes to the ending).")]
         public WinPanel winPanel;
+        [Tooltip("Scene loaded (with a fade) after the last stage in the Level List is won.")]
+        public string endingScene = "Ending";
 
         [Header("Staging")]
         [Tooltip("Optional. Every stage's board is centred on this point (a fixed spot in the room).")]
@@ -99,7 +101,7 @@ namespace Pcb
         public void GoTo(int levelIndex)
         {
             if (!levels || levels.Count == 0 || transitioning) return;
-            index = (levelIndex % levels.Count + levels.Count) % levels.Count;
+            index = Mathf.Clamp(levelIndex, 0, levels.Count - 1);
             template = levels[index] ? levels[index].gameObject : null;
             StartCoroutine(EnterStage());
         }
@@ -115,8 +117,9 @@ namespace Pcb
         IEnumerator EnterStage()
         {
             transitioning = true;
+            if (pauseMenu) pauseMenu.SetAvailable(false); // no pause / restart during the start sequence + dialog
             yield return ScreenFader.FadeOut(fadeTime);
-            if (!Spawn()) { transitioning = false; yield return ScreenFader.FadeIn(fadeTime); yield break; }
+            if (!Spawn()) { transitioning = false; if (pauseMenu) pauseMenu.SetAvailable(true); yield return ScreenFader.FadeIn(fadeTime); yield break; }
 
             // The intro's device is already in place (around the board) while the screen is still black.
             StageIntro intro = null;
@@ -142,8 +145,9 @@ namespace Pcb
         IEnumerator RestartStage()
         {
             transitioning = true;
+            if (pauseMenu) pauseMenu.SetAvailable(false);
             yield return ScreenFader.FadeOut(restartFadeTime);
-            if (!Spawn()) { transitioning = false; yield return ScreenFader.FadeIn(restartFadeTime); yield break; }
+            if (!Spawn()) { transitioning = false; if (pauseMenu) pauseMenu.SetAvailable(true); yield return ScreenFader.FadeIn(restartFadeTime); yield break; }
             yield return ScreenFader.FadeIn(restartFadeTime);
             yield return AppearSpark();
             BeginPlay();
@@ -159,6 +163,7 @@ namespace Pcb
         {
             if (spark) spark.InputLocked = false;
             if (rig) rig.InspectLocked = false;
+            if (pauseMenu) pauseMenu.SetAvailable(true);
             transitioning = false;
         }
 
@@ -207,6 +212,15 @@ namespace Pcb
 
         void OnWinFinished()
         {
+            Progress.Completed(index); // unlocks the next stage (saved)
+            if (levels && index >= 0 && index == levels.Count - 1)
+            {
+                // The last stage: straight to the ending, no win pop-up.
+                transitioning = true; // no restart meanwhile
+                if (pauseMenu) pauseMenu.SetAvailable(false);
+                ScreenFader.LoadScene(endingScene);
+                return;
+            }
             won = true;
             wonAt = Time.time;
             if (winPanel) winPanel.Show(); // input is already locked since the goal (OnArrived)

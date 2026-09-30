@@ -37,7 +37,8 @@ namespace Pcb
             }
             buttonTemplate.gameObject.SetActive(false);
 
-            for (int i = 0; i < levels.Count; i++)
+            // Only unlocked stages are listed (finishing a stage unlocks the next - see Progress).
+            for (int i = 0; i < levels.Count && Progress.IsUnlocked(i); i++)
             {
                 var level = levels[i];
                 var button = Instantiate(buttonTemplate, buttonContainer);

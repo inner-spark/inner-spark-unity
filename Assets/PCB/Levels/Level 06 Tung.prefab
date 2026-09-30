@@ -302,6 +302,7 @@ Transform:
   - {fileID: 6200070635450986210}
   - {fileID: 4252087694530785918}
   - {fileID: 7114451394020573021}
+  - {fileID: 2071985366714642139}
   m_Father: {fileID: 2075495058677568195}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1112621485243652208
@@ -1270,6 +1271,7 @@ MonoBehaviour:
   levelName: Level 06 Tung
   theme: {fileID: 11400000, guid: ffa1e0a639d45c241bbe1bad221dd486, type: 2}
   dialogSequence: {fileID: 0}
+  intro: {fileID: 0}
   look:
     boardTile: {fileID: 0}
     trace: {fileID: 0}
@@ -1280,10 +1282,11 @@ MonoBehaviour:
     goal: {fileID: 0}
     switchNode: {fileID: 0}
     andSwitch: {fileID: 0}
+    gate: {fileID: 0}
   cellSize: 0.5
   sizeInCells: {x: 10, y: 10}
   inputTolerance: 0.5
-  editorView: 1
+  editorView: 0
   savedPath: Assets/PCB/Levels/Level 06 Tung.prefab
 --- !u!1 &3553228214754636648
 GameObject:
@@ -2153,6 +2156,58 @@ MonoBehaviour:
   - {x: 3.5, y: 1}
   - {x: 3, y: 0.5}
   - {x: 3, y: 1}
+--- !u!1 &6403697476274872742
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2071985366714642139}
+  - component: {fileID: 4512692058028636967}
+  m_Layer: 0
+  m_Name: Trace Via 03 - Capacitor F 02
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2071985366714642139
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6403697476274872742}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 930164069132123153}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4512692058028636967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6403697476274872742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebfae649ea6128b4990f6df9a586449d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Pcb.Trace
+  from: {fileID: 2996799828647742937}
+  to: {fileID: 4620712709956268979}
+  layer: 0
+  bends:
+  - {x: 2, y: 0.5}
+  - {x: 1, y: 0.5}
+  - {x: 0.5, y: 1}
+  - {x: 0.5, y: 2.5}
 --- !u!1 &6777153607265186406
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,6 +24,8 @@ namespace Pcb
         public Sound menuMusic = Default;
         [Tooltip("Restarts each time a stage is entered; keeps playing through a level restart.")]
         public Sound gameplayMusic = Default;
+        [Tooltip("The Ending screen after the last stage.")]
+        public Sound endingMusic = Default;
         [Tooltip("Music volume multiplier while the game is paused.")]
         [Range(0f, 1f)] public float pausedMusicVolume = 0.4f;
 
@@ -53,6 +55,14 @@ namespace Pcb
         public Sound dialogTalking = Default;
 
         static Sound Default => new Sound { volume = 1f };
+
+        public Sound GetMusic(Music track) => track switch
+        {
+            Music.Menu => menuMusic,
+            Music.Gameplay => gameplayMusic,
+            Music.Ending => endingMusic,
+            _ => default
+        };
 
         public Sound Get(Sfx sfx) => sfx switch
         {
