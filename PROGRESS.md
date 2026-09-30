@@ -14,23 +14,39 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 - Decorations: LEDs ×15 (`LED_1/2/3` × Blue, Green, Purple, Red, Yellow) in `Final/Decoration/`.
 - Old `Board_Tile.prefab` renamed to `Board Tile Green.prefab` (still in `Prefabs/`, next to the
   `Final/` one of the same name).
+- Later the same day: **`Via.prefab`** (new `Via.fbx`, one thin cap ~0.41 wide) and
+  **`Trace_Path.prefab`** (moved into `Final/`) + **`Trace_Path_Connector.prefab`** (new
+  `Path_connect.fbx`, the bend piece).
 
-**To do tomorrow:**
-- **Switch prefabs** (not made yet). Use the OFF model for the node for now — nothing swaps to the
-  ON model when toggled; showing ON needs a small addition to `SwitchMechanic` (ask if wanted).
-- **Via:** no final via prefab yet (theme still uses `Via Demo`). Remember a via prefab is one cap
-  on the front face; the code adds the mirrored cap on the back.
-- **Register the finals in `PcbTheme`.** The saved theme still points at the Demo prefabs
-  (`Capacitor Demo`, `Start Demo`, `Goal Demo`, `Board Tile Green`; `switchPrefab` =
-  `Capacitor Demo 1` as a placeholder) and the Catalog lists are empty except 2 demo capacitors.
-  Set one default per type, put the rest in the matching `…Variants` list, and add the LEDs as
-  `decorationPrefabs` entries (there's no LED decoration type — pick an existing type or ask for one).
-  Then **File → Save Project** so the theme asset is written to disk.
+**Checked (me), then fixed (designer):**
+- All prefabs: root at 0,0,0 / no rotation, child rotated (270, 180, 180) = top facing −Z. ✔
+- Fixed: theme **Start** slot pointed at `Goal_2` (an End plug) → now `Start_2`.
+- Fixed: `Capacitor Silver` child was offset X = 0.604 (drawn ~half a unit beside its node) → 0.
+- Fixed: removed stray **`PcbNode` components** from the 6 Capacitor and 4 Goal prefabs (only
+  harmless because `Board.Rebuild` skips generated objects).
+- Scales differ a lot between prefabs (FBXs were authored at very different sizes, and
+  `Start_2`/`Goal_2` are stretched ×2 in height) — **intentional**, per the designer.
+- **`PcbTheme` now uses the finals:** defaults Capacitor Blue / Via / Start_2 / Goal_4 /
+  Trace_Path / Trace_Path_Connector; Catalog lists filled with all 6 capacitors, the via, 4 starts,
+  4 goals, 6 board tiles, trace + connector.
+
+**Known, not changed:**
+- Node heights vs Sparky: tall capacitors ~0.40–0.44, low plugs ~0.16; Sparky's feet sit ~0.30 above
+  the board (one Model offset for all types) → sinks into tall nodes / floats over low ones. A
+  per-type height is possible if it bothers.
+- Goal nodes: default **Chip Size** 1 × 1.5 vs goal models ~0.35–0.5 wide → set Chip Size ≈
+  0.5 × 0.45 on goal nodes (editor click area / outline only).
+- `boardTilePrefab` default still points at the old `Prefabs/Board Tile Green` (the `Final/` one
+  is in the catalog) — harmless.
+- LED decorations aren't in `decorationPrefabs` yet (no LED decoration type exists).
+- `switchPrefab` is still the placeholder `Capacitor Demo 1`; `switchVariants` empty.
+
+**Next:**
+- **Switch prefabs + setting up normal / AND switches** (see the next entry when it's written).
 - Test in a scratch level: every type on both sides, via caps on both faces, Paint/Look thumbnails,
   Shift+Click rotation, Sparky's height on each node type.
-- Decide whether to delete the old Demo prefabs once the finals are in the theme.
-- Still unpushed: local `main` is 2 commits ahead of `origin/main` (+ this note and the new
-  prefabs, uncommitted/staged) — push or PR.
+- Decide whether to delete the old Demo prefabs now that the finals are in the theme.
+- Push: local `main` is 2 commits ahead of `origin/main`, plus these prefabs/theme/notes.
 
 ## 2026-09-29 → 30 — Sparky character replaces the spark sphere
 
