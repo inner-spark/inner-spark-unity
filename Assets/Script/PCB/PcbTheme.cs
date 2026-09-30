@@ -26,7 +26,10 @@ namespace Pcb
         public GameObject viaPrefab;
         public GameObject startPrefab;
         public GameObject goalPrefab;
+        [Tooltip("Normal switch. Give the prefab a SwitchVisual with its ON and OFF models to show the state.")]
         public GameObject switchPrefab;
+        [Tooltip("AND switch. Give the prefab a SwitchVisual with its ON (pressed) and OFF models to show the state.")]
+        public GameObject andSwitchPrefab;
         public GameObject gatePrefab;
         [Tooltip("One repeatable board tile, thickness along Z. Resized to fill boardTileSize x boardTileSize x boardThickness and repeated across the whole board.")]
         public GameObject boardTilePrefab;
@@ -51,6 +54,7 @@ namespace Pcb
         public GameObject[] startVariants;
         public GameObject[] goalVariants;
         public GameObject[] switchVariants;
+        public GameObject[] andSwitchVariants;
         public GameObject[] gateVariants;
         public GameObject[] boardTileVariants;
         public GameObject[] traceVariants;
@@ -80,6 +84,7 @@ namespace Pcb
             NodeType.Via => viaPrefab,
             NodeType.Start => startPrefab,
             NodeType.Switch => switchPrefab,
+            NodeType.AndSwitch => andSwitchPrefab,
             _ => goalPrefab
         };
 
@@ -89,6 +94,7 @@ namespace Pcb
             NodeType.Via => viaVariants,
             NodeType.Start => startVariants,
             NodeType.Switch => switchVariants,
+            NodeType.AndSwitch => andSwitchVariants,
             _ => goalVariants
         };
 

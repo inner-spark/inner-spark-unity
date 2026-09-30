@@ -1,12 +1,34 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Pcb
 {
+    /// <summary>
+    /// A gate on a trace: blocks the spark (both directions) while closed. A normal gate flips open/closed
+    /// each time ANY of its switches is pressed. Link switches with Level Editor > Link tool. (Wiring a
+    /// switch's onToggle to SetOpen by hand, as in Level 04, still works.)
+    /// </summary>
     public class GateMechanic : TraceMechanic
     {
+        [Tooltip("Normal gate: open at the start? Each press of any of its switches flips it.")]
         public bool isOpen = false;
+        [Tooltip("The switches controlling this gate: normal switches for a normal gate, AND switches for an AND gate.")]
+        public List<SwitchMechanic> switches = new List<SwitchMechanic>();
         public GameObject closedVisual;
         private GameObject autoVisual;
+
+        protected virtual void OnEnable()
+        {
+            foreach (var s in switches) if (s) s.onToggle.AddListener(OnSwitchToggled);
+        }
+
+        protected virtual void OnDisable()
+        {
+            foreach (var s in switches) if (s) s.onToggle.RemoveListener(OnSwitchToggled);
+        }
+
+        /// <summary>Normal gate: any press of any of its switches flips it.</summary>
+        protected virtual void OnSwitchToggled(bool _) => SetOpen(!isOpen);
 
         public void SetOpen(bool open)
         {

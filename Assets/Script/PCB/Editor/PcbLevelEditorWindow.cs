@@ -8,11 +8,11 @@ using UnityEngine;
 /// </summary>
 public partial class PcbLevelEditorWindow : EditorWindow
 {
-    enum Tool { Select, Node, Trace, Erase, Decoration, Paint }
+    enum Tool { Select, Node, Trace, Erase, Decoration, Paint, Link }
 
     struct Issue { public string message; public Object target; }
 
-    static readonly string[] ToolNames = { "Select", "Node", "Trace", "Erase", "Decor", "Paint" };
+    static readonly string[] ToolNames = { "Select", "Node", "Trace", "Erase", "Decor", "Paint", "Link" };
     static readonly string[] SideNames = { "Front", "Back" };
     static readonly Color FrontColor = new Color(1f, 0.85f, 0.4f);
     static readonly Color BackColor = new Color(0.5f, 0.85f, 1f);
@@ -135,6 +135,7 @@ public partial class PcbLevelEditorWindow : EditorWindow
             decorRotation = EditorGUILayout.Slider("Rotation", decorRotation, 0f, 360f);
         }
         if (tool == Tool.Paint) PaintOptionsGUI();
+        if (tool == Tool.Link) LinkOptionsGUI();
         EditorGUILayout.HelpBox(HelpText(), MessageType.None);
 
         EditorGUILayout.Space();
@@ -181,6 +182,10 @@ public partial class PcbLevelEditorWindow : EditorWindow
             case Tool.Paint:
                 return "Pick a type and a model below, then click nodes/decorations of that type to paint them.\n" +
                        "Shift+Click: reset to the default.   Level-wide defaults: Look section above.";
+            case Tool.Link:
+                return "Click a switch to pick it, then click the traces it should control (adds a gate).\n" +
+                       "Ctrl+Click a trace: unlink it.   Esc: drop the switch.\n" +
+                       "Normal switches flip normal gates; AND switches open AND gates only while all are on.";
             default:
                 return "Normal Unity selection. Select nodes/traces to edit them in the Inspector.";
         }
@@ -254,6 +259,7 @@ public partial class PcbLevelEditorWindow : EditorWindow
             case Tool.Erase: EraseTool(e, mouse); break;
             case Tool.Decoration: DecorationTool(e, id, mouse, snapped); break;
             case Tool.Paint: PaintTool(e, mouse); break;
+            case Tool.Link: LinkTool(e, mouse); break;
         }
 
         if (e.type == EventType.MouseMove || e.type == EventType.MouseDrag) sceneView.Repaint();
@@ -339,6 +345,7 @@ public partial class PcbLevelEditorWindow : EditorWindow
                     if (hit.type != placeType) hit.model = null; // a painted model belongs to the old type
                     hit.type = placeType;
                     hit.name = NodeName(placeType);
+                    EnsureSwitchMechanic(hit);
                 }
                 else if (hit && e.shift)
                 {
@@ -702,6 +709,7 @@ public partial class PcbLevelEditorWindow : EditorWindow
         node.type = type;
         node.layer = board.editorView;
         node.rotationDegrees = nodeRotation;
+        if (node.IsSwitch) go.AddComponent<SwitchMechanic>(); // a switch node without it does nothing
         Undo.RegisterCreatedObjectUndo(go, "Create " + type);
         board.Rebuild();
         return node;
@@ -781,6 +789,7 @@ public partial class PcbLevelEditorWindow : EditorWindow
             if (n.IsVia && !(front && back))
                 Add($"{n.name}: via only has traces on one side, so flipping here is useless.", n);
         }
+        ValidateSwitches();
     }
 
     void Add(string message, Object target) => issues.Add(new Issue { message = message, target = target });

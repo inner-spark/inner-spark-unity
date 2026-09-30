@@ -19,7 +19,7 @@ namespace Pcb
             public GameObject trace;
             public GameObject traceBend;
             [Tooltip("Default model for every node of that type on this level (a node's own Model still wins).")]
-            public GameObject capacitor, via, start, goal, switchNode;
+            public GameObject capacitor, via, start, goal, switchNode, andSwitch;
 
             public GameObject For(NodeType type) => type switch
             {
@@ -27,6 +27,7 @@ namespace Pcb
                 NodeType.Via => via,
                 NodeType.Start => start,
                 NodeType.Switch => switchNode,
+                NodeType.AndSwitch => andSwitch,
                 _ => goal
             };
 
@@ -38,6 +39,7 @@ namespace Pcb
                     case NodeType.Via: via = model; break;
                     case NodeType.Start: start = model; break;
                     case NodeType.Switch: switchNode = model; break;
+                    case NodeType.AndSwitch: andSwitch = model; break;
                     default: goal = model; break;
                 }
             }
@@ -257,12 +259,13 @@ namespace Pcb
                 if (!Application.isPlaying) Add(JsonUtility.ToJson(theme).GetHashCode()); // live theme tweaks while editing
                 Add(sizeInCells.x); Add(sizeInCells.y); Add(Mathf.RoundToInt(cellSize * 1000f));
                 Add(Id(look.boardTile)); Add(Id(look.trace)); Add(Id(look.traceBend));
-                Add(Id(look.capacitor)); Add(Id(look.via)); Add(Id(look.start)); Add(Id(look.goal)); Add(Id(look.switchNode));
+                Add(Id(look.capacitor)); Add(Id(look.via)); Add(Id(look.start)); Add(Id(look.goal)); Add(Id(look.switchNode)); Add(Id(look.andSwitch));
                 foreach (var n in nodes)
                 {
                     if (!n) continue; // can go missing mid-rebuild (deleted via Undo/Erase while editing)
                     Add(Id(n)); Add((int)n.type); Add((int)n.layer); Add(Id(n.model));
                     Add(Mathf.RoundToInt(n.rotationDegrees * 1000f));
+                    if (n.TryGetComponent(out SwitchMechanic sw)) Add(sw.isOn ? 1 : 2); // starting ON/OFF look
                     AddV(NodePosition(n)); AddV(n.chipSize); Add(n.name.GetHashCode());
                 }
                 foreach (var t in traces)

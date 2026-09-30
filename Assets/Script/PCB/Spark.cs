@@ -281,7 +281,7 @@ namespace Pcb
 
         void TryFlip()
         {
-            if (CurrentNode.type == NodeType.Switch)
+            if (CurrentNode.IsSwitch)
             {
                 var switchMech = CurrentNode.GetComponent<SwitchMechanic>();
                 if (switchMech) switchMech.Toggle();

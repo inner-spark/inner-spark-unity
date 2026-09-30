@@ -151,6 +151,10 @@ namespace Pcb
                     m2.transform.localRotation = Quaternion.Euler(0f, 180f, 0f) * m2.transform.localRotation;
                     list.AddRange(m2.GetComponentsInChildren<Renderer>(true));
                 }
+
+                // Switch models show their starting ON/OFF look; SwitchMechanic swaps it on each press.
+                bool isOn = node.TryGetComponent(out SwitchMechanic sw) && sw.isOn;
+                foreach (var look in g.GetComponentsInChildren<SwitchVisual>(true)) look.Show(isOn);
                 return;
             }
 
@@ -206,6 +210,7 @@ namespace Pcb
                     break;
                 }
                 case NodeType.Switch:
+                case NodeType.AndSwitch:
                 {
                     float d = theme.capacitorSize, h = theme.capacitorHeight;
                     Part(g, Cylinder, new Vector3(0f, 0f, o * h * 0.5f), Upright, new Vector3(d, h * 0.5f, d), theme.metalMaterial, list);

@@ -5,6 +5,56 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 
 ---
 
+## 2026-09-30 (later) — normal & AND switches, Link tool, no in-game text
+
+**Designer's rules:** two switch kinds, chosen when placing the node. **Normal switch**: a gate can
+have several; pressing *any* of them flips the gate. **AND switch**: an AND gate opens only while
+*all* its AND switches are on. Both toggle on every press, and both show an ON/OFF model (normal =
+lever left/right, AND = button pressed/not). Gates may start open. No reach-the-goal check needed.
+
+**Changes:**
+- `NodeType.AndSwitch` (new; appended, so existing data is unaffected) + `PcbNode.IsSwitch`.
+  Theme `andSwitchPrefab` / `andSwitchVariants`, `Board.look.andSwitch`. Spark's Space press
+  toggles either kind.
+- **`SwitchVisual`** (new): on a switch model prefab's root, with its `on` / `off` children. The board
+  shows the starting state when built (editor too); `SwitchMechanic.Toggle` swaps it on every press.
+- **Gates hold their switches:** `switches` list moved into `GateMechanic` (same field name the AND
+  gate already used). Normal gate: any press of any listed switch flips it; `isOpen` = starting
+  state. `AndGateMechanic`: open while all on; new **`inverted`** = open until all on.
+  Hand-wired `onToggle → SetOpen` (Level 04) still works.
+- **Level Editor:** placing a Switch/AndSwitch node adds `SwitchMechanic` (Ctrl+Click type
+  change adds/removes it). New **Link** tool: click a switch, click traces to link (adds the gate;
+  "New Gates Start Open" option), Ctrl+Click unlinks (removes an unused gate); won't mix normal
+  and AND on one gate; dotted lines show every switch → gate link.
+- **Validation** (connections only): gate with no switch; missing / foreign / non-switch /
+  wrong-kind switch in a gate's list; switch both listed and hand-wired (acts twice); AND gate
+  hand-wired (bypasses AND); switch node without `SwitchMechanic`; `SwitchMechanic` on a
+  non-switch node; switch that controls nothing.
+- **Removed all on-screen text** during play (level name, side, controls, via hint) —
+  `LevelManager.OnGUI` deleted; tutorials go in each stage's intro dialog.
+- Compiles (runtime + editor, 0 warnings).
+- **Designer set up the switch prefabs (SwitchVisual ON/OFF) and a test level
+  (`Level 06`): tested in Unity — working.**
+
+**"Unsaved changes" warning that stayed after Save Level:**
+- Checked `Level 06`: the scene board and the saved prefab were identical in every gameplay field,
+  transform and position — the level *was* saved; the warning was a false alarm from the checker
+  (`PcbLevelEditorWindow.Levels.cs`, text fingerprint of scene board vs prefab).
+- Hardened the checker: ignores Unity's prefab-link bookkeeping fields
+  (`m_CorrespondingSourceObject` / `m_PrefabInstance` / `m_PrefabAsset`) and prints near-zero
+  numbers without a "-0.000" sign. Couldn't reproduce in Unity from here, so also added a
+  diagnostic: right after Save Level, if the level still looks unsaved, the Console lists exactly
+  which component/field differs; a **Why?** button next to the warning logs the same.
+- **To confirm:** does the warning clear after saving now? If not, send the
+  "[PCB] '…' differs from …" Console warning.
+
+**Two Console errors on launch (checked, not a code bug):** `SerializedObjectNotCreatableException`
+(TransformInspector) and `MissingReferenceException` (GameObjectInspector). Stack traces are
+Unity's own Inspector only — it complains when the object it's showing gets destroyed (Main Menu
+objects on scene load, the board's regenerated look at play start, the board on restart).
+Editor-only, harmless, not in builds. Check: deselect everything before Play; report if they
+still appear.
+
 ## 2026-09-30 — final node / board / decoration prefabs (designer)
 
 **Done (designer, in `Assets/PCB/Prefabs/Final/`):**

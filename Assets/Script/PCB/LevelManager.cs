@@ -5,7 +5,7 @@ namespace Pcb
 {
     /// <summary>
     /// One per scene. Plays the levels from the LevelList: spawns the board and the spark,
-    /// detects the Goal, and handles restart plus a simple HUD.
+    /// detects the Goal, and handles restart and the win pop-up.
     /// If a Board is already in the scene (the one you are editing), play starts on it.
     /// </summary>
     public class LevelManager : MonoBehaviour
@@ -30,7 +30,6 @@ namespace Pcb
         bool won;
         float wonAt;
         InputAction restartAction, confirmAction;
-        GUIStyle hudStyle;
 
         public Board CurrentBoard => current;
 
@@ -151,23 +150,6 @@ namespace Pcb
             if (restartAction.WasPressedThisFrame()) Restart();
             else if (won && Time.time - wonAt > 0.4f && confirmAction.WasPressedThisFrame()) Next();
         }
-
-        void OnGUI()
-        {
-            if (!current || won) return; // WinPanel takes over once won
-            if (pauseMenu && pauseMenu.IsPaused) return;
-            if (dialogController && dialogController.IsShowing) return;
-            if (hudStyle == null) hudStyle = new GUIStyle(GUI.skin.label) { richText = true };
-            int font = Mathf.Max(12, Screen.height / 40);
-            hudStyle.fontSize = font;
-
-            string number = index >= 0 && levels ? $"{index + 1}/{levels.Count}" : "unsaved";
-            string side = current.View == PcbLayer.Front ? "FRONT" : "<color=#7fd4ff>BACK</color>";
-            string hud = $"<b>{current.levelName}</b>  ({number})\nSide: <b>{side}</b>\n" +
-                         $"<size={font * 3 / 4}>Move: WASD / Arrows   Flip (on via): Space   Inspect: drag mouse   Restart: R</size>";
-            if (spark && !spark.IsMoving && !spark.IsTurning && !spark.IsBusy && spark.CurrentNode && spark.CurrentNode.IsVia)
-                hud += "\n<color=#ffe08a>On a via: press Space to flip side</color>";
-            GUI.Label(new Rect(16, 12, Screen.width - 32, Screen.height * 0.3f), hud, hudStyle);
-        }
+        // No on-screen text during play: controls are taught in each stage's intro dialog.
     }
 }

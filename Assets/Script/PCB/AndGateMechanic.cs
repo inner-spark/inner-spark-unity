@@ -1,37 +1,31 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Pcb
 {
     /// <summary>
-    /// A GateMechanic that only opens once every one of its assigned switches is on (an AND gate).
-    /// Assign the switches in the Inspector - no manual UnityEvent wiring needed, this subscribes to
-    /// each switch itself. For a gate controlled by exactly one switch, keep using GateMechanic with
-    /// its onToggle -> SetOpen wiring directly; that system is untouched.
+    /// A gate that only opens while every one of its switches (AND switches) is on - an AND gate.
+    /// The switches are the inherited 'switches' list (Level Editor > Link tool), no UnityEvent wiring needed.
+    /// For a gate that simply flips on every press, use GateMechanic with normal switches.
     /// </summary>
     public class AndGateMechanic : GateMechanic
     {
-        public List<SwitchMechanic> switches = new List<SwitchMechanic>();
+        [Tooltip("Open until every switch is on, then close (instead of opening once they're all on).")]
+        public bool inverted;
 
-        void OnEnable()
+        protected override void OnEnable()
         {
-            foreach (var s in switches) if (s) s.onToggle.AddListener(OnAnySwitchToggled);
+            base.OnEnable();
             Recompute();
         }
 
-        void OnDisable()
-        {
-            foreach (var s in switches) if (s) s.onToggle.RemoveListener(OnAnySwitchToggled);
-        }
-
-        void OnAnySwitchToggled(bool _) => Recompute();
+        protected override void OnSwitchToggled(bool _) => Recompute();
 
         void Recompute()
         {
             bool allOn = switches.Count > 0;
             foreach (var s in switches)
                 if (!s || !s.isOn) { allOn = false; break; }
-            SetOpen(allOn);
+            SetOpen(inverted ? !allOn : allOn);
         }
     }
 }
