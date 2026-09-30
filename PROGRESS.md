@@ -5,6 +5,36 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 
 ---
 
+## 2026-09-30 (night) — Data pickups lock the goal
+
+**Designer's rules:** "Data" pickups sit on **capacitors only**. The spark collects one by stopping
+on its node. While any data on the level is uncollected the **goal is locked**: grayed out, and
+reaching it plays no Win animation and no win screen (the spark can still stand on it). Collect
+**all** of it to unlock; levels without data work as before. No counter / HUD. One goal per level
+in practice (several would lock/unlock together).
+
+**Changes:**
+- **`DataMechanic`** (new `NodeMechanic` on a capacitor): on arrival → marks collected (runtime
+  only, so restart resets), hides the pickup, burst VFX; after the last one → unlocks the goal
+  (+ burst on it).
+- **`Board.GoalLocked`** (any uncollected data), `Board.VisualsOf(node)`, `Board.UnlockGoals()`.
+  `Spark.Arrive`: a locked goal isn't a win → shake + burst instead. `LevelManager.OnArrived`
+  ignores a locked goal. `Spark.SpawnBurstAt(position)` made public for mechanics.
+- **Look:** theme **Data Prefab** (empty = small glowing cube), **Data Height** (0.45 above the
+  surface), spinning + bobbing in play (`DataVisual`, added automatically). Locked goal: tinted
+  with theme **Locked Goal Tint** (gray), or — if the goal prefab has a **`LockVisual`** (new, with
+  `Locked` / `Unlocked` children, like `SwitchVisual`) — those are swapped instead. Shown in the
+  editor too (a level with data shows its goal gray).
+- **Level Editor:** new **Data** tool — click a capacitor to add/remove its data (non-capacitors
+  refused); shows the count and rings data nodes. Changing a data node's type (Ctrl+Click) drops
+  its data. Validate: data on a non-capacitor.
+- Compiles (runtime + editor, 0 warnings); **not tested in Unity yet**.
+
+**Designer to do:**
+- Build a test level: 2–3 data on capacitors (some on the back side), a goal; check the goal is
+  gray, reaching it early does nothing (shake), collecting the last data lights it up, then it wins.
+- Later: a Data model (theme Data Prefab) and optionally a locked/unlocked goal prefab (LockVisual).
+
 ## 2026-09-30 (evening) — bug fix: spark moving two steps
 
 - **Bug:** after reaching a node the spark sometimes took a second step with no new input.

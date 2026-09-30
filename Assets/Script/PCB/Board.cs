@@ -227,6 +227,45 @@ namespace Pcb
         public GameObject DecorationModel(PcbDecoration decor) =>
             decor.model ? decor.model : theme ? theme.GetDecorationPrefab(decor.type) : null;
 
+        // ---------------------------------------------------------------- data / goal lock
+
+        /// <summary>True while any data pickup on the board is uncollected: the Goal doesn't win yet.</summary>
+        public bool GoalLocked
+        {
+            get
+            {
+                foreach (var n in nodes)
+                    if (n && n.TryGetComponent(out DataMechanic data) && !data.Collected) return true;
+                return false;
+            }
+        }
+
+        /// <summary>The generated look groups belonging to a node/trace/decoration.</summary>
+        public List<Transform> VisualsOf(Component owner)
+        {
+            var result = new List<Transform>();
+            if (visuals)
+                foreach (var v in visuals.GetComponentsInChildren<PcbVisualOwner>(true))
+                    if (v.owner == owner) result.Add(v.transform);
+            return result;
+        }
+
+        /// <summary>Shows every goal unlocked; returns their looks (e.g. for an effect).</summary>
+        public List<Transform> UnlockGoals()
+        {
+            var result = new List<Transform>();
+            foreach (var n in nodes)
+            {
+                if (!n || n.type != NodeType.Goal) continue;
+                foreach (var look in VisualsOf(n))
+                {
+                    BoardVisuals.SetLocked(look, false, theme ? theme.lockedGoalTint : Color.gray);
+                    result.Add(look);
+                }
+            }
+            return result;
+        }
+
         // ---------------------------------------------------------------- coordinates
 
         public Vector2 NodePosition(PcbNode node) => WorldToLocal(node.transform.position);
@@ -266,6 +305,7 @@ namespace Pcb
                     Add(Id(n)); Add((int)n.type); Add((int)n.layer); Add(Id(n.model));
                     Add(Mathf.RoundToInt(n.rotationDegrees * 1000f));
                     if (n.TryGetComponent(out SwitchMechanic sw)) Add(sw.isOn ? 1 : 2); // starting ON/OFF look
+                    if (n.TryGetComponent(out DataMechanic _)) Add(3); // data pickup (also grays the goal)
                     AddV(NodePosition(n)); AddV(n.chipSize); Add(n.name.GetHashCode());
                 }
                 foreach (var t in traces)

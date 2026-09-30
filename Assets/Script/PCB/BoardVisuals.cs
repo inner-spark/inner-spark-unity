@@ -126,6 +126,7 @@ namespace Pcb
             float o = Out(side);
             var g = Group(root, node.name, new Vector3(p.x, p.y, node.IsVia ? 0f : Surface(side, t)), node);
             g.localRotation = Quaternion.Euler(0f, 0f, node.rotationDegrees); // spin around the board normal
+            if (node.TryGetComponent(out DataMechanic _)) BuildData(g, theme, side, list);
 
             // GameObject model = node.type switch
             // {
@@ -155,6 +156,7 @@ namespace Pcb
                 // Switch models show their starting ON/OFF look; SwitchMechanic swaps it on each press.
                 bool isOn = node.TryGetComponent(out SwitchMechanic sw) && sw.isOn;
                 foreach (var look in g.GetComponentsInChildren<SwitchVisual>(true)) look.Show(isOn);
+                if (node.type == NodeType.Goal) SetLocked(g, board.GoalLocked, theme.lockedGoalTint);
                 return;
             }
 
@@ -217,6 +219,52 @@ namespace Pcb
                     Part(g, Cylinder, new Vector3(0f, 0f, o * (h + 0.008f)), Upright, new Vector3(d * 0.7f, 0.008f, d * 0.7f), theme.plugMaterial, list);
                     break;
                 }
+            }
+            if (node.type == NodeType.Goal) SetLocked(g, board.GoalLocked, theme.lockedGoalTint);
+        }
+
+        /// <summary>The data pickup floating above a node (theme Data Prefab, or a small glowing placeholder).</summary>
+        static void BuildData(Transform g, PcbTheme theme, PcbLayer side, List<Renderer> list)
+        {
+            var holder = new GameObject("Data").transform;
+            holder.SetParent(g, false);
+            holder.localPosition = new Vector3(0f, 0f, Out(side) * theme.dataHeight);
+            holder.gameObject.AddComponent<DataVisual>().outward = Out(side);
+            if (theme.dataPrefab)
+            {
+                var m = Object.Instantiate(theme.dataPrefab, holder, false);
+                if (side == PcbLayer.Back) m.transform.localRotation = Quaternion.Euler(0f, 180f, 0f) * m.transform.localRotation;
+                list.AddRange(m.GetComponentsInChildren<Renderer>(true));
+            }
+            else Part(holder, Cube, Vector3.zero, Quaternion.Euler(45f, 45f, 0f), Vector3.one * 0.12f, theme.sparkMaterial, list);
+        }
+
+        static readonly int BaseColorId = Shader.PropertyToID("_BaseColor");
+        static readonly int ColorId = Shader.PropertyToID("_Color");
+        static readonly int EmissionColorId = Shader.PropertyToID("_EmissionColor");
+
+        /// <summary>
+        /// Locked (grayed-out) or normal look of a goal's generated model. Uses the model's LockVisual
+        /// (Locked / Unlocked children) if it has one, otherwise tints every mesh gray.
+        /// </summary>
+        public static void SetLocked(Transform group, bool locked, Color tint)
+        {
+            var looks = group.GetComponentsInChildren<LockVisual>(true);
+            if (looks.Length > 0)
+            {
+                foreach (var look in looks) look.Show(locked);
+                return;
+            }
+            foreach (var r in group.GetComponentsInChildren<Renderer>(true))
+            {
+                if (r is ParticleSystemRenderer || r is TrailRenderer) continue;
+                if (!locked) { r.SetPropertyBlock(null); continue; }
+                var b = new MaterialPropertyBlock();
+                r.GetPropertyBlock(b);
+                b.SetColor(BaseColorId, tint);
+                b.SetColor(ColorId, tint);
+                b.SetColor(EmissionColorId, Color.black);
+                r.SetPropertyBlock(b);
             }
         }
 

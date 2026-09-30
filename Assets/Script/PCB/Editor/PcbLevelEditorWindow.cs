@@ -8,11 +8,11 @@ using UnityEngine;
 /// </summary>
 public partial class PcbLevelEditorWindow : EditorWindow
 {
-    enum Tool { Select, Node, Trace, Erase, Decoration, Paint, Link }
+    enum Tool { Select, Node, Trace, Erase, Decoration, Paint, Link, Data }
 
     struct Issue { public string message; public Object target; }
 
-    static readonly string[] ToolNames = { "Select", "Node", "Trace", "Erase", "Decor", "Paint", "Link" };
+    static readonly string[] ToolNames = { "Select", "Node", "Trace", "Erase", "Decor", "Paint", "Link", "Data" };
     static readonly string[] SideNames = { "Front", "Back" };
     static readonly Color FrontColor = new Color(1f, 0.85f, 0.4f);
     static readonly Color BackColor = new Color(0.5f, 0.85f, 1f);
@@ -136,6 +136,7 @@ public partial class PcbLevelEditorWindow : EditorWindow
         }
         if (tool == Tool.Paint) PaintOptionsGUI();
         if (tool == Tool.Link) LinkOptionsGUI();
+        if (tool == Tool.Data) DataOptionsGUI();
         EditorGUILayout.HelpBox(HelpText(), MessageType.None);
 
         EditorGUILayout.Space();
@@ -186,6 +187,9 @@ public partial class PcbLevelEditorWindow : EditorWindow
                 return "Click a switch to pick it, then click the traces it should control (adds a gate).\n" +
                        "Ctrl+Click a trace: unlink it.   Esc: drop the switch.\n" +
                        "Normal switches flip normal gates; AND switches open AND gates only while all are on.";
+            case Tool.Data:
+                return "Click a capacitor: add / remove its data pickup.\n" +
+                       "The goal stays locked (grayed out, no win) until all data on the level is collected.";
             default:
                 return "Normal Unity selection. Select nodes/traces to edit them in the Inspector.";
         }
@@ -260,6 +264,7 @@ public partial class PcbLevelEditorWindow : EditorWindow
             case Tool.Decoration: DecorationTool(e, id, mouse, snapped); break;
             case Tool.Paint: PaintTool(e, mouse); break;
             case Tool.Link: LinkTool(e, mouse); break;
+            case Tool.Data: DataTool(e, mouse); break;
         }
 
         if (e.type == EventType.MouseMove || e.type == EventType.MouseDrag) sceneView.Repaint();
@@ -346,6 +351,8 @@ public partial class PcbLevelEditorWindow : EditorWindow
                     hit.type = placeType;
                     hit.name = NodeName(placeType);
                     EnsureSwitchMechanic(hit);
+                    if (hit.type != NodeType.Capacitor && hit.TryGetComponent(out DataMechanic data))
+                        Undo.DestroyObjectImmediate(data); // data only lives on capacitors
                 }
                 else if (hit && e.shift)
                 {
@@ -790,6 +797,7 @@ public partial class PcbLevelEditorWindow : EditorWindow
                 Add($"{n.name}: via only has traces on one side, so flipping here is useless.", n);
         }
         ValidateSwitches();
+        ValidateData();
     }
 
     void Add(string message, Object target) => issues.Add(new Issue { message = message, target = target });

@@ -131,7 +131,7 @@ namespace Pcb
 
         void OnArrived(PcbNode node)
         {
-            if (node.type != NodeType.Goal) return;
+            if (node.type != NodeType.Goal || current.GoalLocked) return; // locked goal: data still to collect
             spark.InputLocked = true; // no more input; the win screen waits for the spark's win animation (OnWinFinished)
         }
 

@@ -343,7 +343,6 @@ namespace Pcb
         {
             IsMoving = false;
             CurrentNode = travelling.target;
-            bool goal = CurrentNode.type == NodeType.Goal;
             if (HasCharacter)
             {
                 IsBusy = true; // until MoveFinish has played
@@ -352,6 +351,9 @@ namespace Pcb
             }
             foreach (var m in travelling.trace.GetComponents<TraceMechanic>()) m.OnTraversed(this, travelling.reversed);
             foreach (var m in CurrentNode.GetComponents<NodeMechanic>()) m.OnSparkArrive(this);
+            // A locked goal (data still to collect) is just a node: no win, a shake + burst to say "not yet".
+            bool goal = CurrentNode.type == NodeType.Goal;
+            if (goal && Board.GoalLocked) { goal = false; Block(); }
             RefreshArrows();
             Arrived?.Invoke(CurrentNode);
 
@@ -473,11 +475,14 @@ namespace Pcb
             foreach (var tr in vfx.GetComponentsInChildren<TrailRenderer>(true)) tr.emitting = false;
         }
 
-        void SpawnBurst()
+        void SpawnBurst() => SpawnBurstAt(transform.position);
+
+        /// <summary>Plays the burst VFX at a world position (character only; e.g. collecting data, unlocking the goal).</summary>
+        public void SpawnBurstAt(Vector3 position)
         {
             if (!burstVfx || !Board) return;
             // Parented to the board so it follows the tilt/turn, and goes away with it on restart.
-            var fx = Instantiate(burstVfx, transform.position, transform.rotation, Board.transform);
+            var fx = Instantiate(burstVfx, position, transform.rotation, Board.transform);
             float lifetime = 0.5f;
             foreach (var ps in fx.GetComponentsInChildren<ParticleSystem>())
                 lifetime = Mathf.Max(lifetime, ps.main.duration + ps.main.startLifetime.constantMax);
