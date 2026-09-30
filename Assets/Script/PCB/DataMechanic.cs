@@ -21,9 +21,13 @@ namespace Pcb
             foreach (var look in board.VisualsOf(GetComponent<PcbNode>()))
                 foreach (var data in look.GetComponentsInChildren<DataVisual>(true)) data.gameObject.SetActive(false);
             spark.SpawnBurstAt(spark.transform.position);
+            AudioManager.Play(Sfx.Pickup);
 
             if (!board.GoalLocked) // that was the last one
+            {
+                AudioManager.Play(Sfx.GoalUnlock);
                 foreach (var goal in board.UnlockGoals()) spark.SpawnBurstAt(goal.position);
+            }
         }
     }
 }

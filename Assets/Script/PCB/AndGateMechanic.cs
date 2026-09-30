@@ -15,17 +15,17 @@ namespace Pcb
         protected override void OnEnable()
         {
             base.OnEnable();
-            Recompute();
+            Recompute(playSound: false); // starting state, not a change the player caused
         }
 
-        protected override void OnSwitchToggled(bool _) => Recompute();
+        protected override void OnSwitchToggled(bool _) => Recompute(playSound: true);
 
-        void Recompute()
+        void Recompute(bool playSound)
         {
             bool allOn = switches.Count > 0;
             foreach (var s in switches)
                 if (!s || !s.isOn) { allOn = false; break; }
-            SetOpen(inverted ? !allOn : allOn);
+            SetOpen(inverted ? !allOn : allOn, playSound);
         }
     }
 }

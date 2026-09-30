@@ -51,6 +51,7 @@ namespace Pcb
             if (restartButton) restartButton.interactable = false;
             Time.timeScale = 0f;
             GamePaused = true;
+            AudioManager.SetPaused(true);
         }
 
         public void Resume()
@@ -59,12 +60,14 @@ namespace Pcb
             if (restartButton) restartButton.interactable = true;
             Time.timeScale = 1f;
             GamePaused = false;
+            AudioManager.SetPaused(false);
         }
 
         public void QuitToMenu()
         {
             Time.timeScale = 1f;
             GamePaused = false;
+            AudioManager.SetPaused(false);
             SceneManager.LoadScene(mainMenuScene);
         }
 

@@ -145,8 +145,8 @@ Transform:
   - {fileID: 2686868473158001458}
   - {fileID: 4538361547055571823}
   - {fileID: 6885834697229222815}
-  - {fileID: 8854921875481091977}
   - {fileID: 5200187364133682116}
+  - {fileID: 4186573211524880427}
   m_Father: {fileID: 4329743782700992426}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1049672754709222997
@@ -258,6 +258,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7725614809481365565}
   - component: {fileID: 7609023365166678989}
+  - component: {fileID: 7278623037851686741}
   m_Layer: 0
   m_Name: Capacitor B 03
   m_TagString: Untagged
@@ -297,6 +298,18 @@ MonoBehaviour:
   chipSize: {x: 1, y: 1.5}
   rotationDegrees: 0
   model: {fileID: 0}
+--- !u!114 &7278623037851686741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407812024274192728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 369dbb1207d015c4ba9f5c38daa3ce35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Pcb.DataMechanic
 --- !u!1 &1470389615598962258
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,6 +711,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4538361547055571823}
   - component: {fileID: 8337815566771134578}
+  - component: {fileID: 3526050183742022098}
   m_Layer: 0
   m_Name: Capacitor F 08
   m_TagString: Untagged
@@ -737,6 +751,18 @@ MonoBehaviour:
   chipSize: {x: 1, y: 1.5}
   rotationDegrees: 0
   model: {fileID: 0}
+--- !u!114 &3526050183742022098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3323654588271089215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 369dbb1207d015c4ba9f5c38daa3ce35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Pcb.DataMechanic
 --- !u!1 &3444835519272943636
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,7 +1060,7 @@ Transform:
   - {fileID: 7547274320746071148}
   - {fileID: 6515127396174475690}
   - {fileID: 4581952090758656780}
-  - {fileID: 7784260926163498411}
+  - {fileID: 6706138753718646990}
   m_Father: {fileID: 4329743782700992426}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4861510874949453091
@@ -1160,7 +1186,7 @@ Transform:
   m_GameObject: {fileID: 4975264170171048408}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1233,6 +1259,55 @@ MonoBehaviour:
   bends:
   - {x: 1.5, y: 1.5}
   - {x: 1, y: 1}
+--- !u!1 &5968849184414192078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6706138753718646990}
+  - component: {fileID: 805989250270113657}
+  m_Layer: 0
+  m_Name: Trace Via 01 - Capacitor B 11
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6706138753718646990
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5968849184414192078}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2722220581667610267}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &805989250270113657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5968849184414192078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebfae649ea6128b4990f6df9a586449d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Pcb.Trace
+  from: {fileID: 196036981611665962}
+  to: {fileID: 3629020623609600504}
+  layer: 1
+  bends:
+  - {x: 0, y: 2}
 --- !u!1 &6062918293108407873
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,7 +1515,7 @@ MonoBehaviour:
   cellSize: 0.5
   sizeInCells: {x: 6, y: 8}
   inputTolerance: 0.5
-  editorView: 1
+  editorView: 0
   savedPath: Assets/PCB/Levels/Level 05 Tung.prefab
 --- !u!1 &7308665874723042001
 GameObject:
@@ -1452,6 +1527,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2686868473158001458}
   - component: {fileID: 1001006146000738014}
+  - component: {fileID: 431079322681432777}
   m_Layer: 0
   m_Name: Capacitor F 07
   m_TagString: Untagged
@@ -1491,7 +1567,19 @@ MonoBehaviour:
   chipSize: {x: 1, y: 1.5}
   rotationDegrees: 0
   model: {fileID: 0}
---- !u!1 &7445908613266537889
+--- !u!114 &431079322681432777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7308665874723042001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 369dbb1207d015c4ba9f5c38daa3ce35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Pcb.DataMechanic
+--- !u!1 &7492811821110302715
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1499,8 +1587,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8854921875481091977}
-  - component: {fileID: 831678346181901097}
+  - component: {fileID: 4186573211524880427}
+  - component: {fileID: 3629020623609600504}
+  - component: {fileID: 6318004159327362961}
   m_Layer: 0
   m_Name: Capacitor B 11
   m_TagString: Untagged
@@ -1508,28 +1597,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8854921875481091977
+--- !u!4 &4186573211524880427
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7445908613266537889}
+  m_GameObject: {fileID: 7492811821110302715}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1453367369991168497}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &831678346181901097
+--- !u!114 &3629020623609600504
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7445908613266537889}
+  m_GameObject: {fileID: 7492811821110302715}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72ad9fd05dbea4c47a3d9c656c5b55f0, type: 3}
@@ -1540,55 +1629,18 @@ MonoBehaviour:
   chipSize: {x: 1, y: 1.5}
   rotationDegrees: 0
   model: {fileID: 0}
---- !u!1 &7510578078224461728
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7784260926163498411}
-  - component: {fileID: 8151462138378089612}
-  m_Layer: 0
-  m_Name: Trace Via 01 - Capacitor B 11
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7784260926163498411
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7510578078224461728}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2722220581667610267}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8151462138378089612
+--- !u!114 &6318004159327362961
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7510578078224461728}
+  m_GameObject: {fileID: 7492811821110302715}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebfae649ea6128b4990f6df9a586449d, type: 3}
+  m_Script: {fileID: 11500000, guid: 369dbb1207d015c4ba9f5c38daa3ce35, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Pcb.Trace
-  from: {fileID: 196036981611665962}
-  to: {fileID: 340506375766835472}
-  layer: 1
-  bends:
-  - {x: 0, y: 2}
+  m_EditorClassIdentifier: Assembly-CSharp::Pcb.DataMechanic
 --- !u!1 &7795532464279524705
 GameObject:
   m_ObjectHideFlags: 0
@@ -1648,6 +1700,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4750467018593155167}
   - component: {fileID: 1616202920683748443}
+  - component: {fileID: 1477673958913481211}
   m_Layer: 0
   m_Name: Capacitor F 06
   m_TagString: Untagged
@@ -1687,6 +1740,18 @@ MonoBehaviour:
   chipSize: {x: 1, y: 1.5}
   rotationDegrees: 0
   model: {fileID: 0}
+--- !u!114 &1477673958913481211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7911834387717843931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 369dbb1207d015c4ba9f5c38daa3ce35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Pcb.DataMechanic
 --- !u!1 &8012097503763464922
 GameObject:
   m_ObjectHideFlags: 0
@@ -1794,6 +1859,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6885834697229222815}
   - component: {fileID: 4271737899945266748}
+  - component: {fileID: 1082097745940174353}
   m_Layer: 0
   m_Name: Capacitor B 09
   m_TagString: Untagged
@@ -1833,6 +1899,18 @@ MonoBehaviour:
   chipSize: {x: 1, y: 1.5}
   rotationDegrees: 0
   model: {fileID: 0}
+--- !u!114 &1082097745940174353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8177859649955912733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 369dbb1207d015c4ba9f5c38daa3ce35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Pcb.DataMechanic
 --- !u!1 &8233775150083121659
 GameObject:
   m_ObjectHideFlags: 0
@@ -2073,7 +2151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pcb.Trace
   from: {fileID: 196036981611665962}
-  to: {fileID: 831678346181901097}
+  to: {fileID: 340506375766835472}
   layer: 1
   bends:
   - {x: 0.5, y: 3.5}
@@ -2136,6 +2214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8717118432791658976}
   - component: {fileID: 6853942976484982619}
+  - component: {fileID: 4570949672248918675}
   m_Layer: 0
   m_Name: Capacitor B 01
   m_TagString: Untagged
@@ -2175,3 +2254,15 @@ MonoBehaviour:
   chipSize: {x: 1, y: 1.5}
   rotationDegrees: 0
   model: {fileID: 0}
+--- !u!114 &4570949672248918675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9179590612319813364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 369dbb1207d015c4ba9f5c38daa3ce35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Pcb.DataMechanic

@@ -12,8 +12,11 @@ namespace Pcb
         public GameObject mainPanel;
         public GameObject stageSelectPanel;
 
+        void Start() => AudioManager.PlayMusic(Music.Menu);
+
         public void Play()
         {
+            AudioManager.Play(Sfx.StartGame);
             GameFlow.RequestLevel(0);
             SceneManager.LoadScene(gameplayScene);
         }

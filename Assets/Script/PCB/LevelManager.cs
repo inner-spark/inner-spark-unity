@@ -70,6 +70,7 @@ namespace Pcb
                 // Editor: play the board being edited, keeping an untouched copy for restarts.
                 template = sceneBoard.gameObject;
                 index = levels ? levels.IndexOf(sceneBoard.levelName) : -1;
+                AudioManager.PlayMusic(Music.Gameplay, restart: true);
                 Spawn(showDialog: true);
             }
             else if (levelsAvailable)
@@ -84,6 +85,7 @@ namespace Pcb
             if (!levels || levels.Count == 0) return;
             index = (levelIndex % levels.Count + levels.Count) % levels.Count;
             template = levels[index] ? levels[index].gameObject : null;
+            AudioManager.PlayMusic(Music.Gameplay, restart: true); // entering a stage; a Restart keeps the music going
             Spawn(showDialog: true);
         }
 

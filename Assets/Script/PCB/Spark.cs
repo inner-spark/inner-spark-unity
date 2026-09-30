@@ -148,7 +148,12 @@ namespace Pcb
 
         void OnEnable() { moveAction.Enable(); flipAction.Enable(); }
         void OnDisable() { moveAction.Disable(); flipAction.Disable(); }
-        void OnDestroy() { moveAction.Dispose(); flipAction.Dispose(); }
+        void OnDestroy()
+        {
+            moveAction.Dispose();
+            flipAction.Dispose();
+            if (IsMoving) AudioManager.SetTravelling(false); // restarted mid-trace
+        }
 
         public void Init(Board board, PcbNode start, BoardRig boardRig)
         {
@@ -280,7 +285,11 @@ namespace Pcb
             segmentProgress = 0f;
             HideArrows();
             if (HasCharacter) StartCoroutine(DepartThenMove());
-            else IsMoving = true;
+            else
+            {
+                IsMoving = true;
+                AudioManager.SetTravelling(true);
+            }
             return true;
         }
 
@@ -342,6 +351,7 @@ namespace Pcb
         void Arrive()
         {
             IsMoving = false;
+            AudioManager.SetTravelling(false);
             CurrentNode = travelling.target;
             if (HasCharacter)
             {
@@ -358,12 +368,17 @@ namespace Pcb
             Arrived?.Invoke(CurrentNode);
 
             if (HasCharacter) StartCoroutine(ArriveSequence(goal));
-            else if (goal) WinFinished?.Invoke();
+            else if (goal)
+            {
+                AudioManager.Play(Sfx.Win);
+                WinFinished?.Invoke();
+            }
         }
 
         void Block()
         {
             blockedFlash = 1f;
+            AudioManager.Play(Sfx.Fail);
             if (HasCharacter) SpawnBurst();
             Blocked?.Invoke();
         }
@@ -390,6 +405,7 @@ namespace Pcb
             PlayVfx(travelVfx);
             ScheduleBurst();
             IsMoving = true;
+            AudioManager.SetTravelling(true);
             IsBusy = false;
         }
 
@@ -399,6 +415,7 @@ namespace Pcb
             yield return PlayAndWait(moveFinishState);
             if (goal)
             {
+                AudioManager.Play(Sfx.Win); // with the Win animation
                 yield return PlayAndWait(winState); // plays once and holds its last frame; the level is over
                 WinFinished?.Invoke();
                 yield break;

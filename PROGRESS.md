@@ -5,6 +5,47 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 
 ---
 
+## 2026-10-01 (later) — audio: music, SFX, volume sliders, typing dialog
+
+**Assets** (`Assets/Import Asset/Sounds/`): `InnerSparkOSTgameplay`, `SFX_Buttonclick`,
+`SFX_DialogueTalking`, `SFX_ElectricSignal` (unused for now), `SFX_Fail`, `SFX_Pickup`,
+`SFX_StartGame`, `SFX_UnlockOrOpen`, `SFX_Win`.
+
+**Designer's rules:** every sound is its own field (tuned later). Win plays as Sparky starts the Win
+animation. Dialog lines type out letter by letter with the talking sound playing while typing.
+Two music fields (menu / gameplay); gameplay music restarts when a stage is entered, keeps
+playing through a Restart, and is lowered while paused. Fail = blocked move / locked goal.
+Start Game = Main Menu / Stage Select into gameplay only (not Next level). A field for a
+future travel loop. Music + SFX sliders in the Main Menu and pause screen; per-sound balance
+volumes set in the editor.
+
+**Changes (new `Assets/Script/Audio/`):**
+- **`SoundBank`** (Create > PCB > Sound Bank): clip + balance volume per slot — menu / gameplay
+  music, paused-music level, button click, start game, win, switch, pickup, goal unlock, gate open,
+  gate close, fail, travel loop, dialog talking loop. Empty slot = silent.
+- **`AudioManager`**: one per scene (the first survives scene loads, later copies remove
+  themselves); static calls, silent if absent. Auto-adds the click sound to every UI Button when a
+  scene loads (+ Stage Select's generated buttons). Player volumes saved in PlayerPrefs.
+- **`VolumeSlider`**: on a UI Slider, channel Music or SFX.
+- Hooks: `SwitchMechanic.Toggle` (switch), `DataMechanic` (pickup, goal unlock),
+  `GateMechanic.SetOpen` (gate open/close — only on a real change; an AND gate's starting state at
+  level load is silent), `Spark` (fail in `Block`, win with the Win animation / on arrival for the
+  sphere, travel loop while moving), `LevelManager.GoTo` + direct editor play (gameplay music
+  restart), `MainMenuController` (menu music, start game), `StageSelectController` (start game),
+  `PauseMenu` (music lowered, travel/talk loops held).
+- **`DialogController`**: typewriter (`lettersPerSecond`, 40; 0 = whole line at once), talking loop
+  while typing; Continue while typing → shows the whole line, next press → next line.
+- Compiles (runtime + editor, 0 warnings); **not tested in Unity yet**.
+
+**Designer setup done:** `Assets/PCB/Audio/SoundBank.asset` created and assigned; one Audio Manager in
+each scene (`MainMenu`, `SampleScene`). Tested in Unity: **working, but needs more tuning**
+(balance volumes, which clip goes where, missing clips — switch, travel, menu music, gate close).
+Note: in Play mode the Audio Manager moves to the Hierarchy's `DontDestroyOnLoad` section and the
+next scene's copy removes itself — that's by design, not a bug.
+
+**Still to do:** sound tuning pass; Music/SFX sliders in the Main Menu and pause panel (if not added
+yet); a travel SFX and a switch SFX from the audio side.
+
 ## 2026-10-01 — bug fix: Level Editor Load hid the back side
 
 - **Bug:** after **Load** in the Level Editor, everything on the back side was invisible in the Scene

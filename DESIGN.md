@@ -94,6 +94,11 @@ Editor tooling (`Assets/Script/PCB/Editor/`):
 - **PcbLevelEditorWindow.cs** + **PcbLevelEditorWindow.Levels.cs** — `Tools > PCB > Level Editor`. Scene-view tools to place/drag/erase nodes, traces (with 45° auto-routing), and decorations; save/load levels as prefabs; a content-hash based "unsaved changes" indicator; and a **Validate Level** pass that flags: wrong start/goal counts, traces crossing layers without a via, ambiguous overlapping exits, exits only reachable via diagonal input, and vias with traces on only one side.
 - **PcbSelectionRedirect.cs** — global hook so clicking a generated visual in the Scene view selects its owning node/trace instead.
 
+Audio (`Assets/Script/Audio/`):
+- **SoundBank.cs** — ScriptableObject (`Create > PCB > Sound Bank`): one clip + balance volume per sound (menu/gameplay music, UI click, start game, win, switch, pickup, goal unlock, gate open/close, fail, travel loop, dialog talking loop). Empty = silent.
+- **AudioManager.cs** — one per scene; the first survives scene loads (music continues), duplicates remove themselves. Static, null-safe API (`Play(Sfx)`, `PlayMusic`, `SetPaused`, `SetTravelling`, `SetTalking`); auto-adds the click sound to every UI Button. Player Music/SFX volumes in PlayerPrefs.
+- **VolumeSlider.cs** — on a UI Slider: Music or SFX volume.
+
 UI & game flow (`Assets/Script/UI/`, uGUI + TextMeshPro, kept separate from `PCB/`):
 - **GameFlow.cs** — static bridge carrying the chosen level index from the `MainMenu` scene into the gameplay scene (`RequestLevel` / `HasPendingRequest` / `TakeRequestedLevel`).
 - **MainMenuController.cs** — Play / Stage Select / Quit on the `MainMenu` scene's main panel.

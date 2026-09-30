@@ -48,11 +48,13 @@ namespace Pcb
 
                 int index = i; // capture for the closure
                 button.onClick.AddListener(() => Play(index));
+                AudioManager.HookButton(button); // click sound (created after the scene loaded)
             }
         }
 
         void Play(int index)
         {
+            AudioManager.Play(Sfx.StartGame);
             GameFlow.RequestLevel(index);
             SceneManager.LoadScene(gameplayScene);
         }

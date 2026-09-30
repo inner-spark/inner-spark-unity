@@ -30,10 +30,16 @@ namespace Pcb
         /// <summary>Normal gate: any press of any of its switches flips it.</summary>
         protected virtual void OnSwitchToggled(bool _) => SetOpen(!isOpen);
 
-        public void SetOpen(bool open)
+        /// <summary>Opens/closes the gate; plays the gate open/close sound when that's a change.</summary>
+        public void SetOpen(bool open) => SetOpen(open, playSound: true);
+
+        /// <summary>playSound false: setting the starting state when the level loads.</summary>
+        protected void SetOpen(bool open, bool playSound)
         {
+            bool changed = open != isOpen;
             isOpen = open;
             Debug.Log($"Gate {gameObject.name} set to {(isOpen ? "Open" : "Closed")}");
+            if (changed && playSound) AudioManager.Play(open ? Sfx.GateOpen : Sfx.GateClose);
             UpdateVisual();
         }
 
