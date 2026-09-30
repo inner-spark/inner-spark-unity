@@ -28,8 +28,9 @@ MonoBehaviour:
   goalPrefab: {fileID: 1822291219977491971, guid: a2bb2727f72410e49bb1490391b9f3f5, type: 3}
   switchPrefab: {fileID: 7055210035048420528, guid: 215fd514da95e394088ff764b7fe5656, type: 3}
   andSwitchPrefab: {fileID: 5109207269138497487, guid: aadc360d86ac54946b0b441866712741, type: 3}
-  gatePrefab: {fileID: 1514149792772791552, guid: a17898996168f7a40b0d37b102f4be34, type: 3}
-  dataPrefab: {fileID: 0}
+  gatePrefab: {fileID: 8946151214205948250, guid: 19b0f6b5d7f85aa4bb61e09b1d1bccfe, type: 3}
+  dataPrefab: {fileID: 3282992957422389139, guid: c9daa186d3e922a4eb24fe93ad6f6a90, type: 3}
+  goalLockPrefab: {fileID: 8761898266923241318, guid: 8741e70ac5daccf49bd9f445b0f20969, type: 3}
   boardTilePrefab: {fileID: 8720090434053599027, guid: 02d1311ef76d3c54ca54fc84873380e5, type: 3}
   tracePrefab: {fileID: 1514149792772791552, guid: 651a6812693f1574aae1aa1e60f8d0e8, type: 3}
   traceBendPrefab: {fileID: 6614226478440039817, guid: 5a5a7775597fc9a4eace200612bf7f65, type: 3}
@@ -57,7 +58,9 @@ MonoBehaviour:
   - {fileID: 1822291219977491971, guid: a2bb2727f72410e49bb1490391b9f3f5, type: 3}
   switchVariants: []
   andSwitchVariants: []
-  gateVariants: []
+  gateVariants:
+  - {fileID: 8946151214205948250, guid: 19b0f6b5d7f85aa4bb61e09b1d1bccfe, type: 3}
+  - {fileID: 4036366582128524321, guid: 3c359a3a6c21bfd4e8e717bf3673a8b6, type: 3}
   boardTileVariants:
   - {fileID: 1755404028115059004, guid: 80300ef1db8050841bbf439c5200e32e, type: 3}
   - {fileID: 2460409897440892639, guid: 3f841bf8bbdf88349aeab9d6c6b8f36f, type: 3}
@@ -80,8 +83,8 @@ MonoBehaviour:
   viaSize: 0.252
   viaLip: 0.02
   chipHeight: 0.14
-  lockedGoalTint: {r: 0.35, g: 0.35, b: 0.35, a: 1}
   dataHeight: 0.45
+  goalLockHeight: 0.4
   plugSize: {x: 0.46, y: 0.34, z: 0.26}
   spark: {r: 0.5254902, g: 0.8901961, b: 1, a: 1}
   sparkBlocked: {r: 1, g: 0.3529412, b: 0.3529412, a: 1}

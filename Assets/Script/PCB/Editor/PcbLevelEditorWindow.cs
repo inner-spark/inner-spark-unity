@@ -181,7 +181,7 @@ public partial class PcbLevelEditorWindow : EditorWindow
                 return "Click empty grid: place a decoration on the current side.\n" +
                        "Drag a decoration: move it.   Ctrl+Click: change its type/rotation.";
             case Tool.Paint:
-                return "Pick a type and a model below, then click nodes/decorations of that type to paint them.\n" +
+                return "Pick Nodes / Decorations / Gates, a type and a model below, then click them in the scene to paint them.\n" +
                        "Shift+Click: reset to the default.   Level-wide defaults: Look section above.";
             case Tool.Link:
                 return "Click a switch to pick it, then click the traces it should control (adds a gate).\n" +

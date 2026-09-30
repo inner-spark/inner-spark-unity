@@ -20,12 +20,17 @@ namespace Pcb
 
         protected override void OnSwitchToggled(bool _) => Recompute(playSound: true);
 
-        void Recompute(bool playSound)
+        void Recompute(bool playSound) => SetOpen(ComputeOpen(), playSound);
+
+        bool ComputeOpen()
         {
             bool allOn = switches.Count > 0;
             foreach (var s in switches)
                 if (!s || !s.isOn) { allOn = false; break; }
-            SetOpen(inverted ? !allOn : allOn, playSound);
+            return inverted ? !allOn : allOn;
         }
+
+        // In the editor the gate hasn't run yet: show the state it will start in.
+        public override bool ShownOpen => Application.isPlaying ? isOpen : ComputeOpen();
     }
 }

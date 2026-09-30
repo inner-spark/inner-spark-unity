@@ -19,7 +19,7 @@ namespace Pcb
             var board = GetComponentInParent<Board>();
             if (!board) return;
             foreach (var look in board.VisualsOf(GetComponent<PcbNode>()))
-                foreach (var data in look.GetComponentsInChildren<DataVisual>(true)) data.gameObject.SetActive(false);
+                foreach (var data in look.GetComponentsInChildren<HoverVisual>()) data.Dismiss(); // shrinks away
             spark.SpawnBurstAt(spark.transform.position);
             AudioManager.Play(Sfx.Pickup);
 

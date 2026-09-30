@@ -5,6 +5,46 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 
 ---
 
+## 2026-10-01 (evening) — gate open/closed models, hovering goal lock, data art hookup
+
+**New art** (Andrii, `e62d679`): `Gate1_CLOSED/OPEN`, `Gate2_CLOSED/OPEN`, `Data_Lock`,
+`DataCollectible` (+ `Key_*` / `Key_Lock_*` / `Key_Node_*` in green/red/teal — a future key
+mechanic, not wired). Sizes ≈ Gate1 0.25×0.33×0.49, Gate2 0.14×0.34×0.67, Data_Lock
+0.15×0.56×0.38, DataCollectible 0.04×0.46×0.35 (a thin card).
+
+**Designer's rules:** gates show a CLOSED / OPEN model and swap like the switches; Gate 1 and 2 are
+two looks of the same gate — theme default + paintable per gate. A gate stands across the trace, on
+top of it. The goal's gray tint is gone: instead the **Data_Lock hovers over the goal** while data is
+left and **shrinks away while floating up** when the last data is collected (~0.5 above the board).
+Data pickups don't spin any more — they just bob gently up and down, like the lock.
+
+**Changes:**
+- **Gates are part of the board's generated look** (visible in the Level Editor too), built by
+  `BoardVisuals.BuildGate`: at the real middle of the trace by length (fixes the old float-off on
+  bent traces), lined up with that segment, on top of the copper, at the model's authored size
+  (X = along the trace, top facing −Z; back side turned over). The model shows CLOSED/OPEN through
+  its **`LockVisual`** (Locked = closed, Unlocked = open); without one it just hides when open (old
+  behaviour). Model = gate's own `model` → level Look `gate` → theme `gatePrefab`. The old runtime
+  gate code in `GateMechanic.Start` (and the red-cube placeholder, `closedVisual`) is removed.
+  `AndGateMechanic` shows its starting state correctly in the editor (`ShownOpen`).
+- **Paint tool:** new **Gates** tab (click a trace with a gate; Paint All / Reset All). **Look:**
+  new **Gate** dropdown (per-level default).
+- **Goal lock:** theme **Goal Lock Prefab** + **Goal Lock Height** (0.5), hovering over the goal
+  while `Board.GoalLocked`; `Board.UnlockGoals` sends it away. **Removed** the gray tint
+  (`lockedGoalTint`, `BoardVisuals.SetLocked`).
+- **`HoverVisual`** (replaces `DataVisual`): gentle up/down bob on screen; `Dismiss()` shrinks it
+  while floating up. Used by the data pickup (now shrinks away when collected) and the goal lock.
+- Compiles (runtime + editor, 0 warnings); **not tested in Unity yet**.
+
+**Follow-up (designer tested: works well):** the goal lock could cover Sparky standing on the goal
+(it hovers in front of the goal, towards the camera). Added theme **Goal Lock Up Offset** (default 0)
+to move it up on screen so it floats above the goal instead; **Goal Lock Height** = distance out
+from the board face. Both update live in the editor — to be tuned by the designer.
+
+**Designer to do:** gate prefabs `Gate_1` / `Gate_2` (Closed + Open children + LockVisual), theme
+Gate Prefab + Gate Variants; `Data_Pickup` and `Goal_Lock` prefabs (upright, facing the camera) into
+theme Data Prefab / Goal Lock Prefab; test a level with data, a normal gate and an AND gate.
+
 ## 2026-10-01 (later) — audio: music, SFX, volume sliders, typing dialog
 
 **Assets** (`Assets/Import Asset/Sounds/`): `InnerSparkOSTgameplay`, `SFX_Buttonclick`,

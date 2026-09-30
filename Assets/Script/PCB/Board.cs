@@ -20,6 +20,8 @@ namespace Pcb
             public GameObject traceBend;
             [Tooltip("Default model for every node of that type on this level (a node's own Model still wins).")]
             public GameObject capacitor, via, start, goal, switchNode, andSwitch;
+            [Tooltip("Default gate model on this level (a gate's own Model still wins).")]
+            public GameObject gate;
 
             public GameObject For(NodeType type) => type switch
             {
@@ -229,8 +231,21 @@ namespace Pcb
         public GameObject NodeModel(PcbNode node) => node.model ? node.model : DefaultNodeModel(node.type);
         public GameObject DecorationModel(PcbDecoration decor) =>
             decor.model ? decor.model : theme ? theme.GetDecorationPrefab(decor.type) : null;
+        public GameObject GateModel(GateMechanic gate) =>
+            gate.model ? gate.model : look.gate ? look.gate : theme ? theme.gatePrefab : null;
 
         // ---------------------------------------------------------------- data / goal lock
+
+        /// <summary>This level has data pickups at all (its goal shows a lock until they're collected).</summary>
+        public bool HasData
+        {
+            get
+            {
+                foreach (var n in nodes)
+                    if (n && n.TryGetComponent(out DataMechanic _)) return true;
+                return false;
+            }
+        }
 
         /// <summary>True while any data pickup on the board is uncollected: the Goal doesn't win yet.</summary>
         public bool GoalLocked
@@ -253,7 +268,7 @@ namespace Pcb
             return result;
         }
 
-        /// <summary>Shows every goal unlocked; returns their looks (e.g. for an effect).</summary>
+        /// <summary>Sends every goal's hovering lock away; returns the goals' looks (e.g. for an effect).</summary>
         public List<Transform> UnlockGoals()
         {
             var result = new List<Transform>();
@@ -262,7 +277,7 @@ namespace Pcb
                 if (!n || n.type != NodeType.Goal) continue;
                 foreach (var look in VisualsOf(n))
                 {
-                    BoardVisuals.SetLocked(look, false, theme ? theme.lockedGoalTint : Color.gray);
+                    foreach (var hover in look.GetComponentsInChildren<HoverVisual>()) hover.Dismiss();
                     result.Add(look);
                 }
             }
@@ -301,7 +316,7 @@ namespace Pcb
                 if (!Application.isPlaying) Add(JsonUtility.ToJson(theme).GetHashCode()); // live theme tweaks while editing
                 Add(sizeInCells.x); Add(sizeInCells.y); Add(Mathf.RoundToInt(cellSize * 1000f));
                 Add(Id(look.boardTile)); Add(Id(look.trace)); Add(Id(look.traceBend));
-                Add(Id(look.capacitor)); Add(Id(look.via)); Add(Id(look.start)); Add(Id(look.goal)); Add(Id(look.switchNode)); Add(Id(look.andSwitch));
+                Add(Id(look.capacitor)); Add(Id(look.via)); Add(Id(look.start)); Add(Id(look.goal)); Add(Id(look.switchNode)); Add(Id(look.andSwitch)); Add(Id(look.gate));
                 foreach (var n in nodes)
                 {
                     if (!n) continue; // can go missing mid-rebuild (deleted via Undo/Erase while editing)
@@ -316,6 +331,7 @@ namespace Pcb
                     if (!t) continue;
                     Add(Id(t)); Add(Id(t.from)); Add(Id(t.to));
                     Add((int)t.layer); Add(t.bends.Count);
+                    if (t.TryGetComponent(out GateMechanic gate)) { Add(Id(gate.model)); Add(gate.ShownOpen ? 1 : 2); }
                     foreach (var b in t.bends) AddV(b);
                 }
                 foreach (var d in decorations)
