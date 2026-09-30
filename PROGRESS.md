@@ -5,6 +5,25 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 
 ---
 
+## 2026-09-30 (evening) — bug fix: spark moving two steps
+
+- **Bug:** after reaching a node the spark sometimes took a second step with no new input.
+- **Cause:** `Spark.ReadInput` counted *any change* of the 8-way direction as a new press — including
+  a key going **up**. Letting go of a diagonal (W+D) almost never releases both keys in the same
+  frame, so for a moment only one key is held → read as a fresh "right"/"up" → an extra move queued,
+  played on arrival. (Also: hold D, tap W, release W → D counted again.) Pre-existing flaw in the
+  sector logic, made common by 8-way movement.
+- **Fix:** input is tracked per axis (-1/0/1); only an axis that becomes active or reverses (a key
+  going down) is a press — releases never are. Queued directions snap to the 8 directions. Nghia's
+  80 ms window to combine two keys into a diagonal is unchanged; pause/lock behaviour unchanged.
+- Compiles; **to test in Unity:** diagonal moves then release (no extra step), hold a key through a
+  move (no repeat), quick two-key diagonal still works, gamepad stick/D-pad.
+- **Follow-up — double tap = two steps:** not stuck input but the move queue: a press made while the
+  spark was moving/animating was always kept and played on arrival, and with Sparky's animations a
+  move takes 0.6 s+. Now only a press made within **`Spark.inputBuffer`** (default **0.15 s**) of the
+  spark becoming ready is carried over; older presses are forgotten. Same for Space (flip/switch).
+  Tunable on the Spark component (`Spark_Sparky` prefab); 0 = no carry-over at all.
+
 ## 2026-09-30 (later) — normal & AND switches, Link tool, no in-game text
 
 **Designer's rules:** two switch kinds, chosen when placing the node. **Normal switch**: a gate can

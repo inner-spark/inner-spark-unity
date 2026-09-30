@@ -10,7 +10,8 @@ namespace Pcb
     /// The player: a glowing sphere riding on the board. Waits on a node, takes a direction, then slides
     /// along the trace at a fixed speed until the next node. On a via, Flip turns the board over and the
     /// spark passes through to the other side. Directions are read on screen, so they stay intuitive
-    /// when the board is showing its (mirrored) back. Inputs pressed while moving are used on arrival.
+    /// when the board is showing its (mirrored) back. An input pressed just before the spark is ready
+    /// (within 'inputBuffer' seconds) is used on arrival; older ones are forgotten.
     ///
     /// With a character 'model' assigned (the Spark prefab on the LevelManager), the sphere is replaced:
     /// the character shrinks away (MoveStart), travels as electricity (travel VFX), reappears at the next
@@ -20,6 +21,8 @@ namespace Pcb
     {
         [Tooltip("World units per second. Fixed for the whole game.")]
         public float speed = 8f;
+        [Tooltip("A move/flip pressed at most this many seconds before the spark is ready (still moving or animating) is carried over; earlier presses are forgotten, so a double tap is one step. 0 = never carry over.")]
+        [Min(0f)] public float inputBuffer = 0.15f;
 
         [Header("Character (optional, empty = the glowing sphere)")]
         [Tooltip("Child object holding the character. Its position/rotation in the prefab is how it sits on the FRONT side; the back side is mirrored automatically.")]
@@ -71,8 +74,9 @@ namespace Pcb
 
         BoardRig rig;
         InputAction moveAction, flipAction;
-        int lastSector = -1;
+        Vector2Int lastAxes;
         bool hasQueuedMove, hasQueuedFlip;
+        float moveQueuedAt, flipQueuedAt;
         Vector2 queuedMove;
 
         Board.Exit travelling;
@@ -206,6 +210,11 @@ namespace Pcb
 
             if (!IsMoving && !IsBusy && !InputLocked && enabled) // locked: intro dialog showing, or the goal was reached
             {
+                // Only carry over a press made shortly before now; an older one (e.g. the second tap of a
+                // double tap, made while the first move was still playing) is forgotten.
+                if (hasQueuedFlip && Time.time - flipQueuedAt > inputBuffer) hasQueuedFlip = false;
+                if (hasQueuedMove && Time.time - moveQueuedAt > inputBuffer) hasQueuedMove = false;
+
                 if (hasQueuedFlip) { hasQueuedFlip = false; TryFlip(); }
                 else if (hasQueuedMove) { hasQueuedMove = false; TryMove(ScreenToBoard(queuedMove)); }
             }
@@ -219,38 +228,34 @@ namespace Pcb
             // Paused / locked: drop anything queued so nothing fires the moment play resumes.
             bool paused = PauseMenu.GamePaused || InputLocked;
             if (paused) { hasQueuedMove = hasQueuedFlip = false; inputGraceTimer = 0f; }
-            else if (flipAction.WasPressedThisFrame()) hasQueuedFlip = true;
+            else if (flipAction.WasPressedThisFrame()) { hasQueuedFlip = true; flipQueuedAt = Time.time; }
 
+            // Per-axis direction held (-1, 0, 1). Only an axis that becomes active or reverses is a press:
+            // letting go of a key never is, so releasing one key of a diagonal a moment before the other
+            // (which leaves e.g. just "right" held for a frame) doesn't queue an extra move. Holding a key
+            // doesn't repeat either. Tracked while paused too, so a key held through Resume isn't a press.
             Vector2 v = moveAction.ReadValue<Vector2>();
+            var axes = new Vector2Int(Axis(v.x), Axis(v.y));
+            bool pressed = (axes.x != 0 && axes.x != lastAxes.x) || (axes.y != 0 && axes.y != lastAxes.y);
+            lastAxes = axes;
 
             if (inputGraceTimer > 0f)
             {
                 if (!paused)
                 {
                     inputGraceTimer -= Time.deltaTime;
-                    if (v.sqrMagnitude >= 0.25f)
-                    {
-                        queuedMove = v.normalized;
-                        lastSector = Mathf.RoundToInt(Mathf.Atan2(v.y, v.x) / (Mathf.PI * 0.25f)) & 7;
-                    }
-                    if (inputGraceTimer <= 0f)
-                    {
-                        hasQueuedMove = true;
-                    }
+                    if (axes != Vector2Int.zero) queuedMove = ((Vector2)axes).normalized; // combine rolling presses into one diagonal
+                    if (inputGraceTimer <= 0f) { hasQueuedMove = true; moveQueuedAt = Time.time; }
                 }
                 return;
             }
 
-            if (v.sqrMagnitude < 0.25f) { lastSector = -1; return; }
-            // Treat each new 8-way direction as a fresh press, so holding keys doesn't auto-repeat.
-            int sector = Mathf.RoundToInt(Mathf.Atan2(v.y, v.x) / (Mathf.PI * 0.25f)) & 7;
-            if (sector == lastSector) return;
-            lastSector = sector; // still tracked while paused, so a key held through Resume doesn't count as a new press
-            if (paused) return;
-
-            queuedMove = v.normalized;
+            if (!pressed || paused) return;
+            queuedMove = ((Vector2)axes).normalized;
             inputGraceTimer = 0.08f; // 80ms grace window to combine rolling inputs
         }
+
+        static int Axis(float value) => value > 0.5f ? 1 : value < -0.5f ? -1 : 0;
 
         /// <summary>The back of the board is seen mirrored, so screen-right is board-left there.</summary>
         Vector2 ScreenToBoard(Vector2 v) => Board.View == PcbLayer.Back ? new Vector2(-v.x, v.y) : v;
