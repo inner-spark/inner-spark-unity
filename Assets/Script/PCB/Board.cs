@@ -100,13 +100,16 @@ namespace Pcb
         void Update()
         {
             if (Application.isPlaying) return;
-            showBothSides = true; // editing: everything visible, the editor draws the hidden side as a ghost
             Rebuild();
         }
 
         /// <summary>Re-collects nodes and traces, rebuilds the movement graph and (if anything changed) the 3D look.</summary>
         public void Rebuild()
         {
+            // Editing: everything visible, the editor draws the hidden side as a ghost. Set here rather than only
+            // in Update, so a Rebuild called straight away (Level Editor Load / New Level) doesn't build the look
+            // with the back side hidden - it would stay hidden, since nothing re-applies it until the level changes.
+            if (!Application.isPlaying) showBothSides = true;
             nodes.Clear();
             foreach (var c in GetComponentsInChildren<PcbNode>(true))
                 if ((c.gameObject.hideFlags & HideFlags.DontSave) == 0) nodes.Add(c);

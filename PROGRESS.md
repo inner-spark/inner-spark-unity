@@ -5,6 +5,19 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 
 ---
 
+## 2026-10-01 — bug fix: Level Editor Load hid the back side
+
+- **Bug:** after **Load** in the Level Editor, everything on the back side was invisible in the Scene
+  view (until something in the level changed).
+- **Cause:** `Board` only switched to "show both sides" (edit mode) in its own `Update`, but Load calls
+  `board.Rebuild()` straight away on the freshly loaded copy — before its first `Update` — so the
+  look was built with only the front visible. The next `Update` turned the flag on, but `Rebuild` only
+  re-applies visibility when the level content changed, so the back stayed hidden. (New Level had the
+  same path; unnoticed because an empty board has nothing on the back.)
+- **Fix:** `Board.Rebuild` itself sets "show both sides" in edit mode, whoever calls it. Play mode
+  unchanged (only the current side is shown).
+- Compiles; **to test:** Load a level with back-side nodes/traces → visible straight away.
+
 ## 2026-09-30 (night) — Data pickups lock the goal
 
 **Designer's rules:** "Data" pickups sit on **capacitors only**. The spark collects one by stopping
