@@ -1,0 +1,3755 @@
+{
+ "levels": [
+  {
+   "name": "Claude lvl 11",
+   "number": 11,
+   "sizeX": 7,
+   "sizeY": 8,
+   "nodes": [
+    {
+     "id": "S",
+     "type": "start",
+     "side": "F",
+     "x": 0,
+     "y": 1,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "D1",
+     "type": "cap",
+     "side": "F",
+     "x": 1,
+     "y": 5,
+     "data": true,
+     "passColour": ""
+    },
+    {
+     "id": "A1",
+     "type": "and",
+     "side": "F",
+     "x": 5,
+     "y": 6,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "C1",
+     "type": "cap",
+     "side": "F",
+     "x": 4,
+     "y": 3,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "V1",
+     "type": "via",
+     "side": "V",
+     "x": 7,
+     "y": 2,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "V2",
+     "type": "via",
+     "side": "V",
+     "x": 7,
+     "y": 7,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "A2",
+     "type": "and",
+     "side": "B",
+     "x": 4,
+     "y": 8,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "D2",
+     "type": "cap",
+     "side": "B",
+     "x": 0,
+     "y": 7,
+     "data": true,
+     "passColour": ""
+    },
+    {
+     "id": "C3",
+     "type": "cap",
+     "side": "B",
+     "x": 3,
+     "y": 4,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "G",
+     "type": "goal",
+     "side": "B",
+     "x": 1,
+     "y": 3,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X1",
+     "type": "via",
+     "side": "V",
+     "x": 7,
+     "y": 0,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X1c",
+     "type": "cap",
+     "side": "F",
+     "x": 5,
+     "y": 0,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X2",
+     "type": "cap",
+     "side": "B",
+     "x": 0,
+     "y": 5,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X3",
+     "type": "cap",
+     "side": "B",
+     "x": 3,
+     "y": 1,
+     "data": false,
+     "passColour": ""
+    }
+   ],
+   "traces": [
+    {
+     "a": "S",
+     "b": "D1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 0,
+       "y": 4
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "D1",
+     "b": "A1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 4,
+       "y": 5
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "A1",
+     "b": "C1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 5,
+       "y": 4
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "S",
+     "b": "C1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 2,
+       "y": 3
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "C1",
+     "b": "V1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 5,
+       "y": 2
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "A1",
+     "b": "V2",
+     "side": "F",
+     "bends": [
+      {
+       "x": 6,
+       "y": 7
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "V2",
+     "b": "A2",
+     "side": "B",
+     "bends": [
+      {
+       "x": 5,
+       "y": 7
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "A2",
+     "b": "D2",
+     "side": "B",
+     "bends": [
+      {
+       "x": 1,
+       "y": 8
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "V1",
+     "b": "C3",
+     "side": "B",
+     "bends": [
+      {
+       "x": 5,
+       "y": 2
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "C3",
+     "b": "G",
+     "side": "B",
+     "bends": [
+      {
+       "x": 2,
+       "y": 3
+      }
+     ],
+     "gate": "and",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": [
+      "A1",
+      "A2"
+     ]
+    },
+    {
+     "a": "V1",
+     "b": "X1",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "X1",
+     "b": "X1c",
+     "side": "F",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "D2",
+     "b": "X2",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "G",
+     "b": "X3",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    }
+   ]
+  },
+  {
+   "name": "Claude lvl 12",
+   "number": 12,
+   "sizeX": 8,
+   "sizeY": 7,
+   "nodes": [
+    {
+     "id": "S",
+     "type": "start",
+     "side": "F",
+     "x": 1,
+     "y": 2,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "N1",
+     "type": "sw",
+     "side": "F",
+     "x": 4,
+     "y": 4,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "C1",
+     "type": "cap",
+     "side": "F",
+     "x": 3,
+     "y": 6,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "D2",
+     "type": "cap",
+     "side": "F",
+     "x": 0,
+     "y": 5,
+     "data": true,
+     "passColour": ""
+    },
+    {
+     "id": "A2",
+     "type": "and",
+     "side": "F",
+     "x": 7,
+     "y": 7,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "C2",
+     "type": "cap",
+     "side": "F",
+     "x": 3,
+     "y": 1,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "A1",
+     "type": "and",
+     "side": "F",
+     "x": 6,
+     "y": 0,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "V1",
+     "type": "via",
+     "side": "V",
+     "x": 7,
+     "y": 3,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "D1",
+     "type": "cap",
+     "side": "B",
+     "x": 6,
+     "y": 6,
+     "data": true,
+     "passColour": ""
+    },
+    {
+     "id": "G",
+     "type": "goal",
+     "side": "B",
+     "x": 2,
+     "y": 4,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X1",
+     "type": "via",
+     "side": "V",
+     "x": 1,
+     "y": 0,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X1c",
+     "type": "cap",
+     "side": "B",
+     "x": 3,
+     "y": 2,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X2",
+     "type": "cap",
+     "side": "B",
+     "x": 8,
+     "y": 6,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X3",
+     "type": "cap",
+     "side": "B",
+     "x": 4,
+     "y": 6,
+     "data": false,
+     "passColour": ""
+    }
+   ],
+   "traces": [
+    {
+     "a": "S",
+     "b": "N1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 3,
+       "y": 4
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "N1",
+     "b": "C1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 3,
+       "y": 5
+      }
+     ],
+     "gate": "normal",
+     "gateOpen": true,
+     "gateInverted": false,
+     "switches": [
+      "N1"
+     ]
+    },
+    {
+     "a": "C1",
+     "b": "D2",
+     "side": "F",
+     "bends": [
+      {
+       "x": 2,
+       "y": 5
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "C1",
+     "b": "A2",
+     "side": "F",
+     "bends": [
+      {
+       "x": 4,
+       "y": 7
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "N1",
+     "b": "C2",
+     "side": "F",
+     "bends": [
+      {
+       "x": 3,
+       "y": 3
+      }
+     ],
+     "gate": "normal",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": [
+      "N1"
+     ]
+    },
+    {
+     "a": "C2",
+     "b": "A1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 4,
+       "y": 0
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "N1",
+     "b": "V1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 5,
+       "y": 3
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "V1",
+     "b": "D1",
+     "side": "B",
+     "bends": [
+      {
+       "x": 7,
+       "y": 5
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "V1",
+     "b": "G",
+     "side": "B",
+     "bends": [
+      {
+       "x": 3,
+       "y": 3
+      }
+     ],
+     "gate": "and",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": [
+      "A1",
+      "A2"
+     ]
+    },
+    {
+     "a": "S",
+     "b": "X1",
+     "side": "F",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "X1",
+     "b": "X1c",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "D1",
+     "b": "X2",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "G",
+     "b": "X3",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    }
+   ]
+  },
+  {
+   "name": "Claude lvl 13",
+   "number": 13,
+   "sizeX": 9,
+   "sizeY": 9,
+   "nodes": [
+    {
+     "id": "S",
+     "type": "start",
+     "side": "F",
+     "x": 9,
+     "y": 9,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "HR",
+     "type": "holder",
+     "side": "F",
+     "x": 4,
+     "y": 8,
+     "data": false,
+     "passColour": "Red"
+    },
+    {
+     "id": "LR",
+     "type": "lock",
+     "side": "F",
+     "x": 5,
+     "y": 5,
+     "data": false,
+     "passColour": "Red"
+    },
+    {
+     "id": "A1",
+     "type": "and",
+     "side": "F",
+     "x": 1,
+     "y": 4,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "V1",
+     "type": "via",
+     "side": "V",
+     "x": 4,
+     "y": 2,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "V2",
+     "type": "via",
+     "side": "V",
+     "x": 2,
+     "y": 9,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "HG",
+     "type": "holder",
+     "side": "B",
+     "x": 0,
+     "y": 3,
+     "data": false,
+     "passColour": "Green"
+    },
+    {
+     "id": "LG",
+     "type": "lock",
+     "side": "B",
+     "x": 9,
+     "y": 1,
+     "data": false,
+     "passColour": "Green"
+    },
+    {
+     "id": "A2",
+     "type": "and",
+     "side": "B",
+     "x": 8,
+     "y": 4,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "C",
+     "type": "cap",
+     "side": "B",
+     "x": 9,
+     "y": 8,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "G",
+     "type": "goal",
+     "side": "B",
+     "x": 4,
+     "y": 9,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X1",
+     "type": "via",
+     "side": "V",
+     "x": 7,
+     "y": 2,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X1c",
+     "type": "cap",
+     "side": "F",
+     "x": 5,
+     "y": 0,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X2",
+     "type": "cap",
+     "side": "B",
+     "x": 6,
+     "y": 9,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X3",
+     "type": "cap",
+     "side": "B",
+     "x": 4,
+     "y": 6,
+     "data": false,
+     "passColour": ""
+    }
+   ],
+   "traces": [
+    {
+     "a": "S",
+     "b": "HR",
+     "side": "F",
+     "bends": [
+      {
+       "x": 8,
+       "y": 8
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "HR",
+     "b": "LR",
+     "side": "F",
+     "bends": [
+      {
+       "x": 5,
+       "y": 7
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "LR",
+     "b": "A1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 2,
+       "y": 5
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "LR",
+     "b": "V1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 4,
+       "y": 4
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "A1",
+     "b": "V2",
+     "side": "F",
+     "bends": [
+      {
+       "x": 1,
+       "y": 8
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "V1",
+     "b": "HG",
+     "side": "B",
+     "bends": [
+      {
+       "x": 3,
+       "y": 3
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "V1",
+     "b": "LG",
+     "side": "B",
+     "bends": [
+      {
+       "x": 5,
+       "y": 1
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "LG",
+     "b": "A2",
+     "side": "B",
+     "bends": [
+      {
+       "x": 8,
+       "y": 2
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "A2",
+     "b": "C",
+     "side": "B",
+     "bends": [
+      {
+       "x": 9,
+       "y": 5
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "C",
+     "b": "G",
+     "side": "B",
+     "bends": [
+      {
+       "x": 5,
+       "y": 8
+      }
+     ],
+     "gate": "and",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": [
+      "A1",
+      "A2"
+     ]
+    },
+    {
+     "a": "V2",
+     "b": "HG",
+     "side": "B",
+     "bends": [
+      {
+       "x": 0,
+       "y": 7
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "V1",
+     "b": "X1",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "X1",
+     "b": "X1c",
+     "side": "F",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "G",
+     "b": "X2",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "G",
+     "b": "X3",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    }
+   ]
+  },
+  {
+   "name": "Claude lvl 14",
+   "number": 14,
+   "sizeX": 9,
+   "sizeY": 6,
+   "nodes": [
+    {
+     "id": "S",
+     "type": "start",
+     "side": "F",
+     "x": 8,
+     "y": 6,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "HR",
+     "type": "holder",
+     "side": "F",
+     "x": 9,
+     "y": 3,
+     "data": false,
+     "passColour": "Red"
+    },
+    {
+     "id": "LR1",
+     "type": "lock",
+     "side": "F",
+     "x": 4,
+     "y": 4,
+     "data": false,
+     "passColour": "Red"
+    },
+    {
+     "id": "V1",
+     "type": "via",
+     "side": "V",
+     "x": 1,
+     "y": 5,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "HG",
+     "type": "holder",
+     "side": "B",
+     "x": 0,
+     "y": 1,
+     "data": false,
+     "passColour": "Green"
+    },
+    {
+     "id": "LG",
+     "type": "lock",
+     "side": "B",
+     "x": 6,
+     "y": 4,
+     "data": false,
+     "passColour": "Green"
+    },
+    {
+     "id": "HR2",
+     "type": "holder",
+     "side": "B",
+     "x": 5,
+     "y": 1,
+     "data": false,
+     "passColour": "Red"
+    },
+    {
+     "id": "LR2",
+     "type": "lock",
+     "side": "B",
+     "x": 8,
+     "y": 0,
+     "data": false,
+     "passColour": "Red"
+    },
+    {
+     "id": "G",
+     "type": "goal",
+     "side": "B",
+     "x": 9,
+     "y": 3,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X1",
+     "type": "via",
+     "side": "V",
+     "x": 3,
+     "y": 1,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X1c",
+     "type": "cap",
+     "side": "F",
+     "x": 1,
+     "y": 3,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X2",
+     "type": "cap",
+     "side": "F",
+     "x": 6,
+     "y": 6,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X3",
+     "type": "cap",
+     "side": "F",
+     "x": 7,
+     "y": 1,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X4",
+     "type": "cap",
+     "side": "F",
+     "x": 4,
+     "y": 6,
+     "data": false,
+     "passColour": ""
+    }
+   ],
+   "traces": [
+    {
+     "a": "S",
+     "b": "HR",
+     "side": "F",
+     "bends": [
+      {
+       "x": 9,
+       "y": 5
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "HR",
+     "b": "LR1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 8,
+       "y": 4
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "LR1",
+     "b": "V1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 2,
+       "y": 4
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "V1",
+     "b": "HG",
+     "side": "B",
+     "bends": [
+      {
+       "x": 1,
+       "y": 2
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "V1",
+     "b": "LG",
+     "side": "B",
+     "bends": [
+      {
+       "x": 2,
+       "y": 4
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "LG",
+     "b": "HR2",
+     "side": "B",
+     "bends": [
+      {
+       "x": 5,
+       "y": 3
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "HR2",
+     "b": "LR2",
+     "side": "B",
+     "bends": [
+      {
+       "x": 6,
+       "y": 0
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "LR2",
+     "b": "G",
+     "side": "B",
+     "bends": [
+      {
+       "x": 8,
+       "y": 2
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "HR2",
+     "b": "X1",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "X1",
+     "b": "X1c",
+     "side": "F",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "LR1",
+     "b": "X2",
+     "side": "F",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "LR1",
+     "b": "X3",
+     "side": "F",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "LR1",
+     "b": "X4",
+     "side": "F",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    }
+   ]
+  },
+  {
+   "name": "Claude lvl 15",
+   "number": 15,
+   "sizeX": 6,
+   "sizeY": 8,
+   "nodes": [
+    {
+     "id": "S",
+     "type": "start",
+     "side": "F",
+     "x": 6,
+     "y": 0,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "N1",
+     "type": "sw",
+     "side": "F",
+     "x": 4,
+     "y": 1,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "C1",
+     "type": "cap",
+     "side": "F",
+     "x": 0,
+     "y": 0,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "D1",
+     "type": "cap",
+     "side": "F",
+     "x": 4,
+     "y": 4,
+     "data": true,
+     "passColour": ""
+    },
+    {
+     "id": "N2",
+     "type": "sw",
+     "side": "F",
+     "x": 6,
+     "y": 3,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "D3",
+     "type": "cap",
+     "side": "F",
+     "x": 2,
+     "y": 7,
+     "data": true,
+     "passColour": ""
+    },
+    {
+     "id": "V1",
+     "type": "via",
+     "side": "V",
+     "x": 1,
+     "y": 2,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "D2",
+     "type": "cap",
+     "side": "B",
+     "x": 2,
+     "y": 5,
+     "data": true,
+     "passColour": ""
+    },
+    {
+     "id": "G",
+     "type": "goal",
+     "side": "B",
+     "x": 4,
+     "y": 3,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X1",
+     "type": "via",
+     "side": "V",
+     "x": 5,
+     "y": 8,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X1c",
+     "type": "cap",
+     "side": "F",
+     "x": 5,
+     "y": 6,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X2",
+     "type": "via",
+     "side": "V",
+     "x": 0,
+     "y": 7,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X2c",
+     "type": "cap",
+     "side": "F",
+     "x": 0,
+     "y": 5,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X3",
+     "type": "cap",
+     "side": "B",
+     "x": 2,
+     "y": 7,
+     "data": false,
+     "passColour": ""
+    }
+   ],
+   "traces": [
+    {
+     "a": "S",
+     "b": "N1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 5,
+       "y": 0
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "N1",
+     "b": "C1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 3,
+       "y": 0
+      }
+     ],
+     "gate": "normal",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": [
+      "N1",
+      "N2"
+     ]
+    },
+    {
+     "a": "N1",
+     "b": "D1",
+     "side": "F",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "D1",
+     "b": "N2",
+     "side": "F",
+     "bends": [
+      {
+       "x": 5,
+       "y": 4
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "C1",
+     "b": "V1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 0,
+       "y": 1
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "V1",
+     "b": "D3",
+     "side": "F",
+     "bends": [
+      {
+       "x": 2,
+       "y": 3
+      }
+     ],
+     "gate": "normal",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": [
+      "N1"
+     ]
+    },
+    {
+     "a": "V1",
+     "b": "D2",
+     "side": "B",
+     "bends": [
+      {
+       "x": 1,
+       "y": 4
+      }
+     ],
+     "gate": "normal",
+     "gateOpen": true,
+     "gateInverted": false,
+     "switches": [
+      "N1"
+     ]
+    },
+    {
+     "a": "V1",
+     "b": "G",
+     "side": "B",
+     "bends": [
+      {
+       "x": 2,
+       "y": 3
+      }
+     ],
+     "gate": "normal",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": [
+      "N2"
+     ]
+    },
+    {
+     "a": "D2",
+     "b": "X1",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "X1",
+     "b": "X1c",
+     "side": "F",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "D2",
+     "b": "X2",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "X2",
+     "b": "X2c",
+     "side": "F",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "D2",
+     "b": "X3",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    }
+   ]
+  },
+  {
+   "name": "Claude lvl 16",
+   "number": 16,
+   "sizeX": 8,
+   "sizeY": 9,
+   "nodes": [
+    {
+     "id": "S",
+     "type": "start",
+     "side": "F",
+     "x": 2,
+     "y": 8,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "HG",
+     "type": "holder",
+     "side": "F",
+     "x": 0,
+     "y": 9,
+     "data": false,
+     "passColour": "Green"
+    },
+    {
+     "id": "LG",
+     "type": "lock",
+     "side": "F",
+     "x": 1,
+     "y": 5,
+     "data": false,
+     "passColour": "Green"
+    },
+    {
+     "id": "HR",
+     "type": "holder",
+     "side": "F",
+     "x": 0,
+     "y": 3,
+     "data": false,
+     "passColour": "Red"
+    },
+    {
+     "id": "LR",
+     "type": "lock",
+     "side": "F",
+     "x": 4,
+     "y": 1,
+     "data": false,
+     "passColour": "Red"
+    },
+    {
+     "id": "V1",
+     "type": "via",
+     "side": "V",
+     "x": 6,
+     "y": 2,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "LG2",
+     "type": "lock",
+     "side": "F",
+     "x": 7,
+     "y": 9,
+     "data": false,
+     "passColour": "Green"
+    },
+    {
+     "id": "A1",
+     "type": "and",
+     "side": "F",
+     "x": 5,
+     "y": 5,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "A2",
+     "type": "and",
+     "side": "B",
+     "x": 3,
+     "y": 1,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "G",
+     "type": "goal",
+     "side": "B",
+     "x": 4,
+     "y": 6,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X1",
+     "type": "via",
+     "side": "V",
+     "x": 8,
+     "y": 0,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X1c",
+     "type": "cap",
+     "side": "F",
+     "x": 6,
+     "y": 0,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X2",
+     "type": "via",
+     "side": "V",
+     "x": 0,
+     "y": 7,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X2c",
+     "type": "cap",
+     "side": "B",
+     "x": 2,
+     "y": 5,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X3",
+     "type": "cap",
+     "side": "B",
+     "x": 6,
+     "y": 4,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X4",
+     "type": "cap",
+     "side": "F",
+     "x": 4,
+     "y": 8,
+     "data": false,
+     "passColour": ""
+    }
+   ],
+   "traces": [
+    {
+     "a": "S",
+     "b": "HG",
+     "side": "F",
+     "bends": [
+      {
+       "x": 1,
+       "y": 9
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "HG",
+     "b": "LG",
+     "side": "F",
+     "bends": [
+      {
+       "x": 1,
+       "y": 8
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "LG",
+     "b": "HR",
+     "side": "F",
+     "bends": [
+      {
+       "x": 1,
+       "y": 4
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "HR",
+     "b": "LR",
+     "side": "F",
+     "bends": [
+      {
+       "x": 2,
+       "y": 3
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "LR",
+     "b": "V1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 5,
+       "y": 2
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "S",
+     "b": "LG2",
+     "side": "F",
+     "bends": [
+      {
+       "x": 3,
+       "y": 9
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "LG2",
+     "b": "A1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 5,
+       "y": 7
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "V1",
+     "b": "A2",
+     "side": "B",
+     "bends": [
+      {
+       "x": 5,
+       "y": 1
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "A2",
+     "b": "G",
+     "side": "B",
+     "bends": [
+      {
+       "x": 3,
+       "y": 5
+      }
+     ],
+     "gate": "and",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": [
+      "A1",
+      "A2"
+     ]
+    },
+    {
+     "a": "V1",
+     "b": "X1",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "X1",
+     "b": "X1c",
+     "side": "F",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "HG",
+     "b": "X2",
+     "side": "F",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "X2",
+     "b": "X2c",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "G",
+     "b": "X3",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "S",
+     "b": "X4",
+     "side": "F",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    }
+   ]
+  },
+  {
+   "name": "Claude lvl 17",
+   "number": 17,
+   "sizeX": 10,
+   "sizeY": 10,
+   "nodes": [
+    {
+     "id": "S",
+     "type": "start",
+     "side": "F",
+     "x": 10,
+     "y": 1,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "HR",
+     "type": "holder",
+     "side": "F",
+     "x": 5,
+     "y": 0,
+     "data": false,
+     "passColour": "Red"
+    },
+    {
+     "id": "A1",
+     "type": "and",
+     "side": "F",
+     "x": 1,
+     "y": 1,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "LG",
+     "type": "lock",
+     "side": "F",
+     "x": 6,
+     "y": 3,
+     "data": false,
+     "passColour": "Green"
+    },
+    {
+     "id": "D1",
+     "type": "cap",
+     "side": "F",
+     "x": 5,
+     "y": 7,
+     "data": true,
+     "passColour": ""
+    },
+    {
+     "id": "V0",
+     "type": "via",
+     "side": "V",
+     "x": 9,
+     "y": 5,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "V1",
+     "type": "via",
+     "side": "V",
+     "x": 1,
+     "y": 5,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "HG",
+     "type": "holder",
+     "side": "B",
+     "x": 10,
+     "y": 7,
+     "data": false,
+     "passColour": "Green"
+    },
+    {
+     "id": "LR",
+     "type": "lock",
+     "side": "B",
+     "x": 6,
+     "y": 4,
+     "data": false,
+     "passColour": "Red"
+    },
+    {
+     "id": "D2",
+     "type": "cap",
+     "side": "B",
+     "x": 6,
+     "y": 0,
+     "data": true,
+     "passColour": ""
+    },
+    {
+     "id": "A2",
+     "type": "and",
+     "side": "B",
+     "x": 2,
+     "y": 8,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "G",
+     "type": "goal",
+     "side": "B",
+     "x": 2,
+     "y": 0,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X1",
+     "type": "via",
+     "side": "V",
+     "x": 8,
+     "y": 7,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X1c",
+     "type": "cap",
+     "side": "B",
+     "x": 10,
+     "y": 9,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X2",
+     "type": "via",
+     "side": "V",
+     "x": 0,
+     "y": 8,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X2c",
+     "type": "cap",
+     "side": "F",
+     "x": 2,
+     "y": 10,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X3",
+     "type": "cap",
+     "side": "B",
+     "x": 9,
+     "y": 0,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X4",
+     "type": "cap",
+     "side": "F",
+     "x": 6,
+     "y": 5,
+     "data": false,
+     "passColour": ""
+    }
+   ],
+   "traces": [
+    {
+     "a": "S",
+     "b": "HR",
+     "side": "F",
+     "bends": [
+      {
+       "x": 6,
+       "y": 1
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "HR",
+     "b": "A1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 2,
+       "y": 0
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "HR",
+     "b": "LG",
+     "side": "F",
+     "bends": [
+      {
+       "x": 5,
+       "y": 2
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "LG",
+     "b": "D1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 5,
+       "y": 4
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "LG",
+     "b": "V1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 3,
+       "y": 3
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "S",
+     "b": "V0",
+     "side": "F",
+     "bends": [
+      {
+       "x": 9,
+       "y": 2
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "V0",
+     "b": "HG",
+     "side": "B",
+     "bends": [
+      {
+       "x": 9,
+       "y": 6
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "V0",
+     "b": "LR",
+     "side": "B",
+     "bends": [
+      {
+       "x": 7,
+       "y": 5
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "LR",
+     "b": "D2",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "LR",
+     "b": "V1",
+     "side": "B",
+     "bends": [
+      {
+       "x": 5,
+       "y": 5
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "V1",
+     "b": "A2",
+     "side": "B",
+     "bends": [
+      {
+       "x": 2,
+       "y": 6
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "V1",
+     "b": "G",
+     "side": "B",
+     "bends": [
+      {
+       "x": 2,
+       "y": 4
+      }
+     ],
+     "gate": "and",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": [
+      "A1",
+      "A2"
+     ]
+    },
+    {
+     "a": "D1",
+     "b": "X1",
+     "side": "F",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "X1",
+     "b": "X1c",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "A2",
+     "b": "X2",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "X2",
+     "b": "X2c",
+     "side": "F",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "D2",
+     "b": "X3",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "V0",
+     "b": "X4",
+     "side": "F",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    }
+   ]
+  },
+  {
+   "name": "Claude lvl 18",
+   "number": 18,
+   "sizeX": 9,
+   "sizeY": 9,
+   "nodes": [
+    {
+     "id": "S",
+     "type": "start",
+     "side": "F",
+     "x": 9,
+     "y": 9,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "N1",
+     "type": "sw",
+     "side": "F",
+     "x": 5,
+     "y": 8,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "C1",
+     "type": "cap",
+     "side": "F",
+     "x": 1,
+     "y": 9,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "D1",
+     "type": "cap",
+     "side": "F",
+     "x": 0,
+     "y": 5,
+     "data": true,
+     "passColour": ""
+    },
+    {
+     "id": "HR",
+     "type": "holder",
+     "side": "F",
+     "x": 6,
+     "y": 4,
+     "data": false,
+     "passColour": "Red"
+    },
+    {
+     "id": "V1",
+     "type": "via",
+     "side": "V",
+     "x": 5,
+     "y": 0,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "V2",
+     "type": "via",
+     "side": "V",
+     "x": 1,
+     "y": 0,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "LR",
+     "type": "lock",
+     "side": "B",
+     "x": 9,
+     "y": 1,
+     "data": false,
+     "passColour": "Red"
+    },
+    {
+     "id": "A1",
+     "type": "and",
+     "side": "B",
+     "x": 8,
+     "y": 6,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "D2",
+     "type": "cap",
+     "side": "B",
+     "x": 9,
+     "y": 9,
+     "data": true,
+     "passColour": ""
+    },
+    {
+     "id": "A2",
+     "type": "and",
+     "side": "B",
+     "x": 0,
+     "y": 6,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "G",
+     "type": "goal",
+     "side": "B",
+     "x": 5,
+     "y": 4,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X1",
+     "type": "via",
+     "side": "V",
+     "x": 3,
+     "y": 6,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X1c",
+     "type": "cap",
+     "side": "F",
+     "x": 5,
+     "y": 6,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X2",
+     "type": "via",
+     "side": "V",
+     "x": 7,
+     "y": 2,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X2c",
+     "type": "cap",
+     "side": "F",
+     "x": 9,
+     "y": 2,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X3",
+     "type": "cap",
+     "side": "F",
+     "x": 3,
+     "y": 0,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X4",
+     "type": "cap",
+     "side": "F",
+     "x": 1,
+     "y": 7,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X5",
+     "type": "cap",
+     "side": "B",
+     "x": 5,
+     "y": 2,
+     "data": false,
+     "passColour": ""
+    }
+   ],
+   "traces": [
+    {
+     "a": "S",
+     "b": "N1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 6,
+       "y": 9
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "N1",
+     "b": "C1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 2,
+       "y": 8
+      }
+     ],
+     "gate": "normal",
+     "gateOpen": true,
+     "gateInverted": false,
+     "switches": [
+      "N1"
+     ]
+    },
+    {
+     "a": "C1",
+     "b": "D1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 0,
+       "y": 8
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "D1",
+     "b": "V2",
+     "side": "F",
+     "bends": [
+      {
+       "x": 0,
+       "y": 1
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "N1",
+     "b": "HR",
+     "side": "F",
+     "bends": [
+      {
+       "x": 6,
+       "y": 7
+      }
+     ],
+     "gate": "normal",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": [
+      "N1"
+     ]
+    },
+    {
+     "a": "HR",
+     "b": "V1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 6,
+       "y": 1
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "V1",
+     "b": "LR",
+     "side": "B",
+     "bends": [
+      {
+       "x": 8,
+       "y": 0
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "LR",
+     "b": "A1",
+     "side": "B",
+     "bends": [
+      {
+       "x": 9,
+       "y": 5
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "A1",
+     "b": "D2",
+     "side": "B",
+     "bends": [
+      {
+       "x": 8,
+       "y": 8
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "V2",
+     "b": "A2",
+     "side": "B",
+     "bends": [
+      {
+       "x": 0,
+       "y": 1
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "A1",
+     "b": "G",
+     "side": "B",
+     "bends": [
+      {
+       "x": 6,
+       "y": 4
+      }
+     ],
+     "gate": "and",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": [
+      "A1",
+      "A2"
+     ]
+    },
+    {
+     "a": "A2",
+     "b": "G",
+     "side": "B",
+     "bends": [
+      {
+       "x": 2,
+       "y": 4
+      }
+     ],
+     "gate": "and",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": [
+      "A1",
+      "A2"
+     ]
+    },
+    {
+     "a": "A2",
+     "b": "X1",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "X1",
+     "b": "X1c",
+     "side": "F",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "G",
+     "b": "X2",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "X2",
+     "b": "X2c",
+     "side": "F",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "V1",
+     "b": "X3",
+     "side": "F",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "C1",
+     "b": "X4",
+     "side": "F",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "G",
+     "b": "X5",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    }
+   ]
+  },
+  {
+   "name": "Claude lvl 19",
+   "number": 19,
+   "sizeX": 7,
+   "sizeY": 8,
+   "nodes": [
+    {
+     "id": "S",
+     "type": "start",
+     "side": "F",
+     "x": 7,
+     "y": 4,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "N1",
+     "type": "sw",
+     "side": "F",
+     "x": 6,
+     "y": 2,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "C1",
+     "type": "cap",
+     "side": "F",
+     "x": 4,
+     "y": 6,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "HR",
+     "type": "holder",
+     "side": "F",
+     "x": 3,
+     "y": 8,
+     "data": false,
+     "passColour": "Red"
+    },
+    {
+     "id": "A1",
+     "type": "and",
+     "side": "F",
+     "x": 0,
+     "y": 5,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "V1",
+     "type": "via",
+     "side": "V",
+     "x": 2,
+     "y": 2,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "D1",
+     "type": "cap",
+     "side": "F",
+     "x": 4,
+     "y": 1,
+     "data": true,
+     "passColour": ""
+    },
+    {
+     "id": "LR",
+     "type": "lock",
+     "side": "B",
+     "x": 4,
+     "y": 3,
+     "data": false,
+     "passColour": "Red"
+    },
+    {
+     "id": "A2",
+     "type": "and",
+     "side": "B",
+     "x": 6,
+     "y": 2,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "D2",
+     "type": "cap",
+     "side": "B",
+     "x": 7,
+     "y": 5,
+     "data": true,
+     "passColour": ""
+    },
+    {
+     "id": "G",
+     "type": "goal",
+     "side": "B",
+     "x": 1,
+     "y": 5,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X1",
+     "type": "via",
+     "side": "V",
+     "x": 7,
+     "y": 7,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X1c",
+     "type": "cap",
+     "side": "B",
+     "x": 5,
+     "y": 5,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X2",
+     "type": "via",
+     "side": "V",
+     "x": 0,
+     "y": 8,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X2c",
+     "type": "cap",
+     "side": "B",
+     "x": 2,
+     "y": 8,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X3",
+     "type": "cap",
+     "side": "F",
+     "x": 5,
+     "y": 4,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X4",
+     "type": "cap",
+     "side": "F",
+     "x": 2,
+     "y": 5,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X5",
+     "type": "cap",
+     "side": "B",
+     "x": 2,
+     "y": 0,
+     "data": false,
+     "passColour": ""
+    }
+   ],
+   "traces": [
+    {
+     "a": "S",
+     "b": "N1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 7,
+       "y": 3
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "S",
+     "b": "C1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 5,
+       "y": 6
+      }
+     ],
+     "gate": "normal",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": [
+      "N1"
+     ]
+    },
+    {
+     "a": "C1",
+     "b": "HR",
+     "side": "F",
+     "bends": [
+      {
+       "x": 4,
+       "y": 7
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "C1",
+     "b": "A1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 1,
+       "y": 6
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "A1",
+     "b": "V1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 2,
+       "y": 3
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "N1",
+     "b": "D1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 5,
+       "y": 2
+      }
+     ],
+     "gate": "and",
+     "gateOpen": false,
+     "gateInverted": true,
+     "switches": [
+      "A1",
+      "A2"
+     ]
+    },
+    {
+     "a": "V1",
+     "b": "LR",
+     "side": "B",
+     "bends": [
+      {
+       "x": 3,
+       "y": 3
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "LR",
+     "b": "A2",
+     "side": "B",
+     "bends": [
+      {
+       "x": 5,
+       "y": 2
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "A2",
+     "b": "D2",
+     "side": "B",
+     "bends": [
+      {
+       "x": 7,
+       "y": 3
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "V1",
+     "b": "G",
+     "side": "B",
+     "bends": [
+      {
+       "x": 1,
+       "y": 3
+      }
+     ],
+     "gate": "and",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": [
+      "A1",
+      "A2"
+     ]
+    },
+    {
+     "a": "S",
+     "b": "X1",
+     "side": "F",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "X1",
+     "b": "X1c",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "HR",
+     "b": "X2",
+     "side": "F",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "X2",
+     "b": "X2c",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "S",
+     "b": "X3",
+     "side": "F",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "A1",
+     "b": "X4",
+     "side": "F",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "V1",
+     "b": "X5",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    }
+   ]
+  },
+  {
+   "name": "Claude lvl 20",
+   "number": 20,
+   "sizeX": 8,
+   "sizeY": 8,
+   "nodes": [
+    {
+     "id": "S",
+     "type": "start",
+     "side": "F",
+     "x": 7,
+     "y": 8,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "HG",
+     "type": "holder",
+     "side": "F",
+     "x": 5,
+     "y": 7,
+     "data": false,
+     "passColour": "Green"
+    },
+    {
+     "id": "N1",
+     "type": "sw",
+     "side": "F",
+     "x": 1,
+     "y": 8,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "V1",
+     "type": "via",
+     "side": "V",
+     "x": 2,
+     "y": 5,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "LR",
+     "type": "lock",
+     "side": "F",
+     "x": 5,
+     "y": 5,
+     "data": false,
+     "passColour": "Red"
+    },
+    {
+     "id": "D1",
+     "type": "cap",
+     "side": "F",
+     "x": 8,
+     "y": 6,
+     "data": true,
+     "passColour": ""
+    },
+    {
+     "id": "N2",
+     "type": "sw",
+     "side": "F",
+     "x": 8,
+     "y": 2,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "V2",
+     "type": "via",
+     "side": "V",
+     "x": 6,
+     "y": 2,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "HR",
+     "type": "holder",
+     "side": "B",
+     "x": 2,
+     "y": 1,
+     "data": false,
+     "passColour": "Red"
+    },
+    {
+     "id": "LG",
+     "type": "lock",
+     "side": "B",
+     "x": 4,
+     "y": 5,
+     "data": false,
+     "passColour": "Green"
+    },
+    {
+     "id": "D2",
+     "type": "cap",
+     "side": "B",
+     "x": 8,
+     "y": 6,
+     "data": true,
+     "passColour": ""
+    },
+    {
+     "id": "A1",
+     "type": "and",
+     "side": "B",
+     "x": 5,
+     "y": 8,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "A2",
+     "type": "and",
+     "side": "B",
+     "x": 8,
+     "y": 2,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "D3",
+     "type": "cap",
+     "side": "B",
+     "x": 6,
+     "y": 0,
+     "data": true,
+     "passColour": ""
+    },
+    {
+     "id": "LR2",
+     "type": "lock",
+     "side": "B",
+     "x": 7,
+     "y": 4,
+     "data": false,
+     "passColour": "Red"
+    },
+    {
+     "id": "G",
+     "type": "goal",
+     "side": "B",
+     "x": 7,
+     "y": 8,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X1",
+     "type": "via",
+     "side": "V",
+     "x": 0,
+     "y": 3,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X1c",
+     "type": "cap",
+     "side": "F",
+     "x": 0,
+     "y": 1,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X2",
+     "type": "via",
+     "side": "V",
+     "x": 4,
+     "y": 3,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X2c",
+     "type": "cap",
+     "side": "B",
+     "x": 4,
+     "y": 1,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X3",
+     "type": "cap",
+     "side": "F",
+     "x": 6,
+     "y": 0,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X4",
+     "type": "cap",
+     "side": "B",
+     "x": 2,
+     "y": 8,
+     "data": false,
+     "passColour": ""
+    },
+    {
+     "id": "X5",
+     "type": "cap",
+     "side": "B",
+     "x": 6,
+     "y": 6,
+     "data": false,
+     "passColour": ""
+    }
+   ],
+   "traces": [
+    {
+     "a": "S",
+     "b": "HG",
+     "side": "F",
+     "bends": [
+      {
+       "x": 6,
+       "y": 8
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "HG",
+     "b": "N1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 2,
+       "y": 7
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "S",
+     "b": "D1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 8,
+       "y": 7
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "N1",
+     "b": "V1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 1,
+       "y": 6
+      }
+     ],
+     "gate": "normal",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": [
+      "N2"
+     ]
+    },
+    {
+     "a": "HG",
+     "b": "LR",
+     "side": "F",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "LR",
+     "b": "D1",
+     "side": "F",
+     "bends": [
+      {
+       "x": 7,
+       "y": 5
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "D1",
+     "b": "N2",
+     "side": "F",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "LR",
+     "b": "V2",
+     "side": "F",
+     "bends": [
+      {
+       "x": 6,
+       "y": 4
+      }
+     ],
+     "gate": "normal",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": [
+      "N1"
+     ]
+    },
+    {
+     "a": "V1",
+     "b": "HR",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "V1",
+     "b": "LG",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "LG",
+     "b": "D2",
+     "side": "B",
+     "bends": [
+      {
+       "x": 7,
+       "y": 5
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "LG",
+     "b": "A1",
+     "side": "B",
+     "bends": [
+      {
+       "x": 5,
+       "y": 6
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "V2",
+     "b": "A2",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "V2",
+     "b": "D3",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "D2",
+     "b": "LR2",
+     "side": "B",
+     "bends": [
+      {
+       "x": 8,
+       "y": 5
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "LR2",
+     "b": "A2",
+     "side": "B",
+     "bends": [
+      {
+       "x": 7,
+       "y": 3
+      }
+     ],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "A1",
+     "b": "G",
+     "side": "B",
+     "bends": [],
+     "gate": "and",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": [
+      "A1",
+      "A2"
+     ]
+    },
+    {
+     "a": "D2",
+     "b": "G",
+     "side": "B",
+     "bends": [
+      {
+       "x": 7,
+       "y": 7
+      }
+     ],
+     "gate": "and",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": [
+      "A1",
+      "A2"
+     ]
+    },
+    {
+     "a": "HR",
+     "b": "X1",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "X1",
+     "b": "X1c",
+     "side": "F",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "V1",
+     "b": "X2",
+     "side": "F",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "X2",
+     "b": "X2c",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "V2",
+     "b": "X3",
+     "side": "F",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "A1",
+     "b": "X4",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    },
+    {
+     "a": "D2",
+     "b": "X5",
+     "side": "B",
+     "bends": [],
+     "gate": "none",
+     "gateOpen": false,
+     "gateInverted": false,
+     "switches": []
+    }
+   ]
+  }
+ ]
+}

@@ -47,6 +47,7 @@ gates, collect every data pickup to unlock the goal, and carry the right pass th
 | Tool | Type of content | Context / usage |
 |---|---|---|
 | Claude (Claude Code, Anthropic) | Code | Gameplay and tool scripts written with the team's direction: Level Editor tools (paint, link, data, pass tools, validation), Sparky character controller and animation sequencing, switch / gate / data / pass mechanics, audio manager, screen fades and stage intro system, progress save, ending screen, UI scaling; bug fixes and merge conflict resolution. |
+| Claude (Claude Code, Anthropic) | Level design | Puzzle stages "Claude lvl 11–20": layouts designed to the team's brief (mechanics per stage, board size), checked for solvability with a solver, built into the game by an editor tool. |
 | Claude (Claude Code, Anthropic) | Documentation | Project docs (`DESIGN.md`, `PROGRESS.md`, this README draft), asset setup guides. |
 | TODO | TODO | TODO (e.g. any AI-assisted art, text, dialog, or code by other members) |
 

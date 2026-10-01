@@ -5,6 +5,50 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 
 ---
 
+## 2026-10-03 (late night) — Level Editor: moving nodes keeps traces tidy
+
+Moving a node (Node tool, drag) always kept its links and mechanics (they reference the objects), but the
+trace bends are stored as absolute positions, so elbows went stale. In `PcbLevelEditorWindow.cs`:
+- **Auto re-route while dragging:** traces attached to the dragged node that have **0 or 1 bend** are
+  redrawn like the Trace tool does (straight, or one 45° elbow) and keep their elbow on the same side.
+  Traces with **2+ bends** (hand-shaped) are left alone; fix those with the bend handles or Ctrl+Click.
+- **Ctrl+Click a trace** (Node tool, empty spot near a trace): re-routes it as a clean elbow, whatever
+  its bend count; Ctrl+Click again flips the elbow (straight-first ↔ diagonal-first). Holding Ctrl
+  highlights the trace under the cursor. Undoable (Ctrl+Z); help text updated.
+- Helpers: `RerouteTrace`, `ElbowBends`, `HighlightTrace`. The editor assembly compiles cleanly.
+
+## 2026-10-03 (night) — 10 puzzle levels: Claude lvl 11–20
+
+**Designer's brief:** 10 medium stages, board ≤ 10×10 (compact), every stage two-sided, 1 start + 1 goal,
+mechanics per stage: 11 D A · 12 N D A · 13 P A · 14 P · 15 N D · 16 P A · 17 P D A · 18–20 all
+(D data, N normal switch, A AND switch, P pass).
+
+**How they were made:**
+- Designed outside Unity with a **solver + layout checker** that mirror the game rules (8-way moves,
+  vias, normal / AND / inverted-AND gates, data, pass holders / locks). Every level is checked for:
+  no layout errors (unique exit directions, no same-side crossings, no trace through a node, 0/45/90°
+  segments, locks with ≥ 2 traces, vias on both sides), **solvable**, and **every mechanic matters**
+  (removing the gates / turning locks into capacitors makes it easier).
+- Shortest solutions: 11: 17 · 12: 19 · 13: 15 · 14: 13 · 15: 20 · 16: 18 · 17: 27 · 18: 23 ·
+  19: 21 · 20: 32 actions. Full step-by-step solutions: `Assets/PCB/LevelData/Claude_levels_solutions.md`.
+- Level data: `Assets/PCB/LevelData/claude_levels.json`. **Tools > PCB > Build Claude Levels**
+  (`ClaudeLevelBuilder`, editor only) builds `Assets/PCB/Levels/Claude lvl 11…20.prefab` (10×10 cells,
+  theme default look, no dialog) and **appends them to the Level List** (re-running overwrites them).
+- Not playtested — feel / pacing / readability to be judged in Unity; Level 14 is the most linear.
+- **Remix in the designer's style** (studied the Tung levels: irregular positions on any cell, mostly
+  bent traces, 2–9 dead-end decoys, 3–9 vias, board sized to content): every node nudged 0–1 cell off
+  the lattice (some layouts mirrored), traces re-routed Level-Editor style (straight / 45° elbow),
+  **3–8 dead-end decoys** per level (capacitors, branches, dead-end vias to a capacitor on the other
+  side; ≥ 1 decoy via, ≥ 2 from level 15), boards shrunk to content (8×10 … 10×10). Re-checked: no
+  layout errors, node spacing ≥ 2 cells, traces ≥ 1 cell clear of other nodes, same shortest solutions,
+  every mechanic still needed. Decoys are dead ends, so they can't create shortcuts.
+- **Random board sizes:** each level now gets a random target size (smaller allowed for smaller levels;
+  falls back to 10×10 if too tight), its layout is scaled to it and decoys stay inside it. Result:
+  11: 7×8 · 12: 8×7 · 13: 9×9 · 14: 9×6 · 15: 6×8 · 16: 8×9 · 17: 10×10 · 18: 9×9 · 19: 7×8 · 20: 8×8.
+  All re-checked (same shortest solutions, mechanics needed, no layout errors).
+- Python tools kept in the repo: **`Tools/LevelDesign/`** (solver, designs, remix, export + README).
+  Re-run **Tools > PCB > Build Claude Levels** to rebuild the prefabs (overwrites earlier builds).
+
 ## 2026-10-03 (evening) — game jam requirements: README + windowed build
 
 - **`README.md`** created from the jam's required sections (title, key art, team, engine & language,

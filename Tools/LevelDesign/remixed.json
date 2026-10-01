@@ -1,0 +1,3075 @@
+{
+ "11": {
+  "nodes": {
+   "S": {
+    "x": 0,
+    "y": 1,
+    "side": "F",
+    "type": "start",
+    "data": false
+   },
+   "D1": {
+    "x": 1,
+    "y": 5,
+    "side": "F",
+    "type": "cap",
+    "data": true
+   },
+   "A1": {
+    "x": 5,
+    "y": 6,
+    "side": "F",
+    "type": "and",
+    "data": false
+   },
+   "C1": {
+    "x": 4,
+    "y": 3,
+    "side": "F",
+    "type": "cap",
+    "data": false
+   },
+   "V1": {
+    "x": 7,
+    "y": 2,
+    "side": "V",
+    "type": "via",
+    "data": false
+   },
+   "V2": {
+    "x": 7,
+    "y": 7,
+    "side": "V",
+    "type": "via",
+    "data": false
+   },
+   "A2": {
+    "x": 4,
+    "y": 8,
+    "side": "B",
+    "type": "and",
+    "data": false
+   },
+   "D2": {
+    "x": 0,
+    "y": 7,
+    "side": "B",
+    "type": "cap",
+    "data": true
+   },
+   "C3": {
+    "x": 3,
+    "y": 4,
+    "side": "B",
+    "type": "cap",
+    "data": false
+   },
+   "G": {
+    "x": 1,
+    "y": 3,
+    "side": "B",
+    "type": "goal",
+    "data": false
+   },
+   "X1": {
+    "x": 7,
+    "y": 0,
+    "side": "V",
+    "type": "via",
+    "data": false
+   },
+   "X1c": {
+    "x": 5,
+    "y": 0,
+    "side": "F",
+    "type": "cap",
+    "data": false
+   },
+   "X2": {
+    "x": 0,
+    "y": 5,
+    "side": "B",
+    "type": "cap",
+    "data": false
+   },
+   "X3": {
+    "x": 3,
+    "y": 1,
+    "side": "B",
+    "type": "cap",
+    "data": false
+   }
+  },
+  "traces": [
+   {
+    "a": "S",
+    "b": "D1",
+    "side": "F",
+    "bends": [
+     [
+      0,
+      4
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "D1",
+    "b": "A1",
+    "side": "F",
+    "bends": [
+     [
+      4,
+      5
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "A1",
+    "b": "C1",
+    "side": "F",
+    "bends": [
+     [
+      5,
+      4
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "S",
+    "b": "C1",
+    "side": "F",
+    "bends": [
+     [
+      2,
+      3
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "C1",
+    "b": "V1",
+    "side": "F",
+    "bends": [
+     [
+      5,
+      2
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "A1",
+    "b": "V2",
+    "side": "F",
+    "bends": [
+     [
+      6,
+      7
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "V2",
+    "b": "A2",
+    "side": "B",
+    "bends": [
+     [
+      5,
+      7
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "A2",
+    "b": "D2",
+    "side": "B",
+    "bends": [
+     [
+      1,
+      8
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "V1",
+    "b": "C3",
+    "side": "B",
+    "bends": [
+     [
+      5,
+      2
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "C3",
+    "b": "G",
+    "side": "B",
+    "bends": [
+     [
+      2,
+      3
+     ]
+    ],
+    "gate": {
+     "kind": "and",
+     "switches": [
+      "A1",
+      "A2"
+     ],
+     "open": false,
+     "inverted": false
+    }
+   },
+   {
+    "a": "V1",
+    "b": "X1",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "X1",
+    "b": "X1c",
+    "side": "F",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "D2",
+    "b": "X2",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "G",
+    "b": "X3",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   }
+  ],
+  "size": [
+   7,
+   8
+  ]
+ },
+ "12": {
+  "nodes": {
+   "S": {
+    "x": 1,
+    "y": 2,
+    "side": "F",
+    "type": "start",
+    "data": false
+   },
+   "N1": {
+    "x": 4,
+    "y": 4,
+    "side": "F",
+    "type": "sw",
+    "data": false
+   },
+   "C1": {
+    "x": 3,
+    "y": 6,
+    "side": "F",
+    "type": "cap",
+    "data": false
+   },
+   "D2": {
+    "x": 0,
+    "y": 5,
+    "side": "F",
+    "type": "cap",
+    "data": true
+   },
+   "A2": {
+    "x": 7,
+    "y": 7,
+    "side": "F",
+    "type": "and",
+    "data": false
+   },
+   "C2": {
+    "x": 3,
+    "y": 1,
+    "side": "F",
+    "type": "cap",
+    "data": false
+   },
+   "A1": {
+    "x": 6,
+    "y": 0,
+    "side": "F",
+    "type": "and",
+    "data": false
+   },
+   "V1": {
+    "x": 7,
+    "y": 3,
+    "side": "V",
+    "type": "via",
+    "data": false
+   },
+   "D1": {
+    "x": 6,
+    "y": 6,
+    "side": "B",
+    "type": "cap",
+    "data": true
+   },
+   "G": {
+    "x": 2,
+    "y": 4,
+    "side": "B",
+    "type": "goal",
+    "data": false
+   },
+   "X1": {
+    "x": 1,
+    "y": 0,
+    "side": "V",
+    "type": "via",
+    "data": false
+   },
+   "X1c": {
+    "x": 3,
+    "y": 2,
+    "side": "B",
+    "type": "cap",
+    "data": false
+   },
+   "X2": {
+    "x": 8,
+    "y": 6,
+    "side": "B",
+    "type": "cap",
+    "data": false
+   },
+   "X3": {
+    "x": 4,
+    "y": 6,
+    "side": "B",
+    "type": "cap",
+    "data": false
+   }
+  },
+  "traces": [
+   {
+    "a": "S",
+    "b": "N1",
+    "side": "F",
+    "bends": [
+     [
+      3,
+      4
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "N1",
+    "b": "C1",
+    "side": "F",
+    "bends": [
+     [
+      3,
+      5
+     ]
+    ],
+    "gate": {
+     "kind": "normal",
+     "switches": [
+      "N1"
+     ],
+     "open": true,
+     "inverted": false
+    }
+   },
+   {
+    "a": "C1",
+    "b": "D2",
+    "side": "F",
+    "bends": [
+     [
+      2,
+      5
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "C1",
+    "b": "A2",
+    "side": "F",
+    "bends": [
+     [
+      4,
+      7
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "N1",
+    "b": "C2",
+    "side": "F",
+    "bends": [
+     [
+      3,
+      3
+     ]
+    ],
+    "gate": {
+     "kind": "normal",
+     "switches": [
+      "N1"
+     ],
+     "open": false,
+     "inverted": false
+    }
+   },
+   {
+    "a": "C2",
+    "b": "A1",
+    "side": "F",
+    "bends": [
+     [
+      4,
+      0
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "N1",
+    "b": "V1",
+    "side": "F",
+    "bends": [
+     [
+      5,
+      3
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "V1",
+    "b": "D1",
+    "side": "B",
+    "bends": [
+     [
+      7,
+      5
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "V1",
+    "b": "G",
+    "side": "B",
+    "bends": [
+     [
+      3,
+      3
+     ]
+    ],
+    "gate": {
+     "kind": "and",
+     "switches": [
+      "A1",
+      "A2"
+     ],
+     "open": false,
+     "inverted": false
+    }
+   },
+   {
+    "a": "S",
+    "b": "X1",
+    "side": "F",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "X1",
+    "b": "X1c",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "D1",
+    "b": "X2",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "G",
+    "b": "X3",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   }
+  ],
+  "size": [
+   8,
+   7
+  ]
+ },
+ "13": {
+  "nodes": {
+   "S": {
+    "x": 9,
+    "y": 9,
+    "side": "F",
+    "type": "start",
+    "data": false
+   },
+   "HR": {
+    "x": 4,
+    "y": 8,
+    "side": "F",
+    "type": "holder",
+    "data": false,
+    "pass": "Red"
+   },
+   "LR": {
+    "x": 5,
+    "y": 5,
+    "side": "F",
+    "type": "lock",
+    "data": false,
+    "pass": "Red"
+   },
+   "A1": {
+    "x": 1,
+    "y": 4,
+    "side": "F",
+    "type": "and",
+    "data": false
+   },
+   "V1": {
+    "x": 4,
+    "y": 2,
+    "side": "V",
+    "type": "via",
+    "data": false
+   },
+   "V2": {
+    "x": 2,
+    "y": 9,
+    "side": "V",
+    "type": "via",
+    "data": false
+   },
+   "HG": {
+    "x": 0,
+    "y": 3,
+    "side": "B",
+    "type": "holder",
+    "data": false,
+    "pass": "Green"
+   },
+   "LG": {
+    "x": 9,
+    "y": 1,
+    "side": "B",
+    "type": "lock",
+    "data": false,
+    "pass": "Green"
+   },
+   "A2": {
+    "x": 8,
+    "y": 4,
+    "side": "B",
+    "type": "and",
+    "data": false
+   },
+   "C": {
+    "x": 9,
+    "y": 8,
+    "side": "B",
+    "type": "cap",
+    "data": false
+   },
+   "G": {
+    "x": 4,
+    "y": 9,
+    "side": "B",
+    "type": "goal",
+    "data": false
+   },
+   "X1": {
+    "x": 7,
+    "y": 2,
+    "side": "V",
+    "type": "via",
+    "data": false
+   },
+   "X1c": {
+    "x": 5,
+    "y": 0,
+    "side": "F",
+    "type": "cap",
+    "data": false
+   },
+   "X2": {
+    "x": 6,
+    "y": 9,
+    "side": "B",
+    "type": "cap",
+    "data": false
+   },
+   "X3": {
+    "x": 4,
+    "y": 6,
+    "side": "B",
+    "type": "cap",
+    "data": false
+   }
+  },
+  "traces": [
+   {
+    "a": "S",
+    "b": "HR",
+    "side": "F",
+    "bends": [
+     [
+      8,
+      8
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "HR",
+    "b": "LR",
+    "side": "F",
+    "bends": [
+     [
+      5,
+      7
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "LR",
+    "b": "A1",
+    "side": "F",
+    "bends": [
+     [
+      2,
+      5
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "LR",
+    "b": "V1",
+    "side": "F",
+    "bends": [
+     [
+      4,
+      4
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "A1",
+    "b": "V2",
+    "side": "F",
+    "bends": [
+     [
+      1,
+      8
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "V1",
+    "b": "HG",
+    "side": "B",
+    "bends": [
+     [
+      3,
+      3
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "V1",
+    "b": "LG",
+    "side": "B",
+    "bends": [
+     [
+      5,
+      1
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "LG",
+    "b": "A2",
+    "side": "B",
+    "bends": [
+     [
+      8,
+      2
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "A2",
+    "b": "C",
+    "side": "B",
+    "bends": [
+     [
+      9,
+      5
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "C",
+    "b": "G",
+    "side": "B",
+    "bends": [
+     [
+      5,
+      8
+     ]
+    ],
+    "gate": {
+     "kind": "and",
+     "switches": [
+      "A1",
+      "A2"
+     ],
+     "open": false,
+     "inverted": false
+    }
+   },
+   {
+    "a": "V2",
+    "b": "HG",
+    "side": "B",
+    "bends": [
+     [
+      0,
+      7
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "V1",
+    "b": "X1",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "X1",
+    "b": "X1c",
+    "side": "F",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "G",
+    "b": "X2",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "G",
+    "b": "X3",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   }
+  ],
+  "size": [
+   9,
+   9
+  ]
+ },
+ "14": {
+  "nodes": {
+   "S": {
+    "x": 8,
+    "y": 6,
+    "side": "F",
+    "type": "start",
+    "data": false
+   },
+   "HR": {
+    "x": 9,
+    "y": 3,
+    "side": "F",
+    "type": "holder",
+    "data": false,
+    "pass": "Red"
+   },
+   "LR1": {
+    "x": 4,
+    "y": 4,
+    "side": "F",
+    "type": "lock",
+    "data": false,
+    "pass": "Red"
+   },
+   "V1": {
+    "x": 1,
+    "y": 5,
+    "side": "V",
+    "type": "via",
+    "data": false
+   },
+   "HG": {
+    "x": 0,
+    "y": 1,
+    "side": "B",
+    "type": "holder",
+    "data": false,
+    "pass": "Green"
+   },
+   "LG": {
+    "x": 6,
+    "y": 4,
+    "side": "B",
+    "type": "lock",
+    "data": false,
+    "pass": "Green"
+   },
+   "HR2": {
+    "x": 5,
+    "y": 1,
+    "side": "B",
+    "type": "holder",
+    "data": false,
+    "pass": "Red"
+   },
+   "LR2": {
+    "x": 8,
+    "y": 0,
+    "side": "B",
+    "type": "lock",
+    "data": false,
+    "pass": "Red"
+   },
+   "G": {
+    "x": 9,
+    "y": 3,
+    "side": "B",
+    "type": "goal",
+    "data": false
+   },
+   "X1": {
+    "x": 3,
+    "y": 1,
+    "side": "V",
+    "type": "via",
+    "data": false
+   },
+   "X1c": {
+    "x": 1,
+    "y": 3,
+    "side": "F",
+    "type": "cap",
+    "data": false
+   },
+   "X2": {
+    "x": 6,
+    "y": 6,
+    "side": "F",
+    "type": "cap",
+    "data": false
+   },
+   "X3": {
+    "x": 7,
+    "y": 1,
+    "side": "F",
+    "type": "cap",
+    "data": false
+   },
+   "X4": {
+    "x": 4,
+    "y": 6,
+    "side": "F",
+    "type": "cap",
+    "data": false
+   }
+  },
+  "traces": [
+   {
+    "a": "S",
+    "b": "HR",
+    "side": "F",
+    "bends": [
+     [
+      9,
+      5
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "HR",
+    "b": "LR1",
+    "side": "F",
+    "bends": [
+     [
+      8,
+      4
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "LR1",
+    "b": "V1",
+    "side": "F",
+    "bends": [
+     [
+      2,
+      4
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "V1",
+    "b": "HG",
+    "side": "B",
+    "bends": [
+     [
+      1,
+      2
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "V1",
+    "b": "LG",
+    "side": "B",
+    "bends": [
+     [
+      2,
+      4
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "LG",
+    "b": "HR2",
+    "side": "B",
+    "bends": [
+     [
+      5,
+      3
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "HR2",
+    "b": "LR2",
+    "side": "B",
+    "bends": [
+     [
+      6,
+      0
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "LR2",
+    "b": "G",
+    "side": "B",
+    "bends": [
+     [
+      8,
+      2
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "HR2",
+    "b": "X1",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "X1",
+    "b": "X1c",
+    "side": "F",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "LR1",
+    "b": "X2",
+    "side": "F",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "LR1",
+    "b": "X3",
+    "side": "F",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "LR1",
+    "b": "X4",
+    "side": "F",
+    "bends": [],
+    "gate": null
+   }
+  ],
+  "size": [
+   9,
+   6
+  ]
+ },
+ "15": {
+  "nodes": {
+   "S": {
+    "x": 6,
+    "y": 0,
+    "side": "F",
+    "type": "start",
+    "data": false
+   },
+   "N1": {
+    "x": 4,
+    "y": 1,
+    "side": "F",
+    "type": "sw",
+    "data": false
+   },
+   "C1": {
+    "x": 0,
+    "y": 0,
+    "side": "F",
+    "type": "cap",
+    "data": false
+   },
+   "D1": {
+    "x": 4,
+    "y": 4,
+    "side": "F",
+    "type": "cap",
+    "data": true
+   },
+   "N2": {
+    "x": 6,
+    "y": 3,
+    "side": "F",
+    "type": "sw",
+    "data": false
+   },
+   "D3": {
+    "x": 2,
+    "y": 7,
+    "side": "F",
+    "type": "cap",
+    "data": true
+   },
+   "V1": {
+    "x": 1,
+    "y": 2,
+    "side": "V",
+    "type": "via",
+    "data": false
+   },
+   "D2": {
+    "x": 2,
+    "y": 5,
+    "side": "B",
+    "type": "cap",
+    "data": true
+   },
+   "G": {
+    "x": 4,
+    "y": 3,
+    "side": "B",
+    "type": "goal",
+    "data": false
+   },
+   "X1": {
+    "x": 5,
+    "y": 8,
+    "side": "V",
+    "type": "via",
+    "data": false
+   },
+   "X1c": {
+    "x": 5,
+    "y": 6,
+    "side": "F",
+    "type": "cap",
+    "data": false
+   },
+   "X2": {
+    "x": 0,
+    "y": 7,
+    "side": "V",
+    "type": "via",
+    "data": false
+   },
+   "X2c": {
+    "x": 0,
+    "y": 5,
+    "side": "F",
+    "type": "cap",
+    "data": false
+   },
+   "X3": {
+    "x": 2,
+    "y": 7,
+    "side": "B",
+    "type": "cap",
+    "data": false
+   }
+  },
+  "traces": [
+   {
+    "a": "S",
+    "b": "N1",
+    "side": "F",
+    "bends": [
+     [
+      5,
+      0
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "N1",
+    "b": "C1",
+    "side": "F",
+    "bends": [
+     [
+      3,
+      0
+     ]
+    ],
+    "gate": {
+     "kind": "normal",
+     "switches": [
+      "N1",
+      "N2"
+     ],
+     "open": false,
+     "inverted": false
+    }
+   },
+   {
+    "a": "N1",
+    "b": "D1",
+    "side": "F",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "D1",
+    "b": "N2",
+    "side": "F",
+    "bends": [
+     [
+      5,
+      4
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "C1",
+    "b": "V1",
+    "side": "F",
+    "bends": [
+     [
+      0,
+      1
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "V1",
+    "b": "D3",
+    "side": "F",
+    "bends": [
+     [
+      2,
+      3
+     ]
+    ],
+    "gate": {
+     "kind": "normal",
+     "switches": [
+      "N1"
+     ],
+     "open": false,
+     "inverted": false
+    }
+   },
+   {
+    "a": "V1",
+    "b": "D2",
+    "side": "B",
+    "bends": [
+     [
+      1,
+      4
+     ]
+    ],
+    "gate": {
+     "kind": "normal",
+     "switches": [
+      "N1"
+     ],
+     "open": true,
+     "inverted": false
+    }
+   },
+   {
+    "a": "V1",
+    "b": "G",
+    "side": "B",
+    "bends": [
+     [
+      2,
+      3
+     ]
+    ],
+    "gate": {
+     "kind": "normal",
+     "switches": [
+      "N2"
+     ],
+     "open": false,
+     "inverted": false
+    }
+   },
+   {
+    "a": "D2",
+    "b": "X1",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "X1",
+    "b": "X1c",
+    "side": "F",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "D2",
+    "b": "X2",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "X2",
+    "b": "X2c",
+    "side": "F",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "D2",
+    "b": "X3",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   }
+  ],
+  "size": [
+   6,
+   8
+  ]
+ },
+ "16": {
+  "nodes": {
+   "S": {
+    "x": 2,
+    "y": 8,
+    "side": "F",
+    "type": "start",
+    "data": false
+   },
+   "HG": {
+    "x": 0,
+    "y": 9,
+    "side": "F",
+    "type": "holder",
+    "data": false,
+    "pass": "Green"
+   },
+   "LG": {
+    "x": 1,
+    "y": 5,
+    "side": "F",
+    "type": "lock",
+    "data": false,
+    "pass": "Green"
+   },
+   "HR": {
+    "x": 0,
+    "y": 3,
+    "side": "F",
+    "type": "holder",
+    "data": false,
+    "pass": "Red"
+   },
+   "LR": {
+    "x": 4,
+    "y": 1,
+    "side": "F",
+    "type": "lock",
+    "data": false,
+    "pass": "Red"
+   },
+   "V1": {
+    "x": 6,
+    "y": 2,
+    "side": "V",
+    "type": "via",
+    "data": false
+   },
+   "LG2": {
+    "x": 7,
+    "y": 9,
+    "side": "F",
+    "type": "lock",
+    "data": false,
+    "pass": "Green"
+   },
+   "A1": {
+    "x": 5,
+    "y": 5,
+    "side": "F",
+    "type": "and",
+    "data": false
+   },
+   "A2": {
+    "x": 3,
+    "y": 1,
+    "side": "B",
+    "type": "and",
+    "data": false
+   },
+   "G": {
+    "x": 4,
+    "y": 6,
+    "side": "B",
+    "type": "goal",
+    "data": false
+   },
+   "X1": {
+    "x": 8,
+    "y": 0,
+    "side": "V",
+    "type": "via",
+    "data": false
+   },
+   "X1c": {
+    "x": 6,
+    "y": 0,
+    "side": "F",
+    "type": "cap",
+    "data": false
+   },
+   "X2": {
+    "x": 0,
+    "y": 7,
+    "side": "V",
+    "type": "via",
+    "data": false
+   },
+   "X2c": {
+    "x": 2,
+    "y": 5,
+    "side": "B",
+    "type": "cap",
+    "data": false
+   },
+   "X3": {
+    "x": 6,
+    "y": 4,
+    "side": "B",
+    "type": "cap",
+    "data": false
+   },
+   "X4": {
+    "x": 4,
+    "y": 8,
+    "side": "F",
+    "type": "cap",
+    "data": false
+   }
+  },
+  "traces": [
+   {
+    "a": "S",
+    "b": "HG",
+    "side": "F",
+    "bends": [
+     [
+      1,
+      9
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "HG",
+    "b": "LG",
+    "side": "F",
+    "bends": [
+     [
+      1,
+      8
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "LG",
+    "b": "HR",
+    "side": "F",
+    "bends": [
+     [
+      1,
+      4
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "HR",
+    "b": "LR",
+    "side": "F",
+    "bends": [
+     [
+      2,
+      3
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "LR",
+    "b": "V1",
+    "side": "F",
+    "bends": [
+     [
+      5,
+      2
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "S",
+    "b": "LG2",
+    "side": "F",
+    "bends": [
+     [
+      3,
+      9
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "LG2",
+    "b": "A1",
+    "side": "F",
+    "bends": [
+     [
+      5,
+      7
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "V1",
+    "b": "A2",
+    "side": "B",
+    "bends": [
+     [
+      5,
+      1
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "A2",
+    "b": "G",
+    "side": "B",
+    "bends": [
+     [
+      3,
+      5
+     ]
+    ],
+    "gate": {
+     "kind": "and",
+     "switches": [
+      "A1",
+      "A2"
+     ],
+     "open": false,
+     "inverted": false
+    }
+   },
+   {
+    "a": "V1",
+    "b": "X1",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "X1",
+    "b": "X1c",
+    "side": "F",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "HG",
+    "b": "X2",
+    "side": "F",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "X2",
+    "b": "X2c",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "G",
+    "b": "X3",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "S",
+    "b": "X4",
+    "side": "F",
+    "bends": [],
+    "gate": null
+   }
+  ],
+  "size": [
+   8,
+   9
+  ]
+ },
+ "17": {
+  "nodes": {
+   "S": {
+    "x": 10,
+    "y": 1,
+    "side": "F",
+    "type": "start",
+    "data": false
+   },
+   "HR": {
+    "x": 5,
+    "y": 0,
+    "side": "F",
+    "type": "holder",
+    "data": false,
+    "pass": "Red"
+   },
+   "A1": {
+    "x": 1,
+    "y": 1,
+    "side": "F",
+    "type": "and",
+    "data": false
+   },
+   "LG": {
+    "x": 6,
+    "y": 3,
+    "side": "F",
+    "type": "lock",
+    "data": false,
+    "pass": "Green"
+   },
+   "D1": {
+    "x": 5,
+    "y": 7,
+    "side": "F",
+    "type": "cap",
+    "data": true
+   },
+   "V0": {
+    "x": 9,
+    "y": 5,
+    "side": "V",
+    "type": "via",
+    "data": false
+   },
+   "V1": {
+    "x": 1,
+    "y": 5,
+    "side": "V",
+    "type": "via",
+    "data": false
+   },
+   "HG": {
+    "x": 10,
+    "y": 7,
+    "side": "B",
+    "type": "holder",
+    "data": false,
+    "pass": "Green"
+   },
+   "LR": {
+    "x": 6,
+    "y": 4,
+    "side": "B",
+    "type": "lock",
+    "data": false,
+    "pass": "Red"
+   },
+   "D2": {
+    "x": 6,
+    "y": 0,
+    "side": "B",
+    "type": "cap",
+    "data": true
+   },
+   "A2": {
+    "x": 2,
+    "y": 8,
+    "side": "B",
+    "type": "and",
+    "data": false
+   },
+   "G": {
+    "x": 2,
+    "y": 0,
+    "side": "B",
+    "type": "goal",
+    "data": false
+   },
+   "X1": {
+    "x": 8,
+    "y": 7,
+    "side": "V",
+    "type": "via",
+    "data": false
+   },
+   "X1c": {
+    "x": 10,
+    "y": 9,
+    "side": "B",
+    "type": "cap",
+    "data": false
+   },
+   "X2": {
+    "x": 0,
+    "y": 8,
+    "side": "V",
+    "type": "via",
+    "data": false
+   },
+   "X2c": {
+    "x": 2,
+    "y": 10,
+    "side": "F",
+    "type": "cap",
+    "data": false
+   },
+   "X3": {
+    "x": 9,
+    "y": 0,
+    "side": "B",
+    "type": "cap",
+    "data": false
+   },
+   "X4": {
+    "x": 6,
+    "y": 5,
+    "side": "F",
+    "type": "cap",
+    "data": false
+   }
+  },
+  "traces": [
+   {
+    "a": "S",
+    "b": "HR",
+    "side": "F",
+    "bends": [
+     [
+      6,
+      1
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "HR",
+    "b": "A1",
+    "side": "F",
+    "bends": [
+     [
+      2,
+      0
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "HR",
+    "b": "LG",
+    "side": "F",
+    "bends": [
+     [
+      5,
+      2
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "LG",
+    "b": "D1",
+    "side": "F",
+    "bends": [
+     [
+      5,
+      4
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "LG",
+    "b": "V1",
+    "side": "F",
+    "bends": [
+     [
+      3,
+      3
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "S",
+    "b": "V0",
+    "side": "F",
+    "bends": [
+     [
+      9,
+      2
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "V0",
+    "b": "HG",
+    "side": "B",
+    "bends": [
+     [
+      9,
+      6
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "V0",
+    "b": "LR",
+    "side": "B",
+    "bends": [
+     [
+      7,
+      5
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "LR",
+    "b": "D2",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "LR",
+    "b": "V1",
+    "side": "B",
+    "bends": [
+     [
+      5,
+      5
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "V1",
+    "b": "A2",
+    "side": "B",
+    "bends": [
+     [
+      2,
+      6
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "V1",
+    "b": "G",
+    "side": "B",
+    "bends": [
+     [
+      2,
+      4
+     ]
+    ],
+    "gate": {
+     "kind": "and",
+     "switches": [
+      "A1",
+      "A2"
+     ],
+     "open": false,
+     "inverted": false
+    }
+   },
+   {
+    "a": "D1",
+    "b": "X1",
+    "side": "F",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "X1",
+    "b": "X1c",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "A2",
+    "b": "X2",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "X2",
+    "b": "X2c",
+    "side": "F",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "D2",
+    "b": "X3",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "V0",
+    "b": "X4",
+    "side": "F",
+    "bends": [],
+    "gate": null
+   }
+  ],
+  "size": [
+   10,
+   10
+  ]
+ },
+ "18": {
+  "nodes": {
+   "S": {
+    "x": 9,
+    "y": 9,
+    "side": "F",
+    "type": "start",
+    "data": false
+   },
+   "N1": {
+    "x": 5,
+    "y": 8,
+    "side": "F",
+    "type": "sw",
+    "data": false
+   },
+   "C1": {
+    "x": 1,
+    "y": 9,
+    "side": "F",
+    "type": "cap",
+    "data": false
+   },
+   "D1": {
+    "x": 0,
+    "y": 5,
+    "side": "F",
+    "type": "cap",
+    "data": true
+   },
+   "HR": {
+    "x": 6,
+    "y": 4,
+    "side": "F",
+    "type": "holder",
+    "data": false,
+    "pass": "Red"
+   },
+   "V1": {
+    "x": 5,
+    "y": 0,
+    "side": "V",
+    "type": "via",
+    "data": false
+   },
+   "V2": {
+    "x": 1,
+    "y": 0,
+    "side": "V",
+    "type": "via",
+    "data": false
+   },
+   "LR": {
+    "x": 9,
+    "y": 1,
+    "side": "B",
+    "type": "lock",
+    "data": false,
+    "pass": "Red"
+   },
+   "A1": {
+    "x": 8,
+    "y": 6,
+    "side": "B",
+    "type": "and",
+    "data": false
+   },
+   "D2": {
+    "x": 9,
+    "y": 9,
+    "side": "B",
+    "type": "cap",
+    "data": true
+   },
+   "A2": {
+    "x": 0,
+    "y": 6,
+    "side": "B",
+    "type": "and",
+    "data": false
+   },
+   "G": {
+    "x": 5,
+    "y": 4,
+    "side": "B",
+    "type": "goal",
+    "data": false
+   },
+   "X1": {
+    "x": 3,
+    "y": 6,
+    "side": "V",
+    "type": "via",
+    "data": false
+   },
+   "X1c": {
+    "x": 5,
+    "y": 6,
+    "side": "F",
+    "type": "cap",
+    "data": false
+   },
+   "X2": {
+    "x": 7,
+    "y": 2,
+    "side": "V",
+    "type": "via",
+    "data": false
+   },
+   "X2c": {
+    "x": 9,
+    "y": 2,
+    "side": "F",
+    "type": "cap",
+    "data": false
+   },
+   "X3": {
+    "x": 3,
+    "y": 0,
+    "side": "F",
+    "type": "cap",
+    "data": false
+   },
+   "X4": {
+    "x": 1,
+    "y": 7,
+    "side": "F",
+    "type": "cap",
+    "data": false
+   },
+   "X5": {
+    "x": 5,
+    "y": 2,
+    "side": "B",
+    "type": "cap",
+    "data": false
+   }
+  },
+  "traces": [
+   {
+    "a": "S",
+    "b": "N1",
+    "side": "F",
+    "bends": [
+     [
+      6,
+      9
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "N1",
+    "b": "C1",
+    "side": "F",
+    "bends": [
+     [
+      2,
+      8
+     ]
+    ],
+    "gate": {
+     "kind": "normal",
+     "switches": [
+      "N1"
+     ],
+     "open": true,
+     "inverted": false
+    }
+   },
+   {
+    "a": "C1",
+    "b": "D1",
+    "side": "F",
+    "bends": [
+     [
+      0,
+      8
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "D1",
+    "b": "V2",
+    "side": "F",
+    "bends": [
+     [
+      0,
+      1
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "N1",
+    "b": "HR",
+    "side": "F",
+    "bends": [
+     [
+      6,
+      7
+     ]
+    ],
+    "gate": {
+     "kind": "normal",
+     "switches": [
+      "N1"
+     ],
+     "open": false,
+     "inverted": false
+    }
+   },
+   {
+    "a": "HR",
+    "b": "V1",
+    "side": "F",
+    "bends": [
+     [
+      6,
+      1
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "V1",
+    "b": "LR",
+    "side": "B",
+    "bends": [
+     [
+      8,
+      0
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "LR",
+    "b": "A1",
+    "side": "B",
+    "bends": [
+     [
+      9,
+      5
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "A1",
+    "b": "D2",
+    "side": "B",
+    "bends": [
+     [
+      8,
+      8
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "V2",
+    "b": "A2",
+    "side": "B",
+    "bends": [
+     [
+      0,
+      1
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "A1",
+    "b": "G",
+    "side": "B",
+    "bends": [
+     [
+      6,
+      4
+     ]
+    ],
+    "gate": {
+     "kind": "and",
+     "switches": [
+      "A1",
+      "A2"
+     ],
+     "open": false,
+     "inverted": false
+    }
+   },
+   {
+    "a": "A2",
+    "b": "G",
+    "side": "B",
+    "bends": [
+     [
+      2,
+      4
+     ]
+    ],
+    "gate": {
+     "kind": "and",
+     "switches": [
+      "A1",
+      "A2"
+     ],
+     "open": false,
+     "inverted": false
+    }
+   },
+   {
+    "a": "A2",
+    "b": "X1",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "X1",
+    "b": "X1c",
+    "side": "F",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "G",
+    "b": "X2",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "X2",
+    "b": "X2c",
+    "side": "F",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "V1",
+    "b": "X3",
+    "side": "F",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "C1",
+    "b": "X4",
+    "side": "F",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "G",
+    "b": "X5",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   }
+  ],
+  "size": [
+   9,
+   9
+  ]
+ },
+ "19": {
+  "nodes": {
+   "S": {
+    "x": 7,
+    "y": 4,
+    "side": "F",
+    "type": "start",
+    "data": false
+   },
+   "N1": {
+    "x": 6,
+    "y": 2,
+    "side": "F",
+    "type": "sw",
+    "data": false
+   },
+   "C1": {
+    "x": 4,
+    "y": 6,
+    "side": "F",
+    "type": "cap",
+    "data": false
+   },
+   "HR": {
+    "x": 3,
+    "y": 8,
+    "side": "F",
+    "type": "holder",
+    "data": false,
+    "pass": "Red"
+   },
+   "A1": {
+    "x": 0,
+    "y": 5,
+    "side": "F",
+    "type": "and",
+    "data": false
+   },
+   "V1": {
+    "x": 2,
+    "y": 2,
+    "side": "V",
+    "type": "via",
+    "data": false
+   },
+   "D1": {
+    "x": 4,
+    "y": 1,
+    "side": "F",
+    "type": "cap",
+    "data": true
+   },
+   "LR": {
+    "x": 4,
+    "y": 3,
+    "side": "B",
+    "type": "lock",
+    "data": false,
+    "pass": "Red"
+   },
+   "A2": {
+    "x": 6,
+    "y": 2,
+    "side": "B",
+    "type": "and",
+    "data": false
+   },
+   "D2": {
+    "x": 7,
+    "y": 5,
+    "side": "B",
+    "type": "cap",
+    "data": true
+   },
+   "G": {
+    "x": 1,
+    "y": 5,
+    "side": "B",
+    "type": "goal",
+    "data": false
+   },
+   "X1": {
+    "x": 7,
+    "y": 7,
+    "side": "V",
+    "type": "via",
+    "data": false
+   },
+   "X1c": {
+    "x": 5,
+    "y": 5,
+    "side": "B",
+    "type": "cap",
+    "data": false
+   },
+   "X2": {
+    "x": 0,
+    "y": 8,
+    "side": "V",
+    "type": "via",
+    "data": false
+   },
+   "X2c": {
+    "x": 2,
+    "y": 8,
+    "side": "B",
+    "type": "cap",
+    "data": false
+   },
+   "X3": {
+    "x": 5,
+    "y": 4,
+    "side": "F",
+    "type": "cap",
+    "data": false
+   },
+   "X4": {
+    "x": 2,
+    "y": 5,
+    "side": "F",
+    "type": "cap",
+    "data": false
+   },
+   "X5": {
+    "x": 2,
+    "y": 0,
+    "side": "B",
+    "type": "cap",
+    "data": false
+   }
+  },
+  "traces": [
+   {
+    "a": "S",
+    "b": "N1",
+    "side": "F",
+    "bends": [
+     [
+      7,
+      3
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "S",
+    "b": "C1",
+    "side": "F",
+    "bends": [
+     [
+      5,
+      6
+     ]
+    ],
+    "gate": {
+     "kind": "normal",
+     "switches": [
+      "N1"
+     ],
+     "open": false,
+     "inverted": false
+    }
+   },
+   {
+    "a": "C1",
+    "b": "HR",
+    "side": "F",
+    "bends": [
+     [
+      4,
+      7
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "C1",
+    "b": "A1",
+    "side": "F",
+    "bends": [
+     [
+      1,
+      6
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "A1",
+    "b": "V1",
+    "side": "F",
+    "bends": [
+     [
+      2,
+      3
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "N1",
+    "b": "D1",
+    "side": "F",
+    "bends": [
+     [
+      5,
+      2
+     ]
+    ],
+    "gate": {
+     "kind": "and",
+     "switches": [
+      "A1",
+      "A2"
+     ],
+     "open": false,
+     "inverted": true
+    }
+   },
+   {
+    "a": "V1",
+    "b": "LR",
+    "side": "B",
+    "bends": [
+     [
+      3,
+      3
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "LR",
+    "b": "A2",
+    "side": "B",
+    "bends": [
+     [
+      5,
+      2
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "A2",
+    "b": "D2",
+    "side": "B",
+    "bends": [
+     [
+      7,
+      3
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "V1",
+    "b": "G",
+    "side": "B",
+    "bends": [
+     [
+      1,
+      3
+     ]
+    ],
+    "gate": {
+     "kind": "and",
+     "switches": [
+      "A1",
+      "A2"
+     ],
+     "open": false,
+     "inverted": false
+    }
+   },
+   {
+    "a": "S",
+    "b": "X1",
+    "side": "F",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "X1",
+    "b": "X1c",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "HR",
+    "b": "X2",
+    "side": "F",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "X2",
+    "b": "X2c",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "S",
+    "b": "X3",
+    "side": "F",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "A1",
+    "b": "X4",
+    "side": "F",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "V1",
+    "b": "X5",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   }
+  ],
+  "size": [
+   7,
+   8
+  ]
+ },
+ "20": {
+  "nodes": {
+   "S": {
+    "x": 7,
+    "y": 8,
+    "side": "F",
+    "type": "start",
+    "data": false
+   },
+   "HG": {
+    "x": 5,
+    "y": 7,
+    "side": "F",
+    "type": "holder",
+    "data": false,
+    "pass": "Green"
+   },
+   "N1": {
+    "x": 1,
+    "y": 8,
+    "side": "F",
+    "type": "sw",
+    "data": false
+   },
+   "V1": {
+    "x": 2,
+    "y": 5,
+    "side": "V",
+    "type": "via",
+    "data": false
+   },
+   "LR": {
+    "x": 5,
+    "y": 5,
+    "side": "F",
+    "type": "lock",
+    "data": false,
+    "pass": "Red"
+   },
+   "D1": {
+    "x": 8,
+    "y": 6,
+    "side": "F",
+    "type": "cap",
+    "data": true
+   },
+   "N2": {
+    "x": 8,
+    "y": 2,
+    "side": "F",
+    "type": "sw",
+    "data": false
+   },
+   "V2": {
+    "x": 6,
+    "y": 2,
+    "side": "V",
+    "type": "via",
+    "data": false
+   },
+   "HR": {
+    "x": 2,
+    "y": 1,
+    "side": "B",
+    "type": "holder",
+    "data": false,
+    "pass": "Red"
+   },
+   "LG": {
+    "x": 4,
+    "y": 5,
+    "side": "B",
+    "type": "lock",
+    "data": false,
+    "pass": "Green"
+   },
+   "D2": {
+    "x": 8,
+    "y": 6,
+    "side": "B",
+    "type": "cap",
+    "data": true
+   },
+   "A1": {
+    "x": 5,
+    "y": 8,
+    "side": "B",
+    "type": "and",
+    "data": false
+   },
+   "A2": {
+    "x": 8,
+    "y": 2,
+    "side": "B",
+    "type": "and",
+    "data": false
+   },
+   "D3": {
+    "x": 6,
+    "y": 0,
+    "side": "B",
+    "type": "cap",
+    "data": true
+   },
+   "LR2": {
+    "x": 7,
+    "y": 4,
+    "side": "B",
+    "type": "lock",
+    "data": false,
+    "pass": "Red"
+   },
+   "G": {
+    "x": 7,
+    "y": 8,
+    "side": "B",
+    "type": "goal",
+    "data": false
+   },
+   "X1": {
+    "x": 0,
+    "y": 3,
+    "side": "V",
+    "type": "via",
+    "data": false
+   },
+   "X1c": {
+    "x": 0,
+    "y": 1,
+    "side": "F",
+    "type": "cap",
+    "data": false
+   },
+   "X2": {
+    "x": 4,
+    "y": 3,
+    "side": "V",
+    "type": "via",
+    "data": false
+   },
+   "X2c": {
+    "x": 4,
+    "y": 1,
+    "side": "B",
+    "type": "cap",
+    "data": false
+   },
+   "X3": {
+    "x": 6,
+    "y": 0,
+    "side": "F",
+    "type": "cap",
+    "data": false
+   },
+   "X4": {
+    "x": 2,
+    "y": 8,
+    "side": "B",
+    "type": "cap",
+    "data": false
+   },
+   "X5": {
+    "x": 6,
+    "y": 6,
+    "side": "B",
+    "type": "cap",
+    "data": false
+   }
+  },
+  "traces": [
+   {
+    "a": "S",
+    "b": "HG",
+    "side": "F",
+    "bends": [
+     [
+      6,
+      8
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "HG",
+    "b": "N1",
+    "side": "F",
+    "bends": [
+     [
+      2,
+      7
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "S",
+    "b": "D1",
+    "side": "F",
+    "bends": [
+     [
+      8,
+      7
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "N1",
+    "b": "V1",
+    "side": "F",
+    "bends": [
+     [
+      1,
+      6
+     ]
+    ],
+    "gate": {
+     "kind": "normal",
+     "switches": [
+      "N2"
+     ],
+     "open": false,
+     "inverted": false
+    }
+   },
+   {
+    "a": "HG",
+    "b": "LR",
+    "side": "F",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "LR",
+    "b": "D1",
+    "side": "F",
+    "bends": [
+     [
+      7,
+      5
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "D1",
+    "b": "N2",
+    "side": "F",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "LR",
+    "b": "V2",
+    "side": "F",
+    "bends": [
+     [
+      6,
+      4
+     ]
+    ],
+    "gate": {
+     "kind": "normal",
+     "switches": [
+      "N1"
+     ],
+     "open": false,
+     "inverted": false
+    }
+   },
+   {
+    "a": "V1",
+    "b": "HR",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "V1",
+    "b": "LG",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "LG",
+    "b": "D2",
+    "side": "B",
+    "bends": [
+     [
+      7,
+      5
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "LG",
+    "b": "A1",
+    "side": "B",
+    "bends": [
+     [
+      5,
+      6
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "V2",
+    "b": "A2",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "V2",
+    "b": "D3",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "D2",
+    "b": "LR2",
+    "side": "B",
+    "bends": [
+     [
+      8,
+      5
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "LR2",
+    "b": "A2",
+    "side": "B",
+    "bends": [
+     [
+      7,
+      3
+     ]
+    ],
+    "gate": null
+   },
+   {
+    "a": "A1",
+    "b": "G",
+    "side": "B",
+    "bends": [],
+    "gate": {
+     "kind": "and",
+     "switches": [
+      "A1",
+      "A2"
+     ],
+     "open": false,
+     "inverted": false
+    }
+   },
+   {
+    "a": "D2",
+    "b": "G",
+    "side": "B",
+    "bends": [
+     [
+      7,
+      7
+     ]
+    ],
+    "gate": {
+     "kind": "and",
+     "switches": [
+      "A1",
+      "A2"
+     ],
+     "open": false,
+     "inverted": false
+    }
+   },
+   {
+    "a": "HR",
+    "b": "X1",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "X1",
+    "b": "X1c",
+    "side": "F",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "V1",
+    "b": "X2",
+    "side": "F",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "X2",
+    "b": "X2c",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "V2",
+    "b": "X3",
+    "side": "F",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "A1",
+    "b": "X4",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   },
+   {
+    "a": "D2",
+    "b": "X5",
+    "side": "B",
+    "bends": [],
+    "gate": null
+   }
+  ],
+  "size": [
+   8,
+   8
+  ]
+ }
+}

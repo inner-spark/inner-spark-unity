@@ -169,8 +169,10 @@ public partial class PcbLevelEditorWindow : EditorWindow
         {
             case Tool.Node:
                 return "Click empty grid: place node on the current side.\n" +
-                       "Drag a node: move it.   Drag a small square: move a trace bend.\n" +
+                       "Drag a node: move it (its straight / one-elbow traces follow).\n" +
+                       "Drag a small square: move a trace bend.\n" +
                        "Ctrl+Click a node: change it to the selected type.\n" +
+                       "Ctrl+Click a trace: re-route it as a clean elbow (again: flip the elbow).\n" +
                        "Shift+Click a node: give it the rotation below (new nodes get it too).";
             case Tool.Trace:
                 return "Click a node (or empty grid) to start.\n" +
@@ -369,6 +371,14 @@ public partial class PcbLevelEditorWindow : EditorWindow
                 }
                 else if (hit) dragNode = hit;
                 else if (PickBend(mouse, out dragTrace, out dragBend)) { }
+                else if (e.control && PickTrace(mouse) is Trace trace)
+                {
+                    Undo.RecordObject(trace, "Re-route Trace");
+                    RerouteTrace(trace, flip: true);
+                    board.Rebuild();
+                    e.Use();
+                    break; // no drag
+                }
                 else dragNode = CreateNode(snapped, placeType); // keep dragging to position it
                 GUIUtility.hotControl = id;
                 e.Use();
@@ -379,6 +389,13 @@ public partial class PcbLevelEditorWindow : EditorWindow
                 {
                     Undo.RecordObject(dragNode.transform, "Move Node");
                     dragNode.transform.position = board.LocalToWorld(snapped);
+                    foreach (var t in board.Traces)
+                    {
+                        // simple traces (straight or one elbow) follow the node; hand-shaped ones keep their bends
+                        if (!t || (t.from != dragNode && t.to != dragNode) || t.bends.Count > 1) continue;
+                        Undo.RecordObject(t, "Move Node");
+                        RerouteTrace(t, flip: false);
+                    }
                     board.Rebuild();
                 }
                 else if (dragTrace)
@@ -399,9 +416,52 @@ public partial class PcbLevelEditorWindow : EditorWindow
                 DrawBendHandles();
                 var hover = PickNode(mouse);
                 if (hover) HighlightNode(hover, Color.white);
+                else if (e.control && PickTrace(mouse) is Trace hoverTrace) HighlightTrace(hoverTrace);
                 else DrawCursor(snapped, SideColor);
                 break;
         }
+    }
+
+    void HighlightTrace(Trace t)
+    {
+        var points = new List<Vector3> { t.from.transform.position };
+        foreach (var b in t.bends) points.Add(board.LocalToWorld(b));
+        points.Add(t.to.transform.position);
+        Handles.color = Color.white;
+        Handles.DrawAAPolyLine(6f, points.ToArray());
+    }
+
+    /// <summary>
+    /// Redraws a trace as the Trace tool would: straight when it lines up at 0/45/90°, else one 45° elbow.
+    /// flip = false keeps the elbow on the side it's on now; flip = true swaps it (Ctrl+Click again to toggle).
+    /// </summary>
+    void RerouteTrace(Trace t, bool flip)
+    {
+        if (!t.from || !t.to) return;
+        Vector2 a = board.WorldToLocal(t.from.transform.position), b = board.WorldToLocal(t.to.transform.position);
+        var straightFirst = ElbowBends(a, b, false);
+        var diagonalFirst = ElbowBends(a, b, true);
+        bool useDiagonal = false; // the Trace tool's default
+        if (t.bends.Count == 1 && diagonalFirst.Count == 1)
+        {
+            Vector2 old = t.bends[0];
+            bool nowDiagonal = (old - diagonalFirst[0]).sqrMagnitude < (old - straightFirst[0]).sqrMagnitude;
+            useDiagonal = flip ? !nowDiagonal : nowDiagonal;
+        }
+        t.bends = useDiagonal ? diagonalFirst : straightFirst;
+    }
+
+    /// <summary>Bends from a to b: none when straight or diagonal, else a single 45° elbow.</summary>
+    static List<Vector2> ElbowBends(Vector2 a, Vector2 b, bool diagonalFirst)
+    {
+        var bends = new List<Vector2>();
+        Vector2 d = b - a;
+        float ax = Mathf.Abs(d.x), ay = Mathf.Abs(d.y);
+        if (ax < 1e-4f || ay < 1e-4f || Mathf.Abs(ax - ay) < 1e-4f) return bends;
+        float m = Mathf.Min(ax, ay);
+        var diagonal = new Vector2(Mathf.Sign(d.x) * m, Mathf.Sign(d.y) * m);
+        bends.Add(diagonalFirst ? a + diagonal : b - diagonal);
+        return bends;
     }
 
     void DrawBendHandles()
