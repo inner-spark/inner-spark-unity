@@ -52,7 +52,8 @@ arc, future mechanics (key + lock art exists: `Key_*`, `Key_Lock_*`, `Key_Node_*
 | Term | Meaning |
 |---|---|
 | **Board** | Root of a level (a prefab). Owns its nodes / traces / decorations, builds the movement graph and the generated 3D look. |
-| **Node** (`PcbNode`) | A stop point. Types: `Capacitor`, `Via` (both sides, flip point), `Start`, `Goal`, `Switch`, `AndSwitch`. |
+| **Node** (`PcbNode`) | A stop point. Types: `Capacitor`, `Via` (both sides, flip point), `Start`, `Goal`, `Switch`, `AndSwitch`, `PassHolder`, `PassLock`. |
+| **Pass** | Green / Red / Teal (`KeyType`). Taken from a **Pass Holder** (endless source, refills when Sparky leaves); needed to move onto a **Pass Lock** of that colour; never used up; one carried at a time; can't be dropped. |
 | **Trace** | A copper line between two nodes on one side; Sparky slides along it once entered. Can bend. |
 | **Layer** | `Front` / `Back`. Vias belong to both. |
 | **Spark** | The player. With a character model (the `Spark_Sparky` prefab) it's Sparky; without one, a glowing sphere. |
@@ -89,6 +90,9 @@ arc, future mechanics (key + lock art exists: `Key_*`, `Key_Lock_*`, `Key_Node_*
     open until all on). Model shows CLOSED / OPEN via **LockVisual.cs**. Hand-wiring a switch's
     `onToggle → SetOpen` (Level 04) still works.
   - **DataMechanic.cs** — data pickup; collected on arrival (runtime only — a restart resets it).
+  - **KeyNodeMechanic.cs** (Pass Holder) / **KeyLockMechanic.cs** (Pass Lock) / **KeyType.cs** — the pass
+    system (see `KeySystem_README.md`). Locks use `NodeMechanic.CanArrive`. `KeyGateMechanic.cs` (uses up N
+    keys) is unused for now.
 - **HoverVisual.cs** — bob + shrink-away for hovering looks (data, goal lock). **FadeGroup.cs** — fades a
   whole model via one animatable Alpha (intro cinematics).
 - **BoardRig.cs** — board turn-over, mouse tilt, camera framing (`FitCamera`, `Refit`, board anchor,
@@ -152,7 +156,7 @@ Screen Size, 1920×1080.
 ## 6. Open design space
 
 - [ ] Final stage list / count and difficulty arc (see § 5).
-- [ ] Next mechanic — key + lock art exists (`Key_*`, `Key_Lock_*`, `Key_Node_*` in 3 colours).
+- [x] Pass mechanic (2026-10-03): Pass Holder / Pass Lock nodes — art (`Key_*`, `Key_Node_*`, `Key_Lock_*`) to set up in the theme's Passes.
 - [ ] Room background + per-stage intro cinematics (code ready; setup steps in PROGRESS 2026-10-02).
 - [ ] UI art for every screen (Main Menu, Stage Select, HUD, Pause, Dialog, Win, Ending) and the
       Music / SFX sliders.

@@ -21,6 +21,8 @@ namespace Pcb
     /// </summary>
     public abstract class NodeMechanic : MonoBehaviour
     {
+        /// <summary>Return false to stop the spark from moving onto this node (checked before it leaves, e.g. a pass lock).</summary>
+        public virtual bool CanArrive(Spark spark) => true;
         public virtual void OnSparkArrive(Spark spark) { }
         public virtual void OnSparkLeave(Spark spark) { }
     }

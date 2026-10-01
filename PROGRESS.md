@@ -5,6 +5,47 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 
 ---
 
+## 2026-10-03 (later) — pass system rebuilt around Pass Holder / Pass Lock nodes
+
+**Designer's rules:** colours **Green, Red, Teal** (match the art). **Pass Holder** node = endless
+source of its colour; Space / Enter takes the pass (any other carried pass is destroyed); the
+hovering pass shrinks away and **refills when Sparky leaves**; already carrying it → nothing. **No
+dropping** anywhere. **Pass Lock** node: Sparky can't move onto it without the matching pass (never
+used up); two looks — **Unlocked while Sparky carries its colour**, Locked otherwise. The carried pass
+floats **beside** Sparky, ~⅓ its size. Pass on a holder hovers like data. Validate: a lock with < 2
+traces. The many-keys gate is out of scope for now.
+
+**Changes (edited the dev's files where possible):**
+- `KeyType` → None / Green / Red / Teal (+ `ToColor`, `NextPass`). `NodeType.PassHolder`, `PassLock`.
+- `KeyNodeMechanic` → **Pass Holder** logic (`pass` colour, `Take`, refill on leave).
+  `SecurityGateMechanic` → renamed **`KeyLockMechanic`** (git mv) → **Pass Lock** node logic
+  (`CanArrive`, Locked/Unlocked look follows `Spark.OnCarriedKeyChanged`). `KeyGateMechanic` left
+  unused. `KeySystem_README.md` rewritten. **Deleted** the dev's `Test Key 06/07` test levels.
+- `NodeMechanic.CanArrive(spark)` (new hook, checked in `Spark.TryMove` before leaving).
+  `HoverVisual.Show()` (pop back in).
+- `Spark`: Space/Enter on a holder takes its pass; carried pass indicator (`carriedPassOffset`,
+  `carriedPassScale` 0.35) — hidden while travelling, mirrored on the back; pickup sound.
+- Theme **Passes**: Green / Red / Teal × (Holder, Pass, Lock Model); coloured placeholders until set.
+  Board/BoardVisuals build the holder model + hovering pass and the lock model (starts Locked).
+- Level Editor: Node types **Pass Holder** / **Pass Lock** (script added automatically); **Pass** tool
+  (click to cycle colour); validation (lock < 2 traces, lock colour without holder, holder colour
+  without lock, stale scripts). Look section skips pass node types (models are per colour).
+- Compiles (runtime + editor, 0 warnings).
+- **Tested by the designer (prefabs set up): working.** Tweaks: the pass hovered too far from its
+  holder → own theme setting **Pass Height** (0.3, was sharing Data Height 0.45); carried pass ×1.5
+  (`Spark.carriedPassScale` 0.35 → 0.525).
+- Art gap: `Key_Lock_*` has no unlocked variant — ask Andrii (stopgap in the lock prefab's Unlocked child).
+- **Pass still looked shifted (up/right) off its holder:** perspective — anything floating towards the
+  camera appears pushed away from the screen centre. `HoverVisual.towardCamera` (passes only): in play
+  the pass sits on the line from its node to the camera, so it always looks right above the holder.
+  Also: the `Key_*` card isn't centred on its own origin — centre it on the root in `Pass_*` prefabs.
+  **Then reverted at the designer's request:** after centring the `Pass_*` prefabs, passes hover
+  exactly like data pickups again (straight out of the board, `Pass Height`); the camera-line option
+  was removed from `HoverVisual`. Pass Height lowered 0.3 → **0.22** (closer to the board) — final.
+- **Pass Colour choice in the Level Editor** (default **Red**): Node tool shows it when placing a Pass
+  Holder / Lock (new ones get that colour); the Pass tool now *sets* a clicked holder / lock to it
+  (instead of cycling). Several colours per stage = several holders / locks with different colours.
+
 ## 2026-10-03 — merged Nghia's key / pass system ("add key pass", `2d011ee`)
 
 **What it adds:** `KeyType` (None, Red, Blue, Green, Yellow, SecurityCard); `KeyNodeMechanic` (a key /

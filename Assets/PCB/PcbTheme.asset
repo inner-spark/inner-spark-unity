@@ -34,6 +34,18 @@ MonoBehaviour:
   boardTilePrefab: {fileID: 8720090434053599027, guid: 02d1311ef76d3c54ca54fc84873380e5, type: 3}
   tracePrefab: {fileID: 1514149792772791552, guid: 651a6812693f1574aae1aa1e60f8d0e8, type: 3}
   traceBendPrefab: {fileID: 6614226478440039817, guid: 5a5a7775597fc9a4eace200612bf7f65, type: 3}
+  greenPass:
+    holder: {fileID: 1544702408461553778, guid: 1c5a5a796ff5da645a95058b0869da7c, type: 3}
+    pass: {fileID: 5606080282061357023, guid: 4b06fed9e3262d848bd2a5420555c3bd, type: 3}
+    lockModel: {fileID: 3215915597421420698, guid: 11bb769bcb359774b9cefa41b41ea8c2, type: 3}
+  redPass:
+    holder: {fileID: 8959748883671960335, guid: 34cc8f72cf0e85c42b1b28e6e70b6194, type: 3}
+    pass: {fileID: 5426893382396431098, guid: 20836801ee95e3b4ea74b0cb1dddb7aa, type: 3}
+    lockModel: {fileID: 7986768348001312648, guid: f3f93ba3c2ccf5246bcef889f8d77032, type: 3}
+  tealPass:
+    holder: {fileID: 0}
+    pass: {fileID: 0}
+    lockModel: {fileID: 0}
   decorationPrefabs:
   - type: 0
     prefab: {fileID: 8842654137159988500, guid: 5095f2fd5d09b824ca3abe811e246e3f, type: 3}

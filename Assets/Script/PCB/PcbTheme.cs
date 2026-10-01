@@ -43,6 +43,30 @@ namespace Pcb
         [Tooltip("Optional, used with Trace Prefab: piece placed at every bend (e.g. a round disc). Resized to traceWidth x traceWidth x traceHeight; X points along the incoming segment. Empty = straight pieces overlap at corners instead.")]
         public GameObject traceBendPrefab;
 
+        /// <summary>The three models of one pass colour.</summary>
+        [Serializable]
+        public struct PassLook
+        {
+            [Tooltip("Pass Holder node model (Key_Node_*). Authored like other node models (top facing -Z).")]
+            public GameObject holder;
+            [Tooltip("The pass itself (Key_*): hovers over the holder and, smaller, beside Sparky. Centred on its origin, facing the camera.")]
+            public GameObject pass;
+            [Tooltip("Pass Lock node model (Key_Lock_*), with a LockVisual: Locked / Unlocked children.")]
+            public GameObject lockModel;
+        }
+        [Header("Passes")]
+        public PassLook greenPass;
+        public PassLook redPass;
+        public PassLook tealPass;
+
+        public PassLook Pass(KeyType pass) => pass switch
+        {
+            KeyType.Green => greenPass,
+            KeyType.Red => redPass,
+            KeyType.Teal => tealPass,
+            _ => default
+        };
+
         [Serializable]
         public struct DecorationLook
         {
@@ -90,7 +114,8 @@ namespace Pcb
             NodeType.Start => startPrefab,
             NodeType.Switch => switchPrefab,
             NodeType.AndSwitch => andSwitchPrefab,
-            _ => goalPrefab
+            NodeType.Goal => goalPrefab,
+            _ => null // pass nodes: per colour, see Pass()
         };
 
         public GameObject[] NodeVariants(NodeType type) => type switch
@@ -100,7 +125,8 @@ namespace Pcb
             NodeType.Start => startVariants,
             NodeType.Switch => switchVariants,
             NodeType.AndSwitch => andSwitchVariants,
-            _ => goalVariants
+            NodeType.Goal => goalVariants,
+            _ => null
         };
 
         [Header("Scene")]
@@ -134,6 +160,8 @@ namespace Pcb
         public float dataHeight = 0.45f;
         [Tooltip("How far out from the board face the goal lock hovers while data is left (towards the camera).")]
         public float goalLockHeight = 0.4f;
+        [Tooltip("How far out from the board face a pass hovers over its Pass Holder.")]
+        public float passHeight = 0.22f;
         [Tooltip("Moves the goal lock up on screen (along the board), so it floats above the goal instead of in front of the spark standing there.")]
         public float goalLockUpOffset = 0f;
 

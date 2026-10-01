@@ -130,6 +130,8 @@ namespace Pcb
             g.localRotation = Quaternion.Euler(0f, 0f, node.rotationDegrees); // spin around the board normal
             if (node.TryGetComponent(out DataMechanic _))
                 BuildHover(g, "Data", theme.dataPrefab, theme.dataHeight, 0f, side, theme, list);
+            if (node.TryGetComponent(out KeyNodeMechanic holder)) // the pass this holder gives, hovering like data
+                BuildHover(g, "Pass", theme.Pass(holder.pass).pass, theme.passHeight, 0f, side, theme, list, holder.pass.ToColor());
             if (node.type == NodeType.Goal && board.GoalLocked) // a lock hovers over the goal while data is left
                 BuildHover(g, "Goal Lock", theme.goalLockPrefab, theme.goalLockHeight, theme.goalLockUpOffset, side, theme, list);
 
@@ -161,6 +163,8 @@ namespace Pcb
                 // Switch models show their starting ON/OFF look; SwitchMechanic swaps it on each press.
                 bool isOn = node.TryGetComponent(out SwitchMechanic sw) && sw.isOn;
                 foreach (var look in g.GetComponentsInChildren<SwitchVisual>(true)) look.Show(isOn);
+                if (node.TryGetComponent(out KeyLockMechanic _)) // pass locks start Locked (nobody carries a pass yet)
+                    foreach (var look in g.GetComponentsInChildren<LockVisual>(true)) look.Show(true);
                 return;
             }
 
@@ -215,6 +219,20 @@ namespace Pcb
                     }
                     break;
                 }
+                case NodeType.PassHolder:
+                {
+                    float d = theme.capacitorSize, h = theme.capacitorHeight * 0.5f;
+                    var colour = node.TryGetComponent(out KeyNodeMechanic holder2) ? holder2.pass.ToColor() : Color.gray;
+                    Tint(Part(g, Cylinder, new Vector3(0f, 0f, o * h * 0.5f), Upright, new Vector3(d * 1.2f, h * 0.5f, d * 1.2f), theme.metalMaterial, list), colour);
+                    break;
+                }
+                case NodeType.PassLock:
+                {
+                    float d = theme.capacitorSize * 1.3f, h = theme.capacitorHeight;
+                    var colour = node.TryGetComponent(out KeyLockMechanic lock2) ? lock2.pass.ToColor() : Color.gray;
+                    Tint(Part(g, Cube, new Vector3(0f, 0f, o * h * 0.5f), Quaternion.identity, new Vector3(d, d, h), theme.chipMaterial, list), colour);
+                    break;
+                }
                 case NodeType.Switch:
                 case NodeType.AndSwitch:
                 {
@@ -230,21 +248,42 @@ namespace Pcb
         /// A model hovering above a node (data pickup, goal lock): bobs gently, and HoverVisual.Dismiss() shrinks it
         /// away. No prefab = a small glowing cube placeholder.
         /// </summary>
-        static void BuildHover(Transform g, string name, GameObject prefab, float height, float upOffset, PcbLayer side, PcbTheme theme, List<Renderer> list)
+        static HoverVisual BuildHover(Transform g, string name, GameObject prefab, float height, float upOffset, PcbLayer side, PcbTheme theme, List<Renderer> list, Color? tint = null)
         {
             var holder = new GameObject(name).transform;
             holder.SetParent(g, false);
             // 'height' out from the board face; 'upOffset' up on screen = the board's +Y, undoing the node's own spin.
             Vector3 up = Quaternion.Inverse(g.localRotation) * Vector3.up;
             holder.localPosition = new Vector3(0f, 0f, Out(side) * height) + up * upOffset;
-            holder.gameObject.AddComponent<HoverVisual>();
+            var hover = holder.gameObject.AddComponent<HoverVisual>();
             if (prefab)
             {
                 var m = Object.Instantiate(prefab, holder, false);
                 if (side == PcbLayer.Back) m.transform.localRotation = Quaternion.Euler(0f, 180f, 0f) * m.transform.localRotation;
                 list.AddRange(m.GetComponentsInChildren<Renderer>(true));
             }
-            else Part(holder, Cube, Vector3.zero, Quaternion.Euler(45f, 45f, 0f), Vector3.one * 0.12f, theme.sparkMaterial, list);
+            else list.Add(Placeholder(holder, tint ?? Color.white, theme));
+            return hover;
+        }
+
+        /// <summary>Small glowing cube standing in for a model that isn't set yet (tinted, e.g. by pass colour).</summary>
+        public static MeshRenderer Placeholder(Transform parent, Color tint, PcbTheme theme)
+        {
+            var r = Part(parent, Cube, Vector3.zero, Quaternion.Euler(45f, 45f, 0f), Vector3.one * 0.12f, theme.sparkMaterial, null);
+            if (tint != Color.white) Tint(r, tint);
+            return r;
+        }
+
+        static readonly int BaseColorId = Shader.PropertyToID("_BaseColor");
+        static readonly int EmissionColorId = Shader.PropertyToID("_EmissionColor");
+
+        static void Tint(Renderer r, Color colour)
+        {
+            var block = new MaterialPropertyBlock();
+            r.GetPropertyBlock(block);
+            block.SetColor(BaseColorId, colour);
+            block.SetColor(EmissionColorId, colour * 1.5f);
+            r.SetPropertyBlock(block);
         }
 
         /// <summary>

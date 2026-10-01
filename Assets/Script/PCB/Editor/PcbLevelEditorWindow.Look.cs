@@ -39,7 +39,8 @@ public partial class PcbLevelEditorWindow
         look.trace = LookPopup("Trace", look.trace, theme.tracePrefab, theme.traceVariants, "simple shapes");
         look.traceBend = LookPopup("Trace Bend", look.traceBend, theme.traceBendPrefab, theme.traceBendVariants, "overlap");
         foreach (var type in NodeTypes)
-            look.Set(type, LookPopup(type.ToString(), look.For(type), theme.NodePrefab(type), theme.NodeVariants(type), "simple shape"));
+            if (type != NodeType.PassHolder && type != NodeType.PassLock) // per colour, set in the theme's Passes
+                look.Set(type, LookPopup(type.ToString(), look.For(type), theme.NodePrefab(type), theme.NodeVariants(type), "simple shape"));
         look.gate = LookPopup("Gate", look.gate, theme.gatePrefab, theme.gateVariants, "simple block");
         if (EditorGUI.EndChangeCheck())
         {

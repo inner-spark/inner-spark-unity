@@ -86,8 +86,10 @@ namespace Pcb
         [Header("Keys / passes")]
         [Tooltip("The key or pass Sparky is carrying (one at a time). Space / Enter on a capacitor picks up, drops or swaps.")]
         public KeyType carriedKey = KeyType.None;
-        [Tooltip("Model of the carried key, restored when it's dropped on a capacitor.")]
-        public GameObject carriedKeyPrefab;
+        [Tooltip("Where the carried pass floats beside Sparky (front-side pose; mirrored on the back).")]
+        public Vector3 carriedPassOffset = new Vector3(0.22f, 0.22f, -0.25f);
+        [Tooltip("Size of the carried pass compared to the pass on a holder (about a third of Sparky).")]
+        public float carriedPassScale = 0.525f;
 
         static readonly int BaseColorId = Shader.PropertyToID("_BaseColor");
         static readonly int EmissionColorId = Shader.PropertyToID("_EmissionColor");
@@ -228,6 +230,7 @@ namespace Pcb
             {
                 wasTurning = false;
                 transform.localPosition = LocalPosition(Board.NodePosition(CurrentNode), Layer);
+                if (carriedPass) { Destroy(carriedPass.gameObject); carriedPass = null; BuildCarriedPass(); } // mirrored side
                 if (trail)
                 {
                     trail.Clear();
@@ -304,6 +307,8 @@ namespace Pcb
         bool TryMove(Vector2 dir)
         {
             if (!Board.TryPickExit(CurrentNode, Layer, dir, out var exit)) { Block(); return false; }
+            foreach (var m in exit.target.GetComponents<NodeMechanic>())
+                if (!m.CanArrive(this)) { Block(); return false; } // e.g. a pass lock without its pass
             foreach (var m in exit.trace.GetComponents<TraceMechanic>())
                 if (!m.CanEnter(this, exit.reversed)) { Block(); return false; }
 
@@ -332,49 +337,52 @@ namespace Pcb
                 return;
             }
 
-            if (CurrentNode.type == NodeType.Capacitor && TryUseKey()) return;
+            if (CurrentNode.type == NodeType.PassHolder)
+            {
+                if (CurrentNode.TryGetComponent(out KeyNodeMechanic holder)) holder.Take(this);
+                return; // took the pass, or already carrying it: nothing else happens here
+            }
 
             if (!CurrentNode.IsVia) { Block(); return; }
             if (HasCharacter) StartCoroutine(FlipSequence());
             else BeginFlip();
         }
 
-        /// <summary>
-        /// On a capacitor: pick up the key / pass lying there (swapping with the one carried), or drop the carried one.
-        /// False when there's nothing to do here.
-        /// </summary>
-        bool TryUseKey()
-        {
-            var keyMech = CurrentNode.GetComponent<KeyNodeMechanic>();
-            if (keyMech && (keyMech.currentKey != KeyType.None || carriedKey != KeyType.None))
-            {
-                KeyType lying = keyMech.currentKey;
-                GameObject lyingPrefab = keyMech.keyVisualPrefab;
-                keyMech.keyVisualPrefab = carriedKeyPrefab;
-                keyMech.SetKey(carriedKey);           // drop what we carry (or nothing)
-                SetCarriedKey(lying);                 // pick up what was there
-                carriedKeyPrefab = lyingPrefab;
-                AudioManager.Play(Sfx.Pickup);
-                return true;
-            }
-            if (!keyMech && carriedKey != KeyType.None)
-            {
-                keyMech = CurrentNode.gameObject.AddComponent<KeyNodeMechanic>();
-                keyMech.keyVisualPrefab = carriedKeyPrefab;
-                keyMech.SetKey(carriedKey);
-                SetCarriedKey(KeyType.None);
-                carriedKeyPrefab = null;
-                AudioManager.Play(Sfx.Pickup);
-                return true;
-            }
-            return false;
-        }
-
         public void SetCarriedKey(KeyType newKey)
         {
             if (carriedKey == newKey) return;
             carriedKey = newKey;
+            BuildCarriedPass();
             OnCarriedKeyChanged?.Invoke(carriedKey);
+        }
+
+        Transform carriedPass;
+
+        /// <summary>The small pass floating beside Sparky (the old one shrinks away; none when carrying nothing).</summary>
+        void BuildCarriedPass()
+        {
+            if (carriedPass)
+            {
+                var old = carriedPass.GetComponent<HoverVisual>();
+                if (old) old.Dismiss();
+                Destroy(carriedPass.gameObject, 1f);
+                carriedPass = null;
+            }
+            if (carriedKey == KeyType.None || !Board || !Board.theme) return;
+
+            bool back = Layer == PcbLayer.Back;
+            carriedPass = new GameObject("Carried Pass").transform;
+            carriedPass.SetParent(transform, false);
+            carriedPass.localPosition = back ? new Vector3(-carriedPassOffset.x, carriedPassOffset.y, -carriedPassOffset.z) : carriedPassOffset;
+            carriedPass.localScale = Vector3.one * carriedPassScale;
+            var model = Board.theme.Pass(carriedKey).pass;
+            if (model)
+            {
+                var m = Instantiate(model, carriedPass, false);
+                if (back) m.transform.localRotation = Quaternion.Euler(0f, 180f, 0f) * m.transform.localRotation;
+            }
+            else BoardVisuals.Placeholder(carriedPass, carriedKey.ToColor(), Board.theme);
+            carriedPass.gameObject.AddComponent<HoverVisual>().Show();
         }
 
         void BeginFlip()
@@ -543,6 +551,7 @@ namespace Pcb
         void ShowModel(bool show)
         {
             foreach (var r in modelRenderers) if (r) r.enabled = show;
+            if (carriedPass) carriedPass.gameObject.SetActive(show); // the carried pass travels hidden with Sparky
         }
 
         static void PlayVfx(GameObject vfx)

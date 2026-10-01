@@ -17,6 +17,7 @@ namespace Pcb
 
         public bool IsVia => type == NodeType.Via;
         public bool IsSwitch => type == NodeType.Switch || type == NodeType.AndSwitch;
+        public bool IsPassNode => type == NodeType.PassHolder || type == NodeType.PassLock;
         public bool IsOnLayer(PcbLayer l) => IsVia || layer == l;
     }
 }

@@ -30,7 +30,8 @@ namespace Pcb
                 NodeType.Start => start,
                 NodeType.Switch => switchNode,
                 NodeType.AndSwitch => andSwitch,
-                _ => goal
+                NodeType.Goal => goal,
+                _ => null // pass nodes are per colour (theme)
             };
 
             public void Set(NodeType type, GameObject model)
@@ -42,7 +43,7 @@ namespace Pcb
                     case NodeType.Start: start = model; break;
                     case NodeType.Switch: switchNode = model; break;
                     case NodeType.AndSwitch: andSwitch = model; break;
-                    default: goal = model; break;
+                    case NodeType.Goal: goal = model; break;
                 }
             }
         }
@@ -230,7 +231,13 @@ namespace Pcb
             return m ? m : theme ? theme.NodePrefab(type) : null;
         }
 
-        public GameObject NodeModel(PcbNode node) => node.model ? node.model : DefaultNodeModel(node.type);
+        public GameObject NodeModel(PcbNode node)
+        {
+            if (node.model) return node.model;
+            if (theme && node.TryGetComponent(out KeyNodeMechanic holder)) return theme.Pass(holder.pass).holder;
+            if (theme && node.TryGetComponent(out KeyLockMechanic passLock)) return theme.Pass(passLock.pass).lockModel;
+            return DefaultNodeModel(node.type);
+        }
         public GameObject DecorationModel(PcbDecoration decor) =>
             decor.model ? decor.model : theme ? theme.GetDecorationPrefab(decor.type) : null;
         public GameObject GateModel(GateMechanic gate) =>
@@ -325,7 +332,9 @@ namespace Pcb
                     Add(Id(n)); Add((int)n.type); Add((int)n.layer); Add(Id(n.model));
                     Add(Mathf.RoundToInt(n.rotationDegrees * 1000f));
                     if (n.TryGetComponent(out SwitchMechanic sw)) Add(sw.isOn ? 1 : 2); // starting ON/OFF look
-                    if (n.TryGetComponent(out DataMechanic _)) Add(3); // data pickup (also grays the goal)
+                    if (n.TryGetComponent(out DataMechanic _)) Add(3); // data pickup (also locks the goal)
+                    if (n.TryGetComponent(out KeyNodeMechanic holder)) Add(10 + (int)holder.pass);
+                    if (n.TryGetComponent(out KeyLockMechanic passLock)) Add(20 + (int)passLock.pass);
                     AddV(NodePosition(n)); AddV(n.chipSize); Add(n.name.GetHashCode());
                 }
                 foreach (var t in traces)

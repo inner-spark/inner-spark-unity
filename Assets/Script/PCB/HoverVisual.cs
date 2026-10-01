@@ -35,13 +35,31 @@ namespace Pcb
         {
             Init();
             dismissing = true;
+            dismissT = 0f;
         }
+
+        /// <summary>Pop back in (grow from nothing) after a Dismiss - e.g. a pass holder refilling.</summary>
+        public void Show()
+        {
+            Init();
+            dismissing = false;
+            appearT = 0f;
+            transform.localScale = Vector3.zero;
+            gameObject.SetActive(true);
+        }
+
+        float appearT = 1f;
 
         void Update()
         {
             float bob = bobHeight * Mathf.Sin(Time.time * bobSpeed);
             if (!dismissing)
             {
+                if (appearT < 1f)
+                {
+                    appearT = Mathf.Min(1f, appearT + Time.deltaTime / Mathf.Max(0.01f, dismissTime));
+                    transform.localScale = baseScale * Mathf.SmoothStep(0f, 1f, appearT);
+                }
                 transform.localPosition = basePosition + up * bob;
                 return;
             }

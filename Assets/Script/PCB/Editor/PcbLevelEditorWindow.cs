@@ -8,11 +8,11 @@ using UnityEngine;
 /// </summary>
 public partial class PcbLevelEditorWindow : EditorWindow
 {
-    enum Tool { Select, Node, Trace, Erase, Decoration, Paint, Link, Data }
+    enum Tool { Select, Node, Trace, Erase, Decoration, Paint, Link, Data, Pass }
 
     struct Issue { public string message; public Object target; }
 
-    static readonly string[] ToolNames = { "Select", "Node", "Trace", "Erase", "Decor", "Paint", "Link", "Data" };
+    static readonly string[] ToolNames = { "Select", "Node", "Trace", "Erase", "Decor", "Paint", "Link", "Data", "Pass" };
     static readonly string[] SideNames = { "Front", "Back" };
     static readonly Color FrontColor = new Color(1f, 0.85f, 0.4f);
     static readonly Color BackColor = new Color(0.5f, 0.85f, 1f);
@@ -125,6 +125,7 @@ public partial class PcbLevelEditorWindow : EditorWindow
         if (tool == Tool.Node)
         {
             placeType = (NodeType)EditorGUILayout.EnumPopup("Node Type", placeType);
+            if (placeType == NodeType.PassHolder || placeType == NodeType.PassLock) PassColourField();
             // 15° steps: lands exactly on 45°/90° and matches the 45° trace routing.
             nodeRotation = Mathf.Round(EditorGUILayout.Slider("Rotation", nodeRotation, 0f, 360f) / 15f) * 15f % 360f;
         }
@@ -137,6 +138,7 @@ public partial class PcbLevelEditorWindow : EditorWindow
         if (tool == Tool.Paint) PaintOptionsGUI();
         if (tool == Tool.Link) LinkOptionsGUI();
         if (tool == Tool.Data) DataOptionsGUI();
+        if (tool == Tool.Pass) PassOptionsGUI();
         EditorGUILayout.HelpBox(HelpText(), MessageType.None);
 
         EditorGUILayout.Space();
@@ -187,9 +189,13 @@ public partial class PcbLevelEditorWindow : EditorWindow
                 return "Click a switch to pick it, then click the traces it should control (adds a gate).\n" +
                        "Ctrl+Click a trace: unlink it.   Esc: drop the switch.\n" +
                        "Normal switches flip normal gates; AND switches open AND gates only while all are on.";
+            case Tool.Pass:
+                return "Click a Pass Holder or Pass Lock: give it the Pass Colour below.\n" +
+                       "Place them with the Node tool (types Pass Holder / Pass Lock). A holder gives its pass;\n" +
+                       "a lock can only be entered carrying the matching pass (never used up).";
             case Tool.Data:
                 return "Click a capacitor: add / remove its data pickup.\n" +
-                       "The goal stays locked (grayed out, no win) until all data on the level is collected.";
+                       "The goal stays locked (a lock hovers over it, no win) until all data on the level is collected.";
             default:
                 return "Normal Unity selection. Select nodes/traces to edit them in the Inspector.";
         }
@@ -265,6 +271,7 @@ public partial class PcbLevelEditorWindow : EditorWindow
             case Tool.Paint: PaintTool(e, mouse); break;
             case Tool.Link: LinkTool(e, mouse); break;
             case Tool.Data: DataTool(e, mouse); break;
+            case Tool.Pass: PassTool(e, mouse); break;
         }
 
         if (e.type == EventType.MouseMove || e.type == EventType.MouseDrag) sceneView.Repaint();
@@ -351,6 +358,7 @@ public partial class PcbLevelEditorWindow : EditorWindow
                     hit.type = placeType;
                     hit.name = NodeName(placeType);
                     EnsureSwitchMechanic(hit);
+                    EnsurePassMechanic(hit);
                     if (hit.type != NodeType.Capacitor && hit.TryGetComponent(out DataMechanic data))
                         Undo.DestroyObjectImmediate(data); // data only lives on capacitors
                 }
@@ -717,6 +725,8 @@ public partial class PcbLevelEditorWindow : EditorWindow
         node.layer = board.editorView;
         node.rotationDegrees = nodeRotation;
         if (node.IsSwitch) go.AddComponent<SwitchMechanic>(); // a switch node without it does nothing
+        if (type == NodeType.PassHolder) go.AddComponent<KeyNodeMechanic>().pass = passColour;
+        if (type == NodeType.PassLock) go.AddComponent<KeyLockMechanic>().pass = passColour;
         Undo.RegisterCreatedObjectUndo(go, "Create " + type);
         board.Rebuild();
         return node;
@@ -798,6 +808,7 @@ public partial class PcbLevelEditorWindow : EditorWindow
         }
         ValidateSwitches();
         ValidateData();
+        ValidatePasses();
     }
 
     void Add(string message, Object target) => issues.Add(new Issue { message = message, target = target });
