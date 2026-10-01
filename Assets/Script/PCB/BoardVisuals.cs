@@ -312,13 +312,20 @@ namespace Pcb
             ShowGateState(g, gate.ShownOpen);
         }
 
-        /// <summary>OPEN / CLOSED look of a gate: its LockVisual (Locked = closed) if it has one, else hidden while open.</summary>
-        public static void ShowGateState(Transform gateLook, bool open)
+        /// <summary>
+        /// OPEN / CLOSED look of a gate: its LockVisual (Locked = closed) if it has one, else hidden while open.
+        /// fade: the CLOSED look fades out / in (a switch press in play) instead of swapping instantly.
+        /// </summary>
+        public static void ShowGateState(Transform gateLook, bool open, bool fade = false)
         {
             var looks = gateLook.GetComponentsInChildren<LockVisual>(true);
             if (looks.Length > 0)
             {
-                foreach (var look in looks) look.Show(!open);
+                foreach (var look in looks)
+                {
+                    if (fade) look.FadeTo(!open);
+                    else look.Show(!open);
+                }
                 return;
             }
             for (int i = 0; i < gateLook.childCount; i++) gateLook.GetChild(i).gameObject.SetActive(!open);

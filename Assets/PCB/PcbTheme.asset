@@ -49,6 +49,36 @@ MonoBehaviour:
   decorationPrefabs:
   - type: 0
     prefab: {fileID: 8842654137159988500, guid: 5095f2fd5d09b824ca3abe811e246e3f, type: 3}
+  - type: 8
+    prefab: {fileID: 8100000000000000001, guid: 007f4f7d5dc54e739b45ec4a53e7d202, type: 3}
+  - type: 8
+    prefab: {fileID: 8100000000000000001, guid: d43ce074ec964788a73d038cb6fd78de, type: 3}
+  - type: 8
+    prefab: {fileID: 8100000000000000001, guid: 3efeced0389c40ffa0ea6de75f6f74a3, type: 3}
+  - type: 8
+    prefab: {fileID: 8100000000000000001, guid: 763021b5115a45b69a37c135d70f11fd, type: 3}
+  - type: 8
+    prefab: {fileID: 8100000000000000001, guid: 736903efeea240508d39f329deedf528, type: 3}
+  - type: 8
+    prefab: {fileID: 8100000000000000001, guid: 65bdee970c81431382da031a20df34eb, type: 3}
+  - type: 8
+    prefab: {fileID: 8100000000000000001, guid: 212680c2087c43e49d7053f681fbed55, type: 3}
+  - type: 8
+    prefab: {fileID: 8100000000000000001, guid: 06dcb22d2b9e479180a8b0330ba4f0a0, type: 3}
+  - type: 8
+    prefab: {fileID: 8100000000000000001, guid: 8e3bd863fc5844c289c0ae0d12945f9d, type: 3}
+  - type: 8
+    prefab: {fileID: 8100000000000000001, guid: f021981e295644a1afab7153144327eb, type: 3}
+  - type: 8
+    prefab: {fileID: 8100000000000000001, guid: b66300cbf905404c8313ce9717b92cd6, type: 3}
+  - type: 8
+    prefab: {fileID: 8100000000000000001, guid: a9d6d1fe6e0f438d9263e697858f06e0, type: 3}
+  - type: 8
+    prefab: {fileID: 8100000000000000001, guid: f8e94a3e07ee4b64b631a7989f3d5709, type: 3}
+  - type: 8
+    prefab: {fileID: 8100000000000000001, guid: 69b5386d14854ff4a94a55fb7297610a, type: 3}
+  - type: 8
+    prefab: {fileID: 8100000000000000001, guid: fb9eaa7b8c7a4c83938bcefec4ac076b, type: 3}
   capacitorVariants:
   - {fileID: 209706255546499803, guid: 431efd4114e455a4c9326727e93457b3, type: 3}
   - {fileID: 4715971414759615151, guid: b7c2ded5f1dd3d6459035423c36281a1, type: 3}

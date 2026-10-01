@@ -5,6 +5,30 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 
 ---
 
+## 2026-10-04 — parody console names, per-stage capacitor / gate models, gate fade
+
+- **Names back to the artist's parody spellings** (designer's call - they match the console models):
+  ColekoTelestar 1 · Altary2600 2–5 · NESt 6–12 · Gamerboi 13–17 · PlayingState 18–20 · Bonus 21–23
+  (file "<Console> - Level NN", in game "<Console>: Level N"; GUIDs kept, Level List intact).
+- **One random capacitor + gate model per stage** (Board > Look > Capacitor / Gate, from the theme's 6 capacitor
+  and 2 gate variants; no two stages in a row share a capacitor). The hand-painted per-object capacitor models
+  (ColekoTelestar 1, Altary2600 2 & 4) and gate models (NESt 7 & 8) were cleared so the stage's choice shows
+  (goal models untouched).
+- **Gates fade** like the pass lock: `BoardVisuals.ShowGateState(look, open, fade)` → `LockVisual.FadeTo` when a
+  switch press changes a gate in play (`GateMechanic.SetOpen`); building / starting state stays instant.
+
+## 2026-10-04 — random LED decorations on every final board
+
+- `DecorType.LED` added (appended, value 8). 15 game-ready wrappers `Assets/PCB/Prefabs/Final/Decoration/
+  Decor_LED_<1-3>_<Blue|Green|Purple|Red|Yellow>.prefab`: the artist's LED model stood up out of the board face
+  (−90° X like the other Final props) at 60 % scale so it doesn't read as a node; all 15 listed in the theme as
+  LED decoration variants (Level Editor Decor / Paint).
+- `Tools/LevelDesign/decorate.py scatter` placed them on all 23 final levels: both sides, light density (3–8 per
+  side; compact boards mostly get 3), ≥ 2 cells apart, ≥ 1.2 cells from nodes (1.6 from start / goal), ≥ 0.8
+  cell from traces, may use the board margin, random 45° rotation, no shape+colour repeated on a side, seeded by
+  level name. They live under a "Decorations (LED)" object; re-running replaces only those. Decorations never
+  touch gameplay. Backup of the pre-decoration levels was kept outside the project during the session.
+
 ## 2026-10-03 (late night) — board colour per console
 
 Each final level's own Board Tile (`Board.look.boardTile`, Level Editor > Look) set to one of the six existing

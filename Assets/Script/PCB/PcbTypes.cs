@@ -24,7 +24,8 @@ namespace Pcb
         ScrewHole,
         JumperWire,
         SilkscreenLabel,
-        CopperPour
+        CopperPour,
+        LED // the artist's LED models (Decor_LED_* prefabs; theme lists all 15 as variants)
     }
 
     public static class PcbLayerExtensions

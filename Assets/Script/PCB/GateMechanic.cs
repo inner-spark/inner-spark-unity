@@ -49,17 +49,17 @@ namespace Pcb
             bool changed = open != isOpen;
             isOpen = open;
             if (changed && playSound) AudioManager.Play(open ? Sfx.GateOpen : Sfx.GateClose);
-            UpdateVisual();
+            UpdateVisual(fade: changed && playSound); // a press fades the gate; the starting state is instant
         }
 
         public override bool CanEnter(Spark spark, bool reversed) => isOpen; // blocks both directions while closed
 
-        /// <summary>Swaps the generated model to its OPEN / CLOSED look.</summary>
-        void UpdateVisual()
+        /// <summary>Swaps the generated model to its OPEN / CLOSED look (fading it in play when fade is set).</summary>
+        void UpdateVisual(bool fade)
         {
             var board = GetComponentInParent<Board>();
             if (!board) return; // before the board built its look, it reads isOpen itself
-            foreach (var look in board.VisualsOf(this)) BoardVisuals.ShowGateState(look, isOpen);
+            foreach (var look in board.VisualsOf(this)) BoardVisuals.ShowGateState(look, isOpen, fade);
         }
     }
 }
