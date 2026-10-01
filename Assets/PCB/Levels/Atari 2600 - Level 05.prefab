@@ -1464,7 +1464,7 @@ GameObject:
   - component: {fileID: 4329743782700992426}
   - component: {fileID: 5164400757730301630}
   m_Layer: 0
-  m_Name: Altary2600 - Level 05
+  m_Name: Atari 2600 - Level 05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1499,12 +1499,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d964b7c489f54454db66757f7c244d90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pcb.Board
-  levelName: 'Altary2600: Level 5'
+  levelName: 'Atari 2600: Level 5'
   theme: {fileID: 11400000, guid: ffa1e0a639d45c241bbe1bad221dd486, type: 2}
   dialogSequence: {fileID: 11400000, guid: 53f206e3b5db360469c64348b0169340, type: 2}
   intro: {fileID: 0}
   look:
-    boardTile: {fileID: 0}
+    boardTile: {fileID: 4150448659043484937, guid: 964e6972f03d7fb4ba60e5edc8dfde5c, type: 3}
     trace: {fileID: 0}
     traceBend: {fileID: 0}
     capacitor: {fileID: 0}
@@ -1518,7 +1518,7 @@ MonoBehaviour:
   sizeInCells: {x: 6, y: 8}
   inputTolerance: 0.5
   editorView: 0
-  savedPath: Assets/PCB/Levels/Altary2600 - Level 05.prefab
+  savedPath: Assets/PCB/Levels/Atari 2600 - Level 05.prefab
 --- !u!1 &7308665874723042001
 GameObject:
   m_ObjectHideFlags: 0

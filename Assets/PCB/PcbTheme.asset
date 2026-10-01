@@ -80,6 +80,8 @@ MonoBehaviour:
   - {fileID: 8720090434053599027, guid: 02d1311ef76d3c54ca54fc84873380e5, type: 3}
   - {fileID: 6924863077297887296, guid: db6ca5b129e1ac64da229a010900de3c, type: 3}
   - {fileID: 989500971410953636, guid: 3429614ef51d9614c80cfe52e5440390, type: 3}
+  - {fileID: 8720090434053599027, guid: dad4b060f8e449be85b5a4b69962a1b6, type: 3}
+  - {fileID: 8720090434053599027, guid: ac3d358f27044aa1987d71d4c2f4e1a1, type: 3}
   traceVariants:
   - {fileID: 1514149792772791552, guid: 651a6812693f1574aae1aa1e60f8d0e8, type: 3}
   traceBendVariants:

@@ -806,7 +806,7 @@ MonoBehaviour:
   dialogSequence: {fileID: 0}
   intro: {fileID: 0}
   look:
-    boardTile: {fileID: 0}
+    boardTile: {fileID: 989500971410953636, guid: 3429614ef51d9614c80cfe52e5440390, type: 3}
     trace: {fileID: 0}
     traceBend: {fileID: 0}
     capacitor: {fileID: 0}

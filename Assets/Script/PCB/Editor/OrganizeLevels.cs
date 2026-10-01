@@ -16,11 +16,11 @@ static class OrganizeLevels
     // play order: (current file name, console / group, level number)
     static readonly (string file, string console, int number)[] Plan =
     {
-        ("Level 01 Tung", "ColekoTelestar", 1),
-        ("Level 02 Tung", "Altary2600", 2),
-        ("Level 03 Tung", "Altary2600", 3),
-        ("Level 04 Tung", "Altary2600", 4),
-        ("Level 05 Tung", "Altary2600", 5),
+        ("Level 01 Tung", "Coleco Telstar", 1),
+        ("Level 02 Tung", "Atari 2600", 2),
+        ("Level 03 Tung", "Atari 2600", 3),
+        ("Level 04 Tung", "Atari 2600", 4),
+        ("Level 05 Tung", "Atari 2600", 5),
         ("Level 06 Tung", "NES", 6),
         ("Level 08 Tung", "NES", 7),
         ("Level 9 Tung", "NES", 8),

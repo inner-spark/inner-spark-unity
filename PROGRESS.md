@@ -5,13 +5,26 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 
 ---
 
+## 2026-10-03 (late night) — board colour per console
+
+Each final level's own Board Tile (`Board.look.boardTile`, Level Editor > Look) set to one of the six existing
+artist tiles (`Assets/PCB/Prefabs/Final/Board Tile *.prefab`): Coleco Telstar **Purple** · Atari 2600
+**Bronze** (wood-panel era) · NES **Black** · Gameboy **Green** (pea-green screen) · PS1 **Blue** · Bonus
+**Red**. Theme default stays Green. Trace / node models unchanged.
+- Then two new tiles, made like the artist's other colours (one model copy per colour): "Board Tile Grey"
+  (warm grey, Gameboy body) and "Board Tile Light Grey" (cool light grey, PS1). Each = `PCBboard_module(Light)Grey.fbx`
+  (copy of the green model, its material slot remapped) + `M_PCBboard(Light)Grey.mat` (copy of the green material)
+  + colour texture `T_PCB_Base(Light)Grey1K.png` (the green texture recoloured, same circuit pattern; same normal /
+  metallic maps). Added to the theme's Board Tile choices; set on Gameboy 13–17 and PS1 18–20.
+  Final: Coleco Telstar Purple · Atari 2600 Bronze · NES Black · Gameboy Grey · PS1 Light Grey · Bonus Red.
+
 ## 2026-10-03 (late night) — final level order + names (Tools > PCB > Organize Final Levels)
 
 One-shot editor menu `OrganizeLevels.cs` (asks first, can't be Ctrl+Z'd; delete the script after it ran):
 renames the final 23 prefabs to "<Console> - Level NN.prefab", sets their in-game name to "<Console>: Level N",
 moves every other level prefab to `Assets/PCB/Levels/Archive`, and sets the Level List to exactly these 23 with
 Main Stage Count 20. Moves go through the AssetDatabase, so references (Level List, scenes) survive.
-Mapping (designer's answers): 1 Level 01 Tung (ColekoTelestar) · 2–5 Level 02–05 Tung (Altary2600) ·
+Mapping (designer's answers): 1 Level 01 Tung (Coleco Telstar) · 2–5 Level 02–05 Tung (Atari 2600) ·
 6 Level 06 Tung, 7 Level 08 Tung, 8 Level 9 Tung, 9 "Level  9 true Tung", 10 Level 10 true Tung,
 11 Tung lvl 11, 12 Tung lvl 12 true (NES — "NESt" was a typo) · 13–17 Tung lvl 13–17 (Gameboy) ·
 18–20 Tung lvl 18–20 (PS1) · Bonus 21–23 = Tung lvl 21–23 ("Bonus: Level 21…").
