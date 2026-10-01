@@ -18,6 +18,7 @@ namespace Pcb
         {
             if (panel) panel.SetActive(true);
             if (celebrationEffect) celebrationEffect.Play();
+            UiSelect.First(panel); // keyboard / gamepad: Next Level is selected, Submit presses it
         }
 
         public void Hide()

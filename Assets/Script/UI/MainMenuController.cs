@@ -12,7 +12,11 @@ namespace Pcb
         public GameObject mainPanel;
         public GameObject stageSelectPanel;
 
-        void Start() => AudioManager.PlayMusic(Music.Menu);
+        void Start()
+        {
+            AudioManager.PlayMusic(Music.Menu);
+            UiSelect.First(mainPanel); // keyboard / gamepad navigation starts on Play
+        }
 
         /// <summary>Continues from the furthest unlocked stage (the LevelManager keeps it within the Level List).</summary>
         public void Play()

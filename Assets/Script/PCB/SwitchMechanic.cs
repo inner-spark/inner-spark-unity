@@ -16,7 +16,6 @@ namespace Pcb
         public void Toggle()
         {
             isOn = !isOn;
-            Debug.Log($"Switch {gameObject.name} toggled. New state: (isOn: {isOn})");
             AudioManager.Play(Sfx.Switch);
             ShowState();
             onToggle?.Invoke(isOn);

@@ -5,6 +5,29 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 
 ---
 
+## 2026-10-02 (night) — project cleanup + keyboard / gamepad menus
+
+From a project review (items 2, 3, 4, 5, 7 chosen by the designer):
+- **Volume sliders:** checked — none exist in any scene yet (the `VolumeSlider` script is ready).
+- **Git:** `UserSettings/` was ignored but 4 files had been committed earlier → untracked them
+  (`git rm -r --cached UserSettings`, local files kept). Commit that removal.
+- **Removed debug logging** on every gate change / block and switch toggle (`GateMechanic`,
+  `SwitchMechanic`).
+- **Gamepad / keyboard:** Start pauses; menus select their first button when they open (Main Menu →
+  Play, Stage Select → stage 1, Back → Play, Pause → Resume, Win pop-up → Next Level) via new
+  `UiSelect`. With a win pop-up, its buttons handle Submit (LevelManager's own Space/Enter → Next is
+  only used without one — avoids Enter on Restart also triggering Next).
+- **Deleted unused files:** Unity template `TutorialInfo/` + `Readme.asset`; `Start Demo`, `Goal Demo`,
+  `Via Demo`, `Capacitor Demo`, `Capacitor Demo 1`, `Trace_Path_Blocked` prefabs. Level 1's five
+  capacitors painted with the two demo capacitors were reset to the default (theme: Capacitor Blue) —
+  repaint if wanted. **Kept** `Registor` (the theme's Resistor decoration) and `Diode`.
+- **DESIGN.md rewritten** to match the current project.
+- Compiles (runtime + editor, 0 warnings); not tested in Unity yet.
+
+**Still open from the review:** rename `SampleScene` → `Gameplay`; editor rebuild work every frame;
+one shared input setup (rebinding); player options; splitting `Spark.cs` / the Level Editor.
+Decide the final Level List (13 entries incl. the "Tung" set).
+
 ## 2026-10-02 (evening) — UI scales with the screen (1920×1080 design size)
 
 - **Bug:** going full screen, the UI stayed the same size in pixels. All three scenes' Canvas

@@ -208,7 +208,7 @@ MonoBehaviour:
   layer: 0
   chipSize: {x: 1, y: 1.5}
   rotationDegrees: 0
-  model: {fileID: 7043062803041349706, guid: 70d481c5d228655428a938b3f65adab8, type: 3}
+  model: {fileID: 0}
 --- !u!1 &1969010069443408435
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,7 +491,7 @@ MonoBehaviour:
   layer: 0
   chipSize: {x: 1, y: 1.5}
   rotationDegrees: 0
-  model: {fileID: 7043062803041349706, guid: f83a24d14df23244b8393346d1676868, type: 3}
+  model: {fileID: 0}
 --- !u!1 &5197884870020545824
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,7 +540,7 @@ MonoBehaviour:
   layer: 0
   chipSize: {x: 1, y: 1.5}
   rotationDegrees: 0
-  model: {fileID: 7043062803041349706, guid: f83a24d14df23244b8393346d1676868, type: 3}
+  model: {fileID: 0}
 --- !u!1 &5396031184521378440
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,7 +589,7 @@ MonoBehaviour:
   layer: 0
   chipSize: {x: 1, y: 1.5}
   rotationDegrees: 0
-  model: {fileID: 7043062803041349706, guid: 70d481c5d228655428a938b3f65adab8, type: 3}
+  model: {fileID: 0}
 --- !u!1 &5402689254249517140
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,7 +708,7 @@ MonoBehaviour:
   layer: 0
   chipSize: {x: 1, y: 1.5}
   rotationDegrees: 0
-  model: {fileID: 7043062803041349706, guid: 70d481c5d228655428a938b3f65adab8, type: 3}
+  model: {fileID: 0}
 --- !u!1 &7774531842474122982
 GameObject:
   m_ObjectHideFlags: 0

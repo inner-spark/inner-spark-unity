@@ -43,16 +43,11 @@ namespace Pcb
         {
             bool changed = open != isOpen;
             isOpen = open;
-            Debug.Log($"Gate {gameObject.name} set to {(isOpen ? "Open" : "Closed")}");
             if (changed && playSound) AudioManager.Play(open ? Sfx.GateOpen : Sfx.GateClose);
             UpdateVisual();
         }
 
-        public override bool CanEnter(Spark spark, bool reversed)
-        {
-            if (!isOpen) Debug.Log($"Spark blocked by closed gate on {gameObject.name}");
-            return isOpen;
-        }
+        public override bool CanEnter(Spark spark, bool reversed) => isOpen; // blocks both directions while closed
 
         /// <summary>Swaps the generated model to its OPEN / CLOSED look.</summary>
         void UpdateVisual()

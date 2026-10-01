@@ -43,6 +43,7 @@ namespace Pcb
                 var level = levels[i];
                 var button = Instantiate(buttonTemplate, buttonContainer);
                 button.gameObject.SetActive(true);
+                if (i == 0) UiSelect.Select(button.gameObject); // keyboard / gamepad navigation starts on stage 1
 
                 var label = button.GetComponentInChildren<TMP_Text>();
                 if (label) label.text = level ? level.levelName : $"Level {i + 1}";
@@ -64,6 +65,7 @@ namespace Pcb
         {
             if (panel) panel.SetActive(false);
             if (mainMenuPanel) mainMenuPanel.SetActive(true);
+            UiSelect.First(mainMenuPanel);
         }
     }
 }

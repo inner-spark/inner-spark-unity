@@ -233,7 +233,9 @@ namespace Pcb
             if (transitioning) return;
 
             if (restartAction.WasPressedThisFrame()) Restart();
-            else if (won && Time.time - wonAt > 0.4f && confirmAction.WasPressedThisFrame()) Next();
+            // With a win pop-up its buttons take Submit (keyboard / gamepad navigation); the key shortcut is only
+            // for scenes without one - otherwise Enter on its Restart button would also trigger Next.
+            else if (won && !winPanel && Time.time - wonAt > 0.4f && confirmAction.WasPressedThisFrame()) Next();
         }
         // No on-screen text during play: controls are taught in each stage's intro dialog.
     }

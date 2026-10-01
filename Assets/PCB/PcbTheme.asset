@@ -85,6 +85,7 @@ MonoBehaviour:
   chipHeight: 0.14
   dataHeight: 0.45
   goalLockHeight: 0.4
+  goalLockUpOffset: 0
   plugSize: {x: 0.46, y: 0.34, z: 0.26}
   spark: {r: 0.5254902, g: 0.8901961, b: 1, a: 1}
   sparkBlocked: {r: 1, g: 0.3529412, b: 0.3529412, a: 1}

@@ -27,6 +27,7 @@ namespace Pcb
         {
             pauseAction = new InputAction("Pause", InputActionType.Button);
             pauseAction.AddBinding("<Keyboard>/escape");
+            pauseAction.AddBinding("<Gamepad>/start");
             if (panel) panel.SetActive(false);
         }
 
@@ -67,6 +68,7 @@ namespace Pcb
             Time.timeScale = 0f;
             GamePaused = true;
             AudioManager.SetPaused(true);
+            UiSelect.First(panel); // keyboard / gamepad navigation starts on Resume
         }
 
         public void Resume()
@@ -76,6 +78,7 @@ namespace Pcb
             Time.timeScale = 1f;
             GamePaused = false;
             AudioManager.SetPaused(false);
+            UiSelect.Clear();
         }
 
         public void QuitToMenu()
