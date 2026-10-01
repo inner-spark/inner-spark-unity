@@ -98,8 +98,7 @@ There's no on-screen text during play — tutorials live in the dialogs.
   - **DataMechanic.cs** — data pickup; collected on arrival (runtime only — a restart resets it).
   - **KeyNodeMechanic.cs** (Pass Holder) / **KeyLockMechanic.cs** (Pass Lock) / **KeyType.cs** — the pass
     system (see `KeySystem_README.md`). Locks use `NodeMechanic.CanArrive`; the padlock fades away while
-    Sparky carries the matching pass. `KeyGateMechanic.cs` (uses up N
-    keys) is unused for now.
+    Sparky carries the matching pass.
 - **HoverVisual.cs** — bob + shrink-away for hovering looks (data, goal lock). **FadeGroup.cs** — fades a
   whole model via one animatable Alpha (intro cinematics).
 - **BoardRig.cs** — board turn-over, mouse tilt, camera framing (`FitCamera`, `Refit`, board anchor,
@@ -126,11 +125,9 @@ There's no on-screen text during play — tutorials live in the dialogs.
   one-sided vias, switch ↔ gate connections, data only on capacitors).
 - **PcbAssetSetup.cs** (theme / materials / Level List bootstrap), **PcbSelectionRedirect.cs**.
 - **ProgressMenu.cs** — `Tools > PCB > Reset Progress` / `Unlock All Stages` (testing).
-- **ClaudeLevelBuilder.cs** — `Tools > PCB > Build Claude (Hard) Levels`: builds level prefabs from JSON
-  made by the Python tools. Don't re-run on the final list (it would re-add the original Claude levels).
-- **OrganizeLevels.cs** — one-shot that renamed / archived the levels into the final list (done; can go).
-- **`Tools/LevelDesign/`** (Python, outside Unity) — solver + layout checker, level generator for hard
-  stages, stuck-state finder, prefab reader, LED decoration scatter (`decorate.py`). See its README.
+- **`Tools/LevelDesign/`** (Python, outside Unity) — solver + layout checker, solution sheet for the Level
+  List (`solutions.py` → `Docs/Level_solutions.md`), stuck-state finder, prefab reader, LED decoration
+  scatter (`decorate.py`), and the generators the Claude levels came from. See its README.
 - **UiScalingSetup.cs** — `Tools > PCB > Set Up UI Scaling (1920x1080)`: every canvas scales from a
   1920×1080 design size; build default resolution 1920×1080 full screen. Re-run after adding a scene.
 
@@ -189,7 +186,9 @@ Screen Size, 1920×1080.
 | 21–23 | Bonus | Red | hard / hard / very hard; 21–22 have stuck states (Restart) |
 
 - Each stage also picks one capacitor model and one gate model (`Board.look`), and has 3–8 LED
-  decorations per side. Intro dialogs on stages 1–3, 5–8, 10, 11, 13, 15, 17–20.
+  decorations per side.
+- **Solutions + stuck states** for every stage: [`Docs/Level_solutions.md`](Docs/Level_solutions.md)
+  (all 23 solvable; stuck states in Gamerboi 14 and 16 and bonus 21–22). Intro dialogs on stages 1–3, 5–8, 10, 11, 13, 15, 17–20.
 
 ## 6. Open design space
 

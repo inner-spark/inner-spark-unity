@@ -5,6 +5,40 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 
 ---
 
+## 2026-10-04 — clean-up + project snapshot
+
+### Snapshot: where the project stands
+- **Game:** 20 main stages in 5 consoles (ColekoTelestar 1 · Altary2600 2–5 · NESt 6–12 · Gamerboi 13–17 ·
+  PlayingState 18–20) → Ending, then 3 bonus stages (21–23) → Main Menu. Mechanics: vias, normal / AND
+  switches + gates, data, Red / Green passes. All 23 stages solvable (solver-checked).
+- **Look:** board colour per console, one capacitor + gate model per stage, LED decorations, gate and pass
+  lock fades, main-menu-style UI everywhere (Stage Select, HUD, Pause, Dialog, Win).
+- **Flow:** music carries over between stages; Space finishes / continues dialog and goes to the next stage;
+  Stage Select glides to the furthest stage; Ending shows "Bonus stages unlocked!".
+- **Docs:** README (jam submission), DESIGN (reference), this log, `Docs/Level_solutions.md` (every stage's
+  solution + stuck states), `Assets/Script/PCB/KeySystem_README.md` (passes), `Tools/LevelDesign/README.md`.
+- **Still open:** Music / SFX sliders (`VolumeSlider.cs` is ready, not placed); audio balance + missing clips;
+  intro dialog for stages 4, 9, 12, 14, 16 and the bonus stages (optional); stage 3's dialog line was cut off
+  in the sheet; intro cinematics (system ready, none made); README: key art, other members' AI usage,
+  Kenney kits / third-party sounds / Upheaval font licence.
+- **Designer to decide:** stuck states — Gamerboi 14 (take Red → LR1 → flip at V1 → take Green: the data
+  behind the red lock can't be reached any more) and Gamerboi 16 (take Green → LG → take Red at HR) trap the
+  player within a few moves; bonus 21–22 have a few too. Restart gets out; fine if intended.
+
+### Clean-up (all removals are in git history)
+- **Deleted scripts:** `KeyGateMechanic.cs` (never used), `Editor/OrganizeLevels.cs` (one-shot, done),
+  `Editor/ClaudeLevelBuilder.cs` (its menus would re-add archived levels to the Level List).
+- **Deleted data:** `Assets/PCB/LevelData/` (the builder's JSON + solution sheets for the original Claude
+  levels, which no longer match the final, designer-edited stages), `Tools/LevelDesign/export*.py` (fed the
+  builder), `Tools/LevelDesign/__pycache__/` (+ `.gitignore` entry), `spark-kun.slnx` (old project name).
+- **Kept on purpose:** `VolumeSlider.cs` (sliders later), `StageIntro.cs` / `FadeGroup.cs` (intro cinematics),
+  archived levels in `Assets/PCB/Levels/Archive`, the Python solver / generator (history + analysis).
+- **New:** `Tools/LevelDesign/solutions.py` → `Docs/Level_solutions.md` (re-run after editing a level);
+  `deadends.py` now reads level prefabs (and uses the start node's side).
+- Docs updated: DESIGN (removed tools, solutions sheet), README (project structure, stuck stages),
+  KeySystem_README (Pass Colour tool, lock fade, no KeyGate), Tools README rewritten.
+- Both assemblies compile without the removed scripts.
+
 ## 2026-10-04 — Space skips / continues dialog and goes to the next stage
 
 - `DialogController`: Space = Continue (first press finishes a line still typing, the next one advances).

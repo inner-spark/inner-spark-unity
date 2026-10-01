@@ -1,6 +1,6 @@
 """
 Finds stuck states: reachable states from which the goal can no longer be reached (e.g. you carried a pass
-through a lock, swapped it, and can't get back onto that lock).  python deadends.py <claude_levels_hard.json> [level#]
+through a lock, swapped it, and can't get back onto that lock).  python deadends.py <level prefab>...
 """
 import json, sys
 from collections import deque
@@ -59,7 +59,7 @@ def graph(level):
         if t == 'holder' and carried != N[node].get('pass'):
             yield f'take {N[node]["pass"]}', (node, side, sw, data, N[node]['pass'])
 
-    st0 = (start, 'F', sw0, 0, None)
+    st0 = (start, N[start]['side'] if N[start]['side'] != 'V' else 'F', sw0, 0, None)
     return st0, succ, (lambda st: st[0] == goal and st[3] == alldata)
 
 
@@ -97,18 +97,15 @@ def dead_states(level):
 
 
 if __name__ == '__main__':
-    data = json.load(open(sys.argv[1], encoding='utf-8'))
-    only = [int(a) for a in sys.argv[2:]]
-    for L in data['levels']:
-        if only and L['number'] not in only:
-            continue
-        total, dead, path = dead_states(to_level(L))
-        print(f'{L["name"]}: {total} reachable states, {len(dead)} stuck')
+    from prefab2level import parse
+    for path in sys.argv[1:]:
+        total, dead, path_to = dead_states(parse(path))
+        print(f'{path}: {total} reachable states, {len(dead)} stuck')
         # group stuck states by (node, side, carried) and show the shortest way into each kind
         seen = {}
-        for s in sorted(dead, key=lambda s: len(path(s))):
+        for s in sorted(dead, key=lambda s: len(path_to(s))):
             key = (s[0], s[1], s[4])
             if key not in seen:
-                seen[key] = path(s)
+                seen[key] = path_to(s)
         for (node, side, carried), p in list(seen.items())[:12]:
             print(f'  stuck at {node} ({side}) carrying {carried}: {" ".join(p)}')

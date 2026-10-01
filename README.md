@@ -42,8 +42,9 @@ gates, collect every data pickup to unlock the goal, and carry the right pass th
 <!-- TODO: keep this up to date before each build upload -->
 - Audio still needs balancing; some sounds are not in yet (switch, travel, menu music, gate close).
 - No in-game volume sliders yet.
-- Levels can't be lost — a stuck player uses Restart (R). Bonus stages 21 and 22 have spots where a wrong pass
-  swap leaves no way back to the goal; Restart is the way out there too.
+- Levels can't be lost — a stuck player uses Restart (R). Gamerboi stages 14 and 16 and bonus stages 21–22
+  have spots where a wrong pass swap leaves no way back to the goal; Restart is the way out there too
+  (see `Docs/Level_solutions.md`).
 - Stages 4, 9, 12, 14, 16 and the bonus stages have no intro dialog.
 
 ## AI-generated content
@@ -70,4 +71,6 @@ gates, collect every data pickup to unlock the goal, and carry the right pass th
 - `Assets/PCB/` — levels (`Levels/`), Level List, theme, prefabs, dialogs, sound bank
 - `Assets/Import Asset/` — imported art, sounds, VFX
 - `Assets/Scenes/` — `MainMenu`, `SampleScene` (gameplay), `Ending`
+- `Docs/` — `Level_solutions.md` (solution + stuck states for every stage)
+- `Tools/LevelDesign/` — Python puzzle solver / analysis tools (outside Unity)
 - `DESIGN.md` — design & code reference · `PROGRESS.md` — development log
