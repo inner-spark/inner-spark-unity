@@ -31,6 +31,10 @@ namespace Pcb
                 var canvas = go.AddComponent<Canvas>();
                 canvas.renderMode = RenderMode.ScreenSpaceOverlay;
                 canvas.sortingOrder = short.MaxValue; // above every other canvas
+                var scaler = go.AddComponent<CanvasScaler>(); // same 1920x1080 design size as the scenes' canvases
+                scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+                scaler.referenceResolution = new Vector2(1920f, 1080f);
+                scaler.matchWidthOrHeight = 0.5f;
                 go.AddComponent<GraphicRaycaster>();
                 instance.group = go.AddComponent<CanvasGroup>();
                 var image = new GameObject("Black").AddComponent<Image>();

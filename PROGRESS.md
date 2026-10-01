@@ -5,6 +5,20 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 
 ---
 
+## 2026-10-02 (evening) — UI scales with the screen (1920×1080 design size)
+
+- **Bug:** going full screen, the UI stayed the same size in pixels. All three scenes' Canvas
+  Scalers were on **Constant Pixel Size** (reference 800×600 unused).
+- **Fix:** new editor menu **Tools > PCB > Set Up UI Scaling (1920x1080)** (`UiScalingSetup`): every
+  root Canvas in every build scene → **Scale With Screen Size**, reference **1920×1080**, match 0.5;
+  saves the scenes; Player default resolution → 1920×1080, Full Screen Window, not native. The
+  runtime `ScreenFader` canvas uses the same design size. Re-run it after adding a new scene.
+- After running it the existing UI (laid out at ~900 px wide) looks about **half size** — resize it
+  once with the Game view set to 1920×1080.
+- **UI screens to make art for:** Main Menu (main panel, Stage Select panel), in-game HUD
+  (Pause, Restart buttons), Pause panel (+ Music/SFX sliders), Dialog box, Win pop-up, Ending
+  screen, plus the planned volume sliders in the Main Menu. (Full list given in chat.)
+
 ## 2026-10-02 (later) — ending screen + saved stage progress
 
 **Designer's rules:** after the **last** stage's Win animation there's no win pop-up: it fades to
