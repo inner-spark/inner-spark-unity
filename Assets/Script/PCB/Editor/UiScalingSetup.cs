@@ -6,7 +6,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Tools > PCB > Set Up UI Scaling (1920x1080): every Canvas in every scene of the build scales with the
 /// screen from a 1920x1080 design size (instead of staying the same size in pixels), and the build's
-/// default resolution becomes 1920x1080 full screen. Safe to run again, e.g. after adding a scene.
+/// default becomes a 1920x1080 resizable window. Safe to run again, e.g. after adding a scene.
 /// </summary>
 static class UiScalingSetup
 {
@@ -38,12 +38,14 @@ static class UiScalingSetup
             scenes++;
         }
 
+        // Game jam requirement: runs windowed at 1080p (resizable; the UI scales with the window).
         PlayerSettings.defaultScreenWidth = (int)Reference.x;
         PlayerSettings.defaultScreenHeight = (int)Reference.y;
         PlayerSettings.defaultIsNativeResolution = false;
-        PlayerSettings.fullScreenMode = FullScreenMode.FullScreenWindow;
+        PlayerSettings.fullScreenMode = FullScreenMode.Windowed;
+        PlayerSettings.resizableWindow = true;
 
         if (!string.IsNullOrEmpty(startScene)) EditorSceneManager.OpenScene(startScene, OpenSceneMode.Single);
-        Debug.Log($"[PCB] UI scaling set to 1920x1080 on {canvases} canvas(es) in {scenes} scene(s); build default resolution 1920x1080 full screen.");
+        Debug.Log($"[PCB] UI scaling set to 1920x1080 on {canvases} canvas(es) in {scenes} scene(s); build default: 1920x1080 windowed, resizable.");
     }
 }

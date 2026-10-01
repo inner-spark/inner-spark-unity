@@ -5,6 +5,17 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 
 ---
 
+## 2026-10-03 (evening) — game jam requirements: README + windowed build
+
+- **`README.md`** created from the jam's required sections (title, key art, team, engine & language,
+  launch, controls, known issues, AI-generated content log, credits) — TODOs for the team to fill in:
+  key art image, team roles, other members' AI usage, music/SFX source, Kenney kits, Upheaval font licence.
+- **Windowed build** (jam: "720p or 1080p, windowed"): `UiScalingSetup` now sets the Player default to a
+  **1920×1080 resizable window** (was full screen) — run **Tools > PCB > Set Up UI Scaling (1920x1080)**.
+- Still to do from the jam list: Product Name `spark-kun` → `Inner Spark`; decide the final Level List;
+  push to the jam's Git space; Windows build tested from another folder / PC (launch, controls, audio,
+  win, exit); early WIP upload; ask whether a lose state is expected.
+
 ## 2026-10-03 (later) — pass system rebuilt around Pass Holder / Pass Lock nodes
 
 **Designer's rules:** colours **Green, Red, Teal** (match the art). **Pass Holder** node = endless
