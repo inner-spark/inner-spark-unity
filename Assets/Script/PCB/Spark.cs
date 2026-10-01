@@ -80,6 +80,14 @@ namespace Pcb
         public event Action Blocked;
         /// <summary>The goal was reached and the win animation has finished (right away without a character).</summary>
         public event Action WinFinished;
+        /// <summary>The key / pass Sparky carries changed (security gates open or close with it).</summary>
+        public static event Action<KeyType> OnCarriedKeyChanged;
+
+        [Header("Keys / passes")]
+        [Tooltip("The key or pass Sparky is carrying (one at a time). Space / Enter on a capacitor picks up, drops or swaps.")]
+        public KeyType carriedKey = KeyType.None;
+        [Tooltip("Model of the carried key, restored when it's dropped on a capacitor.")]
+        public GameObject carriedKeyPrefab;
 
         static readonly int BaseColorId = Shader.PropertyToID("_BaseColor");
         static readonly int EmissionColorId = Shader.PropertyToID("_EmissionColor");
@@ -127,6 +135,7 @@ namespace Pcb
 
             flipAction = new InputAction("Flip", InputActionType.Button);
             flipAction.AddBinding("<Keyboard>/space");
+            flipAction.AddBinding("<Keyboard>/enter");
             flipAction.AddBinding("<Gamepad>/buttonSouth");
 
             if (model)
@@ -323,9 +332,49 @@ namespace Pcb
                 return;
             }
 
+            if (CurrentNode.type == NodeType.Capacitor && TryUseKey()) return;
+
             if (!CurrentNode.IsVia) { Block(); return; }
             if (HasCharacter) StartCoroutine(FlipSequence());
             else BeginFlip();
+        }
+
+        /// <summary>
+        /// On a capacitor: pick up the key / pass lying there (swapping with the one carried), or drop the carried one.
+        /// False when there's nothing to do here.
+        /// </summary>
+        bool TryUseKey()
+        {
+            var keyMech = CurrentNode.GetComponent<KeyNodeMechanic>();
+            if (keyMech && (keyMech.currentKey != KeyType.None || carriedKey != KeyType.None))
+            {
+                KeyType lying = keyMech.currentKey;
+                GameObject lyingPrefab = keyMech.keyVisualPrefab;
+                keyMech.keyVisualPrefab = carriedKeyPrefab;
+                keyMech.SetKey(carriedKey);           // drop what we carry (or nothing)
+                SetCarriedKey(lying);                 // pick up what was there
+                carriedKeyPrefab = lyingPrefab;
+                AudioManager.Play(Sfx.Pickup);
+                return true;
+            }
+            if (!keyMech && carriedKey != KeyType.None)
+            {
+                keyMech = CurrentNode.gameObject.AddComponent<KeyNodeMechanic>();
+                keyMech.keyVisualPrefab = carriedKeyPrefab;
+                keyMech.SetKey(carriedKey);
+                SetCarriedKey(KeyType.None);
+                carriedKeyPrefab = null;
+                AudioManager.Play(Sfx.Pickup);
+                return true;
+            }
+            return false;
+        }
+
+        public void SetCarriedKey(KeyType newKey)
+        {
+            if (carriedKey == newKey) return;
+            carriedKey = newKey;
+            OnCarriedKeyChanged?.Invoke(carriedKey);
         }
 
         void BeginFlip()

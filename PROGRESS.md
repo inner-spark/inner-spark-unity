@@ -5,6 +5,36 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 
 ---
 
+## 2026-10-03 — merged Nghia's key / pass system ("add key pass", `2d011ee`)
+
+**What it adds:** `KeyType` (None, Red, Blue, Green, Yellow, SecurityCard); `KeyNodeMechanic` (a key /
+pass lying on a capacitor); Sparky carries one at a time — **Space / Enter** on a capacitor picks up,
+drops or swaps (`Spark.carriedKey`, `OnCarriedKeyChanged`); `KeyGateMechanic` (uses up N keys of a
+colour, then opens for good); `SecurityGateMechanic` (passable only while carrying the pass, never used
+up). Key models `Red Among Us` / `Blue Among Us`. Guide: `Assets/Script/PCB/KeySystem_README.md`.
+**Designer's intent: the "pass"** — hold it to get through gates that need it; passes stay in the
+level and are picked up by standing on their node and pressing Space / Enter; several per level.
+
+**Merge (his branch was based on 09-29):**
+- `GateMechanic.cs`: kept ours (board-built gates); `model` reads his `customGatePrefab`
+  (`FormerlySerializedAs`). New `UsesSwitches` (false for key / pass gates): the Link tool won't attach
+  switches to them and Validate skips the "no switch" warning.
+- `Spark.cs`: ours + his key logic (`TryUseKey`, `SetCarriedKey`, Enter binding); no debug log; pickup
+  sound on pick up / drop.
+- `SecurityGateMechanic` rewritten for board-built gates: opens/closes (with the gate sound) as the
+  carried pass changes, model shows OPEN/CLOSED. `KeyGateMechanic`: floating "1/3" text and logs
+  dropped (no on-screen text).
+- **Level 06 / 07 name clash:** both sides made different levels with those names. Kept ours; his are
+  now **`Test Key 06`** (key gates) and **`Test Key 07`** (pass gate, model → `Gate_1`) — **not** in
+  the Level List (designer: test levels only). Level List = ours.
+- `SampleScene`: ours (his side only had a work-in-progress board in it). `Capacitor Demo 1`,
+  `Trace_Path_Blocked`: stay deleted. `UserSettings` layout: stays untracked.
+- Compiles (runtime + editor, 0 warnings); **not tested in Unity yet** — see the test steps in chat.
+
+**Open:** key visuals are runtime-only spheres / Among Us models (not visible in the editor, not
+hidden with their board side) — designer will look at visuals; could join the hover system + theme
+(`Key_*` art). Enter = same as Space (designer asked for an explanation).
+
 ## 2026-10-02 (night) — project cleanup + keyboard / gamepad menus
 
 From a project review (items 2, 3, 4, 5, 7 chosen by the designer):

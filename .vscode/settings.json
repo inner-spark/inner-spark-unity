@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "inner-spark-unity.slnx"
+    "dotnet.defaultSolution": "spark-kun.slnx"
 }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Pcb
 {
@@ -17,10 +18,14 @@ namespace Pcb
         [Tooltip("The switches controlling this gate: normal switches for a normal gate, AND switches for an AND gate.")]
         public List<SwitchMechanic> switches = new List<SwitchMechanic>();
         [Tooltip("Optional: this gate's own model (Level Editor > Paint > Gates). Empty = the level's default (Board > Look), then the theme's.")]
+        [FormerlySerializedAs("customGatePrefab")] // the key-pass branch's name for the same thing
         public GameObject model;
 
         /// <summary>Open/closed as the model should show it (an AND gate works out its starting state in the editor).</summary>
         public virtual bool ShownOpen => isOpen;
+
+        /// <summary>False for gates opened by keys / passes instead of switches (Link tool and validation skip them).</summary>
+        public virtual bool UsesSwitches => true;
 
         protected virtual void OnEnable()
         {

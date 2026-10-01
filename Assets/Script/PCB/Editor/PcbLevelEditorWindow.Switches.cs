@@ -68,6 +68,11 @@ public partial class PcbLevelEditorWindow
     {
         bool and = switchNode.type == NodeType.AndSwitch;
         var gate = trace.GetComponent<GateMechanic>();
+        if (gate && !gate.UsesSwitches)
+        {
+            ShowNotification(new GUIContent("That trace has a key / pass gate: switches can't control it."));
+            return;
+        }
         if (gate && (gate is AndGateMechanic) != and)
         {
             ShowNotification(new GUIContent(and
@@ -171,6 +176,7 @@ public partial class PcbLevelEditorWindow
             if (!t) continue;
             foreach (var gate in t.GetComponents<GateMechanic>())
             {
+                if (!gate.UsesSwitches) continue; // key / pass gates open with keys, not switches
                 bool and = gate is AndGateMechanic;
                 string kind = and ? "AND gate" : "Gate";
                 var wired = EventDrivers(gate);
