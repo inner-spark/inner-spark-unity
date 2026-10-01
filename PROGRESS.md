@@ -5,6 +5,16 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 
 ---
 
+## 2026-10-03 (late night) — pass lock fades instead of popping
+
+- `LockVisual.FadeTo(bool)`: the Locked look fades out over the Unlocked one (or back in when Sparky
+  switches to another pass) instead of switching instantly. During the fade the Locked renderers use
+  transparent copies of their URP Lit materials (alpha on `_BaseColor`, shadow off once below half),
+  then go back to the originals. `fadeTime` (default 0.4 s) is on the LockVisual component of each
+  `Pass_Lock_*` prefab. `Show()` stays instant (editor, level build, gates and goals are unchanged).
+- `KeyLockMechanic.Refresh` now calls `FadeTo`. Runtime assembly compiles cleanly.
+- Relies on the transparent URP Lit variant being in the build (already used by `M_Sparky_Face`).
+
 ## 2026-10-03 (late night) — Level Editor: moving nodes keeps traces tidy
 
 Moving a node (Node tool, drag) always kept its links and mechanics (they reference the objects), but the

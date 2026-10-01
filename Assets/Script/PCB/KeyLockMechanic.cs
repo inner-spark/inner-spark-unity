@@ -23,7 +23,7 @@ namespace Pcb
             if (!board) return;
             foreach (var look in board.VisualsOf(GetComponent<PcbNode>()))
                 foreach (var lockLook in look.GetComponentsInChildren<LockVisual>(true))
-                    lockLook.Show(carried != pass);
+                    lockLook.FadeTo(carried != pass); // fades the padlock out / back in
         }
     }
 }
