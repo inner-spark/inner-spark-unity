@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Lvl1_Intro
   m_EditorClassIdentifier: Assembly-CSharp::Pcb.DialogSequence
   lines:
-  - speakerName: Sparkie
-    portrait: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - speakerName: Sparky
+    portrait: {fileID: 21300000, guid: 6936b9d0d20e600468c6f6817029d46e, type: 3}
     text: Hi, I'm Sparky! You know these machines from the outside. Follow me in,
       and I'll show you what's still glowing.
-  - speakerName: Sparkie
-    portrait: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - speakerName: Sparky
+    portrait: {fileID: 21300000, guid: 6936b9d0d20e600468c6f6817029d46e, type: 3}
     text: 'Wakey wakey, Granny! Few guess from the outside, but your name hides your
       past: COnnecticut LEather COmpany.'

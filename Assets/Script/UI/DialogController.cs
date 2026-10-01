@@ -20,6 +20,8 @@ namespace Pcb
         public Image portraitImage;
         public TMP_Text bodyLabel;
         public Button continueButton;
+        [Tooltip("Shown when a dialog line has no portrait of its own (e.g. Sparky).")]
+        public Sprite defaultPortrait;
 
         [Header("Typing")]
         [Tooltip("Letters per second while a line types out. 0 = show the whole line at once.")]
@@ -69,8 +71,8 @@ namespace Pcb
             }
             if (portraitImage)
             {
-                portraitImage.sprite = line.portrait;
-                portraitImage.enabled = line.portrait;
+                portraitImage.sprite = line.portrait ? line.portrait : defaultPortrait;
+                portraitImage.enabled = portraitImage.sprite;
             }
             if (continueButton && EventSystem.current) EventSystem.current.SetSelectedGameObject(continueButton.gameObject);
         }

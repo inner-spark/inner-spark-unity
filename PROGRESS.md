@@ -5,6 +5,32 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 
 ---
 
+## 2026-10-04 — pause menu + HUD buttons styled (SampleScene)
+
+Edited `SampleScene.unity` directly (backup kept outside the project during the session):
+- **Pause panel:** dark see-through overlay (was white placeholder), a "PAUSED" title (upheavtt, 120, yellow),
+  Resume / Quit to Menu / Quit Game in the main-menu style: `Button_main` sprite, 500×100, yellow tint
+  (orange hover), upheavtt 50 dark text.
+- **HUD (top-right):** Pause (`Button_Pause`) and Restart (`Button_Reset`) icon buttons, 110×112, same yellow
+  tint. Now assigned on PauseMenu (`pauseButton` / `restartButton`), so they gray out during the stage intro /
+  dialog and Restart while paused. The Pause button now calls `PauseMenu.Toggle` (press again = resume).
+- Not touched: Win panel and Dialog panel (still placeholder look).
+- **Follow-up (designer feedback):** yellow buttons now 500×140 and their labels are centred on the button's
+  face, not the whole sprite (TMP margins keep the text off `Button_main`'s side + drop shadow: right 23/475,
+  bottom 39/142 of the size). Pause buttons re-spaced.
+- **Dialog box** per the designer's demo, but with the yellow button: Sparky portrait (`Portrait_Sparky`) in
+  `Portrait_frame` bottom-left, `TextField` box (1170×250) with centred upheavtt 44 dark text, yellow Continue
+  (320×96) under its right edge; speaker name hidden (the demo has none); no tint over the scene.
+  `DialogController.defaultPortrait` (Sparky) is used when a line has no portrait; the two dialog assets now
+  point at Sparky (they had Unity's built-in placeholder sprite).
+- **Win screen:** full-screen lighter overlay (55 %) so the finished board shows, "STAGE CLEAR!" title, yellow
+  Next Level / Restart (500×140). Wording confirmed by the designer.
+- Fix: the portrait Frame was copied from the win panel's background Image, which had scale 8 - the designer
+  reset the Frame in Unity; the win background's own scale was set back to 1 too.
+- Final pass: pause + win buttons back to the main menu's size (500×100, font 50, label still centred on the
+  face), re-spaced; "STAGE CLEAR!" 140; the speaker name shows again, under the portrait ("Sparky", yellow
+  upheavtt 44) - dialog assets' speakerName fixed from "Sparkie" to "Sparky".
+
 ## 2026-10-04 — Stage Select: two-line labels, board-coloured buttons, scrolling fixed
 
 - **Scroll bug:** the Scroll View's Movement Type was Unrestricted (scrolls forever into blank space) and the
