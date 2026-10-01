@@ -45,6 +45,9 @@ traces. The many-keys gate is out of scope for now.
 - **Pass Colour choice in the Level Editor** (default **Red**): Node tool shows it when placing a Pass
   Holder / Lock (new ones get that colour); the Pass tool now *sets* a clicked holder / lock to it
   (instead of cycling). Several colours per stage = several holders / locks with different colours.
+- **Bug fix — hovering items rotated with their node:** data pickups, passes and the goal lock are built
+  inside the node's group, so a node's Rotation spun them too. `BoardVisuals.BuildHover` now cancels the
+  node's spin on the hovering item → always upright on screen (the node model still rotates).
 
 ## 2026-10-03 — merged Nghia's key / pass system ("add key pass", `2d011ee`)
 

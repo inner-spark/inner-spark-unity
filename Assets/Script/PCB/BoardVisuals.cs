@@ -255,6 +255,7 @@ namespace Pcb
             // 'height' out from the board face; 'upOffset' up on screen = the board's +Y, undoing the node's own spin.
             Vector3 up = Quaternion.Inverse(g.localRotation) * Vector3.up;
             holder.localPosition = new Vector3(0f, 0f, Out(side) * height) + up * upOffset;
+            holder.localRotation = Quaternion.Inverse(g.localRotation); // stays upright on screen whatever the node's Rotation
             var hover = holder.gameObject.AddComponent<HoverVisual>();
             if (prefab)
             {
