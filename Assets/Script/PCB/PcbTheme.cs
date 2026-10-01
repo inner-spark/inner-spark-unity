@@ -86,6 +86,25 @@ namespace Pcb
         public GameObject[] andSwitchVariants;
         public GameObject[] gateVariants;
         public GameObject[] boardTileVariants;
+
+        [Serializable]
+        public struct BoardTileColour
+        {
+            public GameObject tile;
+            [Tooltip("Stage Select button colour for levels using this board tile.")]
+            public Color uiColour;
+        }
+        [Tooltip("Stage Select: each level's button takes the colour of its board tile (tiles not listed keep the button's own colour).")]
+        public BoardTileColour[] boardTileColours;
+
+        public bool TryGetTileColour(GameObject tile, out Color colour)
+        {
+            if (boardTileColours != null && tile)
+                foreach (var c in boardTileColours)
+                    if (c.tile == tile) { colour = c.uiColour; return true; }
+            colour = default;
+            return false;
+        }
         public GameObject[] traceVariants;
         public GameObject[] traceBendVariants;
 

@@ -5,6 +5,18 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 
 ---
 
+## 2026-10-04 — Stage Select: two-line labels, board-coloured buttons, scrolling fixed
+
+- **Scroll bug:** the Scroll View's Movement Type was Unrestricted (scrolls forever into blank space) and the
+  ButtonContainer's Content Size Fitter didn't size it (height 0, centred pivot). `StageSelectController` now
+  fixes this when the panel opens: Clamped movement, Vertical Fit = Preferred Size, top pivot at the top of the
+  view, and it starts scrolled to the top. (Done in code, so the scene doesn't need editing.)
+- **Labels** always two lines: "NESt:" / "Level 6" (split at the level name's colon); bonus stages
+  "Bonus:" / "Level 1". Auto-size on, so long names (PlayingState) shrink instead of spilling.
+- **Colours:** new `PcbTheme.boardTileColours` (tile → button colour, filled for all 8 tiles). Each button
+  takes its level's board colour (Normal / Selected = colour, Highlighted lighter, Pressed darker) with
+  white text on dark colours (`lightTextColour`). Tiles not listed keep the template's yellow.
+
 ## 2026-10-04 — parody console names, per-stage capacitor / gate models, gate fade
 
 - **Names back to the artist's parody spellings** (designer's call - they match the console models):

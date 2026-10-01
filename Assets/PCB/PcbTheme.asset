@@ -112,6 +112,23 @@ MonoBehaviour:
   - {fileID: 989500971410953636, guid: 3429614ef51d9614c80cfe52e5440390, type: 3}
   - {fileID: 8720090434053599027, guid: dad4b060f8e449be85b5a4b69962a1b6, type: 3}
   - {fileID: 8720090434053599027, guid: ac3d358f27044aa1987d71d4c2f4e1a1, type: 3}
+  boardTileColours:
+  - tile: {fileID: 1755404028115059004, guid: 80300ef1db8050841bbf439c5200e32e, type: 3}
+    uiColour: {r: 0.2, g: 0.21, b: 0.23, a: 1}
+  - tile: {fileID: 2460409897440892639, guid: 3f841bf8bbdf88349aeab9d6c6b8f36f, type: 3}
+    uiColour: {r: 0.3, g: 0.5, b: 0.75, a: 1}
+  - tile: {fileID: 4150448659043484937, guid: 964e6972f03d7fb4ba60e5edc8dfde5c, type: 3}
+    uiColour: {r: 0.78, g: 0.55, b: 0.18, a: 1}
+  - tile: {fileID: 8720090434053599027, guid: 02d1311ef76d3c54ca54fc84873380e5, type: 3}
+    uiColour: {r: 0.2, g: 0.68, b: 0.42, a: 1}
+  - tile: {fileID: 6924863077297887296, guid: db6ca5b129e1ac64da229a010900de3c, type: 3}
+    uiColour: {r: 0.48, g: 0.36, b: 0.76, a: 1}
+  - tile: {fileID: 989500971410953636, guid: 3429614ef51d9614c80cfe52e5440390, type: 3}
+    uiColour: {r: 0.78, g: 0.3, b: 0.36, a: 1}
+  - tile: {fileID: 8720090434053599027, guid: dad4b060f8e449be85b5a4b69962a1b6, type: 3}
+    uiColour: {r: 0.58, g: 0.56, b: 0.52, a: 1}
+  - tile: {fileID: 8720090434053599027, guid: ac3d358f27044aa1987d71d4c2f4e1a1, type: 3}
+    uiColour: {r: 0.8, g: 0.81, b: 0.84, a: 1}
   traceVariants:
   - {fileID: 1514149792772791552, guid: 651a6812693f1574aae1aa1e60f8d0e8, type: 3}
   traceBendVariants:
