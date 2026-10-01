@@ -1,0 +1,12035 @@
+[
+ {
+  "seed": 10,
+  "score": 136.01048445476255,
+  "level": {
+   "nodes": {
+    "n1": {
+     "x": 2,
+     "y": 1,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n2": {
+     "x": 5,
+     "y": 0,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n3": {
+     "x": 4,
+     "y": 3,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n4": {
+     "x": 1,
+     "y": 6,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n5": {
+     "x": 6,
+     "y": 9,
+     "side": "F",
+     "type": "sw",
+     "data": false
+    },
+    "n6": {
+     "x": 9,
+     "y": 7,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n7": {
+     "x": 6,
+     "y": 7,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n8": {
+     "x": 9,
+     "y": 4,
+     "side": "F",
+     "type": "start",
+     "data": false
+    },
+    "n9": {
+     "x": 2,
+     "y": 9,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n10": {
+     "x": 8,
+     "y": 9,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n11": {
+     "x": 7,
+     "y": 4,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n12": {
+     "x": 7,
+     "y": 0,
+     "side": "F",
+     "type": "sw",
+     "data": false
+    },
+    "n13": {
+     "x": 8,
+     "y": 6,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Red"
+    },
+    "n14": {
+     "x": 6,
+     "y": 3,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n15": {
+     "x": 1,
+     "y": 3,
+     "side": "B",
+     "type": "goal",
+     "data": false
+    },
+    "n16": {
+     "x": 4,
+     "y": 7,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n17": {
+     "x": 5,
+     "y": 5,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Green"
+    },
+    "n18": {
+     "x": 3,
+     "y": 9,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Green"
+    },
+    "n19": {
+     "x": 6,
+     "y": 8,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Green"
+    },
+    "n20": {
+     "x": 1,
+     "y": 8,
+     "side": "B",
+     "type": "cap",
+     "data": true
+    }
+   },
+   "traces": [
+    {
+     "a": "n16",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       5.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n14",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n8",
+     "b": "n11",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n17",
+     "side": "B",
+     "bends": [
+      [
+       5.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n12",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n18",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       2.0,
+       9.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n12"
+      ],
+      "open": true
+     }
+    },
+    {
+     "a": "n6",
+     "b": "n11",
+     "side": "F",
+     "bends": [
+      [
+       9.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n15",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n2",
+     "side": "B",
+     "bends": [
+      [
+       4.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n4",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n6",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       8.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n6",
+     "side": "F",
+     "bends": [
+      [
+       8.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n7",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n16",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       4.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n19",
+     "side": "B",
+     "bends": [],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n12",
+       "n5"
+      ],
+      "open": true
+     }
+    },
+    {
+     "a": "n7",
+     "b": "n11",
+     "side": "F",
+     "bends": [
+      [
+       7.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n14",
+     "side": "B",
+     "bends": [
+      [
+       5.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n3",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n9",
+     "side": "F",
+     "bends": [
+      [
+       1.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n9",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n8",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       7.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n15",
+     "b": "n17",
+     "side": "B",
+     "bends": [
+      [
+       3.0,
+       5.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n12"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n16",
+     "b": "n17",
+     "side": "B",
+     "bends": [
+      [
+       5.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n14",
+     "side": "B",
+     "bends": [
+      [
+       6.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n18",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       5.0,
+       9.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n17",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       6.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n2",
+     "side": "F",
+     "bends": [
+      [
+       3.0,
+       0.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n7",
+     "side": "F",
+     "bends": [
+      [
+       6.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n4",
+     "side": "F",
+     "bends": [
+      [
+       1.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n7",
+     "b": "n9",
+     "side": "F",
+     "bends": [
+      [
+       4.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    }
+   ],
+   "size": [
+    9,
+    9
+   ],
+   "loops": {
+    "F": 4,
+    "B": 4
+   }
+  },
+  "analysis": {
+   "length": 45,
+   "inter": 13,
+   "min_takes": 4,
+   "min_press": 4,
+   "states": 277,
+   "colours": 2,
+   "takes": 4,
+   "presses": 4,
+   "flips": 5
+  },
+  "multi_gate": true,
+  "errs": []
+ },
+ {
+  "seed": 5,
+  "score": 106.19630433958088,
+  "level": {
+   "nodes": {
+    "n1": {
+     "x": 9,
+     "y": 1,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n2": {
+     "x": 0,
+     "y": 2,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n3": {
+     "x": 3,
+     "y": 0,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n4": {
+     "x": 3,
+     "y": 3,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n5": {
+     "x": 5,
+     "y": 8,
+     "side": "F",
+     "type": "sw",
+     "data": false
+    },
+    "n6": {
+     "x": 8,
+     "y": 5,
+     "side": "F",
+     "type": "start",
+     "data": false
+    },
+    "n7": {
+     "x": 0,
+     "y": 7,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n8": {
+     "x": 2,
+     "y": 9,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n9": {
+     "x": 5,
+     "y": 0,
+     "side": "F",
+     "type": "holder",
+     "data": false,
+     "pass": "Red"
+    },
+    "n10": {
+     "x": 5,
+     "y": 3,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n11": {
+     "x": 8,
+     "y": 7,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n12": {
+     "x": 2,
+     "y": 5,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n13": {
+     "x": 6,
+     "y": 8,
+     "side": "B",
+     "type": "sw",
+     "data": false
+    },
+    "n14": {
+     "x": 7,
+     "y": 4,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n15": {
+     "x": 3,
+     "y": 9,
+     "side": "B",
+     "type": "cap",
+     "data": true
+    },
+    "n16": {
+     "x": 9,
+     "y": 8,
+     "side": "B",
+     "type": "goal",
+     "data": false
+    },
+    "n17": {
+     "x": 6,
+     "y": 1,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Green"
+    },
+    "n18": {
+     "x": 0,
+     "y": 8,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Green"
+    },
+    "n19": {
+     "x": 4,
+     "y": 6,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n20": {
+     "x": 0,
+     "y": 5,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    }
+   },
+   "traces": [
+    {
+     "a": "n4",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       2.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n7",
+     "b": "n8",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n14",
+     "side": "B",
+     "bends": [
+      [
+       9.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n19",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       5.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n3",
+     "side": "B",
+     "bends": [
+      [
+       1.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n6",
+     "b": "n11",
+     "side": "F",
+     "bends": [],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n13"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n4",
+     "b": "n10",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n12",
+     "side": "F",
+     "bends": [],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n5"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n5",
+     "b": "n6",
+     "side": "F",
+     "bends": [],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n5"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n7",
+     "b": "n12",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n18",
+     "b": "n20",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n3",
+     "side": "F",
+     "bends": [
+      [
+       2.0,
+       0.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       5.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n17",
+     "side": "B",
+     "bends": [
+      [
+       4.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n17",
+     "side": "B",
+     "bends": [
+      [
+       4.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n18",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       2.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n17",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n4",
+     "side": "F",
+     "bends": [
+      [
+       1.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n9",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n20",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n14",
+     "side": "B",
+     "bends": [
+      [
+       4.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n16",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n4",
+     "side": "B",
+     "bends": [
+      [
+       1.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       0.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n6",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       7.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n15",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       1.0,
+       9.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n5"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n5",
+     "b": "n11",
+     "side": "F",
+     "bends": [
+      [
+       7.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n19",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       3.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n6",
+     "side": "F",
+     "bends": [
+      [
+       9.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    }
+   ],
+   "size": [
+    9,
+    9
+   ],
+   "loops": {
+    "F": 4,
+    "B": 4
+   }
+  },
+  "analysis": {
+   "length": 45,
+   "inter": 12,
+   "min_takes": 3,
+   "min_press": 2,
+   "states": 256,
+   "colours": 2,
+   "takes": 3,
+   "presses": 2,
+   "flips": 7
+  },
+  "multi_gate": true,
+  "errs": []
+ },
+ {
+  "seed": 8,
+  "score": 96.33643495525536,
+  "level": {
+   "nodes": {
+    "n1": {
+     "x": 0,
+     "y": 7,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n2": {
+     "x": 8,
+     "y": 0,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n3": {
+     "x": 6,
+     "y": 1,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n4": {
+     "x": 3,
+     "y": 5,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n5": {
+     "x": 0,
+     "y": 0,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n6": {
+     "x": 5,
+     "y": 6,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Green"
+    },
+    "n7": {
+     "x": 4,
+     "y": 3,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n8": {
+     "x": 7,
+     "y": 7,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n9": {
+     "x": 3,
+     "y": 0,
+     "side": "F",
+     "type": "sw",
+     "data": false
+    },
+    "n10": {
+     "x": 2,
+     "y": 3,
+     "side": "F",
+     "type": "start",
+     "data": false
+    },
+    "n11": {
+     "x": 5,
+     "y": 9,
+     "side": "F",
+     "type": "sw",
+     "data": false
+    },
+    "n12": {
+     "x": 9,
+     "y": 6,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n13": {
+     "x": 0,
+     "y": 1,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n14": {
+     "x": 6,
+     "y": 7,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n15": {
+     "x": 3,
+     "y": 2,
+     "side": "B",
+     "type": "cap",
+     "data": true
+    },
+    "n16": {
+     "x": 4,
+     "y": 0,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Green"
+    },
+    "n17": {
+     "x": 5,
+     "y": 5,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n18": {
+     "x": 2,
+     "y": 0,
+     "side": "B",
+     "type": "goal",
+     "data": false
+    },
+    "n19": {
+     "x": 8,
+     "y": 8,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Red"
+    },
+    "n20": {
+     "x": 8,
+     "y": 6,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Green"
+    }
+   },
+   "traces": [
+    {
+     "a": "n19",
+     "b": "n20",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n6",
+     "b": "n8",
+     "side": "F",
+     "bends": [
+      [
+       6.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n15",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       3.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n8",
+     "b": "n11",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n17",
+     "side": "B",
+     "bends": [],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n11"
+      ],
+      "open": true
+     }
+    },
+    {
+     "a": "n4",
+     "b": "n6",
+     "side": "F",
+     "bends": [
+      [
+       4.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n3",
+     "side": "F",
+     "bends": [
+      [
+       7.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n15",
+     "b": "n16",
+     "side": "B",
+     "bends": [
+      [
+       4.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n8",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       8.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n17",
+     "side": "B",
+     "bends": [
+      [
+       6.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n7",
+     "side": "F",
+     "bends": [
+      [
+       4.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       2.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n6",
+     "b": "n7",
+     "side": "F",
+     "bends": [
+      [
+       5.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       2.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n15",
+     "side": "B",
+     "bends": [
+      [
+       2.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n16",
+     "side": "B",
+     "bends": [
+      [
+       5.0,
+       0.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n16",
+     "b": "n18",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n9",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n9",
+     "side": "F",
+     "bends": [
+      [
+       5.0,
+       0.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       1.0,
+       0.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n4",
+     "side": "B",
+     "bends": [
+      [
+       2.0,
+       5.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n11"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n6",
+     "b": "n11",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n7",
+     "side": "F",
+     "bends": [],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n11",
+       "n9"
+      ],
+      "open": true
+     }
+    },
+    {
+     "a": "n17",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n3",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       0.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n9",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       3.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       8.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n11",
+     "side": "F",
+     "bends": [
+      [
+       2.0,
+       9.0
+      ]
+     ],
+     "gate": null
+    }
+   ],
+   "size": [
+    9,
+    9
+   ],
+   "loops": {
+    "F": 4,
+    "B": 4
+   }
+  },
+  "analysis": {
+   "length": 46,
+   "inter": 14,
+   "min_takes": 3,
+   "min_press": 1,
+   "states": 928,
+   "colours": 2,
+   "takes": 3,
+   "presses": 2,
+   "flips": 9
+  },
+  "multi_gate": true,
+  "errs": []
+ },
+ {
+  "seed": 20,
+  "score": 95.02772955699021,
+  "level": {
+   "nodes": {
+    "n1": {
+     "x": 5,
+     "y": 5,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n2": {
+     "x": 2,
+     "y": 0,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n3": {
+     "x": 3,
+     "y": 7,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n4": {
+     "x": 5,
+     "y": 8,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n5": {
+     "x": 3,
+     "y": 4,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n6": {
+     "x": 7,
+     "y": 1,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n7": {
+     "x": 7,
+     "y": 6,
+     "side": "F",
+     "type": "start",
+     "data": false
+    },
+    "n8": {
+     "x": 9,
+     "y": 6,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n9": {
+     "x": 9,
+     "y": 4,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n10": {
+     "x": 2,
+     "y": 9,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n11": {
+     "x": 0,
+     "y": 2,
+     "side": "F",
+     "type": "sw",
+     "data": false
+    },
+    "n12": {
+     "x": 0,
+     "y": 6,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n13": {
+     "x": 2,
+     "y": 4,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Green"
+    },
+    "n14": {
+     "x": 9,
+     "y": 1,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n15": {
+     "x": 5,
+     "y": 0,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Red"
+    },
+    "n16": {
+     "x": 7,
+     "y": 2,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Green"
+    },
+    "n17": {
+     "x": 8,
+     "y": 5,
+     "side": "B",
+     "type": "sw",
+     "data": false
+    },
+    "n18": {
+     "x": 4,
+     "y": 3,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n19": {
+     "x": 2,
+     "y": 2,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n20": {
+     "x": 7,
+     "y": 0,
+     "side": "B",
+     "type": "goal",
+     "data": false
+    }
+   },
+   "traces": [
+    {
+     "a": "n1",
+     "b": "n3",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n3",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       5.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n7",
+     "b": "n8",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n7",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n16",
+     "side": "B",
+     "bends": [
+      [
+       8.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n11",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n15",
+     "b": "n16",
+     "side": "B",
+     "bends": [],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n17"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n16",
+     "b": "n20",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n10",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       2.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       8.0,
+       0.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       2.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n17",
+     "side": "B",
+     "bends": [],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n17"
+      ],
+      "open": true
+     }
+    },
+    {
+     "a": "n2",
+     "b": "n19",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n8",
+     "b": "n9",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n16",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       6.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n7",
+     "side": "F",
+     "bends": [
+      [
+       6.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n13",
+     "side": "B",
+     "bends": [
+      [
+       3.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n4",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n19",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       2.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n7",
+     "b": "n9",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       3.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n15",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       3.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n4",
+     "side": "F",
+     "bends": [
+      [
+       4.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n6",
+     "side": "F",
+     "bends": [
+      [
+       6.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n6",
+     "b": "n9",
+     "side": "F",
+     "bends": [
+      [
+       9.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n17",
+     "side": "B",
+     "bends": [
+      [
+       9.0,
+       4.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n11"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n11",
+     "b": "n12",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n6",
+     "side": "F",
+     "bends": [
+      [
+       6.0,
+       0.0
+      ]
+     ],
+     "gate": null
+    }
+   ],
+   "size": [
+    9,
+    9
+   ],
+   "loops": {
+    "F": 4,
+    "B": 4
+   }
+  },
+  "analysis": {
+   "length": 39,
+   "inter": 8,
+   "min_takes": 3,
+   "min_press": 2,
+   "states": 859,
+   "colours": 2,
+   "takes": 3,
+   "presses": 2,
+   "flips": 3
+  },
+  "multi_gate": true,
+  "errs": []
+ },
+ {
+  "seed": 12,
+  "score": 95.01671138582607,
+  "level": {
+   "nodes": {
+    "n1": {
+     "x": 0,
+     "y": 4,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n2": {
+     "x": 6,
+     "y": 6,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n3": {
+     "x": 5,
+     "y": 0,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n4": {
+     "x": 9,
+     "y": 2,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n5": {
+     "x": 5,
+     "y": 4,
+     "side": "F",
+     "type": "sw",
+     "data": false
+    },
+    "n6": {
+     "x": 3,
+     "y": 7,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n7": {
+     "x": 8,
+     "y": 6,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n8": {
+     "x": 2,
+     "y": 3,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n9": {
+     "x": 8,
+     "y": 0,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n10": {
+     "x": 8,
+     "y": 9,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n11": {
+     "x": 0,
+     "y": 6,
+     "side": "F",
+     "type": "holder",
+     "data": false,
+     "pass": "Green"
+    },
+    "n12": {
+     "x": 1,
+     "y": 9,
+     "side": "F",
+     "type": "start",
+     "data": false
+    },
+    "n13": {
+     "x": 8,
+     "y": 7,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Green"
+    },
+    "n14": {
+     "x": 3,
+     "y": 6,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n15": {
+     "x": 1,
+     "y": 7,
+     "side": "B",
+     "type": "cap",
+     "data": true
+    },
+    "n16": {
+     "x": 5,
+     "y": 9,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n17": {
+     "x": 2,
+     "y": 1,
+     "side": "B",
+     "type": "sw",
+     "data": false
+    },
+    "n18": {
+     "x": 3,
+     "y": 3,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n19": {
+     "x": 6,
+     "y": 3,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Red"
+    },
+    "n20": {
+     "x": 3,
+     "y": 8,
+     "side": "B",
+     "type": "goal",
+     "data": false
+    }
+   },
+   "traces": [
+    {
+     "a": "n6",
+     "b": "n12",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n13",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n8",
+     "side": "F",
+     "bends": [
+      [
+       1.0,
+       4.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n17"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n2",
+     "b": "n7",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n11",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n16",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       4.0,
+       9.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n17"
+      ],
+      "open": true
+     }
+    },
+    {
+     "a": "n17",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       3.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n6",
+     "side": "F",
+     "bends": [
+      [
+       5.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n20",
+     "side": "B",
+     "bends": [],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n17"
+      ],
+      "open": true
+     }
+    },
+    {
+     "a": "n1",
+     "b": "n6",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n5",
+     "side": "F",
+     "bends": [
+      [
+       6.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n15",
+     "side": "B",
+     "bends": [
+      [
+       2.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n6",
+     "side": "F",
+     "bends": [
+      [
+       5.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n14",
+     "side": "B",
+     "bends": [
+      [
+       2.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       5.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       2.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n7",
+     "side": "F",
+     "bends": [
+      [
+       6.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n16",
+     "side": "B",
+     "bends": [
+      [
+       5.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n17",
+     "side": "B",
+     "bends": [
+      [
+       3.0,
+       0.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n14",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n7",
+     "b": "n10",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n9",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n16",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n9",
+     "side": "F",
+     "bends": [
+      [
+       8.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n15",
+     "side": "B",
+     "bends": [
+      [
+       0.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n5",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n11",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       0.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       8.0,
+       5.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n5"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n4",
+     "b": "n7",
+     "side": "F",
+     "bends": [
+      [
+       9.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    }
+   ],
+   "size": [
+    9,
+    9
+   ],
+   "loops": {
+    "F": 4,
+    "B": 4
+   }
+  },
+  "analysis": {
+   "length": 35,
+   "inter": 10,
+   "min_takes": 2,
+   "min_press": 3,
+   "states": 1413,
+   "colours": 2,
+   "takes": 2,
+   "presses": 3,
+   "flips": 5
+  },
+  "multi_gate": true,
+  "errs": []
+ },
+ {
+  "seed": 18,
+  "score": 92.38955683862405,
+  "level": {
+   "nodes": {
+    "n1": {
+     "x": 1,
+     "y": 1,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n2": {
+     "x": 7,
+     "y": 2,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n3": {
+     "x": 9,
+     "y": 1,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n4": {
+     "x": 9,
+     "y": 5,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n5": {
+     "x": 1,
+     "y": 6,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n6": {
+     "x": 4,
+     "y": 7,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Green"
+    },
+    "n7": {
+     "x": 7,
+     "y": 0,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n8": {
+     "x": 5,
+     "y": 9,
+     "side": "F",
+     "type": "holder",
+     "data": false,
+     "pass": "Red"
+    },
+    "n9": {
+     "x": 1,
+     "y": 4,
+     "side": "F",
+     "type": "start",
+     "data": false
+    },
+    "n10": {
+     "x": 5,
+     "y": 5,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n11": {
+     "x": 8,
+     "y": 9,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n12": {
+     "x": 7,
+     "y": 7,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n13": {
+     "x": 0,
+     "y": 5,
+     "side": "B",
+     "type": "sw",
+     "data": false
+    },
+    "n14": {
+     "x": 2,
+     "y": 4,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n15": {
+     "x": 0,
+     "y": 3,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n16": {
+     "x": 4,
+     "y": 4,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n17": {
+     "x": 6,
+     "y": 0,
+     "side": "B",
+     "type": "sw",
+     "data": false
+    },
+    "n18": {
+     "x": 3,
+     "y": 9,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Green"
+    },
+    "n19": {
+     "x": 8,
+     "y": 8,
+     "side": "B",
+     "type": "goal",
+     "data": false
+    },
+    "n20": {
+     "x": 6,
+     "y": 5,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    }
+   },
+   "traces": [
+    {
+     "a": "n16",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       5.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n14",
+     "side": "B",
+     "bends": [
+      [
+       1.0,
+       4.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n17"
+      ],
+      "open": true
+     }
+    },
+    {
+     "a": "n6",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       4.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n10",
+     "b": "n12",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n12",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n11",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       8.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n7",
+     "side": "F",
+     "bends": [
+      [
+       8.0,
+       0.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n13"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n14",
+     "b": "n16",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n8",
+     "b": "n12",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n17",
+     "side": "B",
+     "bends": [
+      [
+       6.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       7.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n6",
+     "b": "n8",
+     "side": "F",
+     "bends": [
+      [
+       4.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n4",
+     "side": "F",
+     "bends": [
+      [
+       9.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n16",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       9.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n15",
+     "side": "B",
+     "bends": [
+      [
+       1.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n15",
+     "side": "B",
+     "bends": [
+      [
+       1.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n16",
+     "b": "n17",
+     "side": "B",
+     "bends": [
+      [
+       4.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n6",
+     "b": "n9",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n8",
+     "b": "n11",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n3",
+     "side": "B",
+     "bends": [
+      [
+       8.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n11",
+     "side": "F",
+     "bends": [
+      [
+       9.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n10",
+     "side": "F",
+     "bends": [],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n17"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n18",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       6.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n6",
+     "side": "F",
+     "bends": [
+      [
+       2.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n9",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n17",
+     "side": "B",
+     "bends": [
+      [
+       8.0,
+       0.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n17",
+     "side": "B",
+     "bends": [
+      [
+       2.0,
+       0.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n18",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       9.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n17"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n14",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       2.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    }
+   ],
+   "size": [
+    9,
+    9
+   ],
+   "loops": {
+    "F": 4,
+    "B": 4
+   }
+  },
+  "analysis": {
+   "length": 44,
+   "inter": 14,
+   "min_takes": 2,
+   "min_press": 2,
+   "states": 570,
+   "colours": 2,
+   "takes": 2,
+   "presses": 3,
+   "flips": 9
+  },
+  "multi_gate": true,
+  "errs": []
+ },
+ {
+  "seed": 7,
+  "score": 89.90614667714986,
+  "level": {
+   "nodes": {
+    "n1": {
+     "x": 3,
+     "y": 3,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n2": {
+     "x": 2,
+     "y": 5,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n3": {
+     "x": 9,
+     "y": 9,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n4": {
+     "x": 8,
+     "y": 4,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n5": {
+     "x": 7,
+     "y": 8,
+     "side": "F",
+     "type": "sw",
+     "data": false
+    },
+    "n6": {
+     "x": 8,
+     "y": 1,
+     "side": "F",
+     "type": "sw",
+     "data": false
+    },
+    "n7": {
+     "x": 2,
+     "y": 1,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n8": {
+     "x": 0,
+     "y": 1,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n9": {
+     "x": 6,
+     "y": 1,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n10": {
+     "x": 4,
+     "y": 9,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n11": {
+     "x": 7,
+     "y": 6,
+     "side": "F",
+     "type": "start",
+     "data": false
+    },
+    "n12": {
+     "x": 4,
+     "y": 7,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Green"
+    },
+    "n13": {
+     "x": 8,
+     "y": 2,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n14": {
+     "x": 0,
+     "y": 0,
+     "side": "B",
+     "type": "cap",
+     "data": true
+    },
+    "n15": {
+     "x": 7,
+     "y": 9,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Green"
+    },
+    "n16": {
+     "x": 0,
+     "y": 2,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Red"
+    },
+    "n17": {
+     "x": 5,
+     "y": 1,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n18": {
+     "x": 3,
+     "y": 8,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Green"
+    },
+    "n19": {
+     "x": 6,
+     "y": 5,
+     "side": "B",
+     "type": "goal",
+     "data": false
+    },
+    "n20": {
+     "x": 5,
+     "y": 9,
+     "side": "B",
+     "type": "cap",
+     "data": true
+    }
+   },
+   "traces": [
+    {
+     "a": "n10",
+     "b": "n12",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n7",
+     "side": "F",
+     "bends": [
+      [
+       3.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n2",
+     "side": "F",
+     "bends": [
+      [
+       2.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n15",
+     "b": "n20",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n5",
+     "side": "F",
+     "bends": [
+      [
+       8.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n11",
+     "side": "F",
+     "bends": [
+      [
+       7.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n17",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n7",
+     "b": "n8",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n15",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n13",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n17",
+     "side": "B",
+     "bends": [
+      [
+       6.0,
+       2.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n6",
+       "n5"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n14",
+     "b": "n16",
+     "side": "B",
+     "bends": [],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n6",
+       "n5"
+      ],
+      "open": true
+     }
+    },
+    {
+     "a": "n5",
+     "b": "n11",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n9",
+     "side": "F",
+     "bends": [
+      [
+       8.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n18",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       4.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n12",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       6.0,
+       9.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n15",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       6.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n14",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       7.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       6.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n6",
+     "b": "n9",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n10",
+     "b": "n11",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n11",
+     "side": "F",
+     "bends": [
+      [
+       9.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n16",
+     "side": "B",
+     "bends": [
+      [
+       0.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       9.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       3.0,
+       6.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n6"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n2",
+     "b": "n8",
+     "side": "F",
+     "bends": [
+      [
+       0.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n17",
+     "side": "B",
+     "bends": [
+      [
+       4.0,
+       0.0
+      ]
+     ],
+     "gate": null
+    }
+   ],
+   "size": [
+    9,
+    9
+   ],
+   "loops": {
+    "F": 4,
+    "B": 4
+   }
+  },
+  "analysis": {
+   "length": 45,
+   "inter": 14,
+   "min_takes": 1,
+   "min_press": 3,
+   "states": 505,
+   "colours": 2,
+   "takes": 2,
+   "presses": 3,
+   "flips": 9
+  },
+  "multi_gate": true,
+  "errs": []
+ },
+ {
+  "seed": 9,
+  "score": 85.07397284659451,
+  "level": {
+   "nodes": {
+    "n1": {
+     "x": 5,
+     "y": 2,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n2": {
+     "x": 7,
+     "y": 2,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n3": {
+     "x": 7,
+     "y": 4,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n4": {
+     "x": 8,
+     "y": 0,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n5": {
+     "x": 2,
+     "y": 2,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n6": {
+     "x": 9,
+     "y": 4,
+     "side": "F",
+     "type": "start",
+     "data": false
+    },
+    "n7": {
+     "x": 3,
+     "y": 6,
+     "side": "F",
+     "type": "holder",
+     "data": false,
+     "pass": "Red"
+    },
+    "n8": {
+     "x": 5,
+     "y": 0,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n9": {
+     "x": 1,
+     "y": 9,
+     "side": "F",
+     "type": "sw",
+     "data": false
+    },
+    "n10": {
+     "x": 8,
+     "y": 7,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n11": {
+     "x": 6,
+     "y": 6,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Green"
+    },
+    "n12": {
+     "x": 0,
+     "y": 4,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n13": {
+     "x": 4,
+     "y": 0,
+     "side": "B",
+     "type": "cap",
+     "data": true
+    },
+    "n14": {
+     "x": 0,
+     "y": 9,
+     "side": "B",
+     "type": "cap",
+     "data": true
+    },
+    "n15": {
+     "x": 2,
+     "y": 9,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Green"
+    },
+    "n16": {
+     "x": 3,
+     "y": 3,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n17": {
+     "x": 7,
+     "y": 6,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Green"
+    },
+    "n18": {
+     "x": 6,
+     "y": 0,
+     "side": "B",
+     "type": "goal",
+     "data": false
+    },
+    "n19": {
+     "x": 7,
+     "y": 9,
+     "side": "B",
+     "type": "sw",
+     "data": false
+    },
+    "n20": {
+     "x": 5,
+     "y": 6,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    }
+   },
+   "traces": [
+    {
+     "a": "n2",
+     "b": "n8",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n10",
+     "b": "n11",
+     "side": "F",
+     "bends": [
+      [
+       7.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n12",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n8",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n16",
+     "side": "B",
+     "bends": [
+      [
+       4.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n13",
+     "side": "B",
+     "bends": [
+      [
+       5.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n3",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n4",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n6",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n11",
+     "side": "F",
+     "bends": [
+      [
+       6.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n17",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n15",
+     "b": "n20",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n7",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       1.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n16",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       3.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n18",
+     "side": "B",
+     "bends": [],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n19"
+      ],
+      "open": true
+     }
+    },
+    {
+     "a": "n19",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       5.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n15",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n18",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n16",
+     "side": "B",
+     "bends": [
+      [
+       4.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n3",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n20",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n7",
+     "b": "n9",
+     "side": "F",
+     "bends": [
+      [
+       3.0,
+       7.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n19"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n7",
+     "b": "n11",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n7",
+     "side": "F",
+     "bends": [
+      [
+       3.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n11",
+     "side": "F",
+     "bends": [
+      [
+       5.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n8",
+     "side": "F",
+     "bends": [
+      [
+       4.0,
+       0.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n17",
+     "b": "n19",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n6",
+     "side": "F",
+     "bends": [
+      [
+       9.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n15",
+     "b": "n19",
+     "side": "B",
+     "bends": [],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n9"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n9",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       0.0,
+       8.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n19",
+       "n9"
+      ],
+      "open": true
+     }
+    }
+   ],
+   "size": [
+    9,
+    9
+   ],
+   "loops": {
+    "F": 4,
+    "B": 4
+   }
+  },
+  "analysis": {
+   "length": 45,
+   "inter": 10,
+   "min_takes": 2,
+   "min_press": 2,
+   "states": 869,
+   "colours": 2,
+   "takes": 2,
+   "presses": 3,
+   "flips": 5
+  },
+  "multi_gate": true,
+  "errs": []
+ },
+ {
+  "seed": 11,
+  "score": 84.66038894205562,
+  "level": {
+   "nodes": {
+    "n1": {
+     "x": 9,
+     "y": 8,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n2": {
+     "x": 7,
+     "y": 3,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n3": {
+     "x": 7,
+     "y": 5,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n4": {
+     "x": 2,
+     "y": 0,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n5": {
+     "x": 4,
+     "y": 7,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n6": {
+     "x": 9,
+     "y": 0,
+     "side": "F",
+     "type": "holder",
+     "data": false,
+     "pass": "Green"
+    },
+    "n7": {
+     "x": 5,
+     "y": 4,
+     "side": "F",
+     "type": "start",
+     "data": false
+    },
+    "n8": {
+     "x": 7,
+     "y": 7,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n9": {
+     "x": 6,
+     "y": 9,
+     "side": "F",
+     "type": "sw",
+     "data": false
+    },
+    "n10": {
+     "x": 1,
+     "y": 8,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n11": {
+     "x": 9,
+     "y": 6,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n12": {
+     "x": 1,
+     "y": 3,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n13": {
+     "x": 6,
+     "y": 8,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n14": {
+     "x": 3,
+     "y": 7,
+     "side": "B",
+     "type": "sw",
+     "data": false
+    },
+    "n15": {
+     "x": 1,
+     "y": 6,
+     "side": "B",
+     "type": "cap",
+     "data": true
+    },
+    "n16": {
+     "x": 3,
+     "y": 9,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n17": {
+     "x": 6,
+     "y": 1,
+     "side": "B",
+     "type": "goal",
+     "data": false
+    },
+    "n18": {
+     "x": 4,
+     "y": 2,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Green"
+    },
+    "n19": {
+     "x": 2,
+     "y": 4,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n20": {
+     "x": 0,
+     "y": 0,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Red"
+    }
+   },
+   "traces": [
+    {
+     "a": "n14",
+     "b": "n15",
+     "side": "B",
+     "bends": [
+      [
+       2.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n3",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n8",
+     "b": "n9",
+     "side": "F",
+     "bends": [
+      [
+       6.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n3",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       2.0,
+       2.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n9"
+      ],
+      "open": true
+     }
+    },
+    {
+     "a": "n8",
+     "b": "n11",
+     "side": "F",
+     "bends": [
+      [
+       8.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n17",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       5.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n20",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n11",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n15",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       2.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n7",
+     "side": "F",
+     "bends": [
+      [
+       6.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n9",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       3.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n7",
+     "side": "F",
+     "bends": [
+      [
+       5.0,
+       6.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n9"
+      ],
+      "open": true
+     }
+    },
+    {
+     "a": "n1",
+     "b": "n9",
+     "side": "F",
+     "bends": [
+      [
+       7.0,
+       8.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n14"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n5",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       2.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n3",
+     "side": "B",
+     "bends": [
+      [
+       9.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n16",
+     "side": "B",
+     "bends": [
+      [
+       4.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n7",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       2.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n8",
+     "side": "F",
+     "bends": [
+      [
+       8.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n13",
+     "side": "B",
+     "bends": [
+      [
+       6.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n18",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n16",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       5.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n6",
+     "side": "F",
+     "bends": [
+      [
+       7.0,
+       2.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n9"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n15",
+     "b": "n16",
+     "side": "B",
+     "bends": [
+      [
+       1.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n13",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       1.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n17",
+     "side": "B",
+     "bends": [
+      [
+       5.0,
+       0.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n9",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       2.0,
+       9.0
+      ]
+     ],
+     "gate": null
+    }
+   ],
+   "size": [
+    9,
+    9
+   ],
+   "loops": {
+    "F": 4,
+    "B": 4
+   }
+  },
+  "analysis": {
+   "length": 49,
+   "inter": 13,
+   "min_takes": 2,
+   "min_press": 2,
+   "states": 888,
+   "colours": 2,
+   "takes": 2,
+   "presses": 2,
+   "flips": 9
+  },
+  "multi_gate": true,
+  "errs": []
+ },
+ {
+  "seed": 19,
+  "score": 83.85835321475984,
+  "level": {
+   "nodes": {
+    "n1": {
+     "x": 0,
+     "y": 1,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n2": {
+     "x": 2,
+     "y": 0,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n3": {
+     "x": 4,
+     "y": 3,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n4": {
+     "x": 5,
+     "y": 9,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n5": {
+     "x": 6,
+     "y": 1,
+     "side": "F",
+     "type": "start",
+     "data": false
+    },
+    "n6": {
+     "x": 7,
+     "y": 8,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n7": {
+     "x": 2,
+     "y": 7,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n8": {
+     "x": 0,
+     "y": 4,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n9": {
+     "x": 2,
+     "y": 2,
+     "side": "F",
+     "type": "holder",
+     "data": false,
+     "pass": "Green"
+    },
+    "n10": {
+     "x": 5,
+     "y": 7,
+     "side": "F",
+     "type": "sw",
+     "data": false
+    },
+    "n11": {
+     "x": 9,
+     "y": 5,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n12": {
+     "x": 5,
+     "y": 5,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n13": {
+     "x": 6,
+     "y": 2,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n14": {
+     "x": 3,
+     "y": 8,
+     "side": "B",
+     "type": "goal",
+     "data": false
+    },
+    "n15": {
+     "x": 8,
+     "y": 8,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Red"
+    },
+    "n16": {
+     "x": 6,
+     "y": 0,
+     "side": "B",
+     "type": "sw",
+     "data": false
+    },
+    "n17": {
+     "x": 0,
+     "y": 3,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n18": {
+     "x": 2,
+     "y": 3,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Green"
+    },
+    "n19": {
+     "x": 9,
+     "y": 0,
+     "side": "B",
+     "type": "cap",
+     "data": true
+    },
+    "n20": {
+     "x": 1,
+     "y": 7,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    }
+   },
+   "traces": [
+    {
+     "a": "n8",
+     "b": "n9",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n2",
+     "side": "F",
+     "bends": [
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n10",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n9",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n16",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n17",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n6",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       6.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n17",
+     "b": "n18",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n18",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       2.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n6",
+     "b": "n11",
+     "side": "F",
+     "bends": [
+      [
+       7.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n7",
+     "b": "n10",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n14",
+     "side": "B",
+     "bends": [
+      [
+       4.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n2",
+     "side": "B",
+     "bends": [
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n7",
+     "b": "n8",
+     "side": "F",
+     "bends": [
+      [
+       2.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n18",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n10",
+     "b": "n12",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n6",
+     "side": "F",
+     "bends": [
+      [
+       6.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n7",
+     "side": "F",
+     "bends": [
+      [
+       4.0,
+       9.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       6.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n3",
+     "side": "F",
+     "bends": [
+      [
+       4.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n13",
+     "side": "B",
+     "bends": [
+      [
+       5.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n3",
+     "side": "B",
+     "bends": [
+      [
+       2.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n15",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       9.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n16"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n17",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       1.0,
+       4.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n16"
+      ],
+      "open": true
+     }
+    },
+    {
+     "a": "n11",
+     "b": "n12",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n8",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n16",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n18",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       2.0,
+       6.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n10",
+       "n16"
+      ],
+      "open": true
+     }
+    }
+   ],
+   "size": [
+    9,
+    9
+   ],
+   "loops": {
+    "F": 4,
+    "B": 4
+   }
+  },
+  "analysis": {
+   "length": 45,
+   "inter": 10,
+   "min_takes": 2,
+   "min_press": 2,
+   "states": 641,
+   "colours": 2,
+   "takes": 2,
+   "presses": 3,
+   "flips": 5
+  },
+  "multi_gate": true,
+  "errs": []
+ },
+ {
+  "seed": 6,
+  "score": 80.49990096903792,
+  "level": {
+   "nodes": {
+    "n1": {
+     "x": 7,
+     "y": 1,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n2": {
+     "x": 2,
+     "y": 0,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n3": {
+     "x": 4,
+     "y": 8,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n4": {
+     "x": 1,
+     "y": 3,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n5": {
+     "x": 2,
+     "y": 9,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n6": {
+     "x": 9,
+     "y": 3,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n7": {
+     "x": 2,
+     "y": 6,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n8": {
+     "x": 8,
+     "y": 7,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n9": {
+     "x": 4,
+     "y": 3,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Green"
+    },
+    "n10": {
+     "x": 0,
+     "y": 8,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n11": {
+     "x": 7,
+     "y": 9,
+     "side": "F",
+     "type": "start",
+     "data": false
+    },
+    "n12": {
+     "x": 5,
+     "y": 0,
+     "side": "F",
+     "type": "holder",
+     "data": false,
+     "pass": "Red"
+    },
+    "n13": {
+     "x": 2,
+     "y": 8,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n14": {
+     "x": 7,
+     "y": 8,
+     "side": "B",
+     "type": "sw",
+     "data": false
+    },
+    "n15": {
+     "x": 0,
+     "y": 9,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n16": {
+     "x": 9,
+     "y": 8,
+     "side": "B",
+     "type": "sw",
+     "data": false
+    },
+    "n17": {
+     "x": 6,
+     "y": 6,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n18": {
+     "x": 9,
+     "y": 4,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n19": {
+     "x": 1,
+     "y": 6,
+     "side": "B",
+     "type": "goal",
+     "data": false
+    },
+    "n20": {
+     "x": 5,
+     "y": 1,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Green"
+    }
+   },
+   "traces": [
+    {
+     "a": "n5",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       1.0,
+       9.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n5",
+     "side": "F",
+     "bends": [
+      [
+       3.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n17",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       8.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n9",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n7",
+     "b": "n10",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       6.0,
+       1.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n16"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n14",
+     "b": "n17",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n16",
+     "b": "n17",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n4",
+     "side": "B",
+     "bends": [
+      [
+       2.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n15",
+     "side": "B",
+     "bends": [
+      [
+       1.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n8",
+     "b": "n11",
+     "side": "F",
+     "bends": [
+      [
+       8.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n14",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n13",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n17",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n9",
+     "side": "F",
+     "bends": [
+      [
+       2.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n7",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       3.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n8",
+     "side": "F",
+     "bends": [
+      [
+       5.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n16",
+     "b": "n18",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n9",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       4.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n6",
+     "b": "n8",
+     "side": "F",
+     "bends": [
+      [
+       9.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n7",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n9",
+     "side": "F",
+     "bends": [
+      [
+       5.0,
+       3.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n14"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n19",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       5.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       4.0,
+       0.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n14",
+       "n16"
+      ],
+      "open": true
+     }
+    },
+    {
+     "a": "n15",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       0.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n19",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n7",
+     "side": "F",
+     "bends": [
+      [
+       2.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n11",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    }
+   ],
+   "size": [
+    9,
+    9
+   ],
+   "loops": {
+    "F": 4,
+    "B": 4
+   }
+  },
+  "analysis": {
+   "length": 40,
+   "inter": 11,
+   "min_takes": 2,
+   "min_press": 2,
+   "states": 517,
+   "colours": 2,
+   "takes": 2,
+   "presses": 2,
+   "flips": 7
+  },
+  "multi_gate": false,
+  "errs": []
+ },
+ {
+  "seed": 13,
+  "score": 79.83924294825042,
+  "level": {
+   "nodes": {
+    "n1": {
+     "x": 5,
+     "y": 4,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n2": {
+     "x": 1,
+     "y": 1,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n3": {
+     "x": 7,
+     "y": 1,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n4": {
+     "x": 1,
+     "y": 5,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n5": {
+     "x": 6,
+     "y": 9,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n6": {
+     "x": 4,
+     "y": 0,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n7": {
+     "x": 7,
+     "y": 6,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n8": {
+     "x": 9,
+     "y": 5,
+     "side": "F",
+     "type": "holder",
+     "data": false,
+     "pass": "Green"
+    },
+    "n9": {
+     "x": 2,
+     "y": 3,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Green"
+    },
+    "n10": {
+     "x": 1,
+     "y": 7,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n11": {
+     "x": 7,
+     "y": 3,
+     "side": "F",
+     "type": "start",
+     "data": false
+    },
+    "n12": {
+     "x": 2,
+     "y": 9,
+     "side": "F",
+     "type": "sw",
+     "data": false
+    },
+    "n13": {
+     "x": 7,
+     "y": 5,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n14": {
+     "x": 5,
+     "y": 1,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Green"
+    },
+    "n15": {
+     "x": 3,
+     "y": 0,
+     "side": "B",
+     "type": "goal",
+     "data": false
+    },
+    "n16": {
+     "x": 8,
+     "y": 3,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n17": {
+     "x": 4,
+     "y": 9,
+     "side": "B",
+     "type": "sw",
+     "data": false
+    },
+    "n18": {
+     "x": 1,
+     "y": 8,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n19": {
+     "x": 8,
+     "y": 7,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n20": {
+     "x": 8,
+     "y": 9,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Red"
+    }
+   },
+   "traces": [
+    {
+     "a": "n13",
+     "b": "n16",
+     "side": "B",
+     "bends": [
+      [
+       8.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n7",
+     "b": "n8",
+     "side": "F",
+     "bends": [
+      [
+       8.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n9",
+     "side": "F",
+     "bends": [
+      [
+       1.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n15",
+     "side": "B",
+     "bends": [
+      [
+       4.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n7",
+     "b": "n11",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n3",
+     "side": "B",
+     "bends": [
+      [
+       5.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n19",
+     "b": "n20",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n10",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       1.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n11",
+     "side": "F",
+     "bends": [
+      [
+       6.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n9",
+     "side": "F",
+     "bends": [
+      [
+       1.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n17",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       2.0,
+       9.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n12"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n5",
+     "b": "n7",
+     "side": "F",
+     "bends": [
+      [
+       7.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n7",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n10",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n16",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n13",
+     "side": "B",
+     "bends": [
+      [
+       6.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n6",
+     "b": "n9",
+     "side": "F",
+     "bends": [
+      [
+       4.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n6",
+     "side": "F",
+     "bends": [
+      [
+       2.0,
+       0.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n18",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n4",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n8",
+     "b": "n11",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n8",
+     "side": "F",
+     "bends": [
+      [
+       9.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n14",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n16",
+     "side": "B",
+     "bends": [
+      [
+       6.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n12",
+     "side": "F",
+     "bends": [],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n17",
+       "n12"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n17",
+     "b": "n20",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n17",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       6.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n17",
+     "side": "B",
+     "bends": [
+      [
+       4.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n9",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       2.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    }
+   ],
+   "size": [
+    9,
+    9
+   ],
+   "loops": {
+    "F": 4,
+    "B": 4
+   }
+  },
+  "analysis": {
+   "length": 41,
+   "inter": 11,
+   "min_takes": 2,
+   "min_press": 2,
+   "states": 341,
+   "colours": 2,
+   "takes": 2,
+   "presses": 2,
+   "flips": 7
+  },
+  "multi_gate": true,
+  "errs": []
+ },
+ {
+  "seed": 21,
+  "score": 77.53237801771093,
+  "level": {
+   "nodes": {
+    "n1": {
+     "x": 1,
+     "y": 7,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n2": {
+     "x": 9,
+     "y": 5,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n3": {
+     "x": 4,
+     "y": 0,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n4": {
+     "x": 9,
+     "y": 2,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n5": {
+     "x": 8,
+     "y": 9,
+     "side": "F",
+     "type": "sw",
+     "data": false
+    },
+    "n6": {
+     "x": 3,
+     "y": 9,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n7": {
+     "x": 9,
+     "y": 0,
+     "side": "F",
+     "type": "start",
+     "data": false
+    },
+    "n8": {
+     "x": 4,
+     "y": 4,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n9": {
+     "x": 0,
+     "y": 3,
+     "side": "F",
+     "type": "holder",
+     "data": false,
+     "pass": "Green"
+    },
+    "n10": {
+     "x": 2,
+     "y": 2,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n11": {
+     "x": 2,
+     "y": 0,
+     "side": "F",
+     "type": "sw",
+     "data": false
+    },
+    "n12": {
+     "x": 7,
+     "y": 6,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n13": {
+     "x": 7,
+     "y": 9,
+     "side": "B",
+     "type": "cap",
+     "data": true
+    },
+    "n14": {
+     "x": 3,
+     "y": 3,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n15": {
+     "x": 4,
+     "y": 9,
+     "side": "B",
+     "type": "goal",
+     "data": false
+    },
+    "n16": {
+     "x": 8,
+     "y": 0,
+     "side": "B",
+     "type": "cap",
+     "data": true
+    },
+    "n17": {
+     "x": 8,
+     "y": 7,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n18": {
+     "x": 6,
+     "y": 2,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n19": {
+     "x": 7,
+     "y": 5,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Green"
+    },
+    "n20": {
+     "x": 4,
+     "y": 5,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Red"
+    }
+   },
+   "traces": [
+    {
+     "a": "n9",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       1.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n17",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       8.0,
+       6.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n5"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n16",
+     "b": "n18",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n17",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n8",
+     "b": "n10",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n7",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n19",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n10",
+     "b": "n11",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       8.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n4",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n15",
+     "side": "B",
+     "bends": [
+      [
+       3.0,
+       9.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n4",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n16",
+     "side": "B",
+     "bends": [
+      [
+       9.0,
+       1.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n11",
+       "n5"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n9",
+     "b": "n11",
+     "side": "F",
+     "bends": [
+      [
+       0.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n18",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       6.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n6",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n8",
+     "b": "n9",
+     "side": "F",
+     "bends": [
+      [
+       1.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n18",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n9",
+     "side": "F",
+     "bends": [
+      [
+       0.0,
+       6.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n11"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n8",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       5.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       5.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       3.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n14",
+     "side": "B",
+     "bends": [
+      [
+       3.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n15",
+     "b": "n20",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n5",
+     "side": "F",
+     "bends": [
+      [
+       9.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n16",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n8",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n7",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n14",
+     "side": "B",
+     "bends": [
+      [
+       1.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n6",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    }
+   ],
+   "size": [
+    9,
+    9
+   ],
+   "loops": {
+    "F": 4,
+    "B": 4
+   }
+  },
+  "analysis": {
+   "length": 40,
+   "inter": 9,
+   "min_takes": 2,
+   "min_press": 2,
+   "states": 860,
+   "colours": 2,
+   "takes": 2,
+   "presses": 2,
+   "flips": 5
+  },
+  "multi_gate": true,
+  "errs": []
+ },
+ {
+  "seed": 22,
+  "score": 77.36669492803463,
+  "level": {
+   "nodes": {
+    "n1": {
+     "x": 0,
+     "y": 5,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n2": {
+     "x": 0,
+     "y": 8,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n3": {
+     "x": 9,
+     "y": 3,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n4": {
+     "x": 9,
+     "y": 1,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n5": {
+     "x": 4,
+     "y": 3,
+     "side": "F",
+     "type": "sw",
+     "data": false
+    },
+    "n6": {
+     "x": 6,
+     "y": 2,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n7": {
+     "x": 3,
+     "y": 5,
+     "side": "F",
+     "type": "sw",
+     "data": false
+    },
+    "n8": {
+     "x": 2,
+     "y": 0,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n9": {
+     "x": 8,
+     "y": 8,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Green"
+    },
+    "n10": {
+     "x": 7,
+     "y": 4,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n11": {
+     "x": 0,
+     "y": 0,
+     "side": "F",
+     "type": "start",
+     "data": false
+    },
+    "n12": {
+     "x": 6,
+     "y": 9,
+     "side": "F",
+     "type": "holder",
+     "data": false,
+     "pass": "Red"
+    },
+    "n13": {
+     "x": 3,
+     "y": 0,
+     "side": "B",
+     "type": "cap",
+     "data": true
+    },
+    "n14": {
+     "x": 5,
+     "y": 4,
+     "side": "B",
+     "type": "cap",
+     "data": true
+    },
+    "n15": {
+     "x": 9,
+     "y": 8,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n16": {
+     "x": 5,
+     "y": 9,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Green"
+    },
+    "n17": {
+     "x": 1,
+     "y": 2,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n18": {
+     "x": 8,
+     "y": 5,
+     "side": "B",
+     "type": "cap",
+     "data": true
+    },
+    "n19": {
+     "x": 6,
+     "y": 1,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n20": {
+     "x": 3,
+     "y": 8,
+     "side": "B",
+     "type": "goal",
+     "data": false
+    }
+   },
+   "traces": [
+    {
+     "a": "n3",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       8.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       8.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n4",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n6",
+     "side": "F",
+     "bends": [
+      [
+       5.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       5.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n2",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       7.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n16",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       4.0,
+       9.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n4",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n17",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n8",
+     "b": "n11",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n19",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       6.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n7",
+     "side": "F",
+     "bends": [
+      [
+       4.0,
+       4.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n7"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n9",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       7.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n6",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       6.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n2",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n5",
+     "side": "F",
+     "bends": [
+      [
+       2.0,
+       3.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n7",
+       "n5"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n7",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       6.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n6",
+     "b": "n8",
+     "side": "F",
+     "bends": [
+      [
+       4.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n15",
+     "b": "n16",
+     "side": "B",
+     "bends": [
+      [
+       8.0,
+       9.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n17",
+     "side": "B",
+     "bends": [
+      [
+       1.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n6",
+     "side": "F",
+     "bends": [
+      [
+       7.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n20",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n16",
+     "side": "B",
+     "bends": [],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n7"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n3",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       8.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n15",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       9.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n15",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n9",
+     "side": "F",
+     "bends": [
+      [
+       9.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    }
+   ],
+   "size": [
+    9,
+    9
+   ],
+   "loops": {
+    "F": 4,
+    "B": 4
+   }
+  },
+  "analysis": {
+   "length": 38,
+   "inter": 10,
+   "min_takes": 2,
+   "min_press": 2,
+   "states": 728,
+   "colours": 2,
+   "takes": 2,
+   "presses": 3,
+   "flips": 5
+  },
+  "multi_gate": true,
+  "errs": []
+ },
+ {
+  "seed": 16,
+  "score": 76.19702318965813,
+  "level": {
+   "nodes": {
+    "n1": {
+     "x": 7,
+     "y": 6,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n2": {
+     "x": 9,
+     "y": 7,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n3": {
+     "x": 3,
+     "y": 5,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n4": {
+     "x": 4,
+     "y": 8,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n5": {
+     "x": 0,
+     "y": 6,
+     "side": "F",
+     "type": "start",
+     "data": false
+    },
+    "n6": {
+     "x": 4,
+     "y": 0,
+     "side": "F",
+     "type": "sw",
+     "data": false
+    },
+    "n7": {
+     "x": 1,
+     "y": 3,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n8": {
+     "x": 7,
+     "y": 3,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n9": {
+     "x": 0,
+     "y": 8,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n10": {
+     "x": 2,
+     "y": 1,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n11": {
+     "x": 9,
+     "y": 1,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n12": {
+     "x": 7,
+     "y": 1,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n13": {
+     "x": 1,
+     "y": 6,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Green"
+    },
+    "n14": {
+     "x": 8,
+     "y": 3,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Red"
+    },
+    "n15": {
+     "x": 1,
+     "y": 2,
+     "side": "B",
+     "type": "goal",
+     "data": false
+    },
+    "n16": {
+     "x": 6,
+     "y": 8,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n17": {
+     "x": 5,
+     "y": 4,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n18": {
+     "x": 1,
+     "y": 4,
+     "side": "B",
+     "type": "sw",
+     "data": false
+    },
+    "n19": {
+     "x": 5,
+     "y": 1,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Green"
+    },
+    "n20": {
+     "x": 1,
+     "y": 0,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    }
+   },
+   "traces": [
+    {
+     "a": "n11",
+     "b": "n12",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n8",
+     "b": "n11",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n17",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n15",
+     "b": "n20",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n7",
+     "side": "F",
+     "bends": [],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n18"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n15",
+     "b": "n18",
+     "side": "B",
+     "bends": [],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n18"
+      ],
+      "open": true
+     }
+    },
+    {
+     "a": "n7",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       1.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n8",
+     "b": "n12",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n2",
+     "side": "B",
+     "bends": [
+      [
+       8.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n7",
+     "side": "F",
+     "bends": [
+      [
+       1.0,
+       5.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n6",
+       "n18"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n1",
+     "b": "n16",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n6",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       5.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n13",
+     "side": "B",
+     "bends": [
+      [
+       2.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n4",
+     "side": "F",
+     "bends": [
+      [
+       4.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n9",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n17",
+     "b": "n19",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n16",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n3",
+     "side": "F",
+     "bends": [
+      [
+       6.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n15",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       4.0,
+       2.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n6"
+      ],
+      "open": true
+     }
+    },
+    {
+     "a": "n2",
+     "b": "n16",
+     "side": "B",
+     "bends": [
+      [
+       8.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n17",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n9",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n16",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n8",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n5",
+     "side": "F",
+     "bends": [
+      [
+       2.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n19",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       2.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n8",
+     "side": "F",
+     "bends": [
+      [
+       9.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n14",
+     "side": "B",
+     "bends": [
+      [
+       9.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n6",
+     "b": "n11",
+     "side": "F",
+     "bends": [
+      [
+       8.0,
+       0.0
+      ]
+     ],
+     "gate": null
+    }
+   ],
+   "size": [
+    9,
+    9
+   ],
+   "loops": {
+    "F": 4,
+    "B": 4
+   }
+  },
+  "analysis": {
+   "length": 42,
+   "inter": 9,
+   "min_takes": 2,
+   "min_press": 2,
+   "states": 373,
+   "colours": 2,
+   "takes": 2,
+   "presses": 2,
+   "flips": 5
+  },
+  "multi_gate": true,
+  "errs": []
+ },
+ {
+  "seed": 23,
+  "score": 71.95582443826413,
+  "level": {
+   "nodes": {
+    "n1": {
+     "x": 7,
+     "y": 1,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n2": {
+     "x": 2,
+     "y": 5,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n3": {
+     "x": 7,
+     "y": 8,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n4": {
+     "x": 4,
+     "y": 4,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n5": {
+     "x": 1,
+     "y": 8,
+     "side": "F",
+     "type": "sw",
+     "data": false
+    },
+    "n6": {
+     "x": 5,
+     "y": 7,
+     "side": "F",
+     "type": "start",
+     "data": false
+    },
+    "n7": {
+     "x": 0,
+     "y": 0,
+     "side": "F",
+     "type": "holder",
+     "data": false,
+     "pass": "Red"
+    },
+    "n8": {
+     "x": 3,
+     "y": 1,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Green"
+    },
+    "n9": {
+     "x": 8,
+     "y": 5,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n10": {
+     "x": 3,
+     "y": 8,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n11": {
+     "x": 9,
+     "y": 2,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n12": {
+     "x": 5,
+     "y": 1,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n13": {
+     "x": 4,
+     "y": 2,
+     "side": "B",
+     "type": "sw",
+     "data": false
+    },
+    "n14": {
+     "x": 9,
+     "y": 3,
+     "side": "B",
+     "type": "goal",
+     "data": false
+    },
+    "n15": {
+     "x": 6,
+     "y": 6,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n16": {
+     "x": 1,
+     "y": 9,
+     "side": "B",
+     "type": "cap",
+     "data": true
+    },
+    "n17": {
+     "x": 8,
+     "y": 6,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Green"
+    },
+    "n18": {
+     "x": 2,
+     "y": 3,
+     "side": "B",
+     "type": "cap",
+     "data": true
+    },
+    "n19": {
+     "x": 2,
+     "y": 1,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n20": {
+     "x": 1,
+     "y": 7,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    }
+   },
+   "traces": [
+    {
+     "a": "n3",
+     "b": "n17",
+     "side": "B",
+     "bends": [
+      [
+       8.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n15",
+     "b": "n17",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n10",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       3.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n12",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       3.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n18",
+     "side": "B",
+     "bends": [],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n13"
+      ],
+      "open": true
+     }
+    },
+    {
+     "a": "n2",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       1.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n9",
+     "b": "n11",
+     "side": "F",
+     "bends": [
+      [
+       9.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n18",
+     "b": "n19",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       3.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n17",
+     "side": "B",
+     "bends": [
+      [
+       8.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n15",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n5",
+     "side": "F",
+     "bends": [
+      [
+       1.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n4",
+     "side": "F",
+     "bends": [
+      [
+       3.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n16",
+     "b": "n20",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n13",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n6",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       4.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n14",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n8",
+     "b": "n12",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n6",
+     "side": "F",
+     "bends": [
+      [
+       6.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n8",
+     "side": "F",
+     "bends": [
+      [
+       4.0,
+       2.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n5"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n1",
+     "b": "n13",
+     "side": "B",
+     "bends": [
+      [
+       5.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n7",
+     "b": "n8",
+     "side": "F",
+     "bends": [
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n13"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n9",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       8.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n6",
+     "b": "n9",
+     "side": "F",
+     "bends": [
+      [
+       7.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n15",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n9",
+     "side": "F",
+     "bends": [
+      [
+       7.0,
+       6.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n5"
+      ],
+      "open": true
+     }
+    },
+    {
+     "a": "n7",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       4.0,
+       0.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n15",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       5.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    }
+   ],
+   "size": [
+    9,
+    9
+   ],
+   "loops": {
+    "F": 4,
+    "B": 4
+   }
+  },
+  "analysis": {
+   "length": 33,
+   "inter": 9,
+   "min_takes": 2,
+   "min_press": 2,
+   "states": 1228,
+   "colours": 2,
+   "takes": 2,
+   "presses": 2,
+   "flips": 5
+  },
+  "multi_gate": true,
+  "errs": []
+ },
+ {
+  "seed": 14,
+  "score": 70.11498903033839,
+  "level": {
+   "nodes": {
+    "n1": {
+     "x": 2,
+     "y": 7,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n2": {
+     "x": 7,
+     "y": 6,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n3": {
+     "x": 7,
+     "y": 4,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n4": {
+     "x": 2,
+     "y": 2,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n5": {
+     "x": 2,
+     "y": 9,
+     "side": "F",
+     "type": "start",
+     "data": false
+    },
+    "n6": {
+     "x": 9,
+     "y": 7,
+     "side": "F",
+     "type": "sw",
+     "data": false
+    },
+    "n7": {
+     "x": 6,
+     "y": 9,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n8": {
+     "x": 6,
+     "y": 1,
+     "side": "F",
+     "type": "sw",
+     "data": false
+    },
+    "n9": {
+     "x": 1,
+     "y": 4,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n10": {
+     "x": 4,
+     "y": 2,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n11": {
+     "x": 9,
+     "y": 4,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Green"
+    },
+    "n12": {
+     "x": 0,
+     "y": 2,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n13": {
+     "x": 0,
+     "y": 4,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n14": {
+     "x": 6,
+     "y": 0,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n15": {
+     "x": 9,
+     "y": 2,
+     "side": "B",
+     "type": "goal",
+     "data": false
+    },
+    "n16": {
+     "x": 7,
+     "y": 2,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Red"
+    },
+    "n17": {
+     "x": 4,
+     "y": 8,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Green"
+    },
+    "n18": {
+     "x": 5,
+     "y": 6,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n19": {
+     "x": 9,
+     "y": 5,
+     "side": "B",
+     "type": "cap",
+     "data": true
+    },
+    "n20": {
+     "x": 0,
+     "y": 0,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    }
+   },
+   "traces": [
+    {
+     "a": "n4",
+     "b": "n12",
+     "side": "F",
+     "bends": [],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n8"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n3",
+     "b": "n15",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n16",
+     "side": "B",
+     "bends": [
+      [
+       6.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n15",
+     "b": "n16",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n16",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n10",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n20",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n6",
+     "side": "F",
+     "bends": [
+      [
+       8.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n11",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n3",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n17",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       5.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n9",
+     "side": "F",
+     "bends": [
+      [
+       1.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n6",
+     "side": "F",
+     "bends": [
+      [
+       9.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n13",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       8.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n9",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       0.0,
+       3.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n8"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n1",
+     "b": "n5",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n15",
+     "b": "n19",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n15",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       0.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n6",
+     "b": "n7",
+     "side": "F",
+     "bends": [
+      [
+       7.0,
+       9.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n7",
+     "side": "F",
+     "bends": [
+      [
+       7.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n9",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       2.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n7",
+     "side": "F",
+     "bends": [
+      [
+       4.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n20",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n18",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       4.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n17",
+     "side": "B",
+     "bends": [
+      [
+       3.0,
+       8.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n6"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n1",
+     "b": "n9",
+     "side": "F",
+     "bends": [
+      [
+       2.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n8",
+     "b": "n11",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n14",
+     "side": "B",
+     "bends": [
+      [
+       4.0,
+       0.0
+      ]
+     ],
+     "gate": null
+    }
+   ],
+   "size": [
+    9,
+    9
+   ],
+   "loops": {
+    "F": 4,
+    "B": 4
+   }
+  },
+  "analysis": {
+   "length": 43,
+   "inter": 13,
+   "min_takes": 1,
+   "min_press": 2,
+   "states": 995,
+   "colours": 2,
+   "takes": 2,
+   "presses": 2,
+   "flips": 9
+  },
+  "multi_gate": true,
+  "errs": []
+ },
+ {
+  "seed": 4,
+  "score": 67.45939111188343,
+  "level": {
+   "nodes": {
+    "n1": {
+     "x": 7,
+     "y": 3,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n2": {
+     "x": 8,
+     "y": 6,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n3": {
+     "x": 2,
+     "y": 3,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n4": {
+     "x": 0,
+     "y": 1,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n5": {
+     "x": 4,
+     "y": 2,
+     "side": "F",
+     "type": "start",
+     "data": false
+    },
+    "n6": {
+     "x": 5,
+     "y": 7,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n7": {
+     "x": 4,
+     "y": 0,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n8": {
+     "x": 6,
+     "y": 9,
+     "side": "F",
+     "type": "sw",
+     "data": false
+    },
+    "n9": {
+     "x": 2,
+     "y": 5,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Green"
+    },
+    "n10": {
+     "x": 9,
+     "y": 4,
+     "side": "F",
+     "type": "holder",
+     "data": false,
+     "pass": "Green"
+    },
+    "n11": {
+     "x": 0,
+     "y": 9,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n12": {
+     "x": 8,
+     "y": 8,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n13": {
+     "x": 4,
+     "y": 1,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n14": {
+     "x": 9,
+     "y": 1,
+     "side": "B",
+     "type": "cap",
+     "data": true
+    },
+    "n15": {
+     "x": 6,
+     "y": 7,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Red"
+    },
+    "n16": {
+     "x": 7,
+     "y": 9,
+     "side": "B",
+     "type": "goal",
+     "data": false
+    },
+    "n17": {
+     "x": 0,
+     "y": 6,
+     "side": "B",
+     "type": "sw",
+     "data": false
+    },
+    "n18": {
+     "x": 0,
+     "y": 4,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n19": {
+     "x": 7,
+     "y": 1,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Green"
+    },
+    "n20": {
+     "x": 2,
+     "y": 0,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    }
+   },
+   "traces": [
+    {
+     "a": "n3",
+     "b": "n9",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n8",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       7.0,
+       9.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n17",
+     "b": "n18",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n12",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n4",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       1.0,
+       0.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n15",
+     "b": "n16",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n19",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       8.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       3.0,
+       0.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n6",
+     "b": "n8",
+     "side": "F",
+     "bends": [
+      [
+       5.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n18",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n13",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       1.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n14",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n9",
+     "side": "F",
+     "bends": [
+      [
+       4.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n7",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n19",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n5",
+     "side": "F",
+     "bends": [
+      [
+       6.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n6",
+     "side": "F",
+     "bends": [
+      [
+       5.0,
+       5.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n8"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n6",
+     "b": "n9",
+     "side": "F",
+     "bends": [
+      [
+       3.0,
+       5.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n17"
+      ],
+      "open": true
+     }
+    },
+    {
+     "a": "n3",
+     "b": "n5",
+     "side": "F",
+     "bends": [
+      [
+       3.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n9",
+     "b": "n11",
+     "side": "F",
+     "bends": [
+      [
+       0.0,
+       7.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n17"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n14",
+     "b": "n19",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n2",
+     "side": "B",
+     "bends": [
+      [
+       8.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n15",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n16",
+     "side": "B",
+     "bends": [
+      [
+       8.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n6",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       7.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n10",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       9.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n7",
+     "side": "F",
+     "bends": [
+      [
+       3.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    }
+   ],
+   "size": [
+    9,
+    9
+   ],
+   "loops": {
+    "F": 4,
+    "B": 4
+   }
+  },
+  "analysis": {
+   "length": 40,
+   "inter": 12,
+   "min_takes": 2,
+   "min_press": 1,
+   "states": 957,
+   "colours": 2,
+   "takes": 2,
+   "presses": 1,
+   "flips": 9
+  },
+  "multi_gate": true,
+  "errs": []
+ },
+ {
+  "seed": 15,
+  "score": 65.21242109073839,
+  "level": {
+   "nodes": {
+    "n1": {
+     "x": 4,
+     "y": 8,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n2": {
+     "x": 6,
+     "y": 0,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n3": {
+     "x": 0,
+     "y": 0,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n4": {
+     "x": 7,
+     "y": 4,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n5": {
+     "x": 8,
+     "y": 1,
+     "side": "F",
+     "type": "holder",
+     "data": false,
+     "pass": "Red"
+    },
+    "n6": {
+     "x": 1,
+     "y": 9,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n7": {
+     "x": 2,
+     "y": 4,
+     "side": "F",
+     "type": "start",
+     "data": false
+    },
+    "n8": {
+     "x": 7,
+     "y": 6,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Green"
+    },
+    "n9": {
+     "x": 2,
+     "y": 2,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n10": {
+     "x": 5,
+     "y": 4,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n11": {
+     "x": 2,
+     "y": 7,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Green"
+    },
+    "n12": {
+     "x": 5,
+     "y": 6,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n13": {
+     "x": 2,
+     "y": 3,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n14": {
+     "x": 9,
+     "y": 0,
+     "side": "B",
+     "type": "goal",
+     "data": false
+    },
+    "n15": {
+     "x": 1,
+     "y": 5,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n16": {
+     "x": 2,
+     "y": 1,
+     "side": "B",
+     "type": "sw",
+     "data": false
+    },
+    "n17": {
+     "x": 9,
+     "y": 2,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n18": {
+     "x": 8,
+     "y": 6,
+     "side": "B",
+     "type": "sw",
+     "data": false
+    },
+    "n19": {
+     "x": 1,
+     "y": 7,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Green"
+    },
+    "n20": {
+     "x": 4,
+     "y": 2,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    }
+   },
+   "traces": [
+    {
+     "a": "n4",
+     "b": "n10",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       3.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n12",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n8",
+     "side": "F",
+     "bends": [
+      [
+       5.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n5",
+     "side": "F",
+     "bends": [
+      [
+       7.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n17",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n8",
+     "b": "n12",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n9",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       3.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n9",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n20",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n15",
+     "b": "n19",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n6",
+     "b": "n11",
+     "side": "F",
+     "bends": [
+      [
+       2.0,
+       8.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n16"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n14",
+     "b": "n17",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n13",
+     "side": "B",
+     "bends": [
+      [
+       0.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       2.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n16",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       3.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n10",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n15",
+     "side": "B",
+     "bends": [
+      [
+       1.0,
+       4.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n18"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n4",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       6.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n7",
+     "b": "n9",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n9",
+     "side": "F",
+     "bends": [
+      [
+       4.0,
+       0.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n4",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       5.0,
+       1.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n18",
+       "n16"
+      ],
+      "open": true
+     }
+    },
+    {
+     "a": "n2",
+     "b": "n16",
+     "side": "B",
+     "bends": [
+      [
+       3.0,
+       0.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n11",
+     "side": "F",
+     "bends": [
+      [
+       3.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n15",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n17",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       9.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n7",
+     "b": "n11",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       6.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n8",
+     "side": "F",
+     "bends": [
+      [
+       8.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    }
+   ],
+   "size": [
+    9,
+    9
+   ],
+   "loops": {
+    "F": 4,
+    "B": 4
+   }
+  },
+  "analysis": {
+   "length": 31,
+   "inter": 7,
+   "min_takes": 3,
+   "min_press": 1,
+   "states": 618,
+   "colours": 2,
+   "takes": 3,
+   "presses": 1,
+   "flips": 3
+  },
+  "multi_gate": false,
+  "errs": []
+ },
+ {
+  "seed": 1,
+  "score": 57.85570591013408,
+  "level": {
+   "nodes": {
+    "n1": {
+     "x": 0,
+     "y": 8,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n2": {
+     "x": 2,
+     "y": 3,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n3": {
+     "x": 9,
+     "y": 4,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n4": {
+     "x": 6,
+     "y": 1,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n5": {
+     "x": 8,
+     "y": 1,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n6": {
+     "x": 5,
+     "y": 4,
+     "side": "F",
+     "type": "start",
+     "data": false
+    },
+    "n7": {
+     "x": 1,
+     "y": 1,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n8": {
+     "x": 2,
+     "y": 9,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n9": {
+     "x": 0,
+     "y": 4,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Green"
+    },
+    "n10": {
+     "x": 2,
+     "y": 5,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n11": {
+     "x": 8,
+     "y": 6,
+     "side": "F",
+     "type": "holder",
+     "data": false,
+     "pass": "Red"
+    },
+    "n12": {
+     "x": 3,
+     "y": 1,
+     "side": "F",
+     "type": "sw",
+     "data": false
+    },
+    "n13": {
+     "x": 8,
+     "y": 2,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n14": {
+     "x": 2,
+     "y": 1,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n15": {
+     "x": 5,
+     "y": 3,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n16": {
+     "x": 3,
+     "y": 6,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n17": {
+     "x": 0,
+     "y": 1,
+     "side": "B",
+     "type": "sw",
+     "data": false
+    },
+    "n18": {
+     "x": 0,
+     "y": 3,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n19": {
+     "x": 3,
+     "y": 8,
+     "side": "B",
+     "type": "goal",
+     "data": false
+    },
+    "n20": {
+     "x": 8,
+     "y": 8,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Green"
+    }
+   },
+   "traces": [
+    {
+     "a": "n14",
+     "b": "n17",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n9",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       1.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n8",
+     "side": "F",
+     "bends": [
+      [
+       1.0,
+       9.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n15",
+     "side": "B",
+     "bends": [
+      [
+       6.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n16",
+     "b": "n19",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n14",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n5",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       2.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n10",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n6",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n16",
+     "side": "B",
+     "bends": [
+      [
+       2.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n15",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n12",
+     "side": "F",
+     "bends": [],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n17"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n17",
+     "b": "n18",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n6",
+     "b": "n11",
+     "side": "F",
+     "bends": [
+      [
+       7.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n5",
+     "side": "F",
+     "bends": [
+      [
+       8.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n16",
+     "side": "B",
+     "bends": [
+      [
+       1.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n6",
+     "side": "F",
+     "bends": [
+      [
+       5.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n13",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n13",
+     "side": "B",
+     "bends": [
+      [
+       8.0,
+       3.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n12"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n7",
+     "b": "n9",
+     "side": "F",
+     "bends": [
+      [
+       0.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n11",
+     "side": "F",
+     "bends": [
+      [
+       9.0,
+       5.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n12"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n14",
+     "b": "n18",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n10",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       3.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n6",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       4.0,
+       5.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n17"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n14",
+     "b": "n15",
+     "side": "B",
+     "bends": [
+      [
+       4.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n9",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n15",
+     "b": "n16",
+     "side": "B",
+     "bends": [
+      [
+       3.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n18",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       8.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    }
+   ],
+   "size": [
+    9,
+    9
+   ],
+   "loops": {
+    "F": 4,
+    "B": 4
+   }
+  },
+  "analysis": {
+   "length": 39,
+   "inter": 9,
+   "min_takes": 2,
+   "min_press": 1,
+   "states": 726,
+   "colours": 2,
+   "takes": 2,
+   "presses": 2,
+   "flips": 5
+  },
+  "multi_gate": true,
+  "errs": []
+ },
+ {
+  "seed": 2,
+  "score": 45.80849316903718,
+  "level": {
+   "nodes": {
+    "n1": {
+     "x": 0,
+     "y": 0,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n2": {
+     "x": 7,
+     "y": 6,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n3": {
+     "x": 6,
+     "y": 1,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n4": {
+     "x": 6,
+     "y": 3,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n5": {
+     "x": 0,
+     "y": 2,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n6": {
+     "x": 0,
+     "y": 6,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n7": {
+     "x": 1,
+     "y": 9,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n8": {
+     "x": 2,
+     "y": 4,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n9": {
+     "x": 4,
+     "y": 9,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n10": {
+     "x": 8,
+     "y": 3,
+     "side": "F",
+     "type": "start",
+     "data": false
+    },
+    "n11": {
+     "x": 4,
+     "y": 1,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n12": {
+     "x": 9,
+     "y": 9,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n13": {
+     "x": 1,
+     "y": 6,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Green"
+    },
+    "n14": {
+     "x": 1,
+     "y": 3,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Red"
+    },
+    "n15": {
+     "x": 0,
+     "y": 9,
+     "side": "B",
+     "type": "goal",
+     "data": false
+    },
+    "n16": {
+     "x": 4,
+     "y": 5,
+     "side": "B",
+     "type": "sw",
+     "data": false
+    },
+    "n17": {
+     "x": 8,
+     "y": 9,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Green"
+    },
+    "n18": {
+     "x": 9,
+     "y": 2,
+     "side": "B",
+     "type": "sw",
+     "data": false
+    },
+    "n19": {
+     "x": 4,
+     "y": 2,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n20": {
+     "x": 6,
+     "y": 8,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    }
+   },
+   "traces": [
+    {
+     "a": "n3",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       5.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n6",
+     "b": "n8",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n11",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n11",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n4",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n4",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n17",
+     "side": "B",
+     "bends": [
+      [
+       8.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n7",
+     "b": "n9",
+     "side": "F",
+     "bends": [],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n18"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n16",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       4.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n16",
+     "side": "B",
+     "bends": [
+      [
+       3.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       8.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n16",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       5.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       3.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n15",
+     "side": "B",
+     "bends": [
+      [
+       1.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n11",
+     "side": "F",
+     "bends": [
+      [
+       3.0,
+       0.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n18",
+       "n16"
+      ],
+      "open": true
+     }
+    },
+    {
+     "a": "n3",
+     "b": "n10",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n8",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n5",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       2.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n17",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       9.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n6",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       9.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n14",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n6",
+     "b": "n7",
+     "side": "F",
+     "bends": [
+      [
+       1.0,
+       7.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n16"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n2",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       7.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n6",
+     "b": "n9",
+     "side": "F",
+     "bends": [
+      [
+       1.0,
+       6.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n16",
+       "n18"
+      ],
+      "open": true
+     }
+    },
+    {
+     "a": "n13",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       3.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n9",
+     "b": "n12",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    }
+   ],
+   "size": [
+    9,
+    9
+   ],
+   "loops": {
+    "F": 4,
+    "B": 4
+   }
+  },
+  "analysis": {
+   "length": 29,
+   "inter": 7,
+   "min_takes": 2,
+   "min_press": 1,
+   "states": 1520,
+   "colours": 2,
+   "takes": 2,
+   "presses": 2,
+   "flips": 3
+  },
+  "multi_gate": true,
+  "errs": []
+ },
+ {
+  "seed": 3,
+  "score": 44.65383582866943,
+  "level": {
+   "nodes": {
+    "n1": {
+     "x": 3,
+     "y": 5,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n2": {
+     "x": 4,
+     "y": 1,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n3": {
+     "x": 0,
+     "y": 4,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n4": {
+     "x": 7,
+     "y": 6,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n5": {
+     "x": 1,
+     "y": 2,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Green"
+    },
+    "n6": {
+     "x": 0,
+     "y": 0,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n7": {
+     "x": 6,
+     "y": 4,
+     "side": "F",
+     "type": "start",
+     "data": false
+    },
+    "n8": {
+     "x": 8,
+     "y": 1,
+     "side": "F",
+     "type": "sw",
+     "data": false
+    },
+    "n9": {
+     "x": 3,
+     "y": 9,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n10": {
+     "x": 0,
+     "y": 7,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n11": {
+     "x": 7,
+     "y": 8,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n12": {
+     "x": 6,
+     "y": 2,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n13": {
+     "x": 1,
+     "y": 1,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n14": {
+     "x": 4,
+     "y": 8,
+     "side": "B",
+     "type": "goal",
+     "data": false
+    },
+    "n15": {
+     "x": 5,
+     "y": 3,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Green"
+    },
+    "n16": {
+     "x": 0,
+     "y": 9,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n17": {
+     "x": 6,
+     "y": 8,
+     "side": "B",
+     "type": "sw",
+     "data": false
+    },
+    "n18": {
+     "x": 5,
+     "y": 5,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n19": {
+     "x": 6,
+     "y": 1,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n20": {
+     "x": 9,
+     "y": 5,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Red"
+    }
+   },
+   "traces": [
+    {
+     "a": "n2",
+     "b": "n19",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n15",
+     "b": "n18",
+     "side": "B",
+     "bends": [],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n8",
+       "n17"
+      ],
+      "open": true
+     }
+    },
+    {
+     "a": "n5",
+     "b": "n6",
+     "side": "F",
+     "bends": [
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n8",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       7.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n17",
+     "side": "B",
+     "bends": [
+      [
+       6.0,
+       7.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n17"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n14",
+     "b": "n17",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n5",
+     "side": "F",
+     "bends": [
+      [
+       0.0,
+       3.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n8"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n1",
+     "b": "n18",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n7",
+     "side": "F",
+     "bends": [
+      [
+       7.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       2.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n7",
+     "b": "n12",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n12",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n15",
+     "side": "B",
+     "bends": [
+      [
+       4.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n15",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       6.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n17",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       5.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n9",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       1.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       4.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n11",
+     "side": "F",
+     "bends": [
+      [
+       4.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       8.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n11",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n13",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       5.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n13",
+     "side": "B",
+     "bends": [
+      [
+       1.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n7",
+     "b": "n8",
+     "side": "F",
+     "bends": [
+      [
+       8.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n9",
+     "b": "n11",
+     "side": "F",
+     "bends": [
+      [
+       4.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n10",
+     "side": "F",
+     "bends": [],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n17",
+       "n8"
+      ],
+      "open": true
+     }
+    },
+    {
+     "a": "n4",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n3",
+     "side": "F",
+     "bends": [
+      [
+       1.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n16",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n16",
+     "side": "B",
+     "bends": [
+      [
+       1.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    }
+   ],
+   "size": [
+    9,
+    9
+   ],
+   "loops": {
+    "F": 4,
+    "B": 4
+   }
+  },
+  "analysis": {
+   "length": 29,
+   "inter": 8,
+   "min_takes": 2,
+   "min_press": 1,
+   "states": 609,
+   "colours": 2,
+   "takes": 2,
+   "presses": 1,
+   "flips": 5
+  },
+  "multi_gate": true,
+  "errs": []
+ },
+ {
+  "seed": 17,
+  "score": 26.46588179092575,
+  "level": {
+   "nodes": {
+    "n1": {
+     "x": 8,
+     "y": 8,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n2": {
+     "x": 5,
+     "y": 6,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n3": {
+     "x": 1,
+     "y": 8,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n4": {
+     "x": 6,
+     "y": 1,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n5": {
+     "x": 4,
+     "y": 4,
+     "side": "F",
+     "type": "start",
+     "data": false
+    },
+    "n6": {
+     "x": 2,
+     "y": 0,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n7": {
+     "x": 1,
+     "y": 2,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n8": {
+     "x": 4,
+     "y": 1,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n9": {
+     "x": 1,
+     "y": 6,
+     "side": "F",
+     "type": "sw",
+     "data": false
+    },
+    "n10": {
+     "x": 9,
+     "y": 2,
+     "side": "F",
+     "type": "sw",
+     "data": false
+    },
+    "n11": {
+     "x": 9,
+     "y": 6,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n12": {
+     "x": 6,
+     "y": 3,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n13": {
+     "x": 5,
+     "y": 4,
+     "side": "B",
+     "type": "goal",
+     "data": false
+    },
+    "n14": {
+     "x": 0,
+     "y": 5,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n15": {
+     "x": 8,
+     "y": 2,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n16": {
+     "x": 1,
+     "y": 1,
+     "side": "B",
+     "type": "cap",
+     "data": true
+    },
+    "n17": {
+     "x": 2,
+     "y": 4,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n18": {
+     "x": 8,
+     "y": 6,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Red"
+    },
+    "n19": {
+     "x": 7,
+     "y": 4,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Green"
+    },
+    "n20": {
+     "x": 5,
+     "y": 9,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Green"
+    }
+   },
+   "traces": [
+    {
+     "a": "n14",
+     "b": "n17",
+     "side": "B",
+     "bends": [
+      [
+       1.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n12",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n11",
+     "side": "F",
+     "bends": [
+      [
+       9.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n6",
+     "b": "n7",
+     "side": "F",
+     "bends": [
+      [
+       1.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n18",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n9",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n18",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       8.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n15",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n8",
+     "b": "n12",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n7",
+     "side": "F",
+     "bends": [
+      [
+       3.0,
+       4.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n8",
+     "side": "F",
+     "bends": [],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n9"
+      ],
+      "open": true
+     }
+    },
+    {
+     "a": "n2",
+     "b": "n5",
+     "side": "F",
+     "bends": [
+      [
+       5.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       6.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n6",
+     "b": "n8",
+     "side": "F",
+     "bends": [
+      [
+       3.0,
+       0.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n13",
+     "side": "B",
+     "bends": [
+      [
+       5.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n14",
+     "side": "B",
+     "bends": [
+      [
+       1.0,
+       6.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n10"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n15",
+     "b": "n19",
+     "side": "B",
+     "bends": [
+      [
+       8.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n16",
+     "b": "n17",
+     "side": "B",
+     "bends": [
+      [
+       2.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n7",
+     "b": "n8",
+     "side": "F",
+     "bends": [
+      [
+       2.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n20",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n5",
+     "side": "F",
+     "bends": [
+      [
+       4.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n7",
+     "b": "n9",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n2",
+     "side": "F",
+     "bends": [
+      [
+       6.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n16",
+     "side": "B",
+     "bends": [
+      [
+       0.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n10",
+     "side": "F",
+     "bends": [
+      [
+       7.0,
+       2.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n9",
+       "n10"
+      ],
+      "open": true
+     }
+    },
+    {
+     "a": "n10",
+     "b": "n11",
+     "side": "F",
+     "bends": [],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n10"
+      ],
+      "open": true
+     }
+    },
+    {
+     "a": "n17",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       2.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       2.0,
+       9.0
+      ]
+     ],
+     "gate": null
+    }
+   ],
+   "size": [
+    9,
+    9
+   ],
+   "loops": {
+    "F": 4,
+    "B": 4
+   }
+  },
+  "analysis": {
+   "length": 34,
+   "inter": 8,
+   "min_takes": 1,
+   "min_press": 2,
+   "states": 581,
+   "colours": 1,
+   "takes": 1,
+   "presses": 2,
+   "flips": 5
+  },
+  "multi_gate": true,
+  "errs": []
+ },
+ {
+  "seed": 24,
+  "score": 23.407199476231114,
+  "level": {
+   "nodes": {
+    "n1": {
+     "x": 5,
+     "y": 5,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n2": {
+     "x": 8,
+     "y": 6,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n3": {
+     "x": 2,
+     "y": 6,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n4": {
+     "x": 2,
+     "y": 2,
+     "side": "V",
+     "type": "via",
+     "data": false
+    },
+    "n5": {
+     "x": 8,
+     "y": 0,
+     "side": "F",
+     "type": "start",
+     "data": false
+    },
+    "n6": {
+     "x": 0,
+     "y": 0,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n7": {
+     "x": 3,
+     "y": 4,
+     "side": "F",
+     "type": "sw",
+     "data": false
+    },
+    "n8": {
+     "x": 8,
+     "y": 3,
+     "side": "F",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n9": {
+     "x": 7,
+     "y": 8,
+     "side": "F",
+     "type": "cap",
+     "data": true
+    },
+    "n10": {
+     "x": 2,
+     "y": 8,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n11": {
+     "x": 6,
+     "y": 1,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n12": {
+     "x": 5,
+     "y": 8,
+     "side": "F",
+     "type": "cap",
+     "data": false
+    },
+    "n13": {
+     "x": 9,
+     "y": 3,
+     "side": "B",
+     "type": "sw",
+     "data": false
+    },
+    "n14": {
+     "x": 6,
+     "y": 8,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Green"
+    },
+    "n15": {
+     "x": 8,
+     "y": 9,
+     "side": "B",
+     "type": "cap",
+     "data": false
+    },
+    "n16": {
+     "x": 0,
+     "y": 7,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Green"
+    },
+    "n17": {
+     "x": 4,
+     "y": 8,
+     "side": "B",
+     "type": "lock",
+     "data": false,
+     "pass": "Red"
+    },
+    "n18": {
+     "x": 2,
+     "y": 9,
+     "side": "B",
+     "type": "cap",
+     "data": true
+    },
+    "n19": {
+     "x": 0,
+     "y": 2,
+     "side": "B",
+     "type": "holder",
+     "data": false,
+     "pass": "Red"
+    },
+    "n20": {
+     "x": 6,
+     "y": 0,
+     "side": "B",
+     "type": "goal",
+     "data": false
+    }
+   },
+   "traces": [
+    {
+     "a": "n8",
+     "b": "n11",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n17",
+     "b": "n18",
+     "side": "B",
+     "bends": [
+      [
+       3.0,
+       8.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n9",
+     "side": "F",
+     "bends": [
+      [
+       7.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n17",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n16",
+     "side": "B",
+     "bends": [
+      [
+       1.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n11",
+     "side": "F",
+     "bends": [
+      [
+       7.0,
+       1.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n7",
+     "side": "F",
+     "bends": [
+      [
+       3.0,
+       3.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n6",
+     "side": "F",
+     "bends": [],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n7"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n1",
+     "b": "n7",
+     "side": "F",
+     "bends": [
+      [
+       4.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n14",
+     "side": "B",
+     "bends": [
+      [
+       5.0,
+       7.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n12",
+     "side": "F",
+     "bends": [
+      [
+       7.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n13",
+     "b": "n20",
+     "side": "B",
+     "bends": [],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n13"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n2",
+     "b": "n13",
+     "side": "B",
+     "bends": [
+      [
+       9.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n3",
+     "side": "B",
+     "bends": [
+      [
+       4.0,
+       6.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n14",
+     "b": "n15",
+     "side": "B",
+     "bends": [
+      [
+       7.0,
+       9.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n10",
+     "b": "n12",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n17",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n8",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n8",
+     "side": "F",
+     "bends": [
+      [
+       6.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n14",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n7",
+     "side": "F",
+     "bends": [
+      [
+       2.0,
+       5.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n16",
+     "b": "n18",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n19",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n1",
+     "b": "n10",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n3",
+     "b": "n10",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n5",
+     "b": "n8",
+     "side": "F",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n11",
+     "side": "F",
+     "bends": [
+      [
+       5.0,
+       2.0
+      ]
+     ],
+     "gate": null
+    },
+    {
+     "a": "n2",
+     "b": "n15",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    },
+    {
+     "a": "n4",
+     "b": "n20",
+     "side": "B",
+     "bends": [
+      [
+       4.0,
+       0.0
+      ]
+     ],
+     "gate": {
+      "kind": "normal",
+      "switches": [
+       "n13"
+      ],
+      "open": false
+     }
+    },
+    {
+     "a": "n16",
+     "b": "n19",
+     "side": "B",
+     "bends": [],
+     "gate": null
+    }
+   ],
+   "size": [
+    9,
+    9
+   ],
+   "loops": {
+    "F": 4,
+    "B": 4
+   }
+  },
+  "analysis": {
+   "length": 27,
+   "inter": 8,
+   "min_takes": 1,
+   "min_press": 2,
+   "states": 1558,
+   "colours": 1,
+   "takes": 1,
+   "presses": 2,
+   "flips": 5
+  },
+  "multi_gate": true,
+  "errs": []
+ }
+]

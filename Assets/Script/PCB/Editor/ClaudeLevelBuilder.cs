@@ -10,16 +10,18 @@ using UnityEngine;
 /// Tools > PCB > Build Claude Levels: builds the level prefabs described in Assets/PCB/LevelData/claude_levels.json
 /// (designed and solver-checked outside Unity, remixed with irregular positions, bent traces and dead-end decoys;
 /// solutions in Claude_levels_solutions.md) and appends them to the
-/// Level List. Coordinates are grid cells (0.5 each); each board is sized to its content. Re-running overwrites them.
+/// Level List. Tools > PCB > Build Claude Hard Levels does the same for claude_levels_hard.json (21+, made by
+/// Tools/LevelDesign/gen.py; solutions in Claude_levels_hard_solutions.md). Coordinates are grid cells (0.5 each); each board is sized to its content. Re-running overwrites them.
 /// </summary>
 static class ClaudeLevelBuilder
 {
     const string DataPath = "Assets/PCB/LevelData/claude_levels.json";
+    const string HardDataPath = "Assets/PCB/LevelData/claude_levels_hard.json";
     const float Cell = 0.5f;
 
 #pragma warning disable 0649 // filled by JsonUtility
     [Serializable] class Point { public float x, y; }
-    [Serializable] class NodeData { public string id, type, side, passColour; public float x, y; public bool data; }
+    [Serializable] class NodeData { public string id, type, side, passColour; public float x, y; public bool data, on; }
     [Serializable] class TraceData
     {
         public string a, b, side, gate;
@@ -32,10 +34,15 @@ static class ClaudeLevelBuilder
 #pragma warning restore 0649
 
     [MenuItem("Tools/PCB/Build Claude Levels")]
-    static void Build()
+    static void Build() => BuildFrom(DataPath);
+
+    [MenuItem("Tools/PCB/Build Claude Hard Levels")]
+    static void BuildHard() => BuildFrom(HardDataPath);
+
+    static void BuildFrom(string dataPath)
     {
-        if (!File.Exists(DataPath)) { Debug.LogError($"[PCB] {DataPath} not found."); return; }
-        var file = JsonUtility.FromJson<FileData>(File.ReadAllText(DataPath));
+        if (!File.Exists(dataPath)) { Debug.LogError($"[PCB] {dataPath} not found."); return; }
+        var file = JsonUtility.FromJson<FileData>(File.ReadAllText(dataPath));
         var theme = PcbAssetSetup.GetOrCreateTheme();
         var list = PcbAssetSetup.GetOrCreateLevelList();
         var preview = EditorSceneManager.NewPreviewScene(); // build off-screen: the open scene isn't touched
@@ -87,7 +94,7 @@ static class ClaudeLevelBuilder
             node.type = type;
             node.layer = layer;
             if (type == NodeType.Goal) node.chipSize = new Vector2(0.5f, 0.45f);
-            if (node.IsSwitch) nodeGo.AddComponent<SwitchMechanic>();
+            if (node.IsSwitch) nodeGo.AddComponent<SwitchMechanic>().isOn = n.on;
             if (n.data) nodeGo.AddComponent<DataMechanic>();
             if (type == NodeType.PassHolder) nodeGo.AddComponent<KeyNodeMechanic>().pass = PassOf(n.passColour);
             if (type == NodeType.PassLock) nodeGo.AddComponent<KeyLockMechanic>().pass = PassOf(n.passColour);

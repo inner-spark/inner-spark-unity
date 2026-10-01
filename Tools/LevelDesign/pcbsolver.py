@@ -182,11 +182,12 @@ def solve(level, want_all=False):
         if g['kind'] == 'and':
             allon = all(ons)
             return (not allon) if g.get('inverted') else allon
-        par = sum(ons) % 2
+        par = sum(((sw ^ sw0) >> sidx[s]) & 1 for s in g['switches']) % 2  # presses since the start
         return bool(g.get('open', False)) ^ bool(par)
 
+    sw0 = sum(1 << sidx[n] for n in switches if N[n].get('on'))  # switches that start ON
     ex_cache = {(n, s): exits(level, n, s) for n in N for s in 'FB'}
-    st0 = (start, start_side, 0, 0, None)
+    st0 = (start, start_side, sw0, 0, None)
     prev = {st0: None}
     q = deque([st0])
     won = None

@@ -5,6 +5,26 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 
 ---
 
+## 2026-10-03 (late night) — bonus levels: Claude lvl 21–23 (hard / hard / very hard)
+
+**Brief:** harder levels for the bonus set — switches that move several doors at once, passes that must be
+carried and swapped several times, multiple loops (no same-side crossings), board up to 12×12. Studied the
+designer's edits (Tung lvl 11–20): compact boards, lots of data on dead ends / loops, switches driving 2–3
+gates (one open, one shut), gates on two switches, front/back nodes sharing a cell.
+- New tools in `Tools/LevelDesign/`: `prefab2level.py` (reads a level prefab back into solver format),
+  `gen.py` (layout → simulated-annealing mechanics search → prune; scores the *forced* minimum pass takes and
+  switch presses, not just length), `export_hard.py`, `deadends.py` (finds stuck states). The solver now
+  supports switches that start ON.
+- **Claude lvl 21** (hard, 8×9): 45 actions, ≥ 4 forced pass takes, ≥ 4 forced presses; N2 drives 3 doors.
+  Has a stuck pocket (green pass behind a red lock) — kept on purpose.
+- **Claude lvl 22** (hard, 10×9): 50 actions, ≥ 3 takes, ≥ 5 presses; N1 swaps two doors + an AND gate.
+  One stuck spot (taking Green at HG1 on the wrong trip).
+- **Claude lvl 23** (very hard, 10×11): 55 actions, ≥ 3 takes, ≥ 4 presses, 5 gates (N1 on three doors, one
+  door on N1 + N2, an AND gate), 2 data. No stuck states.
+- Data: `Assets/PCB/LevelData/claude_levels_hard.json`; solutions + stuck states:
+  `Claude_levels_hard_solutions.md`. **Tools > PCB > Build Claude Hard Levels** builds them and appends them
+  to the Level List (11–20 untouched). Stuck states are allowed (designer's call); Restart gets out.
+
 ## 2026-10-03 (late night) — pass lock fades instead of popping
 
 - `LockVisual.FadeTo(bool)`: the Locked look fades out over the Unlocked one (or back in when Sparky

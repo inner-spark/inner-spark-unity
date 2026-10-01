@@ -13,3 +13,13 @@ Used to design and check the "Claude lvl 11–20" stages. Python 3, no extra pac
 - `export.py <Assets/PCB/LevelData>` — writes `claude_levels.json` + `Claude_levels_solutions.md`.
 
 In Unity: **Tools > PCB > Build Claude Levels** builds the prefabs from `claude_levels.json`.
+
+Hard levels (Claude lvl 21+):
+- `gen.py <profile> [seeds…]` — generates candidates (profiles `21`…`25` at the bottom of the file): a legal
+  looping layout, then a simulated-annealing search over mechanics scored by difficulty (length, interactions,
+  the *forced* minimum pass takes / switch presses), then a prune so every piece matters. Writes `hard_<n>.json`.
+  Each seed takes seconds (small boards) to minutes (12×12).
+- `export_hard.py <Assets/PCB/LevelData> 21:<seed> 22:<seed> …` — writes `claude_levels_hard.json` +
+  `Claude_levels_hard_solutions.md` (with stuck states). Unity: **Tools > PCB > Build Claude Hard Levels**.
+- `deadends.py <json> [level#]` — lists stuck states (reachable, but the goal can't be reached any more).
+- `prefab2level.py <prefab>…` — reads a level prefab back into the solver format and solves it.
