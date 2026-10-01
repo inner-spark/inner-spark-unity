@@ -25,6 +25,8 @@ namespace Pcb
         public event Action<PcbNode> Arrived;
         public event Action<PcbLayer> Flipped;
         public event Action Blocked;
+        
+        public static event Action<KeyType> OnCarriedKeyChanged;
 
         static readonly int BaseColorId = Shader.PropertyToID("_BaseColor");
         static readonly int EmissionColorId = Shader.PropertyToID("_EmissionColor");
@@ -34,6 +36,9 @@ namespace Pcb
         int lastSector = -1;
         bool hasQueuedMove, hasQueuedFlip;
         Vector2 queuedMove;
+
+        public KeyType carriedKey = KeyType.None;
+        public GameObject carriedKeyPrefab;
 
         Board.Exit travelling;
         readonly List<Vector2> path = new List<Vector2>();
@@ -64,6 +69,7 @@ namespace Pcb
 
             flipAction = new InputAction("Flip", InputActionType.Button);
             flipAction.AddBinding("<Keyboard>/space");
+            flipAction.AddBinding("<Keyboard>/enter");
             flipAction.AddBinding("<Gamepad>/buttonSouth");
         }
 
@@ -197,6 +203,33 @@ namespace Pcb
                 return;
             }
 
+            if (CurrentNode.type == NodeType.Capacitor)
+            {
+                var keyMech = CurrentNode.GetComponent<KeyNodeMechanic>();
+                if (keyMech)
+                {
+                    KeyType temp = carriedKey;
+                    GameObject tempPrefab = carriedKeyPrefab;
+                    
+                    SetCarriedKey(keyMech.currentKey);
+                    carriedKeyPrefab = keyMech.keyVisualPrefab;
+                    
+                    keyMech.keyVisualPrefab = tempPrefab;
+                    keyMech.SetKey(temp);
+                    return;
+                }
+                else if (carriedKey != KeyType.None)
+                {
+                    keyMech = CurrentNode.gameObject.AddComponent<KeyNodeMechanic>();
+                    keyMech.keyVisualPrefab = carriedKeyPrefab;
+                    keyMech.SetKey(carriedKey);
+                    
+                    SetCarriedKey(KeyType.None);
+                    carriedKeyPrefab = null;
+                    return;
+                }
+            }
+
             if (!CurrentNode.IsVia) { Block(); return; }
             turnFromZ = transform.localPosition.z;
             Layer = Layer.Other();
@@ -213,6 +246,16 @@ namespace Pcb
                 wasTurning = true;
             }
             Flipped?.Invoke(Layer);
+        }
+
+        public void SetCarriedKey(KeyType newKey)
+        {
+            if (carriedKey != newKey)
+            {
+                Debug.Log($"[Spark] SetCarriedKey changed from {carriedKey} to {newKey}");
+                carriedKey = newKey;
+                OnCarriedKeyChanged?.Invoke(carriedKey);
+            }
         }
 
         void Move(float distance)
@@ -328,6 +371,8 @@ namespace Pcb
             float pulse = 0.5f + 0.5f * Mathf.Sin(Time.time * 8f);
 
             Color c = Color.Lerp(theme.spark, theme.sparkBlocked, blockedFlash);
+            
+            if (block == null) block = new MaterialPropertyBlock();
             coreRenderer.GetPropertyBlock(block);
             block.SetColor(BaseColorId, c);
             block.SetColor(EmissionColorId, c * (theme.sparkGlow * (0.8f + 0.4f * pulse)));

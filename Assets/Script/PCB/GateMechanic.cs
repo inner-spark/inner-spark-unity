@@ -6,6 +6,11 @@ namespace Pcb
     {
         public bool isOpen = false;
         public GameObject closedVisual;
+        
+        [Header("Visuals")]
+        [Tooltip("Optional custom prefab for this specific gate. If left null, uses the Board theme's default gate prefab.")]
+        public GameObject customGatePrefab;
+        
         private GameObject autoVisual;
 
         public void SetOpen(bool open)
@@ -21,14 +26,18 @@ namespace Pcb
             return isOpen;
         }
 
-        void Start()
+        protected virtual void Start()
         {
             var trace = GetComponent<Trace>();
             var board = GetComponentInParent<Board>();
 
             if (closedVisual == null)
             {
-                if (board && board.theme && board.theme.gatePrefab)
+                if (customGatePrefab != null)
+                {
+                    autoVisual = Instantiate(customGatePrefab, transform);
+                }
+                else if (board && board.theme && board.theme.gatePrefab)
                 {
                     autoVisual = Instantiate(board.theme.gatePrefab, transform);
                 }
