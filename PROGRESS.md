@@ -5,6 +5,20 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 
 ---
 
+## 2026-10-03 (late night) — final level order + names (Tools > PCB > Organize Final Levels)
+
+One-shot editor menu `OrganizeLevels.cs` (asks first, can't be Ctrl+Z'd; delete the script after it ran):
+renames the final 23 prefabs to "<Console> - Level NN.prefab", sets their in-game name to "<Console>: Level N",
+moves every other level prefab to `Assets/PCB/Levels/Archive`, and sets the Level List to exactly these 23 with
+Main Stage Count 20. Moves go through the AssetDatabase, so references (Level List, scenes) survive.
+Mapping (designer's answers): 1 Level 01 Tung (ColekoTelestar) · 2–5 Level 02–05 Tung (Altary2600) ·
+6 Level 06 Tung, 7 Level 08 Tung, 8 Level 9 Tung, 9 "Level  9 true Tung", 10 Level 10 true Tung,
+11 Tung lvl 11, 12 Tung lvl 12 true (NES — "NESt" was a typo) · 13–17 Tung lvl 13–17 (Gameboy) ·
+18–20 Tung lvl 18–20 (PS1) · Bonus 21–23 = Tung lvl 21–23 ("Bonus: Level 21…").
+Archived: Level 1/02–07/14, Level 09 true Tung, Tung lvl 12, Claude lvl 11–23 (re-running Build Claude
+(Hard) Levels would recreate those in Levels/ and append them to the list again).
+Dialogs from the designer's sheet are not set up yet (text may still change).
+
 ## 2026-10-03 (late night) — bonus stages after stage 20 + music carries on between stages
 
 - **Music:** `LevelManager.EnterStage` no longer restarts the gameplay track - it keeps playing from stage to
