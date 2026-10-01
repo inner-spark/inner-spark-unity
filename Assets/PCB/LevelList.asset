@@ -36,4 +36,5 @@ MonoBehaviour:
   - {fileID: 2948354613663707863, guid: 8f4968721f4653f47b66750642c3bc7a, type: 3}
   - {fileID: 8353089727647844768, guid: 0652c5760d2397f49aa4473a38da9a29, type: 3}
   - {fileID: 6109484558361055137, guid: b60e27a850aaf504fa9838095ced05fe, type: 3}
+  - {fileID: 1203045139182994112, guid: d0df4e1ee80ad524aa6314ad11ae1214, type: 3}
   mainStageCount: 20

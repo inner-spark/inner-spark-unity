@@ -13,27 +13,30 @@ MonoBehaviour:
   m_Name: SoundBank
   m_EditorClassIdentifier: Assembly-CSharp::Pcb.SoundBank
   menuMusic:
-    clip: {fileID: 8300000, guid: 548891b3f55f84e448c62152cd5ea726, type: 3}
-    volume: 1
+    clip: {fileID: 8300000, guid: 643e1fc6c17e6024788d7d9e41dd82de, type: 3}
+    volume: 0.2
   gameplayMusic:
     clip: {fileID: 8300000, guid: 548891b3f55f84e448c62152cd5ea726, type: 3}
+    volume: 0.17
+  endingMusic:
+    clip: {fileID: 8300000, guid: 8b311b1cc369b9e478b14651c73898b9, type: 3}
     volume: 1
-  pausedMusicVolume: 0.4
+  pausedMusicVolume: 0.2
   buttonClick:
     clip: {fileID: 8300000, guid: 00f4cd8ece0f5e043b71f7dc20ccdfee, type: 3}
-    volume: 1
+    volume: 0.159
   startGame:
     clip: {fileID: 8300000, guid: 6a1c7a0c05aae3749adfd3d126a12b5e, type: 3}
-    volume: 1
+    volume: 0.507
   win:
     clip: {fileID: 8300000, guid: 3e5b892f59f49ab4e8c71cd2327adb20, type: 3}
-    volume: 1
+    volume: 0.246
   switchToggle:
-    clip: {fileID: 0}
-    volume: 1
+    clip: {fileID: 8300000, guid: 868de3286a374f1499e047bab213f8eb, type: 3}
+    volume: 0.754
   pickup:
-    clip: {fileID: 0}
-    volume: 1
+    clip: {fileID: 8300000, guid: c0d805bce24a08c42b61d1dcd1863cfc, type: 3}
+    volume: 0.609
   goalUnlock:
     clip: {fileID: 0}
     volume: 1
@@ -47,7 +50,7 @@ MonoBehaviour:
     clip: {fileID: 0}
     volume: 1
   travel:
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: dffe2d507a991ad4da74b987d4d1f842, type: 3}
     volume: 1
   dialogTalking:
     clip: {fileID: 8300000, guid: ca2a24470d461184181f975b3ab10a5f, type: 3}
