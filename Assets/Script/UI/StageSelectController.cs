@@ -46,7 +46,8 @@ namespace Pcb
                 if (i == 0) UiSelect.Select(button.gameObject); // keyboard / gamepad navigation starts on stage 1
 
                 var label = button.GetComponentInChildren<TMP_Text>();
-                if (label) label.text = level ? level.levelName : $"Level {i + 1}";
+                if (label) label.text = levels.IsBonus(i) ? $"Bonus {levels.BonusNumber(i)}"
+                                      : level ? level.levelName : $"Level {i + 1}";
 
                 int index = i; // capture for the closure
                 button.onClick.AddListener(() => Play(index));

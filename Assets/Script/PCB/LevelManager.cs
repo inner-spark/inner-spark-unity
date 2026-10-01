@@ -24,8 +24,10 @@ namespace Pcb
         public DialogController dialogController;
         [Tooltip("Optional. Shown when the current level is won (not after the last one: that goes to the ending).")]
         public WinPanel winPanel;
-        [Tooltip("Scene loaded (with a fade) after the last stage in the Level List is won.")]
+        [Tooltip("Scene loaded (with a fade) after the last main stage is won (Level List > Main Stage Count).")]
         public string endingScene = "Ending";
+        [Tooltip("Scene loaded (with a fade) after the last Bonus stage is won.")]
+        public string mainMenuScene = "MainMenu";
 
         [Header("Staging")]
         [Tooltip("Optional. Every stage's board is centred on this point (a fixed spot in the room).")]
@@ -129,7 +131,7 @@ namespace Pcb
                 intro.Begin(Camera.main);
             }
             yield return ScreenFader.FadeIn(fadeTime);
-            AudioManager.PlayMusic(Music.Gameplay, restart: true);
+            AudioManager.PlayMusic(Music.Gameplay); // keeps playing from stage to stage (only starts if it isn't already)
             if (intro) yield return intro.Play(rig);
 
             yield return AppearSpark();
@@ -212,13 +214,14 @@ namespace Pcb
 
         void OnWinFinished()
         {
-            Progress.Completed(index); // unlocks the next stage (saved)
-            if (levels && index >= 0 && index == levels.Count - 1)
+            Progress.Completed(index); // unlocks the next stage (saved) - after the last main stage, the first bonus one
+            if (levels && index >= 0 && (index == levels.MainCount - 1 || index == levels.Count - 1))
             {
-                // The last stage: straight to the ending, no win pop-up.
+                // The last main stage: straight to the ending, no win pop-up.
+                // The last bonus stage: back to the Main Menu (the story already ended).
                 transitioning = true; // no restart meanwhile
                 if (pauseMenu) pauseMenu.SetAvailable(false);
-                ScreenFader.LoadScene(endingScene);
+                ScreenFader.LoadScene(index == levels.MainCount - 1 ? endingScene : mainMenuScene);
                 return;
             }
             won = true;

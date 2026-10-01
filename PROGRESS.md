@@ -5,6 +5,20 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 
 ---
 
+## 2026-10-03 (late night) — bonus stages after stage 20 + music carries on between stages
+
+- **Music:** `LevelManager.EnterStage` no longer restarts the gameplay track - it keeps playing from stage to
+  stage (and on restarts); coming from the menu still switches to it.
+- **Bonus stages:** `LevelList.mainStageCount` (0 = whole list is the main game, as before). The ending plays
+  after the last main stage; the levels after it are Bonus stages. Progress is linear, so finishing the last
+  main stage already unlocks Bonus 1 (and Main Menu > Play continues there).
+  - Stage Select labels them "Bonus 1, 2, 3" (only shown once unlocked, like every stage).
+  - Winning the last Bonus stage fades back to the Main Menu (`LevelManager.mainMenuScene`).
+  - `EndingScreen.levels` + `bonusUnlockedText`: optional "Bonus stages unlocked!" object, shown when the list
+    has bonus stages.
+- Designer setup: Level List → final order (20 main stages, then Claude lvl 21–23), **Main Stage Count = 20**;
+  Ending scene → add the text, assign it + the Level List on EndingScreen.
+
 ## 2026-10-03 (late night) — bonus levels: Claude lvl 21–23 (hard / hard / very hard)
 
 **Brief:** harder levels for the bonus set — switches that move several doors at once, passes that must be
