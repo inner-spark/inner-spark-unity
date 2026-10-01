@@ -4,7 +4,7 @@ The living reference for the project: what the game is, how the code is put toge
 vocabulary used in the scripts. Code comments cover the *how*; this file is the *why* and *what's
 planned*. [PROGRESS.md](PROGRESS.md) is the dated log of what changed and why.
 
-*Last full refresh: 2026-10-02.*
+*Last full refresh: 2026-10-04.*
 
 ---
 
@@ -17,14 +17,16 @@ turn the board over, changing which traces are available. Puzzle elements on top
 side-switching:
 - **Switches** (normal / AND) that open and close **gates** on traces.
 - **Data** pickups on capacitors that must all be collected before the goal unlocks.
+- **Passes** (Red / Green): taken from a Pass Holder, needed to move onto a Pass Lock of that colour.
 
-Stages are played in a fixed order (Level List); finishing one unlocks the next; the last one leads
-to an ending screen. Each stage can open with a short intro cinematic (a device on a table in a room,
+Stages are played in a fixed order (Level List); finishing one unlocks the next. The game walks through
+console history: each group of stages lives inside one console (ColekoTelestar → Altary2600 → NESt →
+Gamerboi → PlayingState, the artist's parody names) with its own board colour. The last main stage (20)
+leads to the ending screen and unlocks 3 **bonus stages**; the last bonus stage returns to the menu. Each stage can open with a short intro cinematic (a device on a table in a room,
 the camera zooms in, the casing fades away to reveal the PCB) and an intro dialog that teaches it.
 There's no on-screen text during play — tutorials live in the dialogs.
 
-*Open:* target platform(s) (built for PC, 16:9, 1920×1080 so far), final level count / difficulty
-arc, future mechanics (key + lock art exists: `Key_*`, `Key_Lock_*`, `Key_Node_*`).
+*Open:* target platform(s) (built for PC, 16:9, 1920×1080 so far).
 
 ## 2. Controls
 
@@ -35,7 +37,8 @@ arc, future mechanics (key + lock art exists: `Key_*`, `Key_Lock_*`, `Key_Node_*
 | Restart level | R / on-screen Restart button | Select |
 | Pause / resume | Esc / on-screen Pause button | Start |
 | Menus (navigate / press) | Mouse, or Arrow keys + Enter | D-pad / stick + South |
-| Advance dialog | Continue button (first press finishes a line still typing) | Submit |
+| Advance dialog | Space / Continue button (first press finishes a line still typing) | Submit |
+| Stage clear → next stage | Space / Next Level button | Submit |
 | Inspect board (tilt) | Hold left mouse + drag | — |
 
 - **Input reading** (`Spark.ReadInput`): per axis; only a key going *down* counts as a press (releasing
@@ -45,7 +48,8 @@ arc, future mechanics (key + lock art exists: `Key_*`, `Key_Lock_*`, `Key_Node_*
   / animating) is carried over; older presses are forgotten (no double-tap double steps).
 - **Locked:** while paused nothing is queued; during the stage start sequence (fade, intro, Sparky
   appearing, dialog) Sparky, Restart, Pause and board tilting are all off; at the goal input stops.
-- Menus select their first button when they open (keyboard / gamepad navigation).
+- Menus select their first button when they open (keyboard / gamepad navigation). Stage Select instead
+  starts at stage 1, glides down to the furthest unlocked stage and selects it.
 
 ## 3. Vocabulary
 
@@ -59,7 +63,8 @@ arc, future mechanics (key + lock art exists: `Key_*`, `Key_Lock_*`, `Key_Node_*
 | **Spark** | The player. With a character model (the `Spark_Sparky` prefab) it's Sparky; without one, a glowing sphere. |
 | **Gate** | A `GateMechanic` on a trace: blocks it while closed. Normal gate: any of its switches flips it. AND gate: open only while all its AND switches are on. |
 | **Data** | A pickup on a capacitor (`DataMechanic`). While any is left, the goal is locked (a lock hovers over it). |
-| **Decoration** | Cosmetic set-dressing (`PcbDecoration`), never part of the graph. |
+| **Decoration** | Cosmetic set-dressing (`PcbDecoration`), never part of the graph. Type `LED` uses the artist's LED models (`Decor_LED_*` wrappers). |
+| **Main / bonus stage** | The first `LevelList.mainStageCount` (20) stages are the main game; the ones after are bonus stages. |
 | **Theme** (`PcbTheme`) | Shared asset: materials, default models, a **Catalog** of variant models, and every size. |
 | **Look** | A level's own default models (`Board.look`); a node / gate / decoration can override with its own `model`. Model used = own → level Look → theme. |
 | **Rig** (`BoardRig`) | Pivot that turns the board over, tilts it, and frames the camera. |
@@ -87,11 +92,13 @@ arc, future mechanics (key + lock art exists: `Key_*`, `Key_Lock_*`, `Key_Node_*
     swaps its model's ON / OFF look (**SwitchVisual.cs**).
   - **GateMechanic.cs** / **AndGateMechanic.cs** — on a trace; hold their `switches` list (Level Editor
     Link tool). Normal: any press flips (`isOpen` = start state). AND: open while all on (`inverted` =
-    open until all on). Model shows CLOSED / OPEN via **LockVisual.cs**. Hand-wiring a switch's
-    `onToggle → SetOpen` (Level 04) still works.
+    open until all on). Model shows CLOSED / OPEN via **LockVisual.cs**; a change in play fades the
+    CLOSED look out / in (`LockVisual.FadeTo`, transparent copies of its materials while fading).
+    Hand-wiring a switch's `onToggle → SetOpen` (Level 04) still works.
   - **DataMechanic.cs** — data pickup; collected on arrival (runtime only — a restart resets it).
   - **KeyNodeMechanic.cs** (Pass Holder) / **KeyLockMechanic.cs** (Pass Lock) / **KeyType.cs** — the pass
-    system (see `KeySystem_README.md`). Locks use `NodeMechanic.CanArrive`. `KeyGateMechanic.cs` (uses up N
+    system (see `KeySystem_README.md`). Locks use `NodeMechanic.CanArrive`; the padlock fades away while
+    Sparky carries the matching pass. `KeyGateMechanic.cs` (uses up N
     keys) is unused for now.
 - **HoverVisual.cs** — bob + shrink-away for hovering looks (data, goal lock). **FadeGroup.cs** — fades a
   whole model via one animatable Alpha (intro cinematics).
@@ -99,21 +106,31 @@ arc, future mechanics (key + lock art exists: `Key_*`, `Key_Lock_*`, `Key_Node_*
   far clip).
 - **LevelManager.cs** — one per gameplay scene. Stage flow as coroutines: entering a stage = black →
   fade in → gameplay music → [intro] → `Spark.Appear()` → [dialog] → play; Restart = quick fade →
-  appear → play. Win → saves progress → win pop-up, or after the **last** stage the Ending scene.
-  Fields: Board Anchor (fixed spot in the room), Camera Far Clip, fade times, ending scene name.
+  appear → play. Win → saves progress → win pop-up; after the last **main** stage the Ending scene, after
+  the last **bonus** stage the Main Menu. Gameplay music keeps playing from stage to stage.
+  Fields: Board Anchor (fixed spot in the room), Camera Far Clip, fade times, ending / main menu scene.
 - **StageIntro.cs** — intro cinematic: placed at the board's centre while the screen is black, plays
   its Timeline after the fade-in, the camera follows its Camera Pose, then blends into gameplay.
-- **LevelList.cs**, **PcbTheme.cs**, **PcbVisualOwner.cs** — play order, shared look, and the link from
-  generated visuals back to their node / trace (scene clicks select the real object).
+- **LevelList.cs** — play order + `mainStageCount` (`MainCount`, `IsBonus`, `BonusNumber`).
+- **PcbTheme.cs** — shared look; also `boardTileColours` (board tile → Stage Select button colour).
+- **PcbVisualOwner.cs** — link from generated visuals back to their node / trace (scene clicks select the
+  real object).
 
 **Editor tools** (`Assets/Script/PCB/Editor/`)
-- **PcbLevelEditorWindow** (`.cs`, `.Levels.cs`, `.Look.cs`, `.Switches.cs`, `.Data.cs`) — `Tools > PCB >
-  Level Editor`: tools Select / Node / Trace / Erase / Decor / Paint / Link / Data; save / load levels
+- **PcbLevelEditorWindow** (`.cs`, `.Levels.cs`, `.Look.cs`, `.Switches.cs`, `.Data.cs`, `.Passes.cs`) —
+  `Tools > PCB > Level Editor`: tools Select / Node / Trace / Erase / Decor / Paint / Link / Data / Pass.
+  Node tool: dragging a node re-routes its straight / one-elbow traces; Ctrl+Click a trace re-routes it
+  as a clean elbow (again: flips the elbow). Save / load levels
   as prefabs; Level List order; Look section; unsaved-changes check (with a **Why?** button);
   **Validate Level** (start / goal counts, cross-layer traces, ambiguous exits, 8-way reachability,
   one-sided vias, switch ↔ gate connections, data only on capacitors).
 - **PcbAssetSetup.cs** (theme / materials / Level List bootstrap), **PcbSelectionRedirect.cs**.
 - **ProgressMenu.cs** — `Tools > PCB > Reset Progress` / `Unlock All Stages` (testing).
+- **ClaudeLevelBuilder.cs** — `Tools > PCB > Build Claude (Hard) Levels`: builds level prefabs from JSON
+  made by the Python tools. Don't re-run on the final list (it would re-add the original Claude levels).
+- **OrganizeLevels.cs** — one-shot that renamed / archived the levels into the final list (done; can go).
+- **`Tools/LevelDesign/`** (Python, outside Unity) — solver + layout checker, level generator for hard
+  stages, stuck-state finder, prefab reader, LED decoration scatter (`decorate.py`). See its README.
 - **UiScalingSetup.cs** — `Tools > PCB > Set Up UI Scaling (1920x1080)`: every canvas scales from a
   1920×1080 design size; build default resolution 1920×1080 full screen. Re-run after adding a scene.
 
@@ -123,7 +140,7 @@ arc, future mechanics (key + lock art exists: `Key_*`, `Key_Lock_*`, `Key_Node_*
   loop, dialog talking loop). Empty = silent.
 - **AudioManager.cs** — one per scene; the first survives scene loads, later copies remove themselves.
   Static, null-safe API. Adds the click sound to every UI button. Player volumes in PlayerPrefs.
-- **VolumeSlider.cs** — on a UI Slider (Music / SFX). *Not placed in any scene yet.*
+- **VolumeSlider.cs** — on a UI Slider (Music / SFX). *Not placed in any scene (no volume sliders yet).*
 
 **UI & flow** (`Assets/Script/UI/`, uGUI + TextMeshPro)
 - **ScreenFader.cs** — self-creating black overlay; `LoadScene` = fade out → load → fade in (a scene can
@@ -131,12 +148,21 @@ arc, future mechanics (key + lock art exists: `Key_*`, `Key_Lock_*`, `Key_Node_*
 - **GameFlow.cs** — carries the chosen stage from the menu into the gameplay scene.
 - **Progress.cs** — furthest unlocked stage (PlayerPrefs, by Level List position).
 - **MainMenuController.cs** — Play (continues from the furthest unlocked stage) / Stage Select / Quit.
-- **StageSelectController.cs** — one button per *unlocked* stage, built from the Level List.
-- **PauseMenu.cs** — pause panel; `SetAvailable` greys out Pause / Restart during the start sequence.
-- **DialogSequence.cs** / **DialogController.cs** — per-stage intro dialog; lines type out with the
-  talking sound.
-- **WinPanel.cs** — win pop-up (Next Level / Restart). **EndingScreen.cs** — ending scene; a click after
-  2 s returns to the menu. **UiSelect.cs** — selects a menu's first button (keyboard / gamepad).
+- **StageSelectController.cs** — one button per *unlocked* stage, built from the Level List: two-line
+  labels ("NESt:" / "Level 6", bonus "Bonus:" / "Level 1"), button coloured like the stage's board
+  (theme `boardTileColours`, white text on dark colours). Fixes the scroll view when it opens (clamped,
+  list sized to its buttons), then auto-scrolls to the furthest stage; keeps the selection in view.
+- **PauseMenu.cs** — pause panel; `SetAvailable` greys out Pause / Restart during the start sequence; the
+  HUD Pause button calls `Toggle`.
+- **DialogSequence.cs** / **DialogController.cs** — per-stage intro dialog (`Assets/PCB/Dialog/LvlN_Intro`);
+  lines type out with the talking sound; `defaultPortrait` (Sparky) when a line has none; the name shows
+  under the portrait; long lines shrink to fit.
+- **WinPanel.cs** — win pop-up ("STAGE CLEAR!", Next Level / Restart). **EndingScreen.cs** — ending scene;
+  a click after 2 s returns to the menu; shows "Bonus stages unlocked!" when the list has bonus stages.
+  **UiSelect.cs** — selects a menu's first button (keyboard / gamepad).
+- **UI style:** `Button_main` sprite tinted yellow (orange hover), 500×100, upheavtt font 50, label kept
+  on the button's face (TMP margins clear its side + drop shadow); HUD Pause / Restart use the icon
+  sprites; dialog = framed portrait + `TextField` box + yellow Continue.
 
 **Scenes** (build order): `MainMenu` → `SampleScene` (gameplay) → `Ending`. Every canvas: Scale With
 Screen Size, 1920×1080.
@@ -149,17 +175,30 @@ Screen Size, 1920×1080.
 - Visual choices are stored as references to prefabs (own → level Look → theme), so reordering the
   theme's catalog never breaks a level.
 - Levels are drawn in the Scene view with the Level Editor.
-- **Level List as of 2026-10-02 (13):** `Level 1`, `Level 02`–`Level 07`, then `Level 01 Tung`–`Level 06 Tung`.
-  🟡 Decide which set is final — the ending plays after the *last* entry, and saved progress is by
-  position (reordering shifts what players have unlocked; use Reset Progress when testing).
+- **Final Level List (23, Main Stage Count 20):** files `<Console> - Level NN`, in-game `<Console>: Level N`.
+  Older / unused versions are in `Assets/PCB/Levels/Archive`. Saved progress is by position (reordering
+  shifts what players have unlocked; use Reset Progress when testing).
+
+| Stages | Console | Board tile | Notes |
+|---|---|---|---|
+| 1 | ColekoTelestar | Purple | tutorial |
+| 2–5 | Altary2600 | Bronze | |
+| 6–12 | NESt | Black | |
+| 13–17 | Gamerboi | Grey | |
+| 18–20 | PlayingState | Light Grey | the ending follows 20 |
+| 21–23 | Bonus | Red | hard / hard / very hard; 21–22 have stuck states (Restart) |
+
+- Each stage also picks one capacitor model and one gate model (`Board.look`), and has 3–8 LED
+  decorations per side. Intro dialogs on stages 1–3, 5–8, 10, 11, 13, 15, 17–20.
 
 ## 6. Open design space
 
-- [ ] Final stage list / count and difficulty arc (see § 5).
+- [x] Final stage list (2026-10-04, see § 5).
 - [x] Pass mechanic (2026-10-03): Pass Holder / Pass Lock nodes — art (`Key_*`, `Key_Node_*`, `Key_Lock_*`) to set up in the theme's Passes.
 - [ ] Room background + per-stage intro cinematics (code ready; setup steps in PROGRESS 2026-10-02).
-- [ ] UI art for every screen (Main Menu, Stage Select, HUD, Pause, Dialog, Win, Ending) and the
-      Music / SFX sliders.
+- [x] UI art for Main Menu, Stage Select, HUD, Pause, Dialog, Win (2026-10-04).
+- [ ] Music / SFX sliders.
 - [ ] Audio tuning; missing clips (switch, travel, menu music, gate close).
 - [ ] Non-16:9 screens (letterbox or not?), windowed mode, any player options (resolution, rebinding).
-- [ ] LED decorations aren't registered as a decoration type yet.
+- [x] LED decorations (`DecorType.LED`, 2026-10-04).
+- [ ] Intro dialog for stages 4, 9, 12, 14, 16 and the bonus stages (optional).

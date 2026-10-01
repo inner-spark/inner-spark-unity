@@ -5,6 +5,32 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 
 ---
 
+## 2026-10-04 — Space skips / continues dialog and goes to the next stage
+
+- `DialogController`: Space = Continue (first press finishes a line still typing, the next one advances).
+- `LevelManager`: on the win pop-up Space = Next Level (Enter / South still press the selected button).
+- Space isn't a UI Submit key (default UI actions: Enter / South), so it never double-presses a selected
+  button; Spark drops presses made while input is locked, so the Space that closes the dialog doesn't
+  also flip / press anything. README + DESIGN controls tables updated.
+
+## 2026-10-04 — dialogs wired, ending bonus text, Stage Select auto-scroll, docs refreshed
+
+- **Dialogs:** one `Assets/PCB/Dialog/LvlN_Intro.asset` per stage from the designer's sheet (speaker Sparky,
+  Sparky portrait), assigned on stages 1–3, 5–8, 10, 11, 13, 15, 17–20 (the sheet has no line for 4, 9, 12,
+  14, 16). The Altary2600 line "Next stop: Atari 2600!" moved from stage 5 to stage 2 (as on the sheet);
+  stage 1 keeps its two lines + the sheet's tutorial line "Go right using the directional input!" last.
+  ⚠ Stage 3's line was cut off in the sheet screenshot — ends "…less than a text message!" for now.
+  Dialog body text auto-sizes (44 → 26) so the long lines fit the box.
+- **Ending scene:** new inactive "BonusUnlocked" text (yellow upheavtt 40, bottom strip under the credits:
+  "Bonus stages unlocked! Find them in Stage Select"); EndingScreen now has Levels + Bonus Unlocked Text.
+- **Stage Select auto-scroll:** opens at stage 1, waits 0.3 s, glides (0.8 s) to the furthest unlocked
+  stage and selects it (Enter plays it); a click / wheel / up-down cancels the glide. Afterwards keyboard /
+  gamepad selection is kept in view. (`autoScrollDelay`, `autoScrollTime`.)
+- **README:** team from the ending credits (Banh Mi Team, 5 members + roles), known issues refreshed
+  (stuck states in bonus 21–22, stages without dialog), AI table updated (bonus stages, recoloured board
+  textures, LED scatter, UI layout), music / SFX credited to Andrii (TODO: confirm third-party sounds).
+- **DESIGN.md** refreshed (bonus stages, consoles + board colours, final list, LED type, fades, UI style).
+
 ## 2026-10-04 — pause menu + HUD buttons styled (SampleScene)
 
 Edited `SampleScene.unity` directly (backup kept outside the project during the session):

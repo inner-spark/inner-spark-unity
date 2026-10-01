@@ -47,7 +47,7 @@ namespace Pcb
         bool won;
         float wonAt;
         bool transitioning; // stage start / restart sequence running: no restart, next or tilting
-        InputAction restartAction, confirmAction;
+        InputAction restartAction, confirmAction, nextAction;
 
         public Board CurrentBoard => current;
 
@@ -55,6 +55,7 @@ namespace Pcb
         {
             restartAction = Button("<Keyboard>/r", "<Gamepad>/select");
             confirmAction = Button("<Keyboard>/space", "<Keyboard>/enter", "<Gamepad>/buttonSouth");
+            nextAction = Button("<Keyboard>/space"); // win pop-up: Space = Next Level (Space isn't a UI Submit key)
         }
 
         static InputAction Button(params string[] bindings)
@@ -64,9 +65,9 @@ namespace Pcb
             return action;
         }
 
-        void OnEnable() { restartAction.Enable(); confirmAction.Enable(); }
-        void OnDisable() { restartAction.Disable(); confirmAction.Disable(); }
-        void OnDestroy() { restartAction.Dispose(); confirmAction.Dispose(); }
+        void OnEnable() { restartAction.Enable(); confirmAction.Enable(); nextAction.Enable(); }
+        void OnDisable() { restartAction.Disable(); confirmAction.Disable(); nextAction.Disable(); }
+        void OnDestroy() { restartAction.Dispose(); confirmAction.Dispose(); nextAction.Dispose(); }
 
         void Start()
         {
@@ -236,9 +237,11 @@ namespace Pcb
             if (transitioning) return;
 
             if (restartAction.WasPressedThisFrame()) Restart();
-            // With a win pop-up its buttons take Submit (keyboard / gamepad navigation); the key shortcut is only
-            // for scenes without one - otherwise Enter on its Restart button would also trigger Next.
-            else if (won && !winPanel && Time.time - wonAt > 0.4f && confirmAction.WasPressedThisFrame()) Next();
+            // With a win pop-up its buttons take Submit (Enter / South on the selected button) and Space is the
+            // Next Level shortcut; Enter can't be one too, or Enter on its Restart button would also trigger Next.
+            // Without a pop-up, Space / Enter / South all go to the next stage.
+            else if (won && Time.time - wonAt > 0.4f &&
+                     (winPanel ? nextAction.WasPressedThisFrame() : confirmAction.WasPressedThisFrame())) Next();
         }
         // No on-screen text during play: controls are taught in each stage's intro dialog.
     }

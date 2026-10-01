@@ -3,6 +3,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace Pcb
@@ -31,11 +32,22 @@ namespace Pcb
         int index;
         Action onComplete;
         Coroutine typing;
+        InputAction spaceAction; // Space = Continue (not a UI Submit key, so it never double-presses the button)
 
         public bool IsShowing => panel && panel.activeSelf;
 
+        void OnDestroy() => spaceAction?.Dispose();
+
+        /// <summary>Space: first finishes a line that's still typing, then goes to the next one (same as Continue).</summary>
+        void Update()
+        {
+            if (spaceAction != null && IsShowing && !PauseMenu.GamePaused && spaceAction.WasPressedThisFrame()) Advance();
+        }
+
         void Awake()
         {
+            spaceAction = new InputAction("Dialog Continue", InputActionType.Button, "<Keyboard>/space");
+            spaceAction.Enable();
             // Don't force-hide 'panel' here: if this script lives on the panel itself (the natural
             // place to put it) and the panel starts disabled in the scene - as it should - Awake only
             // fires the first time something reactivates it (i.e. the first Show()), and disabling it
