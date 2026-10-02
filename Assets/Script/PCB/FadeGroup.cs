@@ -14,6 +14,9 @@ namespace Pcb
     public class FadeGroup : MonoBehaviour
     {
         [Range(0f, 1f)] public float alpha = 1f;
+        [Tooltip("Stop casting shadows as soon as the fade starts. A fading model still casts a solid shadow, so " +
+                 "without this whatever is under it lights up all at once when it finally disappears.")]
+        public bool dropShadowsWhileFading = true;
 
         static readonly int BaseColorId = Shader.PropertyToID("_BaseColor");
         static readonly int ColorId = Shader.PropertyToID("_Color");
@@ -21,6 +24,7 @@ namespace Pcb
         readonly List<Renderer> renderers = new List<Renderer>();
         readonly List<Material[]> originals = new List<Material[]>();
         readonly List<Material[]> faded = new List<Material[]>();
+        readonly List<ShadowCastingMode> shadows = new List<ShadowCastingMode>();
         float applied = -1f;
 
         void LateUpdate()
@@ -37,6 +41,7 @@ namespace Pcb
                 renderers.Add(r);
                 originals.Add(r.sharedMaterials);
                 faded.Add(null);
+                shadows.Add(r.shadowCastingMode);
             }
         }
 
@@ -51,6 +56,7 @@ namespace Pcb
                 if (!r) continue;
                 r.enabled = visible;
                 if (!Application.isPlaying || !visible) continue;
+                r.shadowCastingMode = opaque || !dropShadowsWhileFading ? shadows[i] : ShadowCastingMode.Off;
                 if (opaque) { r.sharedMaterials = originals[i]; continue; }
 
                 if (faded[i] == null)
@@ -89,7 +95,11 @@ namespace Pcb
         {
             for (int i = 0; i < renderers.Count; i++)
             {
-                if (renderers[i] && Application.isPlaying) renderers[i].sharedMaterials = originals[i];
+                if (renderers[i] && Application.isPlaying)
+                {
+                    renderers[i].sharedMaterials = originals[i];
+                    renderers[i].shadowCastingMode = shadows[i];
+                }
                 if (faded[i] != null) foreach (var m in faded[i]) if (m) Destroy(m);
             }
         }

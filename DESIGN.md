@@ -104,12 +104,23 @@ There's no on-screen text during play — tutorials live in the dialogs.
 - **BoardRig.cs** — board turn-over, mouse tilt, camera framing (`FitCamera`, `Refit`, board anchor,
   far clip).
 - **LevelManager.cs** — one per gameplay scene. Stage flow as coroutines: entering a stage = black →
-  fade in → gameplay music → [intro] → `Spark.Appear()` → [dialog] → play; Restart = quick fade →
+  fade in → gameplay music → [intro] → `Spark.Appear()` → 1 s (`dialogDelay`) → [dialog] → play; Restart = quick fade →
   appear → play. Win → saves progress → win pop-up; after the last **main** stage the Ending scene, after
   the last **bonus** stage the Main Menu. Gameplay music keeps playing from stage to stage.
   Fields: Board Anchor (fixed spot in the room), Camera Far Clip, fade times, ending / main menu scene.
-- **StageIntro.cs** — intro cinematic: placed at the board's centre while the screen is black, plays
-  its Timeline after the fade-in, the camera follows its Camera Pose, then blends into gameplay.
+- **StageIntro.cs** — intro cinematic, placed at the board's centre while the screen is black. Two modes:
+  - **Zoom and reveal** (no Director; all five console intros): the Casing (console model + `FadeGroup`) is
+    fitted around the board — its biggest part (`fitTo` to override) is scaled to `casingMargin` × the board,
+    its top `casingClearance` in front of the board face, then moved `moveTowardCamera` toward the gameplay
+    camera. The camera starts `startDistance` × further out (room visible), holds `holdTime`, glides in over
+    `zoomTime`; the casing fades from `fadeStart` (fraction of the zoom) over `fadeTime`, and stops casting
+    shadows as the fade starts (`FadeGroup.dropShadowsWhileFading`, no light pop on the board).
+  - **Timeline** (a Director with a Timeline): plays it, the camera follows Camera Pose, then blends into
+    gameplay (`blendToGameplay`). Not used by any intro yet.
+  - Console intros: `Assets/PCB/Prefabs/Intros/Intro_<Console>.prefab`, on each console's first stage (1, 2,
+    6, 13, 18). The console models are turned (90°, 180°, 0) on the Casing (top toward the camera, right way
+    up). Settings: hold 0.6 s, zoom 2.2 s, fade from halfway over 1.1 s, start distance 3, margin 1.12,
+    clearance 0.7; Altary2600 (stepped body) margin 1.25, clearance 1.2, move toward camera 1.
 - **LevelList.cs** — play order + `mainStageCount` (`MainCount`, `IsBonus`, `BonusNumber`).
 - **PcbTheme.cs** — shared look; also `boardTileColours` (board tile → Stage Select button colour).
 - **PcbVisualOwner.cs** — link from generated visuals back to their node / trace (scene clicks select the
@@ -188,16 +199,20 @@ Screen Size, 1920×1080.
 - Each stage also picks one capacitor model and one gate model (`Board.look`), and has 3–8 LED
   decorations per side.
 - **Solutions + stuck states** for every stage: [`Docs/Level_solutions.md`](Docs/Level_solutions.md)
-  (all 23 solvable; stuck states in Gamerboi 14 and 16 and bonus 21–22). Intro dialogs on stages 1–3, 5–8, 10, 11, 13, 15, 17–20.
+  (all 23 solvable; stuck states in Gamerboi 14 and 16 and bonus 21–22). 
+- Intro dialogs (`Assets/PCB/Dialog/LvlN_Intro`, max 3 lines) on stages 1–21: the sheet's flavor lines plus
+  tutorial lines where a mechanic first appears (1 moving, 2 diagonals + restart, 3 vias + tilt, 5 data,
+  7 switches, 9 AND switches, 13 passes, 14 pass-trap warning, 15 gate on two switches); none on bonus
+  22–23. Version history: `Docs/Dialog_comparison.md`.
 
 ## 6. Open design space
 
 - [x] Final stage list (2026-10-04, see § 5).
 - [x] Pass mechanic (2026-10-03): Pass Holder / Pass Lock nodes — art (`Key_*`, `Key_Node_*`, `Key_Lock_*`) to set up in the theme's Passes.
-- [ ] Room background + per-stage intro cinematics (code ready; setup steps in PROGRESS 2026-10-02).
+- [x] Console intro cinematics on stages 1, 2, 6, 13, 18 (2026-10-04; zoom and reveal, tune in the prefabs).
 - [x] UI art for Main Menu, Stage Select, HUD, Pause, Dialog, Win (2026-10-04).
 - [ ] Music / SFX sliders.
 - [ ] Audio tuning; missing clips (switch, travel, menu music, gate close).
 - [ ] Non-16:9 screens (letterbox or not?), windowed mode, any player options (resolution, rebinding).
 - [x] LED decorations (`DecorType.LED`, 2026-10-04).
-- [ ] Intro dialog for stages 4, 9, 12, 14, 16 and the bonus stages (optional).
+- [x] Tutorial dialog on every main stage (2026-10-04). Stage 3's sheet line was cut off — check it.

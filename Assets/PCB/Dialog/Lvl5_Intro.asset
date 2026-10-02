@@ -16,3 +16,6 @@ MonoBehaviour:
   - speakerName: Sparky
     portrait: {fileID: 21300000, guid: 6936b9d0d20e600468c6f6817029d46e, type: 3}
     text: 'For parents, just a toy. For kids, there was an alien invasion, and they begged for the console to stop them!'
+  - speakerName: Sparky
+    portrait: {fileID: 21300000, guid: 6936b9d0d20e600468c6f6817029d46e, type: 3}
+    text: 'See that glowing data? Pick up every piece: the Goal stays locked until you have them all.'

@@ -5,6 +5,73 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 
 ---
 
+## 2026-10-04 — dialog version 2 (tutorial lines) + comparison
+
+**Approved and cleaned up:** version 2 is the only dialog set now — its assets moved from `Dialog/v2/` to
+`Assets/PCB/Dialog/LvlN_Intro` (same GUIDs, so the stages kept them; `_v2` dropped from the names), the
+version 1 assets deleted (git history), `Docs/Dialog_plan.md` removed (fully applied),
+`Docs/Dialog_comparison.md` kept as the record. Leftover references fixed: SampleScene's copy of stage 7 now
+points at the new stage 7 dialog; the archived `Level 1` / `Level 02` no longer point at deleted dialogs.
+README known issues + DESIGN updated. Details of the version 2 build below.
+
+- Version 2 built from `Docs/Dialog_plan.md`: `Assets/PCB/Dialog/v2/LvlN_Intro_v2` (1–3 lines, speaker
+  Sparky, Sparky portrait) for stages 1–21, **assigned to the stages** (no dialog on bonus 22–23).
+  Version 1 assets (`Assets/PCB/Dialog/LvlN_Intro`) untouched — reassign one on a Board to go back.
+- `Docs/Dialog_comparison.md`: per-stage table + side-by-side text of both versions (✏️ marks new lines).
+  Summary: 6 stages gain a dialog (4, 9, 12, 14, 16, bonus 21); 9 stages keep their sheet line and gain
+  tutorial lines (2, 3, 5, 6, 7, 8, 13, 15, 18); 5 unchanged (10, 11, 17, 19, 20); stage 1 rewritten
+  (Granny lines merged into one, the "You know these machines…" line dropped, "Go right…" → WASD line).
+
+## 2026-10-04 — console intro cinematics, Level Editor save fix, dialog plan
+
+**Final state (approved by the designer):** each console's first stage (1, 2, 6, 13, 18) opens on a far view
+of the room with the console model floating around the board; the camera glides in (2.2 s), the casing fades
+from halfway (1.1 s) with its shadows off, Sparky appears, 1 s later the dialog. All five consoles turned the
+right way up; Altary2600 sized up and moved toward the camera. Tuning lives on each
+`Assets/PCB/Prefabs/Intros/Intro_<Console>` → StageIntro (see DESIGN § 4). The passes below are the history.
+
+**Clean-up after it:** the stray "NESt_ Level 7" copy (identical to the repaired stage 7) deleted; `/*.7z`
+and `/*.zip` added to `.gitignore` so the zipped build in the project root isn't committed. StageIntro's
+Timeline mode is kept (unused) in case a hand-made intro is wanted later.
+
+**Sound bank review (no changes made):** filled — menu + gameplay music (the same clip, so pressing Play
+restarts the song), click, start game, win, dialog talking. Empty — ending music (the Ending plays silent),
+switch, pickup, goal unlock, gate open / close, fail, travel. Unused clips that fit: `SFX_Fail` → Fail,
+`SFX_Pickup` → Pickup, `SFX_UnlockOrOpen` → Goal Unlock / Gate Open, `SFX_ElectricSignal` → Travel.
+Shared: Pickup = data and taking a pass; Fail = every refused move.
+
+- **Intros (zoom and reveal):** `StageIntro` got a no-Timeline mode. The console model (Casing, a
+  `FadeGroup`) is fitted around the board at runtime (outline `casingMargin` × the board, depth so its top
+  sits `casingClearance` in front of the board face), the camera starts `startDistance` × further out
+  (room visible), holds `holdTime`, glides in over `zoomTime` to the gameplay view, then the casing fades
+  over `fadeTime` → Sparky appears → dialog. `LevelManager` now calls `intro.Begin(camera, rig)`.
+  Prefabs `Assets/PCB/Prefabs/Intros/Intro_<Console>.prefab` (artist's console models, stood up −90° X)
+  on the first stage of each console: 1 ColekoTelestar, 2 Altary2600, 6 NESt, 13 Gamerboi, 18 PlayingState.
+  Restart skips the intro (as before). Not tested in Unity yet.
+- Designer feedback → fixes: (1) light popped onto the board when the casing vanished — a fading model
+  still casts a solid shadow; `FadeGroup.dropShadowsWhileFading` (on) turns its shadows off when the fade
+  starts (while it still hides the board). (2) console sometimes smaller than the board — the fit measured
+  the body + extras (controller / joystick / cartridge); it now fits the biggest part (or `StageIntro.fitTo`).
+  Size tuning: `Casing Margin` on each Intro prefab's StageIntro.
+- Second pass: the casing fades **while** the camera zooms in (`fadeTime` 2.2 = `zoomTime`, `fadeDelay` 0);
+  `LevelManager.dialogDelay` (1 s) holds on Sparky before the dialog opens; Gamerboi casing turned 180°
+  (was upside down). Coleko / NES / PS1 approved; Altary2600 still to fix.
+- Third pass: Altary2600 casing turned 180° too (upside down); the fade now starts halfway through the zoom
+  (`fadeStart` 0.5 = fraction of the zoom, `fadeTime` 1.1 → done as the camera arrives).
+- Fourth pass: every console model was upside down, so all five Casings are now turned 180° around the view
+  axis (rotation (90, 180, 0)). Altary2600 still let nodes through (stepped body: its top is lower than its
+  bounds over much of the board) → its Casing Margin 1.25, Casing Clearance 1.2.
+- Fifth pass: nodes still showed through the Atari → new `StageIntro.moveTowardCamera` (after fitting, the
+  casing moves this far along board centre → gameplay camera); Altary2600 set to 1.
+- **Level Editor save bug fixed:** Save built the file name from the level name, so saving a final level
+  ("NESt: Level 7" in a file "NESt - Level 07") created a new file "NESt_ Level 7", renamed the level and
+  appended it to the Level List (24th entry). Save now writes back to the loaded file while the name is
+  unchanged (renamed = new level, as before) and keeps the name as typed. Level 7: the designer's newer
+  version moved into "NESt - Level 07" (slot 7, name restored), the stray copy archived, list back to 23.
+- **Dialog plan** for review: `Docs/Dialog_plan.md` — max 3 lines per stage, each mechanic taught where it
+  first appears (1 move, 2 diagonal + R, 3 vias + tilt, 5 data, 7 switches, 9 AND, 13 passes, 15 gate on
+  two switches), new lines for 4, 9, 14 (pass-swap trap warning), optional 12, 16, 18, bonus.
+
 ## 2026-10-04 — clean-up + project snapshot
 
 ### Snapshot: where the project stands
@@ -17,10 +84,9 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
   Stage Select glides to the furthest stage; Ending shows "Bonus stages unlocked!".
 - **Docs:** README (jam submission), DESIGN (reference), this log, `Docs/Level_solutions.md` (every stage's
   solution + stuck states), `Assets/Script/PCB/KeySystem_README.md` (passes), `Tools/LevelDesign/README.md`.
-- **Still open:** Music / SFX sliders (`VolumeSlider.cs` is ready, not placed); audio balance + missing clips;
-  intro dialog for stages 4, 9, 12, 14, 16 and the bonus stages (optional); stage 3's dialog line was cut off
-  in the sheet; intro cinematics (system ready, none made); README: key art, other members' AI usage,
-  Kenney kits / third-party sounds / Upheaval font licence.
+- **Still open:** Music / SFX sliders (`VolumeSlider.cs` is ready, not placed); audio balance + missing clips
+  (see the sound bank review below); stage 3's dialog line was cut off in the sheet; README: key art, other members' AI usage, Kenney kits /
+  third-party sounds / Upheaval font licence. *(Console intro cinematics: done, see the next entry.)*
 - **Designer to decide:** stuck states — Gamerboi 14 (take Red → LR1 → flip at V1 → take Green: the data
   behind the red lock can't be reached any more) and Gamerboi 16 (take Green → LG → take Red at HR) trap the
   player within a few moves; bonus 21–22 have a few too. Restart gets out; fine if intended.

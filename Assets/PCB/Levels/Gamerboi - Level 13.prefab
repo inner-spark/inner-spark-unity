@@ -1671,8 +1671,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Pcb.Board
   levelName: 'Gamerboi: Level 13'
   theme: {fileID: 11400000, guid: ffa1e0a639d45c241bbe1bad221dd486, type: 2}
-  dialogSequence: {fileID: 11400000, guid: 1fa4c9a68e46412c96e6859c0534ae3d, type: 2}
-  intro: {fileID: 0}
+  dialogSequence: {fileID: 11400000, guid: 49ea943886f24774b8dd292151fcc8bb, type: 2}
+  intro: {fileID: 7100000000000000003, guid: 3627b1276d284cf1ad12b4cc5704f3a7, type: 3}
   look:
     boardTile: {fileID: 8720090434053599027, guid: dad4b060f8e449be85b5a4b69962a1b6, type: 3}
     trace: {fileID: 0}

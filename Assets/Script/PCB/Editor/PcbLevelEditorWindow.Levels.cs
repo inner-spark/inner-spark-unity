@@ -52,7 +52,7 @@ public partial class PcbLevelEditorWindow
         }
         else
             EditorGUILayout.HelpBox($"Saved: {savedName}", MessageType.Info);
-        if (!string.IsNullOrEmpty(savedName) && CleanName(board.levelName) != savedName)
+        if (!string.IsNullOrEmpty(savedName) && SavePath() != board.savedPath)
             EditorGUILayout.HelpBox($"Name changed: saving creates a new level '{CleanName(board.levelName)}'. '{savedName}' is kept.", MessageType.None);
 
         using (new EditorGUILayout.HorizontalScope())
@@ -115,16 +115,16 @@ public partial class PcbLevelEditorWindow
 
     void SaveLevel()
     {
-        string levelName = CleanName(board.levelName);
-        if (string.IsNullOrEmpty(levelName))
+        string levelName = (board.levelName ?? "").Trim(); // the in-game name, kept as typed (e.g. "NESt: Level 6")
+        if (string.IsNullOrEmpty(CleanName(levelName)))
         {
             EditorUtility.DisplayDialog("Save Level", "Give the level a name first.", "OK");
             return;
         }
         var list = PcbAssetSetup.GetOrCreateLevelList();
-        string path = $"{PcbAssetSetup.LevelFolder}/{levelName}.prefab";
+        string path = SavePath();
         if (path != board.savedPath && AssetDatabase.LoadAssetAtPath<GameObject>(path) &&
-            !EditorUtility.DisplayDialog("Save Level", $"A level named '{levelName}' already exists. Overwrite it?", "Overwrite", "Cancel"))
+            !EditorUtility.DisplayDialog("Save Level", $"A level file '{Path.GetFileNameWithoutExtension(path)}' already exists. Overwrite it?", "Overwrite", "Cancel"))
             return;
 
         EnsureLevelManager(); // also removes an old LevelManager from the board so it isn't saved into the level
@@ -260,6 +260,21 @@ public partial class PcbLevelEditorWindow
             string candidate = $"Level {n:00}";
             if (!AssetDatabase.LoadAssetAtPath<GameObject>($"{PcbAssetSetup.LevelFolder}/{candidate}.prefab")) return candidate;
         }
+    }
+
+    /// <summary>
+    /// Where Save writes: back to the file this level was loaded from while its name is unchanged (file names like
+    /// "NESt - Level 06" needn't match the in-game name), else a new file named after the level.
+    /// </summary>
+    string SavePath()
+    {
+        if (!string.IsNullOrEmpty(board.savedPath))
+        {
+            var saved = AssetDatabase.LoadAssetAtPath<GameObject>(board.savedPath);
+            var savedBoard = saved ? saved.GetComponent<Board>() : null;
+            if (savedBoard && savedBoard.levelName.Trim() == (board.levelName ?? "").Trim()) return board.savedPath;
+        }
+        return $"{PcbAssetSetup.LevelFolder}/{CleanName(board.levelName)}.prefab";
     }
 
     static string CleanName(string levelName) =>

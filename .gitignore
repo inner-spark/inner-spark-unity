@@ -42,3 +42,9 @@ sysinfo.txt
 Icon?
 ehthumbs.db
 Thumbs.db
+# Python caches (Tools/LevelDesign)
+__pycache__/
+
+# Zipped builds for upload (keep out of git)
+/*.7z
+/*.zip

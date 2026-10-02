@@ -1502,7 +1502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Pcb.Board
   levelName: 'Altary2600: Level 5'
   theme: {fileID: 11400000, guid: ffa1e0a639d45c241bbe1bad221dd486, type: 2}
-  dialogSequence: {fileID: 11400000, guid: 78fc3dab25c44383bbdb55cab8e6105d, type: 2}
+  dialogSequence: {fileID: 11400000, guid: 65c18f2b927348e194533f7012725840, type: 2}
   intro: {fileID: 0}
   look:
     boardTile: {fileID: 4150448659043484937, guid: 964e6972f03d7fb4ba60e5edc8dfde5c, type: 3}

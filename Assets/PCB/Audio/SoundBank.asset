@@ -51,7 +51,7 @@ MonoBehaviour:
     volume: 1
   travel:
     clip: {fileID: 8300000, guid: dffe2d507a991ad4da74b987d4d1f842, type: 3}
-    volume: 1
+    volume: 0.908
   dialogTalking:
     clip: {fileID: 8300000, guid: ca2a24470d461184181f975b3ab10a5f, type: 3}
-    volume: 1
+    volume: 0.565

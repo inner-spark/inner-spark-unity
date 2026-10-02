@@ -16,3 +16,9 @@ MonoBehaviour:
   - speakerName: Sparky
     portrait: {fileID: 21300000, guid: 6936b9d0d20e600468c6f6817029d46e, type: 3}
     text: 'Game Boy: Now you had the power in your hands! Playing under the blanket by torchlight, the glow was you.'
+  - speakerName: Sparky
+    portrait: {fileID: 21300000, guid: 6936b9d0d20e600468c6f6817029d46e, type: 3}
+    text: 'Press Space on a pass holder to take its pass. Locks of the same colour only let you in while you carry it.'
+  - speakerName: Sparky
+    portrait: {fileID: 21300000, guid: 6936b9d0d20e600468c6f6817029d46e, type: 3}
+    text: 'I can carry one pass at a time: taking a new one swaps out the old. Plan your swaps!'

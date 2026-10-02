@@ -16,3 +16,6 @@ MonoBehaviour:
   - speakerName: Sparky
     portrait: {fileID: 21300000, guid: 6936b9d0d20e600468c6f6817029d46e, type: 3}
     text: 'The NES also disguised as a front-loading VCR to hide from the adults, so it would feel right at home next to the TV.'
+  - speakerName: Sparky
+    portrait: {fileID: 21300000, guid: 6936b9d0d20e600468c6f6817029d46e, type: 3}
+    text: 'Watch which gates move each time you press. Order matters!'

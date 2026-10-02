@@ -1576,7 +1576,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Pcb.Board
   levelName: 'PlayingState: Level 19'
   theme: {fileID: 11400000, guid: ffa1e0a639d45c241bbe1bad221dd486, type: 2}
-  dialogSequence: {fileID: 11400000, guid: 4929f1e45aa943f3a6770a149a54e0a7, type: 2}
+  dialogSequence: {fileID: 11400000, guid: 69eb9303660c4ecdbe1477791e1453c0, type: 2}
   intro: {fileID: 0}
   look:
     boardTile: {fileID: 8720090434053599027, guid: ac3d358f27044aa1987d71d4c2f4e1a1, type: 3}

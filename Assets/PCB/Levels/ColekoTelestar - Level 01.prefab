@@ -938,8 +938,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Pcb.Board
   levelName: 'ColekoTelestar: Level 1'
   theme: {fileID: 11400000, guid: ffa1e0a639d45c241bbe1bad221dd486, type: 2}
-  dialogSequence: {fileID: 11400000, guid: 7a16016d75d7bcf4b8a88cbada05dedb, type: 2}
-  intro: {fileID: 0}
+  dialogSequence: {fileID: 11400000, guid: b3b2474f10ab412eac30f01f867bb4ac, type: 2}
+  intro: {fileID: 7100000000000000003, guid: 8733d31a7b7847c78897a5c700436778, type: 3}
   look:
     boardTile: {fileID: 6924863077297887296, guid: db6ca5b129e1ac64da229a010900de3c, type: 3}
     trace: {fileID: 0}

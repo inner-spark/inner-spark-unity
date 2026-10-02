@@ -916,8 +916,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Pcb.Board
   levelName: 'Altary2600: Level 2'
   theme: {fileID: 11400000, guid: ffa1e0a639d45c241bbe1bad221dd486, type: 2}
-  dialogSequence: {fileID: 11400000, guid: 53f206e3b5db360469c64348b0169340, type: 2}
-  intro: {fileID: 0}
+  dialogSequence: {fileID: 11400000, guid: c490f546369849b981f9430b04f0b463, type: 2}
+  intro: {fileID: 7100000000000000003, guid: a057484fe91240e1b29eaab0ba8cd653, type: 3}
   look:
     boardTile: {fileID: 4150448659043484937, guid: 964e6972f03d7fb4ba60e5edc8dfde5c, type: 3}
     trace: {fileID: 0}

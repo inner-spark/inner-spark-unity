@@ -38,6 +38,8 @@ namespace Pcb
         [Min(0f)] public float fadeTime = ScreenFader.DefaultDuration;
         [Tooltip("Seconds to fade to / from black on a restart.")]
         [Min(0f)] public float restartFadeTime = 0.25f;
+        [Tooltip("Seconds to wait after Sparky appears before the stage's dialog opens.")]
+        [Min(0f)] public float dialogDelay = 1f;
 
         GameObject template; // what Restart re-creates: a level prefab, or the disabled scene board
         int index = -1;
@@ -129,7 +131,7 @@ namespace Pcb
             if (current.intro)
             {
                 intro = Instantiate(current.intro, rig.transform.position, rig.transform.rotation);
-                intro.Begin(Camera.main);
+                intro.Begin(Camera.main, rig);
             }
             yield return ScreenFader.FadeIn(fadeTime);
             AudioManager.PlayMusic(Music.Gameplay); // keeps playing from stage to stage (only starts if it isn't already)
@@ -138,6 +140,7 @@ namespace Pcb
             yield return AppearSpark();
             if (current.dialogSequence && dialogController)
             {
+                for (float t = 0f; t < dialogDelay; t += Time.deltaTime) yield return null; // a beat with Sparky first
                 bool done = false;
                 dialogController.Show(current.dialogSequence, () => done = true);
                 while (!done) yield return null;

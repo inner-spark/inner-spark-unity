@@ -15,12 +15,10 @@ MonoBehaviour:
   lines:
   - speakerName: Sparky
     portrait: {fileID: 21300000, guid: 6936b9d0d20e600468c6f6817029d46e, type: 3}
-    text: Hi, I'm Sparky! You know these machines from the outside. Follow me in,
-      and I'll show you what's still glowing.
+    text: 'Hi, I''m Sparky! Wakey wakey, Granny! Your name hides your past: COnnecticut LEather COmpany.'
   - speakerName: Sparky
     portrait: {fileID: 21300000, guid: 6936b9d0d20e600468c6f6817029d46e, type: 3}
-    text: 'Wakey wakey, Granny! Few guess from the outside, but your name hides your
-      past: COnnecticut LEather COmpany.'
+    text: 'Move with WASD or the arrow keys. I zip along a copper trace to the next stop.'
   - speakerName: Sparky
     portrait: {fileID: 21300000, guid: 6936b9d0d20e600468c6f6817029d46e, type: 3}
-    text: 'Go right using the directional input!'
+    text: 'Follow the traces to the Goal and this old console lights up again!'

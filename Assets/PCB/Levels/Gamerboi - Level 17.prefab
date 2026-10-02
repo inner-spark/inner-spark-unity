@@ -360,7 +360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Pcb.Board
   levelName: 'Gamerboi: Level 17'
   theme: {fileID: 11400000, guid: ffa1e0a639d45c241bbe1bad221dd486, type: 2}
-  dialogSequence: {fileID: 11400000, guid: 6c8d875f87df4e81be0125dc6ef1f241, type: 2}
+  dialogSequence: {fileID: 11400000, guid: 76340f60b79742e18a7aee2778011c53, type: 2}
   intro: {fileID: 0}
   look:
     boardTile: {fileID: 8720090434053599027, guid: dad4b060f8e449be85b5a4b69962a1b6, type: 3}
