@@ -5,6 +5,28 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 
 ---
 
+## 2026-10-04 — sound bank filled (designer) + checked
+
+- Designer's bank: menu music `main menu Music` (0.2), gameplay `InnerSparkOSTgameplay` (0.17), ending
+  `Ending Music` (1.0), click, start game, win, switch `Switch turn`, pickup `Pick Up` (data + taking a
+  pass), travel loop `Moving SFX`, dialog talking. Goal unlock, gate open / close and fail left silent on
+  purpose. Menu and gameplay now have their own songs (the "song restarts on Play" issue is gone).
+- Checked: every clip exists; flagged the ending music at volume 1.0 vs ~0.2 for the other music; the
+  four older clips `SFX_Fail`, `SFX_Pickup`, `SFX_UnlockOrOpen`, `SFX_ElectricSignal` are now unused (not
+  in builds; can be deleted).
+- SoundBank tooltips updated (gameplay music carries on, ending after the last main stage, pickup also
+  for passes, fail = refused move); README known issues: the audio line now only lists the intended
+  silent events.
+
+## 2026-10-04 — README brought up to date
+
+- AI-generated content: new **Narrative / text** row (the tutorial dialog lines and UI text written by
+  Claude — the jam asks for narrative AI use too); intro cinematics added to the Art / layout row.
+- Game description: 20 stages in five consoles with intro cinematics + 3 bonus stages.
+- Known issues: audio line matches the sound bank review (ending music + 7 SFX slots empty, shared song).
+- Project structure: `Docs/Dialog_comparison.md`.
+- Still TODO for the team: key art (`Docs/key_art.png`), other members' AI usage, credits / licences.
+
 ## 2026-10-04 — dialog version 2 (tutorial lines) + comparison
 
 **Approved and cleaned up:** version 2 is the only dialog set now — its assets moved from `Dialog/v2/` to

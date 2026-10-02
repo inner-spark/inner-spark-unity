@@ -22,9 +22,9 @@ namespace Pcb
     {
         [Header("Music (loops)")]
         public Sound menuMusic = Default;
-        [Tooltip("Restarts each time a stage is entered; keeps playing through a level restart.")]
+        [Tooltip("Starts when the first stage is entered and keeps playing from stage to stage and through restarts.")]
         public Sound gameplayMusic = Default;
-        [Tooltip("The Ending screen after the last stage.")]
+        [Tooltip("The Ending screen after the last main stage.")]
         public Sound endingMusic = Default;
         [Tooltip("Music volume multiplier while the game is paused.")]
         [Range(0f, 1f)] public float pausedMusicVolume = 0.4f;
@@ -39,13 +39,13 @@ namespace Pcb
         public Sound win = Default;
         [Tooltip("Pressing a switch (normal or AND).")]
         public Sound switchToggle = Default;
-        [Tooltip("Collecting a data pickup.")]
+        [Tooltip("Collecting a data pickup, and taking a pass from a Pass Holder.")]
         public Sound pickup = Default;
         [Tooltip("The last data collected: the goal unlocks.")]
         public Sound goalUnlock = Default;
         public Sound gateOpen = Default;
         public Sound gateClose = Default;
-        [Tooltip("Blocked move, flipping off a via, reaching a locked goal.")]
+        [Tooltip("A refused move (closed gate, pass lock without its pass) or reaching a locked goal.")]
         public Sound fail = Default;
 
         [Header("Loops")]

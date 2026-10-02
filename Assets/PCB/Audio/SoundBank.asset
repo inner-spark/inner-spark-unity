@@ -20,7 +20,7 @@ MonoBehaviour:
     volume: 0.17
   endingMusic:
     clip: {fileID: 8300000, guid: 8b311b1cc369b9e478b14651c73898b9, type: 3}
-    volume: 1
+    volume: 0.614
   pausedMusicVolume: 0.2
   buttonClick:
     clip: {fileID: 8300000, guid: 00f4cd8ece0f5e043b71f7dc20ccdfee, type: 3}
