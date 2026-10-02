@@ -39,19 +39,19 @@ MonoBehaviour:
     volume: 0.609
   goalUnlock:
     clip: {fileID: 8300000, guid: ea91abe83d9310a41832bf98f132b5c5, type: 3}
-    volume: 0.808
+    volume: 0.594
   gateOpen:
     clip: {fileID: 8300000, guid: ea91abe83d9310a41832bf98f132b5c5, type: 3}
-    volume: 1
+    volume: 0.507
   gateClose:
     clip: {fileID: 8300000, guid: 00f4cd8ece0f5e043b71f7dc20ccdfee, type: 3}
-    volume: 1
+    volume: 0.516
   fail:
     clip: {fileID: 8300000, guid: d40dfd7dd2b098a4892bbd3ddcc16275, type: 3}
     volume: 0.251
   travel:
     clip: {fileID: 8300000, guid: 394ce2a39a140174fae9db5488d5cae3, type: 3}
-    volume: 0.58
+    volume: 0.553
   dialogTalking:
     clip: {fileID: 8300000, guid: ca2a24470d461184181f975b3ab10a5f, type: 3}
     volume: 0.306
