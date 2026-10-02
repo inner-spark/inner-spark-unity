@@ -17,7 +17,7 @@ MonoBehaviour:
     volume: 0.2
   gameplayMusic:
     clip: {fileID: 8300000, guid: 548891b3f55f84e448c62152cd5ea726, type: 3}
-    volume: 0.17
+    volume: 0.215
   endingMusic:
     clip: {fileID: 8300000, guid: 8b311b1cc369b9e478b14651c73898b9, type: 3}
     volume: 0.614
@@ -38,20 +38,20 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: c0d805bce24a08c42b61d1dcd1863cfc, type: 3}
     volume: 0.609
   goalUnlock:
-    clip: {fileID: 0}
-    volume: 1
+    clip: {fileID: 8300000, guid: ea91abe83d9310a41832bf98f132b5c5, type: 3}
+    volume: 0.808
   gateOpen:
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: ea91abe83d9310a41832bf98f132b5c5, type: 3}
     volume: 1
   gateClose:
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 00f4cd8ece0f5e043b71f7dc20ccdfee, type: 3}
     volume: 1
   fail:
-    clip: {fileID: 0}
-    volume: 1
+    clip: {fileID: 8300000, guid: d40dfd7dd2b098a4892bbd3ddcc16275, type: 3}
+    volume: 0.251
   travel:
-    clip: {fileID: 8300000, guid: dffe2d507a991ad4da74b987d4d1f842, type: 3}
-    volume: 0.908
+    clip: {fileID: 8300000, guid: 394ce2a39a140174fae9db5488d5cae3, type: 3}
+    volume: 1
   dialogTalking:
     clip: {fileID: 8300000, guid: ca2a24470d461184181f975b3ab10a5f, type: 3}
     volume: 0.565
