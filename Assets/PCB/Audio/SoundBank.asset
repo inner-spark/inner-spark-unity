@@ -24,7 +24,7 @@ MonoBehaviour:
   pausedMusicVolume: 0.2
   buttonClick:
     clip: {fileID: 8300000, guid: 00f4cd8ece0f5e043b71f7dc20ccdfee, type: 3}
-    volume: 0.159
+    volume: 0.283
   startGame:
     clip: {fileID: 8300000, guid: 6a1c7a0c05aae3749adfd3d126a12b5e, type: 3}
     volume: 0.507
@@ -51,7 +51,7 @@ MonoBehaviour:
     volume: 0.251
   travel:
     clip: {fileID: 8300000, guid: 394ce2a39a140174fae9db5488d5cae3, type: 3}
-    volume: 1
+    volume: 0.58
   dialogTalking:
     clip: {fileID: 8300000, guid: ca2a24470d461184181f975b3ab10a5f, type: 3}
-    volume: 0.565
+    volume: 0.306
