@@ -215,4 +215,6 @@ Screen Size, 1920×1080.
 - [ ] Audio tuning; missing clips (switch, travel, menu music, gate close).
 - [ ] Non-16:9 screens (letterbox or not?), windowed mode, any player options (resolution, rebinding).
 - [x] LED decorations (`DecorType.LED`, 2026-10-04).
-- [x] Tutorial dialog on every main stage (2026-10-04). Stage 3's sheet line was cut off — check it.
+- [x] Tutorial dialog on every main stage (2026-10-04).
+- [ ] Music / SFX volume settings in game.
+- [ ] Show which switch controls which gate (no on-board indicator yet).

@@ -1,17 +1,21 @@
 # Inner Spark
 
-![Key art](Docs/key_art.png) <!-- TODO: add the key art image at Docs/key_art.png -->
+![Inner Spark key art: Sparky](Docs/key_art.png)
 
-A puzzle game on a printed circuit board. Guide **Sparky**, a little spark of electricity, along copper
-traces from the Start plug to the Goal. Flip the board over through vias, toggle switches to open
-gates, collect every data pickup to unlock the goal, and carry the right pass through pass locks.
+**Inner Spark** is a puzzle game set inside old game consoles. You are **Sparky**, a little spark of
+electricity, racing along the copper traces of a printed circuit board to wake each machine back up.
 
-Sparky travels through console history: **20 stages** inside five retro consoles (ColekoTelestar,
-Altary2600, NESt, Gamerboi, PlayingState), each opened by a zoom-in cinematic and taught through Sparky's
-dialog, then **3 bonus stages** unlocked after the ending.
+Every stage is a two-sided board. Slip through vias to flip it over, press switches to open and close
+gates, collect every piece of data to unlock the goal, and swap colour passes to get through locks — all
+without getting yourself stuck.
+
+- **20 stages across five consoles:** ColekoTelestar, Altary2600, NESt, Gamerboi and PlayingState. Each
+  console opens with a short cinematic and Sparky's commentary on its history.
+- **Learn as you go:** Sparky's dialog introduces each new mechanic as it appears.
+- **3 bonus stages:** unlocked after the ending, for players who want a real challenge.
 
 ## Team — Banh Mi Team
-<!-- Names and roles as on the game's ending screen -->
+
 | Name | Role |
 |---|---|
 | Truong Quang Nghia | Programming |
@@ -21,63 +25,68 @@ dialog, then **3 bonus stages** unlocked after the ending.
 | William Gauthier | Narrative, UI, game design, level design |
 
 ## Engine & language
-- **Unity 6.3 LTS** (6000.3.12f1), Universal Render Pipeline
+
+- **Unity 6.3 LTS** (6000.3.12f1) with the Universal Render Pipeline
 - **C#**
-- Target: Windows (DirectX 12); opens in a resizable 1920×1080 window (the UI scales with the window)
+- Platform: Windows 10 or later, DirectX 12
 
 ## How to launch
-1. Download and unzip the build.
-2. Run **`Inner Spark.exe`**.
-   No Unity installation needed.
+
+1. Download the build from the game's page on the jam hosting site and unzip it.
+2. Run **`Inner Spark.exe`**. No Unity installation is needed.
+
+The game opens in a 1920×1080 window, which you can resize; the interface scales with it. Press
+**Alt + Enter** to switch to fullscreen.
 
 ### Controls
+
 | Action | Keyboard / mouse | Gamepad |
 |---|---|---|
-| Move (8 directions) | WASD / Arrow keys | Left stick / D-pad |
-| Interact: flip board on a via, use a switch, take a pass | Space / Enter | South button |
-| Restart level | R / Restart button | Select |
-| Pause | Esc / Pause button | Start |
-| Dialog: finish the line, then continue | Space / Enter / Continue button | South button |
-| Stage clear: next stage | Space (or Next Level button) | South button |
-| Inspect the board | Hold left mouse + drag | — |
-| Menus | Mouse, or Arrow keys + Enter | D-pad + South |
+| Move (8 directions; diagonals = two directions together) | WASD / arrow keys | Left stick / D-pad |
+| Interact: flip the board on a via, press a switch, take a pass | Space / Enter | South button |
+| Continue dialog (first press shows the whole line) | Space / Enter | South button |
+| Next stage after a win | Space | South button |
+| Restart the stage | R | Select |
+| Pause | Esc | Start |
+| Tilt the board to look around | Hold left mouse button + drag | — |
+| Menus | Mouse, or arrow keys + Enter | D-pad + South button |
+
+The **Pause** and **Restart** buttons in the top-right corner work with the mouse too.
 
 ## Known issues
-<!-- TODO: keep this up to date before each build upload -->
-- No sound for goal unlock, gates opening / closing or a refused move (by choice). Taking a pass uses the
-  data pickup sound.
-- No in-game volume sliders yet.
-- Levels can't be lost — a stuck player uses Restart (R). Gamerboi stages 14 and 16 and bonus stages 21–22
-  have spots where a wrong pass swap leaves no way back to the goal; Restart is the way out there too
-  (see `Docs/Level_solutions.md`).
-- Bonus stages 22 and 23 have no intro dialog. Stage 3's dialog line was cut off in the script sheet.
+
+- There are no in-game volume settings.
+- Nothing on the board shows which switch controls which gate; players find out by pressing the switch.
 
 ## AI-generated content
-<!-- TODO: every team member adds their own AI usage here -->
+
 | Tool | Type of content | Context / usage |
 |---|---|---|
-| Claude (Claude Code, Anthropic) | Code | Gameplay and tool scripts written with the team's direction: Level Editor tools (paint, link, data, pass tools, validation, trace re-routing), Sparky character controller and animation sequencing, switch / gate / data / pass mechanics (incl. lock and gate fades), audio manager, screen fades and stage intro system (console zoom-and-reveal intros), progress save, bonus stages, stage select (board-coloured buttons, scrolling), ending screen, UI scaling; bug fixes and merge conflict resolution. |
-| Claude (Claude Code, Anthropic) | Level design | First versions of stages 11–20 (designed to the team's brief, solver-checked), then edited by the designer into the final stages. Bonus stages 21–23 generated by a search tool (`Tools/LevelDesign/`) and checked by a solver, then edited by the designer. |
-| Claude (Claude Code, Anthropic) | Narrative / text | Tutorial lines in Sparky's stage dialogs (controls and mechanics: moving, diagonals, vias, data, switches, AND switches, passes, hints), added around the team's own console flavor lines and approved by the team; UI text ("PAUSED", "STAGE CLEAR!", "Bonus stages unlocked!"). The team's original lines vs the final ones: `Docs/Dialog_comparison.md`. |
-| Claude (Claude Code, Anthropic) | Art / layout (from the team's assets) | Grey and light-grey board textures recoloured by script from the artist's green board texture; LED decorations scattered on the boards by script (artist's LED models); pause menu, win screen and dialog box laid out with the artist's UI art; per-stage board, capacitor and gate variant choice; console intro cinematics set up with the artist's console models. |
-| Claude (Claude Code, Anthropic) | Documentation | Project docs (`DESIGN.md`, `PROGRESS.md`, this README draft), asset setup guides. |
-| TODO | TODO | TODO (e.g. any AI-assisted art, text, dialog, or code by other members) |
+| Claude (Anthropic), via Claude Code | Code | Gameplay systems, editor tools for building levels, menus and UI behaviour, and bug fixes, written to the team's direction and reviewed in Unity by the team. |
+| Claude (Anthropic), via Claude Code | Level design | First drafts of stages 11–20 and the three bonus stages, generated and checked with a puzzle solver, then edited by our level designer into the final stages. |
+| Claude (Anthropic), via Claude Code | Narrative / text | The tutorial lines in Sparky's dialog, added alongside the team's own console lines; short interface text ("PAUSED", "STAGE CLEAR!"). |
+| Claude (Anthropic), via Claude Code | Documentation | This README and the project's design and progress notes. |
+
+No other AI tools were used. All other art, music, sound, writing and levels were made by the team or
+taken from free sources (see Credits).
 
 ## Credits
-<!-- TODO: verify every third-party asset and its licence -->
-- 3D models, textures, VFX and UI art: Andrii (team).
-- Music and sound effects: Andrii (team), per the ending credits — TODO confirm whether any third-party sounds are used.
-- Room / town scene props: appear to be **Kenney** asset kits (kenney.nl, CC0) — TODO confirm which kits.
-- Font **Upheaval** (`upheavtt.ttf`), likely by Brian Kent (Ænigma Fonts) — TODO confirm author and licence.
-- Font **Liberation Sans** (TextMesh Pro default) — SIL Open Font License.
-- Built with Unity and TextMesh Pro.
+
+- 3D models, textures, VFX and UI art: **Andrii Nhuien** (team)
+- Sound effects: custom made by the team
+- Music: made by the team, plus free tracks from **Pixabay**
+- Room props: **Kenney** assets
+- Fonts: **Upheaval** (free font) and **Liberation Sans** (TextMesh Pro default)
+- Built with **Unity** and **TextMesh Pro**
 
 ## Project structure
-- `Assets/Script/` — game code (`PCB/` gameplay + `PCB/Editor/` level tools, `UI/`, `Audio/`)
-- `Assets/PCB/` — levels (`Levels/`), Level List, theme, prefabs, dialogs, sound bank
-- `Assets/Import Asset/` — imported art, sounds, VFX
-- `Assets/Scenes/` — `MainMenu`, `SampleScene` (gameplay), `Ending`
-- `Docs/` — `Level_solutions.md` (solution + stuck states for every stage), `Dialog_comparison.md`
-  (stage dialog: the team's original lines vs the final tutorial version)
-- `Tools/LevelDesign/` — Python puzzle solver / analysis tools (outside Unity)
-- `DESIGN.md` — design & code reference · `PROGRESS.md` — development log
+
+| Folder / file | Contents |
+|---|---|
+| `Assets/Script/` | Game code: `PCB/` gameplay and level tools, `UI/`, `Audio/` |
+| `Assets/PCB/` | Stages (`Levels/`), stage order, look, dialog, sound settings |
+| `Assets/Import Asset/` | Art, sounds and VFX |
+| `Assets/Scenes/` | `MainMenu`, `SampleScene` (gameplay), `Ending` |
+| `Docs/` | Stage solutions, dialog history |
+| `Tools/LevelDesign/` | Python puzzle solver and level checks (run outside Unity) |
+| `DESIGN.md`, `PROGRESS.md` | Design reference and development log |

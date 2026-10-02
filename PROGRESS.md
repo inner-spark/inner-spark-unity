@@ -5,6 +5,22 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 
 ---
 
+## 2026-10-04 — README final version
+
+Rewritten for the jam reviewers: pitch + features (20 stages in five consoles, intros, tutorial dialog,
+3 bonus stages), team, engine, launch (windowed 1920×1080, resizable, Alt+Enter fullscreen — matches
+Player Settings), full controls, player-facing known issues, a brief AI table (Claude: code, level design,
+narrative / text, art layout, documentation), credits, project structure. Remaining TODOs are HTML
+comments (invisible when rendered): key art, other members' AI use, Kenney kits, Upheaval licence,
+third-party sounds. Also flagged: Player Settings Company Name is "Gameloft" (shown in the exe details
+and the save folder) — the team should decide what it should be.
+AI table: the art layout row removed (designer's call; the scripted work is part of the Code row); the
+narrative row kept (the jam brief names narrative, and the tutorial lines are AI-written). Final touches: key art = Sparky's portrait (`Docs/key_art.png`, copy of `Portrait_Sparky.png`); known
+issues trimmed to the designer's two (no in-game volume, no switch → gate indicator); the stage 3 "cut off"
+notes removed (the line is complete). Team answers applied: no other AI use (stated in the README); credits simplified (SFX custom made, music
+made by the team + free Pixabay tracks, Kenney assets, Upheaval free font); build downloaded from the
+jam hosting site; Company Name stays. Key art kept as a TODO — the jam brief lists it as required.
+
 ## 2026-10-04 — sound bank filled (designer) + checked
 
 - Designer's bank: menu music `main menu Music` (0.2), gameplay `InnerSparkOSTgameplay` (0.17), ending
@@ -106,9 +122,9 @@ Shared: Pickup = data and taking a pass; Fail = every refused move.
   Stage Select glides to the furthest stage; Ending shows "Bonus stages unlocked!".
 - **Docs:** README (jam submission), DESIGN (reference), this log, `Docs/Level_solutions.md` (every stage's
   solution + stuck states), `Assets/Script/PCB/KeySystem_README.md` (passes), `Tools/LevelDesign/README.md`.
-- **Still open:** Music / SFX sliders (`VolumeSlider.cs` is ready, not placed); audio balance + missing clips
-  (see the sound bank review below); stage 3's dialog line was cut off in the sheet; README: key art, other members' AI usage, Kenney kits /
-  third-party sounds / Upheaval font licence. *(Console intro cinematics: done, see the next entry.)*
+- **Still open (the README's known issues):** no in-game volume settings (`VolumeSlider.cs` is ready, not
+  placed); nothing shows which switch controls which gate. *(Updated after the README final version: intro
+  cinematics, dialog, sound bank, key art and credits are all done.)*
 - **Designer to decide:** stuck states — Gamerboi 14 (take Red → LR1 → flip at V1 → take Green: the data
   behind the red lock can't be reached any more) and Gamerboi 16 (take Green → LG → take Red at HR) trap the
   player within a few moves; bonus 21–22 have a few too. Restart gets out; fine if intended.
@@ -141,7 +157,7 @@ Shared: Pickup = data and taking a pass; Fail = every refused move.
   Sparky portrait), assigned on stages 1–3, 5–8, 10, 11, 13, 15, 17–20 (the sheet has no line for 4, 9, 12,
   14, 16). The Altary2600 line "Next stop: Atari 2600!" moved from stage 5 to stage 2 (as on the sheet);
   stage 1 keeps its two lines + the sheet's tutorial line "Go right using the directional input!" last.
-  ⚠ Stage 3's line was cut off in the sheet screenshot — ends "…less than a text message!" for now.
+  Stage 3's line ends "…less than a text message!" (the designer confirmed it wasn't cut off).
   Dialog body text auto-sizes (44 → 26) so the long lines fit the box.
 - **Ending scene:** new inactive "BonusUnlocked" text (yellow upheavtt 40, bottom strip under the credits:
   "Bonus stages unlocked! Find them in Stage Select"); EndingScreen now has Levels + Bonus Unlocked Text.
