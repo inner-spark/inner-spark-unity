@@ -900,7 +900,7 @@ GameObject:
   - component: {fileID: 7408376445692226151}
   - component: {fileID: 8681804523839130734}
   m_Layer: 0
-  m_Name: ColekoTelestar - Level 01
+  m_Name: Coleco Telstar - Level 01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -936,7 +936,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d964b7c489f54454db66757f7c244d90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pcb.Board
-  levelName: 'ColekoTelestar: Level 1'
+  levelName: 'Coleco Telstar: Level 1'
   theme: {fileID: 11400000, guid: ffa1e0a639d45c241bbe1bad221dd486, type: 2}
   dialogSequence: {fileID: 11400000, guid: b3b2474f10ab412eac30f01f867bb4ac, type: 2}
   intro: {fileID: 7100000000000000003, guid: 8733d31a7b7847c78897a5c700436778, type: 3}
@@ -955,7 +955,7 @@ MonoBehaviour:
   sizeInCells: {x: 4, y: 6}
   inputTolerance: 0.5
   editorView: 0
-  savedPath: Assets/PCB/Levels/ColekoTelestar - Level 01.prefab
+  savedPath: Assets/PCB/Levels/Coleco Telstar - Level 01.prefab
 --- !u!1 &7781376271454367435
 GameObject:
   m_ObjectHideFlags: 0

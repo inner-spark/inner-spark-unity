@@ -1520,7 +1520,7 @@ GameObject:
   - component: {fileID: 4767833247473905234}
   - component: {fileID: 3787829673502822378}
   m_Layer: 0
-  m_Name: NESt - Level 11
+  m_Name: NES - Level 11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1556,7 +1556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d964b7c489f54454db66757f7c244d90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pcb.Board
-  levelName: 'NESt: Level 11'
+  levelName: 'NES: Level 11'
   theme: {fileID: 11400000, guid: ffa1e0a639d45c241bbe1bad221dd486, type: 2}
   dialogSequence: {fileID: 11400000, guid: 309758fa31214f619af59d513329b329, type: 2}
   intro: {fileID: 0}
@@ -1575,7 +1575,7 @@ MonoBehaviour:
   sizeInCells: {x: 7, y: 8}
   inputTolerance: 0.5
   editorView: 0
-  savedPath: Assets/PCB/Levels/NESt - Level 11.prefab
+  savedPath: Assets/PCB/Levels/NES - Level 11.prefab
 --- !u!1 &8308173590296490471
 GameObject:
   m_ObjectHideFlags: 0

@@ -1997,7 +1997,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d964b7c489f54454db66757f7c244d90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pcb.Board
-  levelName: NESt_ Level 7
+  levelName: 'NES: Level 7'
   theme: {fileID: 11400000, guid: ffa1e0a639d45c241bbe1bad221dd486, type: 2}
   dialogSequence: {fileID: 11400000, guid: df3ac8ea88a34c4490c59f6b1ad97c58, type: 2}
   intro: {fileID: 0}
@@ -2016,7 +2016,7 @@ MonoBehaviour:
   sizeInCells: {x: 6, y: 6}
   inputTolerance: 0.5
   editorView: 1
-  savedPath: Assets/PCB/Levels/NESt_ Level 7.prefab
+  savedPath: Assets/PCB/Levels/NES - Level 07.prefab
 --- !u!4 &752827276
 Transform:
   m_ObjectHideFlags: 0

@@ -115,7 +115,7 @@ public partial class PcbLevelEditorWindow
 
     void SaveLevel()
     {
-        string levelName = (board.levelName ?? "").Trim(); // the in-game name, kept as typed (e.g. "NESt: Level 6")
+        string levelName = (board.levelName ?? "").Trim(); // the in-game name, kept as typed (e.g. "NES: Level 6")
         if (string.IsNullOrEmpty(CleanName(levelName)))
         {
             EditorUtility.DisplayDialog("Save Level", "Give the level a name first.", "OK");
@@ -264,7 +264,7 @@ public partial class PcbLevelEditorWindow
 
     /// <summary>
     /// Where Save writes: back to the file this level was loaded from while its name is unchanged (file names like
-    /// "NESt - Level 06" needn't match the in-game name), else a new file named after the level.
+    /// "NES - Level 06" needn't match the in-game name), else a new file named after the level.
     /// </summary>
     string SavePath()
     {

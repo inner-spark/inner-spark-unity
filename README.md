@@ -9,7 +9,7 @@ Every stage is a two-sided board. Slip through vias to flip it over, press switc
 gates, collect every piece of data to unlock the goal, and swap colour passes to get through locks — all
 without getting yourself stuck.
 
-- **20 stages across five consoles:** ColekoTelestar, Altary2600, NESt, Gamerboi and PlayingState. Each
+- **20 stages across five consoles:** Coleco Telstar, Atari 2600, NES, Gameboy and PS1. Each
   console opens with a short cinematic and Sparky's commentary on its history.
 - **Learn as you go:** Sparky's dialog introduces each new mechanic as it appears.
 - **3 bonus stages:** unlocked after the ending, for players who want a real challenge.

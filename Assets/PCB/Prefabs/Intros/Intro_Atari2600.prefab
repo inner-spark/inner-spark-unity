@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7100000000000000002}
   - component: {fileID: 7100000000000000003}
   m_Layer: 0
-  m_Name: Intro_ColekoTelestar
+  m_Name: Intro_Atari2600
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,8 +51,9 @@ MonoBehaviour:
   blendToGameplay: 0.6
   casing: {fileID: 7100000000000000013}
   fitCasingToBoard: 1
-  casingMargin: 1.12
-  casingClearance: 0.7
+  casingMargin: 1.25
+  casingClearance: 1.2
+  moveTowardCamera: 1
   startDistance: 3
   holdTime: 0.6
   zoomTime: 2.2
@@ -112,57 +113,57 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7100000000000000012}
     m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 73051a832ada6c042bfbe8b2c238fc68, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 512a74d3c21a9924dbdc719fa764de7f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 73051a832ada6c042bfbe8b2c238fc68, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 512a74d3c21a9924dbdc719fa764de7f, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 73051a832ada6c042bfbe8b2c238fc68, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 512a74d3c21a9924dbdc719fa764de7f, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 73051a832ada6c042bfbe8b2c238fc68, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 512a74d3c21a9924dbdc719fa764de7f, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 73051a832ada6c042bfbe8b2c238fc68, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 512a74d3c21a9924dbdc719fa764de7f, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 73051a832ada6c042bfbe8b2c238fc68, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 512a74d3c21a9924dbdc719fa764de7f, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 73051a832ada6c042bfbe8b2c238fc68, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 512a74d3c21a9924dbdc719fa764de7f, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 73051a832ada6c042bfbe8b2c238fc68, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 512a74d3c21a9924dbdc719fa764de7f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 73051a832ada6c042bfbe8b2c238fc68, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 512a74d3c21a9924dbdc719fa764de7f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 73051a832ada6c042bfbe8b2c238fc68, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 512a74d3c21a9924dbdc719fa764de7f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 73051a832ada6c042bfbe8b2c238fc68, type: 3}
+    - target: {fileID: 919132149155446097, guid: 512a74d3c21a9924dbdc719fa764de7f, type: 3}
       propertyPath: m_Name
-      value: ColekoTelestar
+      value: Altary2600
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 73051a832ada6c042bfbe8b2c238fc68, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 512a74d3c21a9924dbdc719fa764de7f, type: 3}
 --- !u!4 &7100000000000000022 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 73051a832ada6c042bfbe8b2c238fc68, type: 3}
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 512a74d3c21a9924dbdc719fa764de7f, type: 3}
   m_PrefabInstance: {fileID: 7100000000000000021}
   m_PrefabAsset: {fileID: 0}

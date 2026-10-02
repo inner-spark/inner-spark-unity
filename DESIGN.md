@@ -20,8 +20,8 @@ side-switching:
 - **Passes** (Red / Green): taken from a Pass Holder, needed to move onto a Pass Lock of that colour.
 
 Stages are played in a fixed order (Level List); finishing one unlocks the next. The game walks through
-console history: each group of stages lives inside one console (ColekoTelestar → Altary2600 → NESt →
-Gamerboi → PlayingState, the artist's parody names) with its own board colour. The last main stage (20)
+console history: each group of stages lives inside one console (Coleco Telstar → Atari 2600 → NES →
+Gameboy → PS1) with its own board colour. The last main stage (20)
 leads to the ending screen and unlocks 3 **bonus stages**; the last bonus stage returns to the menu. Each stage can open with a short intro cinematic (a device on a table in a room,
 the camera zooms in, the casing fades away to reveal the PCB) and an intro dialog that teaches it.
 There's no on-screen text during play — tutorials live in the dialogs.
@@ -120,7 +120,7 @@ There's no on-screen text during play — tutorials live in the dialogs.
   - Console intros: `Assets/PCB/Prefabs/Intros/Intro_<Console>.prefab`, on each console's first stage (1, 2,
     6, 13, 18). The console models are turned (90°, 180°, 0) on the Casing (top toward the camera, right way
     up). Settings: hold 0.6 s, zoom 2.2 s, fade from halfway over 1.1 s, start distance 3, margin 1.12,
-    clearance 0.7; Altary2600 (stepped body) margin 1.25, clearance 1.2, move toward camera 1.
+    clearance 0.7; Atari 2600 (stepped body) margin 1.25, clearance 1.2, move toward camera 1.
 - **LevelList.cs** — play order + `mainStageCount` (`MainCount`, `IsBonus`, `BonusNumber`).
 - **PcbTheme.cs** — shared look; also `boardTileColours` (board tile → Stage Select button colour).
 - **PcbVisualOwner.cs** — link from generated visuals back to their node / trace (scene clicks select the
@@ -157,7 +157,7 @@ There's no on-screen text during play — tutorials live in the dialogs.
 - **Progress.cs** — furthest unlocked stage (PlayerPrefs, by Level List position).
 - **MainMenuController.cs** — Play (continues from the furthest unlocked stage) / Stage Select / Quit.
 - **StageSelectController.cs** — one button per *unlocked* stage, built from the Level List: two-line
-  labels ("NESt:" / "Level 6", bonus "Bonus:" / "Level 1"), button coloured like the stage's board
+  labels ("NES:" / "Level 6", bonus "Bonus:" / "Level 1"), button coloured like the stage's board
   (theme `boardTileColours`, white text on dark colours). Fixes the scroll view when it opens (clamped,
   list sized to its buttons), then auto-scrolls to the furthest stage; keeps the selection in view.
 - **PauseMenu.cs** — pause panel; `SetAvailable` greys out Pause / Restart during the start sequence; the
@@ -189,17 +189,17 @@ Screen Size, 1920×1080.
 
 | Stages | Console | Board tile | Notes |
 |---|---|---|---|
-| 1 | ColekoTelestar | Purple | tutorial |
-| 2–5 | Altary2600 | Bronze | |
-| 6–12 | NESt | Black | |
-| 13–17 | Gamerboi | Grey | |
-| 18–20 | PlayingState | Light Grey | the ending follows 20 |
+| 1 | Coleco Telstar | Purple | tutorial |
+| 2–5 | Atari 2600 | Bronze | |
+| 6–12 | NES | Black | |
+| 13–17 | Gameboy | Grey | |
+| 18–20 | PS1 | Light Grey | the ending follows 20 |
 | 21–23 | Bonus | Red | hard / hard / very hard; 21–22 have stuck states (Restart) |
 
 - Each stage also picks one capacitor model and one gate model (`Board.look`), and has 3–8 LED
   decorations per side.
 - **Solutions + stuck states** for every stage: [`Docs/Level_solutions.md`](Docs/Level_solutions.md)
-  (all 23 solvable; stuck states in Gamerboi 14 and 16 and bonus 21–22). 
+  (all 23 solvable; stuck states in Gameboy 14 and 16 and bonus 21–22). 
 - Intro dialogs (`Assets/PCB/Dialog/LvlN_Intro`, max 3 lines) on stages 1–21: the sheet's flavor lines plus
   tutorial lines where a mechanic first appears (1 moving, 2 diagonals + restart, 3 vias + tilt, 5 data,
   7 switches, 9 AND switches, 13 passes, 14 pass-trap warning, 15 gate on two switches); none on bonus

@@ -5,6 +5,30 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 
 ---
 
+## 2026-10-04 — back to the real console names
+
+Designer's call (second thought): ColekoTelestar → **Coleco Telstar**, Altary2600 → **Atari 2600**, NESt →
+**NES**, Gamerboi → **Gameboy**, PlayingState → **PS1** (spelling chosen by the designer).
+- Level files `<Console> - Level NN` + in-game names `<Console>: Level N` + save paths (GUIDs kept: Level
+  List, intros, dialogs untouched); Stage Select picks the names up by itself.
+- Intro prefabs renamed `Intro_ColecoTelstar`, `Intro_Atari2600`, `Intro_NES`, `Intro_Gameboy`, `Intro_PS1`.
+  The artist's console model files keep their own (parody) names.
+- SampleScene's editing copy of stage 7 still called itself "NESt_ Level 7" and saved to the deleted stray
+  file (saving it would have recreated the duplicate) → now 'NES: Level 7', saving to `NES - Level 07`.
+- README, DESIGN, Dialog_comparison updated; `Level_solutions.md` and `Dialog_transcript.xlsx` regenerated.
+  Older log entries below keep the names used at the time.
+
+## 2026-10-04 — dialog transcript spreadsheet
+
+`Docs/Dialog_transcript.xlsx` — every stage's dialog as in the game, in play order: stage, console, level
+name, line #, speaker, text, origin (Team script / Team script (shortened) / Added (tutorial)), character
+count (formula), plus a small summary (37 lines: 14 team, 1 shortened, 22 added). Stages without dialog
+(bonus 22–23) listed as "(no dialog)". Built from the dialog assets; origin from `Docs/Dialog_comparison.md`.
+Also checked a colleague's report of one stage showing two stages' dialog: not possible in the current
+version (one LevelManager, guarded stage start, Space ≠ UI Submit, all 23 stages point at their own dialog);
+two older builds had content bugs that match — stage 5 used stage 2's dialog (≤ `480222e`) and Level 7 was
+in the list twice (`f4c1cc3`); both fixed.
+
 ## 2026-10-04 — README final version
 
 Rewritten for the jam reviewers: pitch + features (20 stages in five consoles, intros, tutorial dialog,
@@ -113,8 +137,8 @@ Shared: Pickup = data and taking a pass; Fail = every refused move.
 ## 2026-10-04 — clean-up + project snapshot
 
 ### Snapshot: where the project stands
-- **Game:** 20 main stages in 5 consoles (ColekoTelestar 1 · Altary2600 2–5 · NESt 6–12 · Gamerboi 13–17 ·
-  PlayingState 18–20) → Ending, then 3 bonus stages (21–23) → Main Menu. Mechanics: vias, normal / AND
+- **Game:** 20 main stages in 5 consoles (Coleco Telstar 1 · Atari 2600 2–5 · NES 6–12 · Gameboy 13–17 ·
+  PS1 18–20) → Ending, then 3 bonus stages (21–23) → Main Menu. Mechanics: vias, normal / AND
   switches + gates, data, Red / Green passes. All 23 stages solvable (solver-checked).
 - **Look:** board colour per console, one capacitor + gate model per stage, LED decorations, gate and pass
   lock fades, main-menu-style UI everywhere (Stage Select, HUD, Pause, Dialog, Win).

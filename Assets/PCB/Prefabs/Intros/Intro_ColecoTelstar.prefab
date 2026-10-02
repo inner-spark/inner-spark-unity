@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7100000000000000002}
   - component: {fileID: 7100000000000000003}
   m_Layer: 0
-  m_Name: Intro_PlayingState
+  m_Name: Intro_ColecoTelstar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,57 +112,57 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7100000000000000012}
     m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 85050d0acd7bcec42a8c1054f9b9e91e, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 73051a832ada6c042bfbe8b2c238fc68, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 85050d0acd7bcec42a8c1054f9b9e91e, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 73051a832ada6c042bfbe8b2c238fc68, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 85050d0acd7bcec42a8c1054f9b9e91e, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 73051a832ada6c042bfbe8b2c238fc68, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 85050d0acd7bcec42a8c1054f9b9e91e, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 73051a832ada6c042bfbe8b2c238fc68, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 85050d0acd7bcec42a8c1054f9b9e91e, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 73051a832ada6c042bfbe8b2c238fc68, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 85050d0acd7bcec42a8c1054f9b9e91e, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 73051a832ada6c042bfbe8b2c238fc68, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 85050d0acd7bcec42a8c1054f9b9e91e, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 73051a832ada6c042bfbe8b2c238fc68, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 85050d0acd7bcec42a8c1054f9b9e91e, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 73051a832ada6c042bfbe8b2c238fc68, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 85050d0acd7bcec42a8c1054f9b9e91e, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 73051a832ada6c042bfbe8b2c238fc68, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 85050d0acd7bcec42a8c1054f9b9e91e, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 73051a832ada6c042bfbe8b2c238fc68, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 85050d0acd7bcec42a8c1054f9b9e91e, type: 3}
+    - target: {fileID: 919132149155446097, guid: 73051a832ada6c042bfbe8b2c238fc68, type: 3}
       propertyPath: m_Name
-      value: PlayingState
+      value: ColekoTelestar
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 85050d0acd7bcec42a8c1054f9b9e91e, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 73051a832ada6c042bfbe8b2c238fc68, type: 3}
 --- !u!4 &7100000000000000022 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 85050d0acd7bcec42a8c1054f9b9e91e, type: 3}
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 73051a832ada6c042bfbe8b2c238fc68, type: 3}
   m_PrefabInstance: {fileID: 7100000000000000021}
   m_PrefabAsset: {fileID: 0}
