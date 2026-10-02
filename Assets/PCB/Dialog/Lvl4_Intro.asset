@@ -15,4 +15,5 @@ MonoBehaviour:
   lines:
   - speakerName: Sparky
     portrait: {fileID: 21300000, guid: 6936b9d0d20e600468c6f6817029d46e, type: 3}
-    text: 'Each side has its own traces. If a path looks blocked, the way on might be underneath!'
+    text: Each side has its own traces. If a path looks <color=red>blocked</color>,
+      the way on might be <color=red>underneath</color>!

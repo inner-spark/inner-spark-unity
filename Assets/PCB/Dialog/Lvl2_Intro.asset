@@ -15,10 +15,9 @@ MonoBehaviour:
   lines:
   - speakerName: Sparky
     portrait: {fileID: 21300000, guid: 6936b9d0d20e600468c6f6817029d46e, type: 3}
-    text: 'Next stop: Atari 2600! Outside, a little box. Slot in a cartridge, and inside it turns into a whole library of worlds.'
+    text: 'Next stop: Atari 2600! Outside, a little box. Slot in a cartridge, and
+      inside it turns into a whole library of worlds.'
   - speakerName: Sparky
     portrait: {fileID: 21300000, guid: 6936b9d0d20e600468c6f6817029d46e, type: 3}
-    text: 'Some traces leave at an angle: press two directions together, like W + D, to go diagonally.'
-  - speakerName: Sparky
-    portrait: {fileID: 21300000, guid: 6936b9d0d20e600468c6f6817029d46e, type: 3}
-    text: 'Took a wrong turn? Press R to start the stage over.'
+    text: 'Some traces leave at an angle: press two directions together, like <color=red>W
+      + D</color>, to go <color=red>diagonally</color>.'

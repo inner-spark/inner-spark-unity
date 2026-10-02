@@ -15,4 +15,5 @@ MonoBehaviour:
   lines:
   - speakerName: Sparky
     portrait: {fileID: 21300000, guid: 6936b9d0d20e600468c6f6817029d46e, type: 3}
-    text: 'Passes and AND switches together. Think twice before you trade the pass you''re holding!'
+    text: <color=red>Passes</color> and <color=red>AND switches</color> together.
+      Think twice before you trade the pass you're holding!

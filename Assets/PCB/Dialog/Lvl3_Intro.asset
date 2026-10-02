@@ -15,10 +15,13 @@ MonoBehaviour:
   lines:
   - speakerName: Sparky
     portrait: {fileID: 21300000, guid: 6936b9d0d20e600468c6f6817029d46e, type: 3}
-    text: 'Behind all that wood panelling, just 128 bytes of memory; less than a text message!'
+    text: Behind all that wood panelling, just 128 bytes of memory; less than a text
+      message!
   - speakerName: Sparky
     portrait: {fileID: 21300000, guid: 6936b9d0d20e600468c6f6817029d46e, type: 3}
-    text: 'This board has two sides! Stop on a via and press Space to slip through to the other side.'
+    text: This board has <color=red>two sides</color>! Stop on a <color=red>via</color>
+      and press <color=red>Space</color> to slip through to the other side.
   - speakerName: Sparky
     portrait: {fileID: 21300000, guid: 6936b9d0d20e600468c6f6817029d46e, type: 3}
-    text: 'Hold the left mouse button and drag to tilt the board and peek around.'
+    text: Hold the <color=red>left mouse</color> button and <color=red>drag to tilt</color>
+      the board and peek around.
