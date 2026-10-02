@@ -2150,6 +2150,8 @@ MonoBehaviour:
   buttonTemplate: {fileID: 203221956}
   scrollRect: {fileID: 0}
   lightTextColour: {r: 1, g: 1, b: 1, a: 1}
+  autoScrollDelay: 0.3
+  autoScrollTime: 0.8
 --- !u!114 &1627478190
 MonoBehaviour:
   m_ObjectHideFlags: 0
