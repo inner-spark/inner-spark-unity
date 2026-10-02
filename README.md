@@ -42,8 +42,8 @@ The game opens in a 1920×1080 window, which you can resize; the interface scale
 
 | Action | Keyboard / mouse | Gamepad |
 |---|---|---|
-| Move (8 directions; diagonals = two directions together) | WASD / arrow keys | Left stick / D-pad |
-| Interact: flip the board on a via, press a switch, take a pass | Space / Enter | South button |
+| Move (8 directions; diagonals = two directions together) | WASD / arrow keys, or click a connected node | Left stick / D-pad |
+| Interact: flip the board on a via, press a switch, take a pass | Space / Enter, or click Sparky's node | South button |
 | Continue dialog (first press shows the whole line) | Space / Enter | South button |
 | Next stage after a win | Space | South button |
 | Restart the stage | R | Select |

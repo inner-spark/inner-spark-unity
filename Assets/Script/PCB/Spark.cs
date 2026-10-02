@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace Pcb
@@ -100,6 +101,16 @@ namespace Pcb
         bool hasQueuedMove, hasQueuedFlip;
         float moveQueuedAt, flipQueuedAt;
         Vector2 queuedMove;
+
+        [Header("Mouse: click a node to move there")]
+        [Tooltip("A left press that moves less than this many pixels before release is a click (move / interact); " +
+                 "more is a drag, which only tilts the board for inspection.")]
+        public float clickMaxDrag = 10f;
+        [Tooltip("How close (in grid cells) to a node a click must land to count as clicking it.")]
+        public float clickRadius = 0.7f;
+        Vector2 clickStart;
+        float clickTravel;
+        bool clickDown;
 
         Board.Exit travelling;
         readonly List<Vector2> path = new List<Vector2>();
@@ -266,6 +277,7 @@ namespace Pcb
             bool paused = PauseMenu.GamePaused || InputLocked;
             if (paused) { hasQueuedMove = hasQueuedFlip = false; inputGraceTimer = 0f; }
             else if (flipAction.WasPressedThisFrame()) { hasQueuedFlip = true; flipQueuedAt = Time.time; }
+            ReadClick(paused);
 
             // Per-axis direction held (-1, 0, 1). Only an axis that becomes active or reverses is a press:
             // letting go of a key never is, so releasing one key of a diagonal a moment before the other
@@ -293,6 +305,64 @@ namespace Pcb
         }
 
         static int Axis(float value) => value > 0.5f ? 1 : value < -0.5f ? -1 : 0;
+
+        /// <summary>
+        /// Mouse click (press + release without dragging; a drag is board inspection): on Sparky's node =
+        /// interact (like Space), on a node connected to it = move there, on any other node = the wrong-key shake,
+        /// on empty board or a UI button = nothing.
+        /// </summary>
+        void ReadClick(bool paused)
+        {
+            var mouse = Mouse.current;
+            if (mouse == null) return;
+            Vector2 position = mouse.position.ReadValue();
+            if (mouse.leftButton.wasPressedThisFrame)
+            {
+                clickDown = !(EventSystem.current && EventSystem.current.IsPointerOverGameObject()); // Pause / Restart buttons, panels
+                clickStart = position;
+                clickTravel = 0f;
+            }
+            if (!clickDown) return;
+            clickTravel = Mathf.Max(clickTravel, Vector2.Distance(position, clickStart));
+            if (!mouse.leftButton.wasReleasedThisFrame) return;
+            clickDown = false;
+            if (paused || IsMoving || clickTravel > clickMaxDrag) return;
+
+            var node = NodeAt(clickStart);
+            if (!node) return;
+            if (node == CurrentNode) { hasQueuedFlip = true; flipQueuedAt = Time.time; return; }
+            foreach (var exit in Board.GetExits(CurrentNode))
+            {
+                if (exit.layer != Layer || exit.target != node) continue;
+                queuedMove = ScreenToBoard(exit.direction); // the queue holds screen directions; mirroring is its own inverse
+                hasQueuedMove = true;
+                moveQueuedAt = Time.time;
+                inputGraceTimer = 0f;
+                return;
+            }
+            if (!IsBusy) Block(); // not connected: same feedback as a direction with no trace
+        }
+
+        /// <summary>The node on the side being looked at that's closest to this screen point (within Click Radius).</summary>
+        PcbNode NodeAt(Vector2 screen)
+        {
+            var cam = Camera.main;
+            if (!cam || !Board) return null;
+            var ray = cam.ScreenPointToRay(screen);
+            var t = Board.transform;
+            var plane = new Plane(t.forward, t.TransformPoint(new Vector3(0f, 0f, Layer == PcbLayer.Back ? Board.Thickness : 0f)));
+            if (!plane.Raycast(ray, out float distance)) return null;
+            Vector2 local = Board.WorldToLocal(ray.GetPoint(distance));
+            PcbNode best = null;
+            float bestDistance = Board.cellSize * clickRadius;
+            foreach (var n in Board.Nodes)
+            {
+                if (!n || !n.IsOnLayer(Layer)) continue;
+                float d = Vector2.Distance(Board.WorldToLocal(n.transform.position), local);
+                if (d < bestDistance) { best = n; bestDistance = d; }
+            }
+            return best;
+        }
 
         /// <summary>The back of the board is seen mirrored, so screen-right is board-left there.</summary>
         Vector2 ScreenToBoard(Vector2 v) => Board.View == PcbLayer.Back ? new Vector2(-v.x, v.y) : v;

@@ -40,6 +40,7 @@ There's no on-screen text during play — tutorials live in the dialogs.
 | Advance dialog | Space / Continue button (first press finishes a line still typing) | Submit |
 | Stage clear → next stage | Space / Next Level button | Submit |
 | Inspect board (tilt) | Hold left mouse + drag | — |
+| Move / interact with the mouse | Click a connected node (move) or Sparky's node (interact) | — |
 
 - **Input reading** (`Spark.ReadInput`): per axis; only a key going *down* counts as a press (releasing
   one key of a diagonal never queues a move); two keys pressed within 80 ms combine into a diagonal.
@@ -48,6 +49,11 @@ There's no on-screen text during play — tutorials live in the dialogs.
   / animating) is carried over; older presses are forgotten (no double-tap double steps).
 - **Locked:** while paused nothing is queued; during the stage start sequence (fade, intro, Sparky
   appearing, dialog) Sparky, Restart, Pause and board tilting are all off; at the goal input stops.
+- **Mouse clicks** (`Spark.ReadClick`): a press that moves < `clickMaxDrag` (10 px) before release is a click,
+  more is a drag (board tilt only). The clicked node = nearest node on the viewed side within `clickRadius`
+  (0.7 cells) of where the ray meets the board face. Sparky's node → interact; a node connected to it →
+  queued move along that trace (same queue / buffer as keys); any other node → the wrong-key shake; empty
+  board or a UI button → nothing.
 - Menus select their first button when they open (keyboard / gamepad navigation). Stage Select instead
   starts at stage 1, glides down to the furthest unlocked stage and selects it.
 

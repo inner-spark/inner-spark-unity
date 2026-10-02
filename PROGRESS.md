@@ -5,6 +5,16 @@ See [DESIGN.md](DESIGN.md) for the design reference / architecture map.
 
 ---
 
+## 2026-10-04 — click a node to move
+
+- `Spark.ReadClick`: left click (press + release moving < `clickMaxDrag` 10 px) on Sparky's node = interact
+  (like Space), on a node connected to it by a trace = move there (queued like a key press, so the usual
+  locks / buffer apply), on any other node = the wrong-key shake (`Block`), on empty board or UI = nothing.
+  Node under the click: ray onto the viewed board face, nearest node within `clickRadius` 0.7 cells.
+- Inspection unchanged: anything past 10 px is a drag and only tilts the board (BoardRig untouched; a click
+  may tilt it a fraction of a degree, which springs back).
+- README + DESIGN controls updated. Compiles; not tested in Unity yet.
+
 ## 2026-10-04 — back to the real console names
 
 Designer's call (second thought): ColekoTelestar → **Coleco Telstar**, Altary2600 → **Atari 2600**, NESt →
